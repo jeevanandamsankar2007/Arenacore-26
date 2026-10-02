@@ -1,0 +1,22 @@
+{
+  "name": "gdg-acm-arenacore26",
+  "version": "1.0.0",
+  "description": "GDG x ACM PSNACET - ARENACORE '26 24-Hour Hackathon Platform",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx -y serve -l 3000",
+    "start": "npx -y serve -l 3000",
+    "serve": "npx -y serve -l 3000"
+  },
+  "keywords": [
+    "arenacore26",
+    "arenacore",
+    "gdg",
+    "acm",
+    "psnacet",
+    "hackathon",
+    "deeptech"
+  ],
+  "author": "GDG On Campus PSNACET",
+  "license": "MIT"
+}

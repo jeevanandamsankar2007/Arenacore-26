@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Portal | ARENACORE '26 | GDG x ACM PSNACET</title>
+  <link rel="icon" type="image/svg+xml" href="assets/gdg-logo.svg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      background: #f8fafc;
+      min-height: 100vh;
+      font-family: 'Outfit', sans-serif;
+    }
+    .admin-container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .admin-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #ffffff;
+      padding: 20px 28px;
+      border-radius: 16px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+      margin-bottom: 28px;
+    }
+    .admin-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .admin-brand img {
+      width: 44px;
+      height: 44px;
+    }
+    .admin-brand h1 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 0;
+    }
+    .admin-brand span {
+      font-size: 0.85rem;
+      color: #64748b;
+      display: block;
+    }
+    .admin-card {
+      background: #ffffff;
+      padding: 28px;
+      border-radius: 16px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+      margin-bottom: 24px;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .stat-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .stat-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+    }
+    .stat-val {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #0f172a;
+    }
+    .stat-label {
+      font-size: 0.8rem;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .form-group {
+      margin-bottom: 18px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #334155;
+      margin-bottom: 6px;
+    }
+    .form-control {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      outline: none;
+      transition: all 0.2s ease;
+      background: #ffffff;
+    }
+    .form-control:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    }
+    .btn-admin {
+      background: #2563eb;
+      color: #ffffff;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .btn-admin:hover {
+      background: #1d4ed8;
+      transform: translateY(-1px);
+    }
+    .btn-outline-admin {
+      background: transparent;
+      color: #475569;
+      border: 1px solid #cbd5e1;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn-outline-admin:hover {
+      background: #f1f5f9;
+    }
+    .status-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+    }
+    .status-badge.OPEN { background: #dcfce7; color: #166534; }
+    .status-badge.CLOSED { background: #fee2e2; color: #991b1b; }
+    .status-badge.COMING_SOON { background: #fef3c7; color: #92400e; }
+    .toast-popup {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      padding: 14px 22px;
+      background: #0f172a;
+      color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+      z-index: 9999;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="admin-container">
+    <!-- Header -->
+    <header class="admin-header">
+      <div class="admin-brand">
+        <img src="assets/gdg-logo.svg" alt="GDG Logo">
+        <div>
+          <h1>ARENACORE '26 Admin Portal</h1>
+          <span>Department of IT • PSNACET Campus</span>
+        </div>
+      </div>
+      <div id="authActions">
+        <a href="index.html" class="btn-outline-admin"><i class="fa-solid fa-arrow-left"></i> View Website</a>
+        <button id="logoutBtn" class="btn-outline-admin" style="display:none;" onclick="adminLogout()"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+      </div>
+    </header>
+
+    <!-- Login Card (Displayed when not logged in) -->
+    <div id="loginSection" class="admin-card" style="max-width: 450px; margin: 40px auto;">
+      <h2 style="font-size: 1.3rem; margin-bottom: 12px;"><i class="fa-solid fa-lock text-google-blue"></i> Admin Login</h2>
+      <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 20px;">Enter your administrator credentials to manage hackathon settings.</p>
+      
+      <form onsubmit="handleAdminLogin(event)">
+        <div class="form-group">
+          <label for="adminUsername">Username or Email</label>
+          <input type="text" id="adminUsername" class="form-control" placeholder="admin or email" value="admin" required>
+        </div>
+        <div class="form-group">
+          <label for="adminPassword">Password</label>
+          <input type="password" id="adminPassword" class="form-control" placeholder="••••••••••••" value="Admin@ArenaCore2026" required>
+        </div>
+        <button type="submit" id="loginSubmitBtn" class="btn-admin w-full" style="width: 100%; justify-content: center;">
+          <i class="fa-solid fa-shield-halved"></i> Sign In to Portal
+        </button>
+      </form>
+    </div>
+
+    <!-- Authenticated Dashboard -->
+    <div id="dashboardSection" style="display:none;">
+      
+      <!-- Stats Row -->
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-icon" style="background:#dbeafe; color:#2563eb;"><i class="fa-solid fa-toggle-on"></i></div>
+          <div>
+            <div class="stat-val" id="statRegStatus"><span class="status-badge OPEN">OPEN</span></div>
+            <div class="stat-label">Registration Status</div>
+          </div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-icon" style="background:#fef3c7; color:#d97706;"><i class="fa-brands fa-google-drive"></i></div>
+          <div>
+            <div class="stat-val" id="statFormConfigured" style="font-size: 1.1rem;">Pending Link</div>
+            <div class="stat-label">Google Form URL</div>
+          </div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-icon" style="background:#e0e7ff; color:#4f46e5;"><i class="fa-solid fa-bullhorn"></i></div>
+          <div>
+            <div class="stat-val" id="statAnnouncements">0</div>
+            <div class="stat-label">Announcements</div>
+          </div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-icon" style="background:#dcfce7; color:#16a34a;"><i class="fa-solid fa-circle-question"></i></div>
+          <div>
+            <div class="stat-val" id="statFaqs">5</div>
+            <div class="stat-label">Team FAQs</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Registration Configuration Form (MAIN REQUIREMENT) -->
+      <div class="admin-card">
+        <div style="border-bottom: 1px solid #e2e8f0; padding-bottom: 14px; margin-bottom: 20px;">
+          <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a;">
+            <i class="fa-solid fa-sliders text-google-blue"></i> Participant Registration Configuration
+          </h2>
+          <p style="color: #64748b; font-size: 0.88rem; margin: 4px 0 0 0;">
+            Controls what happens when participants click <strong>REGISTER NOW</strong>. When the senior provides the Google Form link, paste it below and click Save.
+          </p>
+        </div>
+
+        <form onsubmit="handleSaveRegistration(event)">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="form-group">
+              <label for="regStatusSelect">Registration Status</label>
+              <select id="regStatusSelect" class="form-control">
+                <option value="OPEN">OPEN (Accepting Applications)</option>
+                <option value="CLOSED">CLOSED (Registration Ended)</option>
+                <option value="COMING_SOON">COMING_SOON (Pre-announcement)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="regOpeningDate">Opening Date</label>
+              <input type="text" id="regOpeningDate" class="form-control" placeholder="e.g. 2026-10-01">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="regClosingDate">Closing Date / Deadline</label>
+            <input type="text" id="regClosingDate" class="form-control" placeholder="e.g. 2026-10-21">
+          </div>
+
+          <div class="form-group">
+            <label for="regGoogleFormUrl">
+              Google Form URL 
+              <span style="font-weight: 400; color: #64748b;">(Leave empty until senior provides the real link)</span>
+            </label>
+            <input type="url" id="regGoogleFormUrl" class="form-control" placeholder="https://forms.google.com/..." style="font-family: monospace;">
+          </div>
+
+          <div style="display: flex; gap: 12px; align-items: center; margin-top: 24px;">
+            <button type="submit" id="saveRegBtn" class="btn-admin">
+              <i class="fa-solid fa-floppy-disk"></i> SAVE CONFIGURATION
+            </button>
+            <a id="testFormLink" href="#" target="_blank" class="btn-outline-admin" style="display:none;">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> Test Form Link
+            </a>
+          </div>
+        </form>
+      </div>
+
+      <!-- Quick Actions / Live System Information -->
+      <div class="admin-card">
+        <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 12px;">
+          <i class="fa-solid fa-info-circle text-google-yellow"></i> System Integration Status
+        </h3>
+        <ul style="color: #475569; font-size: 0.9rem; line-height: 1.8; margin-left: 20px;">
+          <li><strong>API Backend:</strong> Running on <code style="background:#f1f5f9; padding:2px 6px; border-radius:4px;">http://localhost:8000</code></li>
+          <li><strong>Interactive Swagger Docs:</strong> <a href="http://localhost:8000/docs" target="_blank" style="color:#2563eb; text-decoration:underline;">http://localhost:8000/docs</a></li>
+          <li><strong>Team FAQ Module:</strong> Active via <code style="background:#f1f5f9; padding:2px 6px; border-radius:4px;">GET /api/faqs</code></li>
+          <li><strong>Google Sheets Future Hook:</strong> Module ready in <code style="background:#f1f5f9; padding:2px 6px; border-radius:4px;">app/services/google_sheets_service.py</code> (inactive until credentials configured)</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="toast" class="toast-popup"></div>
+
+  <script>
+    const API_BASE = window.API_BASE_URL || (window.location.port === "3000" ? "http://localhost:8000" : "");
+
+    function showAdminToast(msg) {
+      const toast = document.getElementById("toast");
+      toast.textContent = msg;
+      toast.style.display = "block";
+      setTimeout(() => { toast.style.display = "none"; }, 3500);
+    }
+
+    function getToken() {
+      return sessionStorage.getItem("admin_token");
+    }
+
+    function setToken(token) {
+      if (token) {
+        sessionStorage.setItem("admin_token", token);
+      } else {
+        sessionStorage.removeItem("admin_token");
+      }
+    }
+
+    async function handleAdminLogin(event) {
+      event.preventDefault();
+      const username = document.getElementById("adminUsername").value.trim();
+      const password = document.getElementById("adminPassword").value;
+      const btn = document.getElementById("loginSubmitBtn");
+      btn.disabled = true;
+
+      try {
+        const res = await fetch(`${API_BASE}/api/auth/login`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, password })
+        });
+        const data = await res.json();
+        if (data.success && data.data && data.data.access_token) {
+          setToken(data.data.access_token);
+          showAdminToast("✅ Login successful");
+          checkAuthAndLoad();
+        } else {
+          showAdminToast(`❌ ${data.message || "Invalid credentials"}`);
+        }
+      } catch (err) {
+        showAdminToast("❌ Could not connect to backend server on port 8000");
+      } finally {
+        btn.disabled = false;
+      }
+    }
+
+    function adminLogout() {
+      setToken(null);
+      document.getElementById("loginSection").style.display = "block";
+      document.getElementById("dashboardSection").style.display = "none";
+      document.getElementById("logoutBtn").style.display = "none";
+      showAdminToast("Logged out successfully");
+    }
+
+    async function checkAuthAndLoad() {
+      const token = getToken();
+      if (!token) {
+        document.getElementById("loginSection").style.display = "block";
+        document.getElementById("dashboardSection").style.display = "none";
+        document.getElementById("logoutBtn").style.display = "none";
+        return;
+      }
+
+      try {
+        const res = await fetch(`${API_BASE}/api/auth/me`, {
+          headers: { "Authorization": `Bearer ${token}` }
+        });
+        if (!res.ok) {
+          throw new Error("Session expired");
+        }
+        document.getElementById("loginSection").style.display = "none";
+        document.getElementById("dashboardSection").style.display = "block";
+        document.getElementById("logoutBtn").style.display = "inline-flex";
+
+        loadDashboardStats();
+        loadRegistrationConfig();
+      } catch (err) {
+        adminLogout();
+      }
+    }
+
+    async function loadDashboardStats() {
+      const token = getToken();
+      try {
+        const res = await fetch(`${API_BASE}/api/admin/dashboard`, {
+          headers: { "Authorization": `Bearer ${token}` }
+        });
+        const result = await res.json();
+        if (result.success && result.data) {
+          const d = result.data;
+          document.getElementById("statRegStatus").innerHTML = `<span class="status-badge ${d.registration_status}">${d.registration_status}</span>`;
+          document.getElementById("statFormConfigured").textContent = d.registration_configured ? "Configured" : "Pending Link";
+          document.getElementById("statFormConfigured").style.color = d.registration_configured ? "#16a34a" : "#d97706";
+          document.getElementById("statAnnouncements").textContent = d.announcements_count;
+          document.getElementById("statFaqs").textContent = d.faqs_count;
+        }
+      } catch (err) {
+        console.error("Failed to load dashboard stats:", err);
+      }
+    }
+
+    async function loadRegistrationConfig() {
+      const token = getToken();
+      try {
+        const res = await fetch(`${API_BASE}/api/admin/registration`, {
+          headers: { "Authorization": `Bearer ${token}` }
+        });
+        const result = await res.json();
+        if (result.success && result.data) {
+          const cfg = result.data;
+          document.getElementById("regStatusSelect").value = cfg.status || "OPEN";
+          document.getElementById("regGoogleFormUrl").value = cfg.registration_url || "";
+          document.getElementById("regOpeningDate").value = cfg.opening_date || "";
+          document.getElementById("regClosingDate").value = cfg.closing_date || "";
+
+          const testBtn = document.getElementById("testFormLink");
+          if (cfg.registration_url && cfg.registration_url.trim()) {
+            testBtn.href = cfg.registration_url;
+            testBtn.style.display = "inline-flex";
+          } else {
+            testBtn.style.display = "none";
+          }
+        }
+      } catch (err) {
+        console.error("Failed to load registration config:", err);
+      }
+    }
+
+    async function handleSaveRegistration(event) {
+      event.preventDefault();
+      const token = getToken();
+      const status = document.getElementById("regStatusSelect").value;
+      const registration_url = document.getElementById("regGoogleFormUrl").value.trim() || null;
+      const opening_date = document.getElementById("regOpeningDate").value.trim() || null;
+      const closing_date = document.getElementById("regClosingDate").value.trim() || null;
+      const btn = document.getElementById("saveRegBtn");
+      btn.disabled = true;
+
+      try {
+        const res = await fetch(`${API_BASE}/api/admin/registration`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body: JSON.stringify({ status, registration_url, opening_date, closing_date })
+        });
+        const result = await res.json();
+        if (result.success) {
+          showAdminToast("✅ Configuration saved! Frontend updated dynamically.");
+          loadDashboardStats();
+          loadRegistrationConfig();
+        } else {
+          showAdminToast(`❌ ${result.message || "Failed to update configuration"}`);
+        }
+      } catch (err) {
+        showAdminToast("❌ Error saving configuration");
+      } finally {
+        btn.disabled = false;
+      }
+    }
+
+    // Initialize on load
+    document.addEventListener("DOMContentLoaded", checkAuthAndLoad);
+  </script>
+</body>
+</html>

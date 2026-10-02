@@ -1,0 +1,2036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARENACORE '26 | 24-Hour Hackathon | GDG x ACM PSNACET</title>
+  <meta name="description" content="Google Developer Groups On Campus PSNACET & ACM PSNACET presents ARENACORE '26 - 24-Hour Hackathon. Build • Innovate • Impact. Official Themes & UN SDGs. Deep Tech.">
+  <meta name="keywords" content="ARENACORE, ARENACORE '26, GDG, ACM, PSNACET, 24-Hour Hackathon, Deep Tech, Dindigul, Tamil Nadu, Tech Event">
+  <meta name="author" content="GDG On Campus PSNACET">
+  <meta property="og:title" content="ARENACORE '26 | 24-Hour Hackathon | GDG x ACM PSNACET">
+  <meta property="og:description" content="Build • Innovate • Impact at ARENACORE '26 - 24-Hour Hackathon at PSNACET. 28 & 29 OCT 2026. Official Themes & UN SDGs. Deep Tech.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/gdg-logo.svg">
+
+  <!-- Google Fonts: Plus Jakarta Sans, Space Grotesk, Outfit, Inter, Syncopate, Oxanium & Syne -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800;900&family=Oxanium:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800&family=Space+Grotesk:wght@600;700;800&family=Syncopate:wght@700&family=Syne:wght@700;800&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom Stylesheet (with cache-buster) -->
+  <link rel="stylesheet" href="styles.css?v=2.9">
+</head>
+<body class="light-theme">
+
+  <!-- Canvas Background for Interactive Google Particle Mesh -->
+  <canvas id="particleCanvas"></canvas>
+
+  <!-- Top Announcement Bar -->
+  <div class="announcement-banner" id="announcementBanner">
+    <div class="announcement-content">
+      <span class="badge-pill bg-google-red">📢 Flash Update</span>
+      <span class="announcement-text">
+        <strong>ARENACORE '26:</strong> 24-Hour Hackathon registrations are live! 📅 <strong>28 & 29 OCT 2026</strong> | Deadline: <strong>21 OCT 2026</strong> | Team Size: <strong>4 Members</strong> | Prize Pool: <strong>₹40,000</strong>
+      </span>
+      <a href="javascript:void(0)" class="announcement-link" onclick="handleRegisterNowClick(event)">Register Now →</a>
+    </div>
+    <button class="banner-close-btn" id="closeBannerBtn" aria-label="Close Announcement">&times;</button>
+  </div>
+
+  <!-- Primary Header & Navigation Bar -->
+  <header class="site-header" id="mainHeader">
+    <div class="header-container">
+      
+      <!-- Brand & Logos -->
+      <a href="#home" class="brand-link" id="brandLogoLink" onclick="switchTab('home')">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <img src="assets/gdg-logo.svg" alt="GDG Logo" class="brand-logo-img">
+          <i class="fa-solid fa-xmark" style="font-size: 0.8rem; color: #5f6368;"></i>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Association_for_Computing_Machinery_%28ACM%29_logo.svg" alt="ACM Logo" class="brand-logo-img" style="width: 40px; height: auto;">
+        </div>
+        <div class="brand-text-group">
+          <div class="brand-title">
+            <span class="g-blue">G</span><span class="g-red">D</span><span class="g-yellow">G</span> x <span style="color: black; font-weight: bold;">ACM</span>
+          </div>
+          <div class="brand-subtitle">On Campus • PSNACET</div>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Tabs -->
+      <nav class="nav-desktop" id="desktopNav" aria-label="Main Navigation">
+        <ul class="nav-pills-list">
+          <li class="nav-item">
+            <a href="#home" class="nav-tab active" data-target="home" onclick="switchTab('home')">
+              <i class="fa-solid fa-house-laptop"></i>
+              <span>Home</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#events" class="nav-tab" data-target="events" onclick="switchTab('events')">
+              <i class="fa-solid fa-calendar-check"></i>
+              <span>Event Details</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#register" class="nav-tab" data-target="register" onclick="switchTab('register')">
+              <i class="fa-solid fa-id-card"></i>
+              <span>Registration</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#guidelines" class="nav-tab" data-target="guidelines" onclick="switchTab('guidelines')">
+              <i class="fa-solid fa-book-open-reader"></i>
+              <span>Guidelines</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#records" class="nav-tab" data-target="records" onclick="switchTab('records')">
+              <i class="fa-solid fa-trophy"></i>
+              <span>Records & Gallery</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#about" class="nav-tab" data-target="about" onclick="switchTab('about')">
+              <i class="fa-solid fa-university"></i>
+              <span>About PSNA GDG</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Action Buttons & Mobile Toggle -->
+      <div class="header-actions">
+
+        <button class="status-lookup-btn" id="openStatusModalBtn" title="Check your team registration status">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <span>Check Status</span>
+        </button>
+
+        <a href="#register" class="btn btn-primary btn-google-glow" onclick="switchTab('register')">
+          <span>Get Pass</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer">
+      <div class="drawer-header">
+        <div class="d-flex align-center gap-2">
+          <div style="display: flex; align-items: center; gap: 4px;">
+            <img src="assets/gdg-logo.svg" alt="GDG Logo" class="brand-logo-img" style="width: 36px; height: 36px;">
+            <i class="fa-solid fa-xmark" style="font-size: 0.7rem; color: #5f6368;"></i>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Association_for_Computing_Machinery_%28ACM%29_logo.svg" alt="ACM Logo" style="width: 36px; height: auto;">
+          </div>
+          <div class="brand-text-group">
+            <div class="brand-title font-semibold">GDG x <span style="color: black;">ACM</span> PSNACET</div>
+            <div class="brand-subtitle">ARENACORE '26 Portal</div>
+          </div>
+        </div>
+        <button class="drawer-close-btn" id="closeDrawerBtn">&times;</button>
+      </div>
+      <ul class="mobile-nav-links">
+        <li><a href="#home" class="mobile-nav-link" data-target="home" onclick="switchTab('home')"><i class="fa-solid fa-house-laptop"></i> Home / Current Edition</a></li>
+        <li><a href="#events" class="mobile-nav-link" data-target="events" onclick="switchTab('events')"><i class="fa-solid fa-calendar-check"></i> Event Details & Tracks</a></li>
+        <li><a href="#register" class="mobile-nav-link" data-target="register" onclick="switchTab('register')"><i class="fa-solid fa-id-card"></i> Registration & Pass Generator</a></li>
+        <li><a href="#guidelines" class="mobile-nav-link" data-target="guidelines" onclick="switchTab('guidelines')"><i class="fa-solid fa-book-open-reader"></i> Guidelines & Rubric</a></li>
+        <li><a href="#records" class="mobile-nav-link" data-target="records" onclick="switchTab('records')"><i class="fa-solid fa-trophy"></i> Previous Records & Gallery</a></li>
+        <li><a href="#about" class="mobile-nav-link" data-target="about" onclick="switchTab('about')"><i class="fa-solid fa-university"></i> About PSNA & Coordinators</a></li>
+        <li><a href="#contact" class="mobile-nav-link" data-target="contact" onclick="switchTab('contact')"><i class="fa-solid fa-envelope"></i> Contact & Support</a></li>
+      </ul>
+      <div class="mobile-drawer-footer">
+        <a href="javascript:void(0)" class="btn btn-primary w-full text-center" onclick="handleRegisterNowClick(event)">Register Squad (4 Members)</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sticky Quick Tab Navigation Bar -->
+  <div class="quick-nav-bar" id="quickNavBar">
+    <div class="quick-nav-container">
+      <div class="quick-nav-label">Explore:</div>
+      <div class="quick-nav-items">
+        <a href="#home" class="q-item active" data-target="home" onclick="switchTab('home')"><span class="color-dot blue"></span> Overview</a>
+        <a href="#events" class="q-item" data-target="events" onclick="switchTab('events')"><span class="color-dot red"></span> Themes & SDGs</a>
+        <a href="#schedule" class="q-item" data-target="events" onclick="switchTab('events', true, 'schedule')"><span class="color-dot yellow"></span> Schedule</a>
+        <a href="#register" class="q-item" data-target="register" onclick="switchTab('register')"><span class="color-dot green"></span> Virtual ID Pass</a>
+        <a href="#guidelines" class="q-item" data-target="guidelines" onclick="switchTab('guidelines')"><span class="color-dot blue"></span> Rulebook</a>
+        <a href="#records" class="q-item" data-target="records" onclick="switchTab('records')"><span class="color-dot red"></span> Gallery & Records</a>
+        <a href="#about" class="q-item" data-target="about" onclick="switchTab('about')"><span class="color-dot yellow"></span> PSNA Team</a>
+      </div>
+    </div>
+  </div>
+
+  <main class="main-content">
+
+    <!-- ========================================================================= -->
+    <!-- TAB / SECTION 1: HOME (CURRENT PAGE & FLAGSHIP EVENT) -->
+    <!-- ========================================================================= -->
+    <section class="section tab-view active-view hero-section" id="home">
+      <div class="container hero-container">
+        
+        <!-- Hero Top Badge -->
+        <div class="hero-chip-badge">
+          <span class="google-colors-bar">
+            <span class="bar-b"></span><span class="bar-r"></span><span class="bar-y"></span><span class="bar-g"></span>
+          </span>
+          <span>PSNA College of Engineering & Technology • 42 Years of Excellence (Estd - 1984)</span>
+        </div>
+
+        <!-- Google-Styled Title -->
+        <div class="hero-title-wrap">
+          <div class="hero-college-meta">
+            <span class="college-accreditation">An Autonomous Institution • AICTE | Anna University | NBA | NAAC A++</span>
+          </div>
+          <div class="hero-presents-tag">
+            <span class="gdg-presents-brand">
+              <span class="g-blue">G</span><span class="g-red">o</span><span class="g-yellow">o</span><span class="g-blue">g</span><span class="g-green">l</span><span class="g-red">e</span> 
+              <span class="g-blue">Developer</span> 
+              <span class="g-green">Groups</span>
+            </span>
+            <span class="campus-sub">On Campus PSNACET</span>
+            <span class="presents-x">&bull;</span>
+            <span class="acm-presents-brand"><span class="acm-blue">ACM</span> PSNACET</span>
+            <span class="presents-badge">Presents</span>
+          </div>
+          <h1 class="main-event-title arenacore-hero-title">
+            <span class="arenacore-brand">
+              <span class="arena-part">ARENA</span><span class="core-part">CORE</span>
+              <span class="arenacore-year">
+                <span class="year-pulse-dot"></span>
+                <span class="year-text">'26</span>
+              </span>
+            </span>
+          </h1>
+          <div>
+            <span class="hack-duration-pill">
+              <i class="fa-solid fa-bolt"></i>
+              <span class="pill-text">24 - HOUR HACKATHON</span>
+            </span>
+          </div>
+          <p class="hero-tagline-bold">BUILD &bull; INNOVATE &bull; IMPACT</p>
+          <p class="hero-subtag-deeptech">THEMES & UN SDGS. BOLD INNOVATIONS. DEEP TECH.</p>
+        </div>
+
+        <!-- Event Metadata Pills -->
+        <div class="event-meta-cards">
+          <div class="meta-pill">
+            <i class="fa-solid fa-calendar-days text-google-blue"></i>
+            <div>
+              <strong>28 & 29 OCT 2026</strong>
+              <span>24 Hours Non-Stop</span>
+            </div>
+          </div>
+          <div class="meta-pill">
+            <i class="fa-solid fa-hourglass-half text-google-red"></i>
+            <div>
+              <strong>Deadline: 21 OCT 2026</strong>
+              <span>Registration Closes</span>
+            </div>
+          </div>
+          <div class="meta-pill">
+            <i class="fa-solid fa-users text-google-green"></i>
+            <div>
+              <strong>Team Size: 4 Members</strong>
+              <span>₹150 / Member</span>
+            </div>
+          </div>
+          <div class="meta-pill">
+            <i class="fa-solid fa-trophy text-google-yellow"></i>
+            <div>
+              <strong>₹40,000 Prize Pool</strong>
+              <span>1st: ₹25,000 | 2nd: ₹15,000</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Interactive Countdown Card -->
+        <div class="hero-countdown-card glass-panel">
+          <div class="countdown-header">
+            <div class="pulse-indicator">
+              <span class="pulse-dot"></span>
+              <span>HACKATHON EVENT COUNTDOWN</span>
+            </div>
+            <div class="edition-badge">ARENACORE '26 Edition</div>
+          </div>
+
+          <div class="countdown-grid" id="countdownGrid">
+            <div class="countdown-slot blue-glow">
+              <div class="count-value" id="countDays">14</div>
+              <div class="count-label">DAYS</div>
+            </div>
+            <div class="countdown-divider">:</div>
+            <div class="countdown-slot red-glow">
+              <div class="count-value" id="countHours">08</div>
+              <div class="count-label">HOURS</div>
+            </div>
+            <div class="countdown-divider">:</div>
+            <div class="countdown-slot yellow-glow">
+              <div class="count-value" id="countMinutes">42</div>
+              <div class="count-label">MINUTES</div>
+            </div>
+            <div class="countdown-divider">:</div>
+            <div class="countdown-slot green-glow">
+              <div class="count-value" id="countSeconds">30</div>
+              <div class="count-label">SECONDS</div>
+            </div>
+          </div>
+
+          <div class="countdown-footer">
+            <p>⚡ <strong>Registration Deadline:</strong> <strong>21 OCT 2026</strong> &nbsp;|&nbsp; <strong>Hackathon Dates:</strong> <strong>28 & 29 OCT 2026 (24 Hours)</strong> at PSNACET Campus!</p>
+          </div>
+        </div>
+
+        <!-- Hero Call to Action Buttons -->
+        <div class="hero-cta-group">
+          <a href="javascript:void(0)" class="btn btn-primary btn-lg" onclick="handleRegisterNowClick(event)">
+            <i class="fa-solid fa-rocket"></i>
+            <span>Register Your Team</span>
+          </a>
+          <a href="#events" class="btn btn-outline btn-lg" onclick="switchTab('events')">
+            <i class="fa-solid fa-layer-group"></i>
+            <span>Explore Themes & SDGs</span>
+          </a>
+          <a href="#register" class="btn btn-ghost btn-lg" onclick="switchTab('register')">
+            <i class="fa-solid fa-id-badge"></i>
+            <span>Generate Free ID Pass</span>
+          </a>
+        </div>
+
+        <!-- Stats Counter Row -->
+        <div class="stats-counter-strip">
+          <div class="stat-card">
+            <div class="stat-icon-wrap icon-blue">
+              <i class="fa-solid fa-user-astronaut"></i>
+            </div>
+            <div class="stat-number" data-target="1500">1,500+</div>
+            <div class="stat-desc">Community Members & Students</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon-wrap icon-red">
+              <i class="fa-solid fa-network-wired"></i>
+            </div>
+            <div class="stat-number" data-target="30">30+</div>
+            <div class="stat-desc">Finalist Teams Selected</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon-wrap icon-yellow">
+              <i class="fa-solid fa-building-columns"></i>
+            </div>
+            <div class="stat-number" data-target="45">45+</div>
+            <div class="stat-desc">Colleges & Universities Represented</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon-wrap icon-green">
+              <i class="fa-solid fa-award"></i>
+            </div>
+            <div class="stat-number" data-target="40000">₹40K+</div>
+            <div class="stat-desc">Cash Prizes (1st ₹25K | 2nd ₹15K)</div>
+          </div>
+        </div>
+
+        <!-- Highlights Ticker Cards -->
+        <div class="features-preview-grid">
+          <div class="feature-item-card border-google-blue">
+            <div class="f-icon bg-blue-light"><i class="fa-solid fa-bolt text-google-blue"></i></div>
+            <h4>24-Hour Non-Stop Hack</h4>
+            <p>Build visionary solutions under official themes with high-speed internet, mentorship, and cloud credits.</p>
+          </div>
+          <div class="feature-item-card border-google-red">
+            <div class="f-icon bg-red-light"><i class="fa-solid fa-chalkboard-user text-google-red"></i></div>
+            <h4>Industry Expert Mentorship</h4>
+            <p>Google Developer Experts, top alumni, and tech architects available 24/7 during the hack.</p>
+          </div>
+          <div class="feature-item-card border-google-yellow">
+            <div class="f-icon bg-yellow-light"><i class="fa-solid fa-microchip text-google-yellow"></i></div>
+            <h4>Cutting-Edge Tech Tracks</h4>
+            <p>Develop AI, Generative AI, Sustainable Tech, AgriTech, and CleanTech prototypes.</p>
+          </div>
+          <div class="feature-item-card border-google-green">
+            <div class="f-icon bg-green-light"><i class="fa-solid fa-certificate text-google-green"></i></div>
+            <h4>Official Certifications & Swags</h4>
+            <p>Authorized GDG certificates, exclusive Google Developer swag kits, and incubation opportunities.</p>
+          </div>
+        </div>
+
+        <!-- Google Gemini AI Track & Idea Matcher Widget -->
+        <div class="ai-matcher-card glass-panel mt-12" id="aiMatcherWidget">
+          <div class="ai-matcher-header">
+            <div class="ai-chip">
+              <span class="sparkle-icon">✨</span>
+              <span>GOOGLE GEMINI ASSISTANT</span>
+            </div>
+            <h3 class="matcher-title">Smart Track & Idea Concept Recommender</h3>
+            <p class="matcher-subtitle">Unsure which innovation theme suits your team? Select your core technical skills and UN SDG domain to generate a tailored solution architecture and project recommendation!</p>
+          </div>
+          
+          <div class="ai-matcher-body">
+            <div class="matcher-step-block">
+              <label class="step-label"><span class="step-num">1</span> Choose Your Squad's Core Technical Skills:</label>
+              <div class="skill-chips-group" id="matcherSkillsGroup">
+                <button type="button" class="matcher-chip active" data-skill="ai" onclick="selectMatcherSkill(this, 'ai')"><i class="fa-solid fa-brain"></i> Python & GenAI / ML</button>
+                <button type="button" class="matcher-chip" data-skill="web" onclick="selectMatcherSkill(this, 'web')"><i class="fa-brands fa-react"></i> React / Web / Fullstack</button>
+                <button type="button" class="matcher-chip" data-skill="mobile" onclick="selectMatcherSkill(this, 'mobile')"><i class="fa-solid fa-mobile-screen"></i> Flutter / Mobile Apps</button>
+                <button type="button" class="matcher-chip" data-skill="iot" onclick="selectMatcherSkill(this, 'iot')"><i class="fa-solid fa-microchip"></i> ESP32 / IoT & Sensors</button>
+                <button type="button" class="matcher-chip" data-skill="cloud" onclick="selectMatcherSkill(this, 'cloud')"><i class="fa-solid fa-cloud"></i> Google Cloud & DevOps</button>
+                <button type="button" class="matcher-chip" data-skill="design" onclick="selectMatcherSkill(this, 'design')"><i class="fa-solid fa-pen-nib"></i> UI/UX & Product Design</button>
+              </div>
+            </div>
+
+            <div class="matcher-step-block mt-4">
+              <label class="step-label"><span class="step-num">2</span> Select Impact Domain / UN SDG Interest:</label>
+              <div class="domain-chips-group" id="matcherDomainsGroup">
+                <button type="button" class="matcher-chip active" data-domain="education" onclick="selectMatcherDomain(this, 'education')"><i class="fa-solid fa-graduation-cap"></i> EdTech & Learning (SDG 4)</button>
+                <button type="button" class="matcher-chip" data-domain="climate" onclick="selectMatcherDomain(this, 'climate')"><i class="fa-solid fa-cloud-sun-rain"></i> Climate & CleanTech (SDG 13)</button>
+                <button type="button" class="matcher-chip" data-domain="agriculture" onclick="selectMatcherDomain(this, 'agriculture')"><i class="fa-solid fa-seedling"></i> Smart AgriTech (SDG 2)</button>
+                <button type="button" class="matcher-chip" data-domain="health" onclick="selectMatcherDomain(this, 'health')"><i class="fa-solid fa-heart-pulse"></i> Healthcare & BioTech (SDG 3)</button>
+                <button type="button" class="matcher-chip" data-domain="ai" onclick="selectMatcherDomain(this, 'ai')"><i class="fa-solid fa-robot"></i> Generative AI & Automation</button>
+                <button type="button" class="matcher-chip" data-domain="open" onclick="selectMatcherDomain(this, 'open')"><i class="fa-solid fa-wand-magic-sparkles"></i> Open Innovation & Smart Cities</button>
+              </div>
+            </div>
+
+            <div class="matcher-action-row mt-6 text-center">
+              <button type="button" class="btn btn-primary btn-lg btn-google-glow" id="runAiMatcherBtn" onclick="runAiIdeaMatcher()">
+                <span>Generate Intelligent Match & Blueprint</span>
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+              </button>
+            </div>
+
+            <!-- Dynamic Match Result Display Box -->
+            <div class="ai-match-result glass-panel mt-6" id="aiMatchResultBox" style="display: none;">
+              <!-- Dynamic Content Injected via JS -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TAB / SECTION 2: EVENT DETAILS (THEMES & SCHEDULE) -->
+    <!-- ========================================================================= -->
+    <section class="section tab-view event-section" id="events">
+      <div class="container">
+        
+        <!-- Section Header -->
+        <div class="section-heading text-center">
+          <div class="section-tag bg-google-blue-subtle">
+            <i class="fa-solid fa-layer-group"></i> Official Hackathon Themes & UN SDGs
+          </div>
+          <h2 class="section-title">Official Hackathon Themes & UN SDGs</h2>
+          <p class="section-description">
+            Choose your innovation theme. Teams have complete freedom to propose their own innovative ideas and solutions aligned with the 3 official themes and UN Sustainable Development Goals (no pre-assigned problem statements).
+          </p>
+          <div class="google-line-indicator"></div>
+        </div>
+
+        <!-- Category Filter Pills for Themes -->
+        <div class="theme-filter-bar">
+          <button class="theme-pill-btn active" data-filter="all">All Themes (3)</button>
+          <button class="theme-pill-btn" data-filter="ai">Theme 01: AI & Intelligent Systems</button>
+          <button class="theme-pill-btn" data-filter="autonomous">Theme 02: Connected & Autonomous Tech</button>
+          <button class="theme-pill-btn" data-filter="secure">Theme 03: Secure & Sustainable Future</button>
+        </div>
+
+        <!-- Themes Cards Grid -->
+        <div class="themes-grid" id="themesGrid">
+          
+          <!-- Theme 1: AI & Intelligent Systems -->
+          <div class="track-card border-blue" data-category="ai">
+            <div class="track-card-header">
+              <div class="track-icon icon-blue">
+                <i class="fa-solid fa-brain"></i>
+              </div>
+              <span class="track-badge badge-blue">THEME 01</span>
+            </div>
+            <h3 class="track-title">AI & Intelligent Systems</h3>
+            <div style="margin-bottom: 12px;">
+              <span class="badge-pill bg-google-blue-subtle" style="font-size: 0.78rem;">
+                <i class="fa-solid fa-earth-americas"></i> UN SDGs: 3, 4, 8, 9
+              </span>
+            </div>
+            <p class="track-desc">
+              <strong>Focus Areas:</strong> Generative AI &bull; AI Agents &bull; Machine Learning &bull; Computer Vision &bull; NLP &bull; Automation
+            </p>
+            <div class="track-tags">
+              <span class="tag">Generative AI</span>
+              <span class="tag">AI Agents</span>
+              <span class="tag">Machine Learning</span>
+              <span class="tag">Computer Vision</span>
+              <span class="tag">NLP</span>
+              <span class="tag">Automation</span>
+            </div>
+            <div class="track-card-footer">
+              <a href="#register" class="btn btn-track btn-blue" onclick="selectThemeInForm('AI & Intelligent Systems')">
+                <i class="fa-solid fa-arrow-right"></i> Choose Theme & Register
+              </a>
+            </div>
+          </div>
+
+          <!-- Theme 2: Connected & Autonomous Technologies -->
+          <div class="track-card border-green" data-category="autonomous">
+            <div class="track-card-header">
+              <div class="track-icon icon-green">
+                <i class="fa-solid fa-robot"></i>
+              </div>
+              <span class="track-badge badge-green">THEME 02</span>
+            </div>
+            <h3 class="track-title">Connected & Autonomous Technologies</h3>
+            <div style="margin-bottom: 12px;">
+              <span class="badge-pill bg-google-green-subtle" style="font-size: 0.78rem;">
+                <i class="fa-solid fa-earth-americas"></i> UN SDGs: 7, 9, 11
+              </span>
+            </div>
+            <p class="track-desc">
+              <strong>Focus Areas:</strong> IoT &bull; Edge AI &bull; Robotics &bull; Embedded Systems &bull; Drones &bull; Smart Devices
+            </p>
+            <div class="track-tags">
+              <span class="tag">IoT</span>
+              <span class="tag">Edge AI</span>
+              <span class="tag">Robotics</span>
+              <span class="tag">Embedded Systems</span>
+              <span class="tag">Drones</span>
+              <span class="tag">Smart Devices</span>
+            </div>
+            <div class="track-card-footer">
+              <a href="#register" class="btn btn-track btn-green" onclick="selectThemeInForm('Connected & Autonomous Technologies')">
+                <i class="fa-solid fa-arrow-right"></i> Choose Theme & Register
+              </a>
+            </div>
+          </div>
+
+          <!-- Theme 3: Secure & Sustainable Future -->
+          <div class="track-card border-yellow" data-category="secure">
+            <div class="track-card-header">
+              <div class="track-icon icon-yellow">
+                <i class="fa-solid fa-shield-halved"></i>
+              </div>
+              <span class="track-badge badge-yellow">THEME 03</span>
+            </div>
+            <h3 class="track-title">Secure & Sustainable Future</h3>
+            <div style="margin-bottom: 12px;">
+              <span class="badge-pill bg-google-yellow-subtle" style="font-size: 0.78rem;">
+                <i class="fa-solid fa-earth-americas"></i> UN SDGs: 3, 7, 13, 16
+              </span>
+            </div>
+            <p class="track-desc">
+              <strong>Focus Areas:</strong> Cybersecurity &bull; Privacy &bull; HealthTech &bull; ClimateTech &bull; Smart Energy
+            </p>
+            <div class="track-tags">
+              <span class="tag">Cybersecurity</span>
+              <span class="tag">Privacy</span>
+              <span class="tag">HealthTech</span>
+              <span class="tag">ClimateTech</span>
+              <span class="tag">Smart Energy</span>
+            </div>
+            <div class="track-card-footer">
+              <a href="#register" class="btn btn-track btn-yellow" onclick="selectThemeInForm('Secure & Sustainable Future')">
+                <i class="fa-solid fa-arrow-right"></i> Choose Theme & Register
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 2-Day Event Schedule Timeline Section -->
+        <div class="schedule-container mt-12" id="schedule">
+          <div class="section-heading text-center">
+            <div class="section-tag bg-google-yellow-subtle">
+              <i class="fa-solid fa-clock"></i> 48-Hour Run of Show
+            </div>
+            <h2 class="section-title">Interactive Event Timeline</h2>
+          <!-- Interactive 24-Hour Timeline Scrub Simulator -->
+          <div class="timeline-scrubber-card glass-panel mb-6">
+            <div class="scrubber-header d-flex justify-between align-center">
+              <div>
+                <span class="badge-pill bg-google-red-subtle"><i class="fa-solid fa-play"></i> LIVE SIMULATOR</span>
+                <strong style="margin-left: 8px;">Interactive 24-Hour Sprint Simulator:</strong>
+                <span class="scrubber-status-text text-google-blue font-semibold" id="scrubberStatusText">Hour 0:00 • Check-in & Inauguration</span>
+              </div>
+              <div class="scrubber-controls d-flex align-center gap-2">
+                <button type="button" class="btn btn-sm btn-outline" id="playSimulatorBtn" onclick="toggleTimelineSimulation()">
+                  <i class="fa-solid fa-play" id="playSimIcon"></i> <span id="playSimText">Simulate 24h</span>
+                </button>
+                <button type="button" class="btn btn-sm btn-ghost" onclick="resetTimelineSimulation()" title="Reset to start">
+                  <i class="fa-solid fa-rotate-left"></i>
+                </button>
+              </div>
+            </div>
+            
+            <div class="scrubber-track-wrap">
+              <input type="range" id="timelineScrubberRange" min="0" max="24" value="0" step="1" class="timeline-range-slider" oninput="handleTimelineScrub(this.value)">
+              <div class="scrubber-markers">
+                <span class="marker active" data-hour="0">0h (Inauguration)</span>
+                <span class="marker" data-hour="4">4h (Sprint 1)</span>
+                <span class="marker" data-hour="8">8h (Review 1)</span>
+                <span class="marker" data-hour="12">12h (Midnight Jam)</span>
+                <span class="marker" data-hour="16">16h (Check 2)</span>
+                <span class="marker" data-hour="20">20h (Freeze Prep)</span>
+                <span class="marker" data-hour="24">24h (Demos)</span>
+              </div>
+            </div>
+
+            <!-- Live Status HUD -->
+            <div class="scrubber-hud-stats">
+              <div class="hud-item"><i class="fa-solid fa-wifi text-google-blue"></i> <span>Campus Wi-Fi: <strong>1 Gbps Optical</strong></span></div>
+              <div class="hud-item"><i class="fa-solid fa-mug-hot text-google-yellow"></i> <span>Caffeine Bar: <strong id="hudCoffeeStatus">Active • Tea/Coffee</strong></span></div>
+              <div class="hud-item"><i class="fa-solid fa-user-clock text-google-green"></i> <span>Mentors on Deck: <strong id="hudMentorStatus">Active Floor Rounds</strong></span></div>
+              <div class="hud-item"><i class="fa-solid fa-stopwatch text-google-red"></i> <span>Active Phase: <strong id="hudPhaseStatus">Inaugural Keynote</strong></span></div>
+            </div>
+          </div>
+
+          <!-- Day Switcher Tabs -->
+          <div class="schedule-day-tabs">
+            <button class="day-tab active" id="day1TabBtn" onclick="switchScheduleDay(1)">
+              <div class="day-num">DAY 1</div>
+              <div class="day-date">28 OCT 2026 (Day 1: Inauguration & 24h Sprint)</div>
+            </button>
+            <button class="day-tab" id="day2TabBtn" onclick="switchScheduleDay(2)">
+              <div class="day-num">DAY 2</div>
+              <div class="day-date">29 OCT 2026 (Day 2: Demos, Jury & Valedictory)</div>
+            </button>
+          </div>
+
+          <!-- Day 1 Schedule List -->
+          <div class="timeline-list active" id="day1Timeline">
+            
+            <div class="timeline-item">
+              <div class="time-badge">08:30 AM</div>
+              <div class="timeline-card">
+                <div class="t-icon bg-blue-light"><i class="fa-solid fa-door-open text-google-blue"></i></div>
+                <div class="t-content">
+                  <h4>Check-in, Kit Distribution & Breakfast</h4>
+                  <p>Reporting at IT Auditorium, team badge collection, Wi-Fi configuration, and welcome breakfast.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="time-badge">10:00 AM</div>
+              <div class="timeline-card">
+                <div class="t-icon bg-red-light"><i class="fa-solid fa-bullhorn text-google-red"></i></div>
+                <div class="t-content">
+                  <h4>Grand Inauguration & Keynote Address</h4>
+                  <p>Opening remarks by Principal, HOD Dr. A. Vincent Antony Kumar, and keynote on GenAI innovation.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="time-badge">11:00 AM</div>
+              <div class="timeline-card highlight-card">
+                <div class="t-icon bg-green-light"><i class="fa-solid fa-flag-checkered text-google-green"></i></div>
+                <div class="t-content">
+                  <h4>🚀 24-Hour Hacking Timer Commences!</h4>
+                  <p>Team idea & theme lock-in, repository setup, and first sprint initiation across lab clusters.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="time-badge">03:30 PM</div>
+              <div class="timeline-card">
+                <div class="t-icon bg-yellow-light"><i class="fa-solid fa-comments text-google-yellow"></i></div>
+                <div class="t-content">
+                  <h4>Mentorship Round 1: Architecture & Feasibility</h4>
+                  <p>Mentors visit teams for 1-on-1 code reviews, tech stack validation, and design adjustments.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="time-badge">08:00 PM</div>
+              <div class="timeline-card">
+                <div class="t-icon bg-blue-light"><i class="fa-solid fa-utensils text-google-blue"></i></div>
+                <div class="t-content">
+                  <h4>Dinner & Midnight Jam Session</h4>
+                  <p>Energizing dinner, fun trivia kahoot, red bull refreshments, and developer networking.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="time-badge">11:30 PM</div>
+              <div class="timeline-card">
+                <div class="t-icon bg-red-light"><i class="fa-solid fa-laptop-code text-google-red"></i></div>
+                <div class="t-content">
+                  <h4>Mentorship Round 2: Midnight Checkpoint & Debugging</h4>
+                  <p>Progress evaluation and debugging assistance by senior developers.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Day 2 Schedule List -->
+          <div class="timeline-list" id="day2Timeline">
+            
+            <div class="timeline-item">
+              <div class="time-badge">07:00 AM</div>
+              <div class="timeline-card">
+                <div class="t-icon bg-yellow-light"><i class="fa-solid fa-mug-saucer text-google-yellow"></i></div>
+                <div class="t-content">
+                  <h4>Morning Refreshment & Code Freeze Prep</h4>
+                  <p>Fresh breakfast, UI polish, testing deployment pipelines on Google Cloud / Vercel.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="time-badge">11:00 AM</div>
+              <div class="timeline-card highlight-card">
+                <div class="t-icon bg-red-light"><i class="fa-solid fa-stopwatch text-google-red"></i></div>
+                <div class="t-content">
+                  <h4>🛑 Code Freeze & Final Project Submission</h4>
+                  <p>GitHub repositories locked, demonstration video and slide decks uploaded to portal.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="time-badge">11:30 AM</div>
+              <div class="timeline-card">
+                <div class="t-icon bg-blue-light"><i class="fa-solid fa-chalkboard-user text-google-blue"></i></div>
+                <div class="t-content">
+                  <h4>Grand Jury Evaluation & Stage Presentations</h4>
+                  <p>Top teams present 5-minute live demo + 3-minute Q&A to industrial evaluation panel.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="time-badge">03:30 PM</div>
+              <div class="timeline-card">
+                <div class="t-icon bg-green-light"><i class="fa-solid fa-trophy text-google-green"></i></div>
+                <div class="t-content">
+                  <h4>Valedictory Ceremony & Prize Distribution</h4>
+                  <p>Announcement of ARENACORE '26 Champions, distribution of cash prizes, trophies, certificates and closing photo session.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Prize Pool Showcase -->
+        <div class="prizes-showcase mt-12">
+          <div class="section-heading text-center">
+            <div class="section-tag bg-google-green-subtle">
+              <i class="fa-solid fa-gift"></i> Rewards & Recognition
+            </div>
+            <h2 class="section-title">Prize Pool & Perks</h2>
+          </div>
+
+          <div class="prizes-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); max-width: 860px; margin: 0 auto;">
+            <div class="prize-card rank-1-grand">
+              <div class="crown-badge">👑 1ST PRIZE</div>
+              <div class="prize-medal"><i class="fa-solid fa-trophy text-gold"></i></div>
+              <h3>Grand Champion</h3>
+              <div class="prize-amount">₹25,000</div>
+              <ul class="prize-perks">
+                <li><i class="fa-solid fa-check"></i> Prestigious 1st Prize Trophy & Merit Certificates</li>
+                <li><i class="fa-solid fa-check"></i> Exclusive GDG & ACM Premium Tech Kits</li>
+                <li><i class="fa-solid fa-check"></i> Startup Incubation & Cloud Credits</li>
+                <li><i class="fa-solid fa-check"></i> Direct Mentorship with Deep Tech Architects</li>
+              </ul>
+            </div>
+
+            <div class="prize-card rank-2">
+              <div class="crown-badge" style="background: linear-gradient(135deg, #64748b, #94a3b8);">🥈 2ND PRIZE</div>
+              <div class="prize-medal"><i class="fa-solid fa-medal text-silver"></i></div>
+              <h3>Runner Up</h3>
+              <div class="prize-amount">₹15,000</div>
+              <ul class="prize-perks">
+                <li><i class="fa-solid fa-check"></i> 2nd Prize Trophy & Merit Certificates</li>
+                <li><i class="fa-solid fa-check"></i> Official Google & ACM Swag Packs</li>
+                <li><i class="fa-solid fa-check"></i> Incubation & Industry Referrals</li>
+                <li><i class="fa-solid fa-check"></i> Participation Certificate for all Finalists</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Developer Starter Kits & Pitch Deck Hub -->
+        <div class="starter-kits-hub mt-12">
+          <div class="section-heading text-center">
+            <div class="section-tag bg-google-blue-subtle">
+              <i class="fa-solid fa-toolbox"></i> Builder Assets
+            </div>
+            <h2 class="section-title">Developer Starter Kits & Presentation Decks</h2>
+            <p class="section-description">
+              Speed up your prototyping with pre-configured boilerplates, official Google Slides presentation template, and Google API developer resources.
+            </p>
+          </div>
+
+          <div class="starter-kits-grid">
+            <div class="starter-kit-card border-google-blue">
+              <div class="kit-icon icon-blue"><i class="fa-solid fa-file-powerpoint"></i></div>
+              <h4>Official Pitch Deck Template</h4>
+              <p>Structured 10-slide Google Slides template tailored to the 100-point judging criteria: Concept & Need, Architecture, Demo, and SDG Impact.</p>
+              <a href="https://docs.google.com/presentation/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Google Slides
+              </a>
+            </div>
+
+            <div class="starter-kit-card border-google-red">
+              <div class="kit-icon icon-red"><i class="fa-brands fa-github"></i></div>
+              <h4>Fullstack Web & AI Repo Boilerplate</h4>
+              <p>Next.js 14, Tailwind CSS, Google Gemini API client, and fast REST endpoint scaffolding ready to clone.</p>
+              <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
+                <i class="fa-brands fa-github"></i> Clone Repo Template
+              </a>
+            </div>
+
+            <div class="starter-kit-card border-google-green">
+              <div class="kit-icon icon-green"><i class="fa-solid fa-mobile-screen"></i></div>
+              <h4>Flutter Mobile App Starter</h4>
+              <p>Cross-platform mobile template pre-wired with Firebase Auth, Cloud Firestore, and camera vision pipeline.</p>
+              <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
+                <i class="fa-brands fa-github"></i> View Flutter Starter
+              </a>
+            </div>
+
+            <div class="starter-kit-card border-google-yellow">
+              <div class="kit-icon icon-yellow"><i class="fa-solid fa-microchip"></i></div>
+              <h4>IoT & ESP32 Firmware Template</h4>
+              <p>Arduino C++ / MicroPython codebase with Wi-Fi reconnection, MQTT telemetry publisher, and sensor drivers.</p>
+              <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
+                <i class="fa-brands fa-github"></i> Download Firmware
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TAB / SECTION 3: REGISTRATION & VIRTUAL PASS GENERATOR -->
+    <!-- ========================================================================= -->
+    <section class="section tab-view register-section" id="register">
+      <div class="container">
+        
+        <div class="section-heading text-center">
+          <div class="section-tag bg-google-red-subtle">
+            <i class="fa-solid fa-id-card-clip"></i> Participant Hub
+          </div>
+          <h2 class="section-title">Registration & Virtual Hackathon Pass</h2>
+          <p class="section-description">
+            Register your team (₹150 per member payable post-confirmation) and customize your official virtual attendee badge in real-time!
+          </p>
+          <div class="google-line-indicator"></div>
+        </div>
+
+        <div class="reg-pass-split-layout">
+          
+          <!-- Left Column: Interactive Multi-Step Registration Form -->
+          <div class="registration-form-card glass-panel">
+            <div class="reg-form-header">
+              <h3><i class="fa-solid fa-user-plus text-google-blue"></i> Team Registration Form</h3>
+              <p>Fill in details to secure your spot for Round 1 evaluation.</p>
+            </div>
+
+            <form id="hackathonRegForm" onsubmit="handleRegistrationSubmit(event)">
+              
+              <!-- Team Info Group -->
+              <div class="form-section-title">1. Team Details</div>
+              
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="teamNameInput">Team Name <span class="req">*</span></label>
+                  <input type="text" id="teamNameInput" required placeholder="e.g. ByteBusters" class="form-control" oninput="updateLiveBadge()">
+                </div>
+                <div class="form-group">
+                  <label for="collegeNameInput">College / University <span class="req">*</span></label>
+                  <input type="text" id="collegeNameInput" required placeholder="e.g. PSNACET Dindigul" class="form-control" oninput="updateLiveBadge()">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="trackSelect">Selected Theme / UN SDG Track <span class="req">*</span></label>
+                  <select id="trackSelect" required class="form-control" onchange="updateLiveBadge()">
+                    <option value="">Select an Innovation Theme...</option>
+                    <option value="AI & Intelligent Systems">AI & Intelligent Systems</option>
+                    <option value="Connected & Autonomous Technologies">Connected & Autonomous Technologies</option>
+                    <option value="Secure & Sustainable Future">Secure & Sustainable Future</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="projectTitleInput">Project Title / Concept <span class="req">*</span></label>
+                  <input type="text" id="projectTitleInput" required placeholder="e.g. EcoGrid AI Monitor" class="form-control">
+                </div>
+              </div>
+
+              <!-- Team Lead Info -->
+              <div class="form-section-title mt-4">2. Team Leader (Contact Person)</div>
+              
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="leaderNameInput">Leader Full Name <span class="req">*</span></label>
+                  <input type="text" id="leaderNameInput" required placeholder="e.g. Alex Johnson" class="form-control" oninput="updateLiveBadge()">
+                </div>
+                <div class="form-group">
+                  <label for="leaderEmailInput">Official Email Address <span class="req">*</span></label>
+                  <input type="email" id="leaderEmailInput" required placeholder="leader@college.edu" class="form-control">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="leaderPhoneInput">WhatsApp / Phone Number <span class="req">*</span></label>
+                  <input type="tel" id="leaderPhoneInput" required placeholder="+91 98765 43210" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="leaderGithubInput">GitHub / Portfolio URL</label>
+                  <input type="url" id="leaderGithubInput" placeholder="https://github.com/username" class="form-control">
+                </div>
+              </div>
+
+              <!-- Additional Team Members Section -->
+              <div class="form-section-title mt-4 d-flex justify-between align-center">
+                <span>3. Team Members (Fixed 4 Members Squad)</span>
+                <span class="member-count-badge" id="memberCounterBadge">1 Leader + 1 Member</span>
+              </div>
+
+              <div id="dynamicMembersContainer">
+                <div class="member-entry-row" id="memberRow2">
+                  <span class="member-num-pill">Member 2</span>
+                  <input type="text" placeholder="Full Name *" required class="form-control m-name" oninput="calculateFee()">
+                  <input type="email" placeholder="Email Address *" required class="form-control m-email">
+                  <input type="text" placeholder="Roll No / ID" class="form-control m-id">
+                  <button type="button" class="btn-remove-member" onclick="removeMemberRow(2)" title="Remove Member">&times;</button>
+                </div>
+              </div>
+
+              <div class="member-actions-row">
+                <button type="button" class="btn btn-sm btn-outline" id="addMemberBtn" onclick="addMemberRow()">
+                  <i class="fa-solid fa-user-plus"></i> + Add Team Member
+                </button>
+              </div>
+
+              <!-- Fee & Payment Notice -->
+              <div class="fee-summary-box">
+                <div class="fee-line">
+                  <span>Registration Fee Rate:</span>
+                  <span class="fw-bold">₹150 / participant</span>
+                </div>
+                <div class="fee-line highlight">
+                  <span>Estimated Total (payable upon selection):</span>
+                  <span class="total-fee-val" id="totalFeeAmount">₹300 INR</span>
+                </div>
+                <p class="fee-note">
+                  <i class="fa-solid fa-circle-info"></i> Note: Payment is required ONLY after receiving the official shortlist confirmation email from <code>gdscpsna@psnacet.edu.in</code>.
+                </p>
+              </div>
+
+              <!-- Submission Action -->
+              <div class="form-actions mt-6">
+                <button type="submit" class="btn btn-primary btn-lg w-full">
+                  <i class="fa-solid fa-paper-plane"></i> Submit Hackathon Application
+                </button>
+                <div class="google-forms-fallback text-center mt-4 p-3 glass-panel" style="border-radius: 12px; background: rgba(248, 250, 252, 0.85); border: 1px dashed rgba(66, 133, 244, 0.4);">
+                  <div style="display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap;">
+                    <img src="assets/registration-qr.jpg" alt="Official Registration QR Code" style="width: 95px; height: 95px; border-radius: 8px; border: 2px solid #ffffff; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                    <div style="text-align: left; max-width: 250px;">
+                      <strong style="display: block; font-size: 0.95rem; color: var(--text-primary);"><i class="fa-solid fa-qrcode text-google-blue"></i> Scan or Open Form</strong>
+                      <span style="display: block; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 6px;">Scan with your mobile camera or click below to fill the official registration form</span>
+                      <a href="javascript:void(0)" onclick="handleRegisterNowClick(event)" class="link-google" style="font-weight: 700; font-size: 0.85rem;">Open Official Google Form <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </form>
+          </div>
+
+          <!-- Right Column: Interactive 3D Holographic Flip Badge Generator -->
+          <div class="virtual-badge-panel" id="passGeneratorPanel">
+            <div class="badge-panel-header">
+              <div class="d-flex justify-between align-center">
+                <h3><i class="fa-solid fa-id-badge text-google-yellow"></i> 3D Holographic Attendee Pass</h3>
+                <span class="badge-pill bg-google-blue-subtle"><i class="fa-solid fa-cube"></i> Interactive 3D</span>
+              </div>
+              <p>Type in the form to watch your badge update live. Hover to explore the 3D tilt, or flip to inspect venue & Wi-Fi credentials!</p>
+            </div>
+
+            <!-- Realistic Lanyard Ribbon & Clasp -->
+            <div class="lanyard-rig">
+              <div class="lanyard-ribbon"></div>
+              <div class="lanyard-metal-clasp"></div>
+            </div>
+
+            <!-- 3D Perspective Scene -->
+            <div class="badge-3d-scene" id="badge3DScene">
+              <div class="badge-flip-card" id="virtualPassCard">
+                
+                <!-- FRONT FACE -->
+                <div class="badge-face badge-front">
+                  <!-- Holographic Light Glare Overlay -->
+                  <div class="holo-glare" id="holoGlare"></div>
+
+                  <!-- Lanyard Slot -->
+                  <div class="pass-lanyard-hole"></div>
+
+                  <!-- Pass Top Header -->
+                  <div class="pass-header">
+                    <div class="pass-gdg-brand">
+                      <img src="assets/gdg-logo.svg" alt="GDG Logo" class="pass-gdg-logo-img">
+                      <div>
+                        <div class="pass-gdg-title">GDG On Campus</div>
+                        <div class="pass-gdg-sub">PSNACET • ARENACORE '26 (24-Hour Hackathon)</div>
+                      </div>
+                    </div>
+                    <div class="pass-type-chip">HACKER PASS</div>
+                  </div>
+
+                  <!-- 4-Color Google Stripe -->
+                  <div class="pass-color-stripe"></div>
+
+                  <!-- Attendee Photo & Info -->
+                  <div class="pass-body">
+                    <div class="pass-avatar-wrap">
+                      <img id="passAvatarImg" src="https://api.dicebear.com/7.x/bottts/svg?seed=ArenaCore26Leader" alt="Attendee Avatar" class="pass-avatar">
+                      <label for="passPhotoUpload" class="avatar-upload-label" title="Upload custom photo">
+                        <i class="fa-solid fa-camera"></i>
+                      </label>
+                      <input type="file" id="passPhotoUpload" accept="image/*" style="display: none;" onchange="handlePassPhotoUpload(event)">
+                    </div>
+
+                    <div class="pass-info-block">
+                      <h3 class="pass-name" id="badgePreviewName">Alex Johnson</h3>
+                      <div class="pass-role" id="badgePreviewRole">Team Leader</div>
+                      <div class="pass-team" id="badgePreviewTeam">Team: <span>ByteBusters</span></div>
+                      <div class="pass-college" id="badgePreviewCollege">PSNA College of Eng & Tech</div>
+                    </div>
+                  </div>
+
+                  <!-- Track & Dates Bar -->
+                  <div class="pass-track-bar">
+                    <div class="p-track">
+                      <span class="p-lbl">TRACK</span>
+                      <strong id="badgePreviewTrack">Quality Education</strong>
+                    </div>
+                    <div class="p-id">
+                      <span class="p-lbl">PASS ID</span>
+                      <strong id="badgePreviewId">GDG-GB25-0842</strong>
+                    </div>
+                  </div>
+
+                  <!-- Pass Footer with QR Code -->
+                  <div class="pass-footer">
+                    <div class="pass-event-details">
+                      <div>📅 28 & 29 OCT 2026</div>
+                      <div>📍 PSNACET Campus, Dindigul</div>
+                    </div>
+                    <div class="pass-qr-box">
+                      <svg viewBox="0 0 100 100" class="pass-qr-svg">
+                        <rect width="100" height="100" fill="#ffffff"/>
+                        <path d="M10 10h30v30h-30z M15 15v20h20v-20z M20 20h10v10h-10z" fill="#1a73e8"/>
+                        <path d="M60 10h30v30h-30z M65 15v20h20v-20z M70 20h10v10h-10z" fill="#ea4335"/>
+                        <path d="M10 60h30v30h-30z M15 65v20h20v-20z M20 70h10v10h-10z" fill="#34a853"/>
+                        <path d="M50 15h5v15h-5z M50 45h15v5h-15z M70 50h10v10h-10z M60 70h25v20h-5v-10h-10v10h-10z M45 65h10v15h-10z M85 45h5v20h-5z" fill="#202124"/>
+                      </svg>
+                      <span class="qr-label">SCAN VERIFIED</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- BACK FACE -->
+                <div class="badge-face badge-back">
+                  <div class="pass-lanyard-hole"></div>
+                  
+                  <div class="badge-back-header">
+                    <div class="d-flex align-center gap-2">
+                      <img src="assets/gdg-logo.svg" alt="GDG Logo" style="width: 24px; height: 24px;">
+                      <strong>PARTICIPANT CREDENTIALS</strong>
+                    </div>
+                    <span class="badge-pill bg-google-green-subtle">OFFICIAL</span>
+                  </div>
+
+                  <div class="pass-color-stripe"></div>
+
+                  <div class="badge-back-body">
+                    <div class="credential-item">
+                      <span class="cred-label"><i class="fa-solid fa-map-pin text-google-red"></i> ALLOCATED VENUE & DESK:</span>
+                      <strong class="cred-value" id="badgeDeskAllocation">IT Block • Lab Cluster B, Terminal #14</strong>
+                    </div>
+
+                    <div class="credential-item mt-2">
+                      <span class="cred-label"><i class="fa-solid fa-wifi text-google-blue"></i> DEDICATED HACKER WI-FI:</span>
+                      <div class="wifi-box">
+                        <div>SSID: <code>PSNA_GDG_HACK_5G</code></div>
+                        <div>PASSKEY: <code>gdg@psna2026</code></div>
+                      </div>
+                    </div>
+
+                    <div class="credential-item mt-2">
+                      <span class="cred-label"><i class="fa-solid fa-phone text-google-green"></i> ON-SITE EMERGENCY DESK:</span>
+                      <strong class="cred-value">+91 86820 67304 (Chitharthaa) / +91 93455 30457 (Darshan) / +91 82486 03031 (Dhanush)</strong>
+                    </div>
+
+                    <div class="credential-item mt-2">
+                      <span class="cred-label"><i class="fa-solid fa-shield-check text-google-yellow"></i> PARTICIPANT CODE OF CONDUCT:</span>
+                      <p class="conduct-note">Formal attire mandatory on campus. Identity verification required at check-in counter.</p>
+                    </div>
+
+                    <!-- Barcode Stamp -->
+                    <div class="barcode-wrap">
+                      <div class="barcode-lines"></div>
+                      <span class="barcode-num">GDG-PSNA-2026-VERIFIED-HASH</span>
+                    </div>
+                  </div>
+
+                  <div class="badge-back-footer">
+                    <small>© 2026 GDG x ACM • PSNACET IT<br>Building DeepTech Solutions for a Better Future: Innovation • Sustainability • Security. Together for a better tomorrow.</small>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Pass Download, Flip & Social Controls -->
+            <div class="badge-actions-group">
+              <button type="button" class="btn btn-outline" onclick="flipPassCard()">
+                <i class="fa-solid fa-arrows-rotate"></i> Flip Badge
+              </button>
+              <button type="button" class="btn btn-outline" onclick="randomizeBadgeSeed()">
+                <i class="fa-solid fa-shuffle"></i> Shuffle Avatar
+              </button>
+              <button type="button" class="btn btn-primary" onclick="downloadVirtualPass()">
+                <i class="fa-solid fa-download"></i> Download Pass (PNG)
+              </button>
+              <button type="button" class="btn btn-ghost" onclick="openShareBadgeModal()">
+                <i class="fa-solid fa-share-nodes"></i> Share Pass
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TAB / SECTION 4: GUIDELINES & FAQS -->
+    <!-- ========================================================================= -->
+    <section class="section tab-view guidelines-section" id="guidelines">
+      <div class="container">
+        
+        <div class="section-heading text-center">
+          <div class="section-tag bg-google-yellow-subtle">
+            <i class="fa-solid fa-scale-balanced"></i> Official Rulebook
+          </div>
+          <h2 class="section-title">Rules, Regulations & Code of Conduct</h2>
+          <p class="section-description">
+            All participants must strictly review and adhere to the guidelines established by the GDG On Campus PSNACET steering committee.
+          </p>
+          <div class="google-line-indicator"></div>
+        </div>
+
+        <!-- Rules Navigation Tabs -->
+        <div class="rules-category-tabs">
+          <button class="rule-tab-btn active" onclick="switchRuleCategory('eligibility')">
+            <i class="fa-solid fa-user-check"></i> Eligibility & Fees
+          </button>
+          <button class="rule-tab-btn" onclick="switchRuleCategory('team')">
+            <i class="fa-solid fa-people-group"></i> Team Structure
+          </button>
+          <button class="rule-tab-btn" onclick="switchRuleCategory('projects')">
+            <i class="fa-solid fa-laptop-code"></i> Project & IP Rules
+          </button>
+          <button class="rule-tab-btn" onclick="switchRuleCategory('conduct')">
+            <i class="fa-solid fa-handshake"></i> Code of Conduct
+          </button>
+          <button class="rule-tab-btn" onclick="switchRuleCategory('judging')">
+            <i class="fa-solid fa-chart-simple"></i> Judging Rubric
+          </button>
+        </div>
+
+        <!-- Rules Tab Content Display -->
+        <div class="rule-tab-content-card glass-panel" id="ruleTabContent">
+          
+          <!-- Default: Eligibility -->
+          <div class="rule-panel active" id="panel-eligibility">
+            <h3><i class="fa-solid fa-user-check text-google-blue"></i> Eligibility & Registration Process</h3>
+            <ul class="rule-bullet-list">
+              <li><strong>Open to All College Students:</strong> Undergraduate and postgraduate engineering and tech students from any recognized university/institution across India are eligible.</li>
+              <li><strong>Official Confirmation Requirement:</strong> Registration has to be submitted by the Team Leader. The fee of <strong>₹150 per member</strong> must only be paid after receiving the official shortlist confirmation email from <code>gdscpsna@psnacet.edu.in</code>.</li>
+              <li><strong>Valid College ID:</strong> All physical attendees must produce their original college identity cards during on-campus physical verification at the registration desk.</li>
+              <li><strong>Inter-College Teams:</strong> Inter-college team formations are permitted, provided all participants have active student statuses.</li>
+            </ul>
+          </div>
+
+          <div class="rule-panel" id="panel-team">
+            <h3><i class="fa-solid fa-people-group text-google-green"></i> Team Composition & Roles</h3>
+            <ul class="rule-bullet-list">
+              <li><strong>Team Size:</strong> Teams must strictly consist of <strong>4 members</strong> as specified in the official ARENACORE '26 guidelines. Solo participation is not permitted for ARENACORE '26 to encourage collaborative teamwork.</li>
+              <li><strong>Team Leader:</strong> Every team must designate one Team Leader who will act as the single point of contact for submissions, announcements, and communications.</li>
+              <li><strong>Unique Team Identity:</strong> Each team must pick a unique team name that does not infringe on registered trademarks or contain offensive language.</li>
+              <li><strong>No Dual Registrations:</strong> A participant cannot be registered in more than one team simultaneously.</li>
+            </ul>
+          </div>
+
+          <div class="rule-panel" id="panel-projects">
+            <h3><i class="fa-solid fa-laptop-code text-google-red"></i> Project Prototype & Intellectual Property</h3>
+            <ul class="rule-bullet-list">
+              <li><strong>Pre-Existing Code Policy:</strong> Projects can be conceptualized beforehand and brought with partial prototypes / architecture blueprints; however, significant development, feature integration, and final refinement must be completed during the hackathon.</li>
+              <li><strong>Open Source & Libraries:</strong> Teams may utilize open-source libraries, APIs, and frameworks (such as Google Cloud APIs, TensorFlow, Gemini, Firebase, React, Flutter) with proper citations.</li>
+              <li><strong>100% IP Ownership:</strong> Participants retain 100% intellectual property ownership of their projects and code. Organizers are only granted rights to showcase projects for promotional, educational, and reporting purposes.</li>
+              <li><strong>Submission Artifacts:</strong> Teams must submit a working GitHub repository URL, a 3-minute demo video/slides, and provide a live functional demonstration to judges during jury rounds.</li>
+            </ul>
+          </div>
+
+          <div class="rule-panel" id="panel-conduct">
+            <h3><i class="fa-solid fa-handshake text-google-yellow"></i> Code of Conduct & Campus Etiquette</h3>
+            <ul class="rule-bullet-list">
+              <li><strong>Inclusivity & Mutual Respect:</strong> GDG is committed to providing a safe, harassment-free environment for everyone regardless of gender, sexual orientation, disability, appearance, race, or religion.</li>
+              <li><strong>Formal Dress Code:</strong> In accordance with PSNACET campus guidelines, all participants must follow a neat, formal / semi-formal dress code throughout the event.</li>
+              <li><strong>Campus Regulations:</strong> Possession of prohibited substances or misconduct will result in immediate disqualification and reporting to respective college authorities.</li>
+              <li><strong>Facility Care:</strong> Participants are expected to treat college lab computers, network equipment, and furniture with utmost care.</li>
+            </ul>
+          </div>
+
+          <div class="rule-panel" id="panel-judging">
+            <h3><i class="fa-solid fa-chart-simple text-google-blue"></i> Official Evaluation Criteria (100 Points Total)</h3>
+            <div class="rubric-grid">
+              <div class="rubric-card">
+                <div class="r-score">30%</div>
+                <h4>Innovation & Novelty</h4>
+                <p>Uniqueness of the solution, creative application of modern technologies, and distinct value proposition.</p>
+              </div>
+              <div class="rubric-card">
+                <div class="r-score">25%</div>
+                <h4>Technical Execution</h4>
+                <p>Code quality, effective architecture, seamless API integration, reliability, and technical complexity.</p>
+              </div>
+              <div class="rubric-card">
+                <div class="r-score">25%</div>
+                <h4>Real-World Impact & Viability</h4>
+                <p>Potential to solve real user pain points, scalability, market viability, and alignment with UN SDG tracks.</p>
+              </div>
+              <div class="rubric-card">
+                <div class="r-score">20%</div>
+            </div>
+
+            <!-- Interactive Rubric Simulator -->
+            <div class="rubric-simulator-wrap glass-panel mt-6">
+              <div class="simulator-header d-flex justify-between align-center">
+                <div>
+                  <span class="badge-pill bg-google-blue-subtle"><i class="fa-solid fa-calculator"></i> REAL-TIME CALCULATOR</span>
+                  <h4 class="mt-2 mb-0">Interactive Jury Score & Podium Predictor</h4>
+                  <p class="text-secondary" style="font-size: 0.9rem;">Test how the judging committee will evaluate your prototype. Move the sliders to calculate your live standing!</p>
+                </div>
+                <div class="simulator-score-badge" id="simulatorScoreBadge">
+                  <div class="score-circle">
+                    <span class="score-num" id="simScoreVal">85</span>
+                    <span class="score-max">/100</span>
+                  </div>
+                  <div class="score-tier-label" id="simTierLabel">Podium Contender (Top 5)</div>
+                </div>
+              </div>
+
+              <div class="simulator-sliders-grid">
+                <div class="slider-row">
+                  <div class="d-flex justify-between">
+                    <label>Innovation & Novelty (Max 30 pts):</label>
+                    <strong class="text-google-blue" id="valInnovation">26 pts</strong>
+                  </div>
+                  <input type="range" min="0" max="30" value="26" id="rangeInnovation" class="sim-range range-blue" oninput="updateRubricScore()">
+                </div>
+
+                <div class="slider-row">
+                  <div class="d-flex justify-between">
+                    <label>Technical Execution & Architecture (Max 25 pts):</label>
+                    <strong class="text-google-green" id="valTechnical">22 pts</strong>
+                  </div>
+                  <input type="range" min="0" max="25" value="22" id="rangeTechnical" class="sim-range range-green" oninput="updateRubricScore()">
+                </div>
+
+                <div class="slider-row">
+                  <div class="d-flex justify-between">
+                    <label>Real-World Impact & Feasibility (Max 25 pts):</label>
+                    <strong class="text-google-yellow" id="valImpact">20 pts</strong>
+                  </div>
+                  <input type="range" min="0" max="25" value="20" id="rangeImpact" class="sim-range range-yellow" oninput="updateRubricScore()">
+                </div>
+
+                <div class="slider-row">
+                  <div class="d-flex justify-between">
+                    <label>Live Pitch & Q&A Defense (Max 20 pts):</label>
+                    <strong class="text-google-red" id="valPitch">17 pts</strong>
+                  </div>
+                  <input type="range" min="0" max="20" value="17" id="rangePitch" class="sim-range range-red" oninput="updateRubricScore()">
+                </div>
+              </div>
+
+              <!-- Tailored Jury Feedback Tip Box -->
+              <div class="jury-feedback-box mt-4" id="juryFeedbackBox">
+                <i class="fa-solid fa-lightbulb text-google-yellow"></i>
+                <div id="juryFeedbackText">
+                  <strong>Jury Pro-Tip:</strong> High podium standing! Ensure your GitHub README has clear setup instructions and your live demo doesn't rely solely on localhost without internet contingency.
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Interactive FAQ Accordion -->
+        <div class="faq-container mt-12">
+          <div class="section-heading text-center">
+            <div class="section-tag bg-google-blue-subtle">
+              <i class="fa-solid fa-circle-question"></i> Answers & Support
+            </div>
+            <h2 class="section-title">Frequently Asked Questions</h2>
+          </div>
+
+          <div class="faq-search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="faqSearchInput" placeholder="Search questions (e.g. food, accommodation, fee, laptop)..." oninput="filterFaqs()">
+          </div>
+
+          <div class="accordion-wrap" id="faqAccordion">
+            
+            <div class="faq-item">
+              <button class="faq-question-btn" onclick="toggleFaq(this)">
+                <span>Will food and accommodation be provided during the 24-hour hackathon?</span>
+                <i class="fa-solid fa-chevron-down faq-chevron"></i>
+              </button>
+              <div class="faq-answer">
+                <p>Yes! Full meals (Breakfast, Lunch, Dinner), midnight snacks, continuous coffee/tea, high-speed Wi-Fi, and resting zones are provided inside the PSNACET campus for all registered participants.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question-btn" onclick="toggleFaq(this)">
+                <span>When should our team pay the ₹150 per member registration fee?</span>
+                <i class="fa-solid fa-chevron-down faq-chevron"></i>
+              </button>
+              <div class="faq-answer">
+                <p>Do NOT pay any fee during initial Round 1 submission! After our evaluation panel reviews all applications, shortlisted Top 30 teams will receive an official confirmation mail with the payment gateway link and verification steps.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question-btn" onclick="toggleFaq(this)">
+                <span>What hardware and equipment should we bring?</span>
+                <i class="fa-solid fa-chevron-down faq-chevron"></i>
+              </button>
+              <div class="faq-answer">
+                <p>Each team member should bring their own laptops, chargers, extension cords, and any specific hardware components/microcontrollers (ESP32, Arduino, Raspberry Pi, Sensors) if competing in IoT/hardware tracks. College labs will also have desktop computers available.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question-btn" onclick="toggleFaq(this)">
+                <span>Can students from different departments or colleges team up?</span>
+                <i class="fa-solid fa-chevron-down faq-chevron"></i>
+              </button>
+              <div class="faq-answer">
+                <p>Absolutely! Cross-disciplinary and cross-college teams (e.g., IT + ECE + Mechanical + BioTech) are encouraged to formulate well-rounded solutions.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question-btn" onclick="toggleFaq(this)">
+                <span>Will all participants receive certificates?</span>
+                <i class="fa-solid fa-chevron-down faq-chevron"></i>
+              </button>
+              <div class="faq-answer">
+                <p>Yes! Every participant who submits a qualifying project and presents to the jury will receive an official GDG On Campus Certificate of Participation, in addition to winner awards and prize cash for top rankers.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TAB / SECTION 5: PREVIOUS RECORDS & PICTURES (GALLERY & HALL OF FAME) -->
+    <!-- ========================================================================= -->
+    <section class="section tab-view records-section" id="records">
+      <div class="container">
+        
+        <div class="section-heading text-center">
+          <div class="section-tag bg-google-green-subtle">
+            <i class="fa-solid fa-images"></i> Historical Milestones & Showcase
+          </div>
+          <h2 class="section-title">Previous Records & Photo Gallery</h2>
+          <p class="section-description">
+            A visual retrospective of PSNACET GDG hackathons, national bootcamps, startup expos, and student innovations.
+          </p>
+          <div class="google-line-indicator"></div>
+        </div>
+
+        <!-- Year & Category Filter Bar -->
+        <div class="gallery-controls-bar">
+          <div class="year-toggle-group">
+            <span class="ctrl-label"><i class="fa-solid fa-calendar"></i> Year:</span>
+            <button class="year-pill active" data-year="all" onclick="filterGalleryByYear('all')">All Years</button>
+            <button class="year-pill" data-year="2026" onclick="filterGalleryByYear('2026')">2026 (ARENACORE '26)</button>
+            <button class="year-pill" data-year="2024" onclick="filterGalleryByYear('2024')">2024 (Bootcamps & Expos)</button>
+            <button class="year-pill" data-year="2023" onclick="filterGalleryByYear('2023')">2023 (Legacy)</button>
+          </div>
+
+          <div class="category-toggle-group">
+            <span class="ctrl-label"><i class="fa-solid fa-filter"></i> Category:</span>
+            <button class="cat-pill active" data-cat="all" onclick="filterGalleryByCat('all')">All</button>
+            <button class="cat-pill" data-cat="bootcamp" onclick="filterGalleryByCat('bootcamp')">Bootcamps</button>
+            <button class="cat-pill" data-cat="hackathon" onclick="filterGalleryByCat('hackathon')">Hackathons</button>
+            <button class="cat-pill" data-cat="expo" onclick="filterGalleryByCat('expo')">Project Expos</button>
+          </div>
+        </div>
+
+        <!-- Interactive Gallery Grid -->
+        <div class="interactive-gallery-grid" id="galleryGrid">
+          
+          <!-- Gallery Item 1 -->
+          <div class="gallery-card" data-year="2024" data-cat="bootcamp" onclick="openLightbox(0)">
+            <div class="gallery-img-wrap">
+              <div class="gallery-placeholder bg-gradient-blue">
+                <i class="fa-solid fa-chalkboard-user"></i>
+                <span>IDE Bootcamp Tamil Nadu</span>
+              </div>
+              <div class="gallery-overlay">
+                <span class="gallery-zoom-btn"><i class="fa-solid fa-expand"></i> View Full Photo</span>
+              </div>
+            </div>
+            <div class="gallery-meta">
+              <h4>IDE Bootcamp Phase-2, Tamil Nadu</h4>
+              <p>Statewide innovation and design thinking sprint with 100+ collegiate innovators.</p>
+              <span class="tag-year">2024 • Bootcamp</span>
+            </div>
+          </div>
+
+          <!-- Gallery Item 2 -->
+          <div class="gallery-card" data-year="2024" data-cat="hackathon" onclick="openLightbox(1)">
+            <div class="gallery-img-wrap">
+              <div class="gallery-placeholder bg-gradient-red">
+                <i class="fa-solid fa-brain"></i>
+                <span>MathHACK 2.0 T-Hub</span>
+              </div>
+              <div class="gallery-overlay">
+                <span class="gallery-zoom-btn"><i class="fa-solid fa-expand"></i> View Full Photo</span>
+              </div>
+            </div>
+            <div class="gallery-meta">
+              <h4>MathHACK 2.0 @ T-HUB, Hyderabad</h4>
+              <p>PSNACET teams pitching algorithmic intelligence platforms at India's largest incubator.</p>
+              <span class="tag-year">2024 • Hackathon</span>
+            </div>
+          </div>
+
+          <!-- Gallery Item 3 -->
+          <div class="gallery-card" data-year="2024" data-cat="expo" onclick="openLightbox(2)">
+            <div class="gallery-img-wrap">
+              <div class="gallery-placeholder bg-gradient-yellow">
+                <i class="fa-solid fa-rocket"></i>
+                <span>Startup TN Incubation</span>
+              </div>
+              <div class="gallery-overlay">
+                <span class="gallery-zoom-btn"><i class="fa-solid fa-expand"></i> View Full Photo</span>
+              </div>
+            </div>
+            <div class="gallery-meta">
+              <h4>Startup TN Innovation Expo</h4>
+              <p>Student pre-seed ventures presenting to venture capitalists and Tamil Nadu innovation heads.</p>
+              <span class="tag-year">2024 • Expo</span>
+            </div>
+          </div>
+
+          <!-- Gallery Item 4 -->
+          <div class="gallery-card" data-year="2024" data-cat="bootcamp" onclick="openLightbox(3)">
+            <div class="gallery-img-wrap">
+              <div class="gallery-placeholder bg-gradient-green">
+                <i class="fa-solid fa-helicopter"></i>
+                <span>Drone Voyagers IDE Phase 2</span>
+              </div>
+              <div class="gallery-overlay">
+                <span class="gallery-zoom-btn"><i class="fa-solid fa-expand"></i> View Full Photo</span>
+              </div>
+            </div>
+            <div class="gallery-meta">
+              <h4>IDE Bootcamp: Drone Voyagers</h4>
+              <p>Autonomous drone navigation prototypes engineered by Department of IT students.</p>
+              <span class="tag-year">2024 • Bootcamp</span>
+            </div>
+          </div>
+
+          <!-- Gallery Item 5 -->
+          <div class="gallery-card" data-year="2024" data-cat="expo" onclick="openLightbox(4)">
+            <div class="gallery-img-wrap">
+              <div class="gallery-placeholder bg-gradient-blue">
+                <i class="fa-solid fa-microscope"></i>
+                <span>IISc Project Expo Bangalore</span>
+              </div>
+              <div class="gallery-overlay">
+                <span class="gallery-zoom-btn"><i class="fa-solid fa-expand"></i> View Full Photo</span>
+              </div>
+            </div>
+            <div class="gallery-meta">
+              <h4>IISc Project Expo, Bangalore</h4>
+              <p>Representing PSNACET with smart bio-sensing prototypes at Indian Institute of Science.</p>
+              <span class="tag-year">2024 • Expo</span>
+            </div>
+          </div>
+
+          <!-- Gallery Item 6 -->
+          <div class="gallery-card" data-year="2024" data-cat="hackathon" onclick="openLightbox(5)">
+            <div class="gallery-img-wrap">
+              <div class="gallery-placeholder bg-gradient-red">
+                <i class="fa-solid fa-lightbulb"></i>
+                <span>Inventors Challenge Delhi</span>
+              </div>
+              <div class="gallery-overlay">
+                <span class="gallery-zoom-btn"><i class="fa-solid fa-expand"></i> View Full Photo</span>
+              </div>
+            </div>
+            <div class="gallery-meta">
+              <h4>National Inventors Challenge, New Delhi</h4>
+              <p>National finalist accolades in embedded AI and smart city infrastructure.</p>
+              <span class="tag-year">2024 • Hackathon</span>
+            </div>
+          </div>
+
+          <!-- Gallery Item 7 -->
+          <div class="gallery-card" data-year="2026" data-cat="hackathon" onclick="openLightbox(6)">
+            <div class="gallery-img-wrap">
+              <div class="gallery-placeholder bg-gradient-yellow">
+                <i class="fa-solid fa-laptop-code"></i>
+                <span>24-Hour DeepTech Hackathon Opening</span>
+              </div>
+              <div class="gallery-overlay">
+                <span class="gallery-zoom-btn"><i class="fa-solid fa-expand"></i> View Full Photo</span>
+              </div>
+            </div>
+            <div class="gallery-meta">
+              <h4>24-Hour DeepTech Hackathon Hackers In Action</h4>
+              <p>Top 30 inter-college teams coding through the 24-hour sprint at PSNACET IT Labs.</p>
+              <span class="tag-year">2026 • Hackathon</span>
+            </div>
+          </div>
+
+          <!-- Gallery Item 8 -->
+          <div class="gallery-card" data-year="2024" data-cat="bootcamp" onclick="openLightbox(7)">
+            <div class="gallery-img-wrap">
+              <div class="gallery-placeholder bg-gradient-green">
+                <i class="fa-solid fa-users"></i>
+                <span>GDG Chapter Meetup</span>
+              </div>
+              <div class="gallery-overlay">
+                <span class="gallery-zoom-btn"><i class="fa-solid fa-expand"></i> View Full Photo</span>
+              </div>
+            </div>
+            <div class="gallery-meta">
+              <h4>GDG On Campus PSNA Community Assembly</h4>
+              <p>Core student leads and members celebrating tech milestones and Google Developer days.</p>
+              <span class="tag-year">2024 • Community</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Hall of Fame Section -->
+        <div class="hall-of-fame-wrap mt-12">
+          <div class="section-heading text-center">
+            <div class="section-tag bg-google-red-subtle">
+              <i class="fa-solid fa-trophy"></i> Hall of Fame
+            </div>
+            <h2 class="section-title">Past Winners & Innovator Spotlights</h2>
+          </div>
+
+          <div class="hof-grid">
+            <div class="hof-card">
+              <div class="hof-badge gold"><i class="fa-solid fa-crown"></i> 1st Place • DeepTechHackathon '24</div>
+              <h4>Team NeuralNexus (Govt Engg College Salem)</h4>
+              <p class="hof-project">Project: <em>"AI Glaucoma Screening Mobile Tele-App"</em></p>
+              <div class="hof-feedback">"DeepTechHackathon had one of the best mentoring environments. The 24-hour non-stop hackathon pushed our team from a raw idea to an investable MVP."</div>
+            </div>
+
+            <div class="hof-card">
+              <div class="hof-badge silver"><i class="fa-solid fa-medal"></i> 2nd Place • DeepTechHackathon '24</div>
+              <h4>Team GreenGrid (Thiagarajar College of Engg)</h4>
+              <p class="hof-project">Project: <em>"Decentralized Microgrid Solar Balancing System"</em></p>
+              <div class="hof-feedback">"The Google Developer ecosystem and lab infrastructure at PSNACET IT made debugging and deploying seamless. Exceptional hospitality."</div>
+            </div>
+
+            <div class="hof-card">
+              <div class="hof-badge bronze"><i class="fa-solid fa-award"></i> 3rd Place • DeepTechHackathon '24</div>
+              <h4>Team AgriSensors (PSNACET IT)</h4>
+              <p class="hof-project">Project: <em>"LoRaWAN Soil Health & Automated Drip Irrigation"</em></p>
+              <div class="hof-feedback">"Secured our first incubation grant from Startup TN right after presenting our DeepTechHackathon prototype!"</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TAB / SECTION 6: ABOUT PSNA GDG & COORDINATORS -->
+    <!-- ========================================================================= -->
+    <section class="section tab-view about-section" id="about">
+      <div class="container">
+        
+        <div class="section-heading text-center">
+          <div class="section-tag bg-google-blue-subtle">
+            <i class="fa-solid fa-university"></i> Institution & Leadership
+          </div>
+          <h2 class="section-title">About Department of IT & GDG PSNA</h2>
+          <p class="section-description">
+            PSNA College of Engineering and Technology (Autonomous), Dindigul - Accredited with NAAC 'A' Grade, pioneering technical excellence since 1984.
+          </p>
+          <div class="google-line-indicator"></div>
+        </div>
+
+        <!-- About IT Department Cards -->
+        <div class="about-stats-grid">
+          <div class="dept-stat-card border-google-blue">
+            <div class="dept-stat-icon icon-blue"><i class="fa-solid fa-user-graduate"></i></div>
+            <div class="dept-stat-num">1,500+</div>
+            <h4>Students Enrolled</h4>
+            <p>Empowering young minds across B.Tech Information Technology, AI/DS, and research scholars.</p>
+          </div>
+
+          <div class="dept-stat-card border-google-red">
+            <div class="dept-stat-icon icon-red"><i class="fa-solid fa-user-tie"></i></div>
+            <div class="dept-stat-num">40+</div>
+            <h4>Expert Faculty Members</h4>
+            <p>Doctorates, IEEE/ACM senior members, and patent holders mentoring industry projects.</p>
+          </div>
+
+          <div class="dept-stat-card border-google-yellow">
+            <div class="dept-stat-icon icon-yellow"><i class="fa-solid fa-calendar-check"></i></div>
+            <div class="dept-stat-num">1999</div>
+            <h4>Year Established</h4>
+            <p>Over two decades of consistent academic distinction and top Tier-1 placement track record.</p>
+          </div>
+
+          <div class="dept-stat-card border-google-green">
+            <div class="dept-stat-icon icon-green"><i class="fa-solid fa-globe"></i></div>
+            <div class="dept-stat-num">100%</div>
+            <h4>Active Chapter</h4>
+            <p>GDG On Campus PSNACET bridging students directly with Google technologies and global open source.</p>
+          </div>
+        </div>
+
+        <!-- Faculty Leadership & Coordinators -->
+        <div class="leadership-block mt-12">
+          <div class="section-heading text-center">
+            <div class="section-tag bg-google-red-subtle">
+              <i class="fa-solid fa-users-gear"></i> Faculty Leadership
+            </div>
+            <h3 class="section-title">Faculty Organizers & Mentors</h3>
+          </div>
+
+          <div class="faculty-coordinators-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+            
+            <div class="lead-card border-blue">
+              <div class="lead-badge">HOD</div>
+              <div class="lead-avatar"><i class="fa-solid fa-user-tie text-google-blue"></i></div>
+              <h3>Dr. A. Vincent Antony Kumar</h3>
+              <p class="lead-designation">Professor & Head, Department of IT</p>
+              <p class="lead-org">PSNA College of Eng & Tech</p>
+              <div class="lead-contact">
+                <a href="mailto:contact@psnacet.edu.in" class="lead-icon-link" title="Email HOD"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://www.psnacet.edu.in/" target="_blank" class="lead-icon-link" title="PSNA Profile"><i class="fa-solid fa-globe"></i></a>
+              </div>
+            </div>
+
+            <div class="lead-card border-green">
+              <div class="lead-badge">FACULTY COORDINATOR (AP/IT)</div>
+              <div class="lead-avatar"><i class="fa-solid fa-chalkboard-user text-google-green"></i></div>
+              <h3>Dr. B. Karthika</h3>
+              <p class="lead-designation">Assistant Professor (AP/IT)</p>
+              <p class="lead-org">Department of IT, PSNACET</p>
+              <div class="lead-contact">
+                <a href="mailto:contact@psnacet.edu.in" class="lead-icon-link" title="Contact"><i class="fa-solid fa-envelope"></i></a>
+              </div>
+            </div>
+
+            <div class="lead-card border-yellow">
+              <div class="lead-badge">FACULTY COORDINATOR (ASP/IT)</div>
+              <div class="lead-avatar"><i class="fa-solid fa-chalkboard-user text-google-yellow"></i></div>
+              <h3>Dr. R. Divya</h3>
+              <p class="lead-designation">Associate Professor (ASP/IT)</p>
+              <p class="lead-org">Department of IT, PSNACET</p>
+              <div class="lead-contact">
+                <a href="mailto:contact@psnacet.edu.in" class="lead-icon-link" title="Contact"><i class="fa-solid fa-envelope"></i></a>
+              </div>
+            </div>
+
+            <div class="lead-card border-red">
+              <div class="lead-badge">FACULTY COORDINATOR (AP/IT)</div>
+              <div class="lead-avatar"><i class="fa-solid fa-chalkboard-user text-google-red"></i></div>
+              <h3>Dr. B. Vijaya Nirmala</h3>
+              <p class="lead-designation">Assistant Professor (AP/IT)</p>
+              <p class="lead-org">Department of IT, PSNACET</p>
+              <div class="lead-contact">
+                <a href="mailto:contact@psnacet.edu.in" class="lead-icon-link" title="Contact"><i class="fa-solid fa-envelope"></i></a>
+              </div>
+            </div>
+
+            <div class="lead-card border-blue">
+              <div class="lead-badge">FACULTY COORDINATOR (AP/IT)</div>
+              <div class="lead-avatar"><i class="fa-solid fa-chalkboard-user text-google-blue"></i></div>
+              <h3>Dr. S. T. Bharathi</h3>
+              <p class="lead-designation">Assistant Professor (AP/IT)</p>
+              <p class="lead-org">Department of IT, PSNACET</p>
+              <div class="lead-contact">
+                <a href="mailto:contact@psnacet.edu.in" class="lead-icon-link" title="Contact"><i class="fa-solid fa-envelope"></i></a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Student Core Team & Contact Phone Directory -->
+        <div class="student-coordinators-block mt-12">
+          <div class="section-heading text-center">
+            <div class="section-tag bg-google-green-subtle">
+              <i class="fa-solid fa-user-graduate"></i> Student Leads
+            </div>
+            <h3 class="section-title">Student Coordinators (Direct Contacts)</h3>
+            <p class="section-description">Have questions regarding submissions, transport, or lab setups? Reach out directly to our student organizing committee.</p>
+          </div>
+
+          <div class="student-cards-grid">
+            
+            <div class="student-card">
+              <div class="st-avatar icon-blue"><i class="fa-solid fa-user-astronaut"></i></div>
+              <div class="st-info">
+                <h4>Chitharthaa A</h4>
+                <div class="st-role">GDG Campus Organiser</div>
+                <a href="tel:+918682067304" class="st-phone"><i class="fa-solid fa-phone"></i> +91 86820 67304</a>
+              </div>
+            </div>
+
+            <div class="student-card">
+              <div class="st-avatar icon-red"><i class="fa-solid fa-crown"></i></div>
+              <div class="st-info">
+                <h4>Darshan S</h4>
+                <div class="st-role">ACM Chair</div>
+                <a href="tel:+919345530457" class="st-phone"><i class="fa-solid fa-phone"></i> +91 93455 30457</a>
+              </div>
+            </div>
+
+            <div class="student-card">
+              <div class="st-avatar icon-yellow"><i class="fa-solid fa-video"></i></div>
+              <div class="st-info">
+                <h4>Dhanush Pandi S</h4>
+                <div class="st-role">GDG Multimedia Director</div>
+                <a href="tel:+918248603031" class="st-phone"><i class="fa-solid fa-phone"></i> +91 82486 03031</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Searchable Steering Committee Faculty Directory -->
+        <div class="steering-committee-block mt-12">
+          <div class="section-heading text-center">
+            <div class="section-tag bg-google-blue-subtle">
+              <i class="fa-solid fa-users"></i> Academic Council
+            </div>
+            <h3 class="section-title">Department Steering Committee</h3>
+            <p class="section-description">Esteemed faculty members & mentors guiding hackathon research teams.</p>
+          </div>
+
+          <div class="faculty-search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="facultySearchInput" placeholder="Search faculty by name or designation..." oninput="filterFacultyDirectory()">
+          </div>
+
+          <div class="committee-grid" id="facultyCommitteeGrid">
+            <!-- Populated dynamically via app.js with search support -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- CONTACT, MAP & FOOTER SECTION -->
+    <!-- ========================================================================= -->
+    <section class="section tab-view contact-section" id="contact">
+      <div class="container">
+        
+        <div class="section-heading text-center">
+          <div class="section-tag bg-google-red-subtle">
+            <i class="fa-solid fa-map-location-dot"></i> Venue & Support
+          </div>
+          <h2 class="section-title">Get In Touch & Visit Venue</h2>
+          <div class="google-line-indicator"></div>
+        </div>
+
+        <div class="contact-card-wrap glass-panel">
+          
+          <div class="contact-info-column">
+            <h3>Contact Information</h3>
+            <p>Feel free to connect for sponsorships, mentorship queries, or participation guidance.</p>
+
+            <div class="c-info-item">
+              <div class="c-icon icon-blue"><i class="fa-solid fa-location-dot"></i></div>
+              <div>
+                <strong>Venue Location</strong>
+                <p>PSNA College of Engineering and Technology,<br>Kothandaraman Nagar, Dindigul - 624622, Tamil Nadu, India.</p>
+              </div>
+            </div>
+
+            <div class="c-info-item">
+              <div class="c-icon icon-red"><i class="fa-solid fa-envelope"></i></div>
+              <div>
+                <strong>Official Email</strong>
+                <p><a href="mailto:contact@psnacet.edu.in">contact@psnacet.edu.in</a> &nbsp;|&nbsp; <a href="mailto:gdscpsna@psnacet.edu.in">gdscpsna@psnacet.edu.in</a></p>
+              </div>
+            </div>
+
+            <div class="c-info-item">
+              <div class="c-icon icon-yellow"><i class="fa-solid fa-phone"></i></div>
+              <div>
+                <strong>Contact / Helpline Numbers</strong>
+                <p>College: 0451-2554411 / 2554032<br>
+                Student Leads: +91 86820 67304 (Chitharthaa) / +91 93455 30457 (Darshan) / +91 82486 03031 (Dhanush)</p>
+              </div>
+            </div>
+
+            <div class="c-info-item">
+              <div class="c-icon icon-green"><i class="fa-solid fa-globe"></i></div>
+              <div>
+                <strong>College Website</strong>
+                <p><a href="https://www.psnacet.edu.in/" target="_blank" rel="noopener noreferrer">www.psnacet.edu.in <i class="fa-solid fa-arrow-up-right-from-square"></i></a></p>
+              </div>
+            </div>
+
+            <div class="social-links-row mt-4">
+              <a href="https://gdg.community.dev/" target="_blank" class="s-link" title="GDG Community Platform"><i class="fa-solid fa-code"></i></a>
+              <a href="https://github.com/" target="_blank" class="s-link" title="GitHub Repository"><i class="fa-brands fa-github"></i></a>
+              <a href="https://linkedin.com/" target="_blank" class="s-link" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+              <a href="https://instagram.com/" target="_blank" class="s-link" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+          </div>
+
+          <div class="contact-map-column">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3924.0651889557525!2d77.89805427508367!3d10.416397389711346!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba9ffb95456ce7f%3A0x14d566dfc1364080!2sPSNA%20College%20Of%20Engineering%20And%20Technology!5e0!3m2!1sen!2sin!4v1741671655443!5m2!1sen!2sin" 
+              width="100%" 
+              height="380" 
+              style="border:0; border-radius: 16px;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade"
+              title="PSNACET Campus Google Map">
+            </iframe>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div class="footer-brand-col">
+          <div class="footer-brand">
+            <img src="assets/gdg-logo.svg" alt="GDG Logo" class="footer-logo-img">
+            <strong>
+              <span class="g-blue">G</span><span class="g-red">o</span><span class="g-yellow">o</span><span class="g-blue">g</span><span class="g-green">l</span><span class="g-red">e</span> 
+              <span class="g-blue">Developer</span> 
+              <span class="g-green">Groups</span> 
+              On Campus PSNACET
+            </strong>
+          </div>
+          <p>Organized by the Department of Information Technology, PSNA College of Engineering and Technology. Empowering student builders through Google technologies.</p>
+        </div>
+
+        <div class="footer-links-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#home" onclick="switchTab('home')">Home / Overview</a></li>
+            <li><a href="#events" onclick="switchTab('events')">Hackathon Tracks</a></li>
+            <li><a href="#schedule" onclick="switchTab('events', true, 'schedule')">Timeline Schedule</a></li>
+            <li><a href="#register" onclick="switchTab('register')">Team Registration</a></li>
+            <li><a href="#guidelines" onclick="switchTab('guidelines')">Rules & Conduct</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#records" onclick="switchTab('records')">Hall of Fame & Gallery</a></li>
+            <li><a href="#about" onclick="switchTab('about')">Steering Committee</a></li>
+            <li><a href="javascript:void(0)" onclick="handleRegisterNowClick(event)">Google Registration Form</a></li>
+            <li><a href="admin.html" target="_blank"><i class="fa-solid fa-shield-halved"></i> Admin Portal</a></li>
+            <li><a href="https://www.psnacet.edu.in/" target="_blank">PSNACET Official Portal</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-cta-col">
+          <h4>Stay Connected</h4>
+          <p>Subscribe for hackathon alerts, round announcements, and future developer workshops.</p>
+          <form class="newsletter-form" onsubmit="handleNewsletterSubmit(event)">
+            <input type="email" required placeholder="Enter student email..." class="form-control">
+            <button type="submit" class="btn btn-primary btn-sm">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <p>© 2026 GDG On Campus PSNACET & ACM PSNACET • ARENACORE '26. All rights reserved.</p>
+        <div class="google-palette-indicator">
+          <span class="pal b"></span><span class="pal r"></span><span class="pal y"></span><span class="pal g"></span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================= -->
+  <!-- MODALS -->
+  <!-- ========================================================================= -->
+
+  <!-- Modals -->
+
+  <!-- 2. Registration Status Lookup Modal -->
+  <div class="modal-backdrop" id="statusModalBackdrop">
+    <div class="modal-dialog modal-md glass-panel">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <div class="modal-badge-chip bg-google-blue-subtle">PORTAL LOOKUP</div>
+          <h3>Check Team Selection Status</h3>
+        </div>
+        <button class="modal-close-btn" onclick="closeStatusModal()">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <p>Enter your registered <strong>Team Name</strong> or <strong>Team Leader Email</strong> to check your Round 1 qualification status.</p>
+        <div class="status-search-form">
+          <input type="text" id="statusLookupInput" placeholder="e.g. ByteBusters or leader@college.edu" class="form-control">
+          <button class="btn btn-primary mt-3 w-full" onclick="performStatusLookup()">
+            <i class="fa-solid fa-magnifying-glass"></i> Check Status
+          </button>
+        </div>
+        
+        <div class="status-result-box" id="statusResultBox" style="display: none;">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Photo Gallery Lightbox Modal -->
+  <div class="lightbox-modal" id="lightboxModal" onclick="closeLightboxOnBackdrop(event)">
+    <div class="lightbox-content">
+      <button class="lightbox-close-btn" onclick="closeLightbox()">&times;</button>
+      <button class="lightbox-nav-btn prev" onclick="changeLightboxSlide(-1)">&#10094;</button>
+      
+      <div class="lightbox-inner-view">
+        <div class="lightbox-visual" id="lightboxVisual">
+          <!-- Injected via JS -->
+        </div>
+        <div class="lightbox-caption" id="lightboxCaption">
+          <h4 id="lightboxTitle">Event Title</h4>
+          <p id="lightboxDesc">Event Description</p>
+          <span class="lightbox-tag" id="lightboxTag">Tag</span>
+        </div>
+      </div>
+      <button class="lightbox-nav-btn next" onclick="changeLightboxSlide(1)">&#10095;</button>
+    </div>
+  </div>
+
+  <!-- 5. Share Virtual Pass Modal -->
+  <div class="modal-backdrop" id="shareBadgeModalBackdrop">
+    <div class="modal-dialog modal-sm glass-panel text-center">
+      <div class="modal-header">
+        <div class="modal-title-wrap text-center w-full">
+          <div class="modal-badge-chip bg-google-blue-subtle">HACKER RECOGNITION</div>
+          <h3>Share Your Official Pass</h3>
+        </div>
+        <button class="modal-close-btn" onclick="closeShareBadgeModal()">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <p style="font-size:0.92rem; color:var(--text-secondary);">Show off your official ARENACORE '26 virtual badge on social networks!</p>
+        
+        <div class="share-options-grid mt-4">
+          <button type="button" class="btn btn-outline w-full mb-2" onclick="shareOnLinkedIn()" style="display:flex; justify-content:center; gap:8px;">
+            <i class="fa-brands fa-linkedin text-google-blue"></i> Share on LinkedIn
+          </button>
+          <button type="button" class="btn btn-outline w-full mb-2" onclick="shareOnWhatsApp()" style="display:flex; justify-content:center; gap:8px;">
+            <i class="fa-brands fa-whatsapp text-google-green"></i> Share on WhatsApp
+          </button>
+          <button type="button" class="btn btn-outline w-full mb-2" onclick="shareOnTwitter()" style="display:flex; justify-content:center; gap:8px;">
+            <i class="fa-brands fa-x-twitter"></i> Share on X (Twitter)
+          </button>
+          <button type="button" class="btn btn-primary w-full" onclick="copyBadgeShareLink()" style="display:flex; justify-content:center; gap:8px;">
+            <i class="fa-solid fa-link"></i> Copy Verification Link
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Developer CLI Terminal Overlay (Ctrl + ~) -->
+  <div class="terminal-overlay" id="devTerminalOverlay" onclick="closeTerminalOnBackdrop(event)">
+    <div class="terminal-window glass-panel" id="devTerminalWindow">
+      <div class="terminal-header">
+        <div class="terminal-dots">
+          <span class="dot dot-red" onclick="toggleDevTerminal()"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="terminal-title">gdg-psna@genbrainiacs:~$ (interactive bash v2.5)</div>
+        <button class="terminal-close-btn" onclick="toggleDevTerminal()" aria-label="Close Terminal">&times;</button>
+      </div>
+      <div class="terminal-body" id="terminalBody">
+        <div class="terminal-output" id="terminalOutput">
+          <!-- Populated via app.js -->
+        </div>
+        <div class="terminal-input-line">
+          <span class="terminal-prompt">hacker@gdg-psna:~$</span>
+          <input type="text" id="terminalInput" class="terminal-cmd-input" autocomplete="off" spellcheck="false">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Launcher Button for Developer CLI -->
+  <button class="terminal-fab-btn" id="terminalFabBtn" onclick="toggleDevTerminal()" title="Launch Developer Terminal (Ctrl + ~)">
+    <span class="fab-pulse"></span>
+    <i class="fa-solid fa-terminal"></i>
+    <span class="fab-text">CLI Console</span>
+    <kbd class="fab-kbd">Ctrl+`</kbd>
+  </button>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- API Integration Client -->
+  <script src="api.js?v=1.0"></script>
+  <!-- Custom Scripts (with cache-buster) -->
+  <script src="app.js?v=2.6"></script>
+</body>
+</html>
