@@ -24,6 +24,9 @@
   <!-- FontAwesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  
   <!-- Custom Stylesheet (with cache-buster) -->
   <link rel="stylesheet" href="styles.css?v=5.2">
 </head>
@@ -295,33 +298,41 @@
         </div>
 
         <!-- Event Metadata Pills -->
-        <div class="event-meta-cards">
-          <div class="meta-pill">
-            <i class="fa-solid fa-calendar-days text-google-blue"></i>
-            <div>
-              <strong>27 & 28 OCT 2026</strong>
-              <span>24 Hours Non-Stop</span>
+        <div class="row g-3 event-meta-cards justify-content-center">
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="meta-pill w-100 h-100">
+              <i class="fa-solid fa-calendar-days text-google-blue"></i>
+              <div>
+                <strong>27 & 28 OCT 2026</strong>
+                <span>24 Hours Non-Stop</span>
+              </div>
             </div>
           </div>
-          <div class="meta-pill">
-            <i class="fa-solid fa-hourglass-half text-google-red"></i>
-            <div>
-              <strong>Deadline: 12 OCT 2026</strong>
-              <span>Registration Closes</span>
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="meta-pill w-100 h-100">
+              <i class="fa-solid fa-hourglass-half text-google-red"></i>
+              <div>
+                <strong>Deadline: 12 OCT 2026</strong>
+                <span>Registration Closes</span>
+              </div>
             </div>
           </div>
-          <div class="meta-pill">
-            <i class="fa-solid fa-users text-google-green"></i>
-            <div>
-              <strong>Team Size: 4 Members</strong>
-              <span>₹500 / Member</span>
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="meta-pill w-100 h-100">
+              <i class="fa-solid fa-users text-google-green"></i>
+              <div>
+                <strong>Team Size: 4 Members</strong>
+                <span>₹500 / Member</span>
+              </div>
             </div>
           </div>
-          <div class="meta-pill">
-            <i class="fa-solid fa-trophy text-google-yellow"></i>
-            <div>
-              <strong>₹1,20,000 Prize Pool</strong>
-              <span>Overall Cash Awards & Perks</span>
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="meta-pill w-100 h-100">
+              <i class="fa-solid fa-trophy text-google-yellow"></i>
+              <div>
+                <strong>₹1,20,000 Prize Pool</strong>
+                <span>Overall Cash Awards & Perks</span>
+              </div>
             </div>
           </div>
         </div>
@@ -336,23 +347,23 @@
             <div class="edition-badge">ARENACORE '26 Edition</div>
           </div>
 
-          <div class="countdown-grid" id="countdownGrid">
-            <div class="countdown-slot blue-glow">
+          <div class="countdown-grid flex-wrap" id="countdownGrid">
+            <div class="countdown-slot blue-glow col-5 col-md-auto">
               <div class="count-value" id="countDays">14</div>
               <div class="count-label">DAYS</div>
             </div>
-            <div class="countdown-divider">:</div>
-            <div class="countdown-slot red-glow">
+            <div class="countdown-divider d-none d-md-block">:</div>
+            <div class="countdown-slot red-glow col-5 col-md-auto">
               <div class="count-value" id="countHours">08</div>
               <div class="count-label">HOURS</div>
             </div>
-            <div class="countdown-divider">:</div>
-            <div class="countdown-slot yellow-glow">
+            <div class="countdown-divider d-none d-md-block">:</div>
+            <div class="countdown-slot yellow-glow col-5 col-md-auto">
               <div class="count-value" id="countMinutes">42</div>
               <div class="count-label">MINUTES</div>
             </div>
-            <div class="countdown-divider">:</div>
-            <div class="countdown-slot green-glow">
+            <div class="countdown-divider d-none d-md-block">:</div>
+            <div class="countdown-slot green-glow col-5 col-md-auto">
               <div class="count-value" id="countSeconds">30</div>
               <div class="count-label">SECONDS</div>
             </div>
@@ -380,61 +391,77 @@
         </div>
 
         <!-- Stats Counter Row -->
-        <div class="stats-counter-strip">
-          <div class="stat-card">
-            <div class="stat-icon-wrap icon-blue">
-              <i class="fa-solid fa-user-astronaut"></i>
+        <div class="row g-3 stats-counter-strip justify-content-center">
+          <div class="col-6 col-md-3">
+            <div class="stat-card h-100">
+              <div class="stat-icon-wrap icon-blue">
+                <i class="fa-solid fa-user-astronaut"></i>
+              </div>
+              <div class="stat-number" data-target="1500">1,500+</div>
+              <div class="stat-desc">Community Members & Students</div>
             </div>
-            <div class="stat-number" data-target="1500">1,500+</div>
-            <div class="stat-desc">Community Members & Students</div>
           </div>
 
-          <div class="stat-card">
-            <div class="stat-icon-wrap icon-red">
-              <i class="fa-solid fa-network-wired"></i>
+          <div class="col-6 col-md-3">
+            <div class="stat-card h-100">
+              <div class="stat-icon-wrap icon-red">
+                <i class="fa-solid fa-network-wired"></i>
+              </div>
+              <div class="stat-number" data-target="30">30+</div>
+              <div class="stat-desc">Finalist Teams Selected</div>
             </div>
-            <div class="stat-number" data-target="30">30+</div>
-            <div class="stat-desc">Finalist Teams Selected</div>
           </div>
 
-          <div class="stat-card">
-            <div class="stat-icon-wrap icon-yellow">
-              <i class="fa-solid fa-building-columns"></i>
+          <div class="col-6 col-md-3">
+            <div class="stat-card h-100">
+              <div class="stat-icon-wrap icon-yellow">
+                <i class="fa-solid fa-building-columns"></i>
+              </div>
+              <div class="stat-number" data-target="45">45+</div>
+              <div class="stat-desc">Colleges & Universities Represented</div>
             </div>
-            <div class="stat-number" data-target="45">45+</div>
-            <div class="stat-desc">Colleges & Universities Represented</div>
           </div>
 
-          <div class="stat-card">
-            <div class="stat-icon-wrap icon-green">
-              <i class="fa-solid fa-award"></i>
+          <div class="col-6 col-md-3">
+            <div class="stat-card h-100">
+              <div class="stat-icon-wrap icon-green">
+                <i class="fa-solid fa-award"></i>
+              </div>
+              <div class="stat-number" data-target="120000">₹1.2L+</div>
+              <div class="stat-desc">Total Cash Prize Pool</div>
             </div>
-            <div class="stat-number" data-target="120000">₹1.2L+</div>
-            <div class="stat-desc">Total Cash Prize Pool</div>
           </div>
         </div>
 
         <!-- Highlights Ticker Cards -->
-        <div class="features-preview-grid">
-          <div class="feature-item-card border-google-blue">
-            <div class="f-icon bg-blue-light"><i class="fa-solid fa-bolt text-google-blue"></i></div>
-            <h4>24-Hour Non-Stop Hack</h4>
-            <p>Build visionary solutions under official themes with high-speed internet, mentorship, and cloud credits.</p>
+        <div class="row g-3 features-preview-grid justify-content-center">
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="feature-item-card border-google-blue h-100">
+              <div class="f-icon bg-blue-light"><i class="fa-solid fa-bolt text-google-blue"></i></div>
+              <h4>24-Hour Non-Stop Hack</h4>
+              <p>Build visionary solutions under official themes with high-speed internet, mentorship, and cloud credits.</p>
+            </div>
           </div>
-          <div class="feature-item-card border-google-red">
-            <div class="f-icon bg-red-light"><i class="fa-solid fa-chalkboard-user text-google-red"></i></div>
-            <h4>Industry Expert Mentorship</h4>
-            <p>Google Developer Experts, top alumni, and tech architects available 24/7 during the hack.</p>
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="feature-item-card border-google-red h-100">
+              <div class="f-icon bg-red-light"><i class="fa-solid fa-chalkboard-user text-google-red"></i></div>
+              <h4>Industry Expert Mentorship</h4>
+              <p>Google Developer Experts, top alumni, and tech architects available 24/7 during the hack.</p>
+            </div>
           </div>
-          <div class="feature-item-card border-google-yellow">
-            <div class="f-icon bg-yellow-light"><i class="fa-solid fa-microchip text-google-yellow"></i></div>
-            <h4>Cutting-Edge Tech Tracks</h4>
-            <p>Develop AI, Generative AI, Sustainable Tech, AgriTech, and CleanTech prototypes.</p>
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="feature-item-card border-google-yellow h-100">
+              <div class="f-icon bg-yellow-light"><i class="fa-solid fa-microchip text-google-yellow"></i></div>
+              <h4>Cutting-Edge Tech Tracks</h4>
+              <p>Develop AI, Generative AI, Sustainable Tech, AgriTech, and CleanTech prototypes.</p>
+            </div>
           </div>
-          <div class="feature-item-card border-google-green">
-            <div class="f-icon bg-green-light"><i class="fa-solid fa-certificate text-google-green"></i></div>
-            <h4>Official Certifications & Swags</h4>
-            <p>Authorized GDG certificates, exclusive Google Developer swag kits, and incubation opportunities.</p>
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="feature-item-card border-google-green h-100">
+              <div class="f-icon bg-green-light"><i class="fa-solid fa-certificate text-google-green"></i></div>
+              <h4>Official Certifications & Swags</h4>
+              <p>Authorized GDG certificates, exclusive Google Developer swag kits, and incubation opportunities.</p>
+            </div>
           </div>
         </div>
 
@@ -518,100 +545,106 @@
         </div>
 
         <!-- Themes Cards Grid -->
-        <div class="themes-grid" id="themesGrid">
+        <div class="row g-4 themes-grid justify-content-center" id="themesGrid">
           
           <!-- Theme 1: AI & Intelligent Systems -->
-          <div class="track-card border-blue" data-category="ai">
-            <div class="track-card-header">
-              <div class="track-icon icon-blue">
-                <i class="fa-solid fa-brain"></i>
+          <div class="col-12 col-lg-4" data-category="ai">
+            <div class="track-card border-blue h-100">
+              <div class="track-card-header">
+                <div class="track-icon icon-blue">
+                  <i class="fa-solid fa-brain"></i>
+                </div>
+                <span class="track-badge badge-blue">THEME 01</span>
               </div>
-              <span class="track-badge badge-blue">THEME 01</span>
-            </div>
-            <h3 class="track-title">AI & Intelligent Systems</h3>
-            <div style="margin-bottom: 12px;">
-              <span class="badge-pill bg-google-blue-subtle" style="font-size: 0.78rem;">
-                <i class="fa-solid fa-earth-americas"></i> UN SDGs: 3, 4, 8, 9
-              </span>
-            </div>
-            <p class="track-desc">
-              <strong>Focus Areas:</strong> Generative AI &bull; AI Agents &bull; Machine Learning &bull; Computer Vision &bull; NLP &bull; Automation
-            </p>
-            <div class="track-tags">
-              <span class="tag">Generative AI</span>
-              <span class="tag">AI Agents</span>
-              <span class="tag">Machine Learning</span>
-              <span class="tag">Computer Vision</span>
-              <span class="tag">NLP</span>
-              <span class="tag">Automation</span>
-            </div>
-            <div class="track-card-footer">
-              <a href="#register" class="btn btn-track btn-blue" onclick="selectThemeInForm('AI & Intelligent Systems')">
-                <i class="fa-solid fa-arrow-right"></i> Choose Theme & Register
-              </a>
+              <h3 class="track-title">AI & Intelligent Systems</h3>
+              <div style="margin-bottom: 12px;">
+                <span class="badge-pill bg-google-blue-subtle" style="font-size: 0.78rem;">
+                  <i class="fa-solid fa-earth-americas"></i> UN SDGs: 3, 4, 8, 9
+                </span>
+              </div>
+              <p class="track-desc">
+                <strong>Focus Areas:</strong> Generative AI &bull; AI Agents &bull; Machine Learning &bull; Computer Vision &bull; NLP &bull; Automation
+              </p>
+              <div class="track-tags">
+                <span class="tag">Generative AI</span>
+                <span class="tag">AI Agents</span>
+                <span class="tag">Machine Learning</span>
+                <span class="tag">Computer Vision</span>
+                <span class="tag">NLP</span>
+                <span class="tag">Automation</span>
+              </div>
+              <div class="track-card-footer">
+                <a href="#register" class="btn btn-track btn-blue" onclick="selectThemeInForm('AI & Intelligent Systems')">
+                  <i class="fa-solid fa-arrow-right"></i> Choose Theme & Register
+                </a>
+              </div>
             </div>
           </div>
 
           <!-- Theme 2: Connected & Autonomous Technologies -->
-          <div class="track-card border-green" data-category="autonomous">
-            <div class="track-card-header">
-              <div class="track-icon icon-green">
-                <i class="fa-solid fa-robot"></i>
+          <div class="col-12 col-lg-4" data-category="autonomous">
+            <div class="track-card border-green h-100">
+              <div class="track-card-header">
+                <div class="track-icon icon-green">
+                  <i class="fa-solid fa-robot"></i>
+                </div>
+                <span class="track-badge badge-green">THEME 02</span>
               </div>
-              <span class="track-badge badge-green">THEME 02</span>
-            </div>
-            <h3 class="track-title">Connected & Autonomous Technologies</h3>
-            <div style="margin-bottom: 12px;">
-              <span class="badge-pill bg-google-green-subtle" style="font-size: 0.78rem;">
-                <i class="fa-solid fa-earth-americas"></i> UN SDGs: 7, 9, 11
-              </span>
-            </div>
-            <p class="track-desc">
-              <strong>Focus Areas:</strong> IoT &bull; Edge AI &bull; Robotics &bull; Embedded Systems &bull; Drones &bull; Smart Devices
-            </p>
-            <div class="track-tags">
-              <span class="tag">IoT</span>
-              <span class="tag">Edge AI</span>
-              <span class="tag">Robotics</span>
-              <span class="tag">Embedded Systems</span>
-              <span class="tag">Drones</span>
-              <span class="tag">Smart Devices</span>
-            </div>
-            <div class="track-card-footer">
-              <a href="#register" class="btn btn-track btn-green" onclick="selectThemeInForm('Connected & Autonomous Technologies')">
-                <i class="fa-solid fa-arrow-right"></i> Choose Theme & Register
-              </a>
+              <h3 class="track-title">Connected & Autonomous Technologies</h3>
+              <div style="margin-bottom: 12px;">
+                <span class="badge-pill bg-google-green-subtle" style="font-size: 0.78rem;">
+                  <i class="fa-solid fa-earth-americas"></i> UN SDGs: 7, 9, 11
+                </span>
+              </div>
+              <p class="track-desc">
+                <strong>Focus Areas:</strong> IoT &bull; Edge AI &bull; Robotics &bull; Embedded Systems &bull; Drones &bull; Smart Devices
+              </p>
+              <div class="track-tags">
+                <span class="tag">IoT</span>
+                <span class="tag">Edge AI</span>
+                <span class="tag">Robotics</span>
+                <span class="tag">Embedded Systems</span>
+                <span class="tag">Drones</span>
+                <span class="tag">Smart Devices</span>
+              </div>
+              <div class="track-card-footer">
+                <a href="#register" class="btn btn-track btn-green" onclick="selectThemeInForm('Connected & Autonomous Technologies')">
+                  <i class="fa-solid fa-arrow-right"></i> Choose Theme & Register
+                </a>
+              </div>
             </div>
           </div>
 
           <!-- Theme 3: Secure & Sustainable Future -->
-          <div class="track-card border-yellow" data-category="secure">
-            <div class="track-card-header">
-              <div class="track-icon icon-yellow">
-                <i class="fa-solid fa-shield-halved"></i>
+          <div class="col-12 col-lg-4" data-category="secure">
+            <div class="track-card border-yellow h-100">
+              <div class="track-card-header">
+                <div class="track-icon icon-yellow">
+                  <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <span class="track-badge badge-yellow">THEME 03</span>
               </div>
-              <span class="track-badge badge-yellow">THEME 03</span>
-            </div>
-            <h3 class="track-title">Secure & Sustainable Future</h3>
-            <div style="margin-bottom: 12px;">
-              <span class="badge-pill bg-google-yellow-subtle" style="font-size: 0.78rem;">
-                <i class="fa-solid fa-earth-americas"></i> UN SDGs: 3, 7, 13, 16
-              </span>
-            </div>
-            <p class="track-desc">
-              <strong>Focus Areas:</strong> Cybersecurity &bull; Privacy &bull; HealthTech &bull; ClimateTech &bull; Smart Energy
-            </p>
-            <div class="track-tags">
-              <span class="tag">Cybersecurity</span>
-              <span class="tag">Privacy</span>
-              <span class="tag">HealthTech</span>
-              <span class="tag">ClimateTech</span>
-              <span class="tag">Smart Energy</span>
-            </div>
-            <div class="track-card-footer">
-              <a href="#register" class="btn btn-track btn-yellow" onclick="selectThemeInForm('Secure & Sustainable Future')">
-                <i class="fa-solid fa-arrow-right"></i> Choose Theme & Register
-              </a>
+              <h3 class="track-title">Secure & Sustainable Future</h3>
+              <div style="margin-bottom: 12px;">
+                <span class="badge-pill bg-google-yellow-subtle" style="font-size: 0.78rem;">
+                  <i class="fa-solid fa-earth-americas"></i> UN SDGs: 3, 7, 13, 16
+                </span>
+              </div>
+              <p class="track-desc">
+                <strong>Focus Areas:</strong> Cybersecurity &bull; Privacy &bull; HealthTech &bull; ClimateTech &bull; Smart Energy
+              </p>
+              <div class="track-tags">
+                <span class="tag">Cybersecurity</span>
+                <span class="tag">Privacy</span>
+                <span class="tag">HealthTech</span>
+                <span class="tag">ClimateTech</span>
+                <span class="tag">Smart Energy</span>
+              </div>
+              <div class="track-card-footer">
+                <a href="#register" class="btn btn-track btn-yellow" onclick="selectThemeInForm('Secure & Sustainable Future')">
+                  <i class="fa-solid fa-arrow-right"></i> Choose Theme & Register
+                </a>
+              </div>
             </div>
           </div>
 
@@ -822,44 +855,52 @@
               </div>
             </div>
 
-            <div class="overall-perks-grid">
-              <div class="perk-pillar-card">
-                <div class="perk-icon-wrap" style="background: rgba(251, 188, 5, 0.15); color: #d97706;">
-                  <i class="fa-solid fa-trophy"></i>
-                </div>
-                <div>
-                  <h4>Grand Cash Awards & Trophies</h4>
-                  <p>Substantial cash rewards alongside prestigious ARENACORE '26 winner trophies and certificates of merit.</p>
-                </div>
-              </div>
-
-              <div class="perk-pillar-card">
-                <div class="perk-icon-wrap" style="background: rgba(66, 133, 244, 0.15); color: #2563eb;">
-                  <i class="fa-solid fa-rocket"></i>
-                </div>
-                <div>
-                  <h4>Incubation & Startup Support</h4>
-                  <p>Direct incubation pipelines at PSNA institutional centers and venture advisory for high-impact MVPs.</p>
+            <div class="row g-4 overall-perks-grid justify-content-center">
+              <div class="col-12 col-md-6">
+                <div class="perk-pillar-card h-100">
+                  <div class="perk-icon-wrap" style="background: rgba(251, 188, 5, 0.15); color: #d97706;">
+                    <i class="fa-solid fa-trophy"></i>
+                  </div>
+                  <div>
+                    <h4>Grand Cash Awards & Trophies</h4>
+                    <p>Substantial cash rewards alongside prestigious ARENACORE '26 winner trophies and certificates of merit.</p>
+                  </div>
                 </div>
               </div>
 
-              <div class="perk-pillar-card">
-                <div class="perk-icon-wrap" style="background: rgba(52, 168, 83, 0.15); color: #16a34a;">
-                  <i class="fa-solid fa-box-open"></i>
-                </div>
-                <div>
-                  <h4>Official GDG & ACM Swag Kits</h4>
-                  <p>Exclusive branded backpacks, tech swag bundles, premium stickers, and developer gear for all finalists.</p>
+              <div class="col-12 col-md-6">
+                <div class="perk-pillar-card h-100">
+                  <div class="perk-icon-wrap" style="background: rgba(66, 133, 244, 0.15); color: #2563eb;">
+                    <i class="fa-solid fa-rocket"></i>
+                  </div>
+                  <div>
+                    <h4>Incubation & Startup Support</h4>
+                    <p>Direct incubation pipelines at PSNA institutional centers and venture advisory for high-impact MVPs.</p>
+                  </div>
                 </div>
               </div>
 
-              <div class="perk-pillar-card">
-                <div class="perk-icon-wrap" style="background: rgba(234, 67, 53, 0.15); color: #dc2626;">
-                  <i class="fa-solid fa-certificate"></i>
+              <div class="col-12 col-md-6">
+                <div class="perk-pillar-card h-100">
+                  <div class="perk-icon-wrap" style="background: rgba(52, 168, 83, 0.15); color: #16a34a;">
+                    <i class="fa-solid fa-box-open"></i>
+                  </div>
+                  <div>
+                    <h4>Official GDG & ACM Swag Kits</h4>
+                    <p>Exclusive branded backpacks, tech swag bundles, premium stickers, and developer gear for all finalists.</p>
+                  </div>
                 </div>
-                <div>
-                  <h4>Official Certification & Credits</h4>
-                  <p>Verified Certificates of Merit for podium rankers and Participation Certificates for all attendees.</p>
+              </div>
+
+              <div class="col-12 col-md-6">
+                <div class="perk-pillar-card h-100">
+                  <div class="perk-icon-wrap" style="background: rgba(234, 67, 53, 0.15); color: #dc2626;">
+                    <i class="fa-solid fa-certificate"></i>
+                  </div>
+                  <div>
+                    <h4>Official Certification & Credits</h4>
+                    <p>Verified Certificates of Merit for podium rankers and Participation Certificates for all attendees.</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -878,41 +919,49 @@
             </p>
           </div>
 
-          <div class="starter-kits-grid">
-            <div class="starter-kit-card border-google-blue">
-              <div class="kit-icon icon-blue"><i class="fa-solid fa-file-powerpoint"></i></div>
-              <h4>Official Pitch Deck Template</h4>
-              <p>Structured 10-slide Google Slides template tailored to the 100-point judging criteria: Concept & Need, Architecture, Demo, and SDG Impact.</p>
-              <a href="https://docs.google.com/presentation/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Google Slides
-              </a>
+          <div class="row g-4 starter-kits-grid justify-content-center">
+            <div class="col-12 col-md-6 col-lg-3">
+              <div class="starter-kit-card border-google-blue h-100">
+                <div class="kit-icon icon-blue"><i class="fa-solid fa-file-powerpoint"></i></div>
+                <h4>Official Pitch Deck Template</h4>
+                <p>Structured 10-slide Google Slides template tailored to the 100-point judging criteria: Concept & Need, Architecture, Demo, and SDG Impact.</p>
+                <a href="https://docs.google.com/presentation/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline mt-auto">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Google Slides
+                </a>
+              </div>
             </div>
 
-            <div class="starter-kit-card border-google-red">
-              <div class="kit-icon icon-red"><i class="fa-brands fa-github"></i></div>
-              <h4>Fullstack Web & AI Repo Boilerplate</h4>
-              <p>Next.js 14, Tailwind CSS, Google Gemini API client, and fast REST endpoint scaffolding ready to clone.</p>
-              <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
-                <i class="fa-brands fa-github"></i> Clone Repo Template
-              </a>
+            <div class="col-12 col-md-6 col-lg-3">
+              <div class="starter-kit-card border-google-red h-100">
+                <div class="kit-icon icon-red"><i class="fa-brands fa-github"></i></div>
+                <h4>Fullstack Web & AI Repo Boilerplate</h4>
+                <p>Next.js 14, Tailwind CSS, Google Gemini API client, and fast REST endpoint scaffolding ready to clone.</p>
+                <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline mt-auto">
+                  <i class="fa-brands fa-github"></i> Clone Repo Template
+                </a>
+              </div>
             </div>
 
-            <div class="starter-kit-card border-google-green">
-              <div class="kit-icon icon-green"><i class="fa-solid fa-mobile-screen"></i></div>
-              <h4>Flutter Mobile App Starter</h4>
-              <p>Cross-platform mobile template pre-wired with Firebase Auth, Cloud Firestore, and camera vision pipeline.</p>
-              <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
-                <i class="fa-brands fa-github"></i> View Flutter Starter
-              </a>
+            <div class="col-12 col-md-6 col-lg-3">
+              <div class="starter-kit-card border-google-green h-100">
+                <div class="kit-icon icon-green"><i class="fa-solid fa-mobile-screen"></i></div>
+                <h4>Flutter Mobile App Starter</h4>
+                <p>Cross-platform mobile template pre-wired with Firebase Auth, Cloud Firestore, and camera vision pipeline.</p>
+                <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline mt-auto">
+                  <i class="fa-brands fa-github"></i> View Flutter Starter
+                </a>
+              </div>
             </div>
 
-            <div class="starter-kit-card border-google-yellow">
-              <div class="kit-icon icon-yellow"><i class="fa-solid fa-microchip"></i></div>
-              <h4>IoT & ESP32 Firmware Template</h4>
-              <p>Arduino C++ / MicroPython codebase with Wi-Fi reconnection, MQTT telemetry publisher, and sensor drivers.</p>
-              <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
-                <i class="fa-brands fa-github"></i> Download Firmware
-              </a>
+            <div class="col-12 col-md-6 col-lg-3">
+              <div class="starter-kit-card border-google-yellow h-100">
+                <div class="kit-icon icon-yellow"><i class="fa-solid fa-microchip"></i></div>
+                <h4>IoT & ESP32 Firmware Template</h4>
+                <p>Arduino C++ / MicroPython codebase with Wi-Fi reconnection, MQTT telemetry publisher, and sensor drivers.</p>
+                <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline mt-auto">
+                  <i class="fa-brands fa-github"></i> Download Firmware
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -2782,5 +2831,8 @@
   <!-- ARENACORE '26 Offline FAQ Chatbot Widget (ARENA-Bot) -->
   <script src="faq-bot/faq-data.js" defer></script>
   <script src="faq-bot/arenacore-faqbot.js" defer></script>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmxc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
