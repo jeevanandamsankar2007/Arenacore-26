@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="../faq-bot/faq-data.js"></script>
+<script src="../faq-bot/arenacore-faqbot.js"></script>
+</head>
+<body>
+  <h1>Accessibility & Keyboard Flow Verification Test</h1>
+  <div id="status">Testing...</div>
+  <ul id="checklist"></ul>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      setTimeout(() => {
+        const root = document.getElementById("ac26faq-root");
+        const shadow = root.shadowRoot;
+        const bubble = shadow.querySelector(".ac26faq-bubble-btn");
+        const win = shadow.querySelector(".ac26faq-window");
+        const msgArea = shadow.querySelector(".ac26faq-messages");
+        const input = shadow.querySelector(".ac26faq-input-field");
+
+        const checks = [];
+
+        // Check 1: Bubble ARIA
+        checks.push({
+          name: "Bubble has aria-label",
+          pass: bubble.getAttribute("aria-label") === "Open ARENACORE '26 FAQ assistant"
+        });
+        checks.push({
+          name: "Bubble has aria-expanded='false' initially",
+          pass: bubble.getAttribute("aria-expanded") === "false"
+        });
+
+        // Check 2: Window ARIA
+        checks.push({
+          name: "Window has role='dialog'",
+          pass: win.getAttribute("role") === "dialog"
+        });
+        checks.push({
+          name: "Messages area has aria-live='polite'",
+          pass: msgArea.getAttribute("aria-live") === "polite"
+        });
+
+        // Check 3: Open state ARIA
+        window.ARENACORE_FAQBOT.open();
+        checks.push({
+          name: "Bubble aria-expanded='true' after open()",
+          pass: bubble.getAttribute("aria-expanded") === "true"
+        });
+
+        // Check 4: Close state
+        window.ARENACORE_FAQBOT.close();
+        checks.push({
+          name: "Bubble aria-expanded='false' after close()",
+          pass: bubble.getAttribute("aria-expanded") === "false"
+        });
+
+        const list = document.getElementById("checklist");
+        let allPass = true;
+        checks.forEach(c => {
+          if (!c.pass) allPass = false;
+          const li = document.createElement("li");
+          li.textContent = `${c.name}: ${c.pass ? "PASS" : "FAIL"}`;
+          li.style.color = c.pass ? "green" : "red";
+          list.appendChild(li);
+        });
+
+        document.getElementById("status").textContent = allPass ? "PASSED: All accessibility checks verified" : "FAILED: Some checks failed";
+      }, 400);
+    });
+  </script>
+</body>
+</html>

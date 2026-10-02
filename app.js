@@ -10,9 +10,9 @@
 
 const HACKATHON_CONFIG = {
   eventName: "ARENACORE '26",
-  targetDate: new Date("2026-10-28T09:00:00+05:30").getTime(),
-  deadlineDate: new Date("2026-10-21T23:59:59+05:30").getTime(),
-  feePerMember: 150,
+  targetDate: new Date("2026-10-27T08:30:00+05:30").getTime(),
+  deadlineDate: new Date("2026-10-12T23:59:59+05:30").getTime(),
+  feePerMember: 500,
   requiredMembers: 4,
   maxMembers: 4,
 };
@@ -630,25 +630,132 @@ function calculateFee() {
   const totalAmount = memberCount * HACKATHON_CONFIG.feePerMember;
   const feeEl = document.getElementById("totalFeeAmount");
   if (feeEl) {
-    feeEl.textContent = `₹${totalAmount} INR (${memberCount} x ₹150)`;
+    feeEl.textContent = `₹${totalAmount} INR (${memberCount} x ₹500)`;
   }
 }
 
-function updateLiveBadge() {
-  const teamInput = document.getElementById("teamNameInput");
-  const leaderInput = document.getElementById("leaderNameInput");
-  const collegeInput = document.getElementById("collegeNameInput");
-  const trackSelect = document.getElementById("trackSelect");
+// =============================================================================
+// 10. PRE-DEADLINE REGISTRATION HUB & SHORTLISTED TEAM PASS GENERATOR
+// =============================================================================
+
+function setRegistrationMode(mode) {
+  const preView = document.getElementById("regPreDeadlineView");
+  const postView = document.getElementById("regPostDeadlineView");
+  const btnPre = document.getElementById("modeBtnPre");
+  const btnPost = document.getElementById("modeBtnPost");
+
+  if (mode === "post") {
+    if (preView) preView.style.display = "none";
+    if (postView) postView.style.display = "grid";
+    if (btnPre) {
+      btnPre.classList.remove("active");
+      btnPre.setAttribute("aria-selected", "false");
+    }
+    if (btnPost) {
+      btnPost.classList.add("active");
+      btnPost.setAttribute("aria-selected", "true");
+    }
+    updateLiveShortlistedPass();
+    if (typeof init3DBadgeTilt === "function") init3DBadgeTilt();
+  } else {
+    if (preView) preView.style.display = "block";
+    if (postView) postView.style.display = "none";
+    if (btnPre) {
+      btnPre.classList.add("active");
+      btnPre.setAttribute("aria-selected", "true");
+    }
+    if (btnPost) {
+      btnPost.classList.remove("active");
+      btnPost.setAttribute("aria-selected", "false");
+    }
+  }
+}
+window.setRegistrationMode = setRegistrationMode;
+
+function copyRegistrationLink() {
+  const link = "https://forms.gle/ir6Dbnn6GTzWCX6v7";
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(link).then(() => {
+      showToast("📋 Official Google Form registration link copied!");
+    }).catch(() => {
+      window.prompt("Copy Registration Link:", link);
+    });
+  } else {
+    window.prompt("Copy Registration Link:", link);
+  }
+}
+window.copyRegistrationLink = copyRegistrationLink;
+
+function generateNewPassId() {
+  const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+  let randomCode = "";
+  for (let i = 0; i < 4; i++) {
+    randomCode += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  const newId = `AC26-PSNA-${randomCode}`;
+  const passIdInput = document.getElementById("passCustomId");
+  if (passIdInput) passIdInput.value = newId;
+
+  updateLiveShortlistedPass();
+  showToast(`✨ Generated Pass ID: ${newId}`);
+}
+window.generateNewPassId = generateNewPassId;
+
+function updateLiveShortlistedPass() {
+  const nameInput = document.getElementById("passParticipantName");
+  const roleInput = document.getElementById("passParticipantRole");
+  const teamInput = document.getElementById("passTeamName");
+  const collegeInput = document.getElementById("passCollegeName");
+  const trackInput = document.getElementById("passThemeTrack");
+  const passIdInput = document.getElementById("passCustomId");
+
+  const nameVal = nameInput?.value.trim() || "Alex Johnson";
+  const roleVal = roleInput?.value.trim() || "Team Leader";
+  const teamVal = teamInput?.value.trim() || "ByteBusters";
+  const collegeVal = collegeInput?.value.trim() || "PSNA College of Eng & Tech";
+  const trackVal = trackInput?.value.trim() || "AI & Intelligent Systems";
+  const passIdVal = passIdInput?.value.trim() || "AC26-PSNA-8429";
 
   const bName = document.getElementById("badgePreviewName");
-  const bTeam = document.getElementById("badgePreviewTeam");
-  const bCollege = document.getElementById("badgePreviewCollege");
-  const bTrack = document.getElementById("badgePreviewTrack");
+  if (bName) bName.textContent = nameVal;
 
-  if (bName) bName.textContent = (leaderInput && leaderInput.value.trim()) ? leaderInput.value.trim() : "Alex Johnson";
-  if (bTeam) bTeam.innerHTML = `Team: <span>${(teamInput && teamInput.value.trim()) ? teamInput.value.trim() : "ByteBusters"}</span>`;
-  if (bCollege) bCollege.textContent = (collegeInput && collegeInput.value.trim()) ? collegeInput.value.trim() : "PSNA College of Eng & Tech";
-  if (bTrack) bTrack.textContent = (trackSelect && trackSelect.value) ? trackSelect.value : "Quality Education";
+  const bRole = document.getElementById("badgePreviewRole");
+  if (bRole) bRole.textContent = roleVal;
+
+  const bTeam = document.getElementById("badgePreviewTeam");
+  if (bTeam) {
+    bTeam.innerHTML = `Team: <span>${escapeSafeText(teamVal)}</span>`;
+  }
+
+  const bCollege = document.getElementById("badgePreviewCollege");
+  if (bCollege) bCollege.textContent = collegeVal;
+
+  const bTrack = document.getElementById("badgePreviewTrack");
+  if (bTrack) bTrack.textContent = trackVal;
+
+  const bId = document.getElementById("badgePreviewId");
+  if (bId) bId.textContent = passIdVal;
+
+  const barcodeNum = document.getElementById("badgeBarcodeNum");
+  if (barcodeNum) barcodeNum.textContent = `${passIdVal}-SHORTLISTED`;
+
+  const deskAllocation = document.getElementById("badgeDeskAllocation");
+  if (deskAllocation) {
+    const cluster = passIdVal.slice(-2) || "14";
+    deskAllocation.textContent = `IT Block • Lab Cluster B, Terminal #${cluster}`;
+  }
+}
+window.updateLiveShortlistedPass = updateLiveShortlistedPass;
+window.updateLiveBadge = updateLiveShortlistedPass;
+
+function escapeSafeText(str) {
+  return String(str).replace(/[&<>"']/g, m => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#039;"
+  }[m]));
 }
 
 function randomizeBadgeSeed() {
@@ -656,147 +763,303 @@ function randomizeBadgeSeed() {
   const avatar = document.getElementById("passAvatarImg");
   if (avatar) {
     avatar.src = `https://api.dicebear.com/7.x/bottts/svg?seed=${seed}`;
-    showToast("Avatar Shuffled!");
+    showToast("🎲 Avatar Shuffled!");
   }
 }
+window.randomizeBadgeSeed = randomizeBadgeSeed;
 
 function handlePassPhotoUpload(event) {
-  const file = event.target.files[0];
+  const file = event.target?.files?.[0];
   if (!file) return;
 
   const reader = new FileReader();
   reader.onload = e => {
     const avatar = document.getElementById("passAvatarImg");
-    if (avatar) {
+    if (avatar && e.target?.result) {
       avatar.src = e.target.result;
-      showToast("Custom photo applied to badge!");
+      showToast("📸 Custom photo applied to pass!");
     }
   };
   reader.readAsDataURL(file);
 }
+window.handlePassPhotoUpload = handlePassPhotoUpload;
 
 function handleRegistrationSubmit(event) {
-  event.preventDefault();
-  const teamName = document.getElementById("teamNameInput")?.value || "Your Team";
-  const leaderName = document.getElementById("leaderNameInput")?.value || "Leader";
-  const total = memberCount * HACKATHON_CONFIG.feePerMember;
-
-  showToast(`🎉 Registration submitted for ${teamName}! Confirmation email sent.`);
-
-  // Show status popup with instant mock confirmation
-  openStatusModalWithData({
-    name: teamName,
-    leader: leaderName,
-    status: "Application Submitted Successfully (Pending Round 1 Review)",
-    track: document.getElementById("trackSelect")?.value || "General",
-    passId: `GDG-GB25-${Math.floor(1000 + Math.random() * 9000)}`,
-    badgeType: "pending"
-  });
+  if (event) event.preventDefault();
+  handleRegisterNowClick(event);
 }
+window.handleRegistrationSubmit = handleRegistrationSubmit;
 
 function scrollToPassGenerator() {
   const section = document.getElementById("register");
   if (section) section.scrollIntoView({ behavior: "smooth" });
 }
+window.scrollToPassGenerator = scrollToPassGenerator;
 
-// Download Virtual Pass as Canvas Rendered PNG
+// Download High-Resolution Virtual Pass with Dual Club Branding & Feature Clearance
 function downloadVirtualPass() {
-  const passEl = document.getElementById("virtualPassCard");
-  if (!passEl) return;
+  const name = document.getElementById("passParticipantName")?.value.trim() || document.getElementById("badgePreviewName")?.textContent.trim() || "Alex Johnson";
+  const role = document.getElementById("passParticipantRole")?.value.trim() || document.getElementById("badgePreviewRole")?.textContent.trim() || "Team Leader";
+  const team = document.getElementById("passTeamName")?.value.trim() || "ByteBusters";
+  const college = document.getElementById("passCollegeName")?.value.trim() || "PSNA College of Eng & Tech";
+  const track = document.getElementById("passThemeTrack")?.value.trim() || "AI & Intelligent Systems";
+  const passId = document.getElementById("passCustomId")?.value.trim() || document.getElementById("badgePreviewId")?.textContent.trim() || "AC26-PSNA-8429";
 
   const canvas = document.createElement("canvas");
-  canvas.width = 640;
-  canvas.height = 960;
+  canvas.width = 680;
+  canvas.height = 1020;
   const ctx = canvas.getContext("2d");
+  if (!ctx) {
+    showToast("⚠️ Could not generate pass image.");
+    return;
+  }
 
-  // Background
-  ctx.fillStyle = "#ffffff";
-  ctx.roundRect(0, 0, 640, 960, 32);
-  ctx.fill();
+  const w = canvas.width;
+  const h = canvas.height;
+  const radius = 28;
 
-  // Header band
-  ctx.fillStyle = "#f8fafd";
-  ctx.fillRect(0, 0, 640, 150);
+  // Clip rounded card boundaries
+  ctx.save();
+  ctx.beginPath();
+  ctx.moveTo(radius, 0);
+  ctx.lineTo(w - radius, 0);
+  ctx.quadraticCurveTo(w, 0, w, radius);
+  ctx.lineTo(w, h - radius);
+  ctx.quadraticCurveTo(w, h, w - radius, h);
+  ctx.lineTo(radius, h);
+  ctx.quadraticCurveTo(0, h, 0, h - radius);
+  ctx.lineTo(0, radius);
+  ctx.quadraticCurveTo(0, 0, radius, 0);
+  ctx.closePath();
+  ctx.clip();
 
-  // Google 4-color stripe
-  ctx.fillStyle = "#4285F4"; ctx.fillRect(0, 150, 160, 10);
-  ctx.fillStyle = "#EA4335"; ctx.fillRect(160, 150, 160, 10);
-  ctx.fillStyle = "#FBBC05"; ctx.fillRect(320, 150, 160, 10);
-  ctx.fillStyle = "#34A853"; ctx.fillRect(480, 150, 160, 10);
+  // Dark tech gradient background
+  const bgGrad = ctx.createLinearGradient(0, 0, w, h);
+  bgGrad.addColorStop(0, "#0b0f19");
+  bgGrad.addColorStop(0.5, "#111827");
+  bgGrad.addColorStop(1, "#0a0d14");
+  ctx.fillStyle = bgGrad;
+  ctx.fillRect(0, 0, w, h);
 
-  // Pass Title
+  // Holographic accent light
+  const lightGrad = ctx.createRadialGradient(w / 2, 0, 10, w / 2, 100, 340);
+  lightGrad.addColorStop(0, "rgba(66, 133, 244, 0.35)");
+  lightGrad.addColorStop(1, "transparent");
+  ctx.fillStyle = lightGrad;
+  ctx.fillRect(0, 0, w, 400);
+
+  // Lanyard hole slot
   ctx.fillStyle = "#1e293b";
-  ctx.font = "bold 34px Outfit, sans-serif";
-  ctx.fillText("GDG On Campus PSNACET", 40, 70);
+  ctx.beginPath();
+  if (ctx.roundRect) {
+    ctx.roundRect(w / 2 - 38, 16, 76, 12, 6);
+  } else {
+    ctx.rect(w / 2 - 38, 16, 76, 12);
+  }
+  ctx.fill();
+  ctx.strokeStyle = "#334155";
+  ctx.lineWidth = 1.5;
+  ctx.stroke();
 
-  ctx.font = "bold 24px Outfit, sans-serif";
-  ctx.fillStyle = "#4285F4";
-  ctx.fillText("ARENACORE '26 • HACKER PASS", 40, 115);
-
-  // Attendee Info
-  const name = document.getElementById("badgePreviewName")?.textContent || "Alex Johnson";
-  const team = document.getElementById("teamNameInput")?.value || "ByteBusters";
-  const college = document.getElementById("collegeNameInput")?.value || "PSNA CET";
-  const track = document.getElementById("trackSelect")?.value || "Quality Education";
-  const passId = document.getElementById("badgePreviewId")?.textContent || "GDG-GB25-0842";
-
-  ctx.fillStyle = "#0f172a";
-  ctx.font = "bold 44px Outfit, sans-serif";
-  ctx.fillText(name, 40, 260);
-
-  ctx.font = "bold 24px Inter, sans-serif";
-  ctx.fillStyle = "#4285F4";
-  ctx.fillText("TEAM LEADER", 40, 305);
-
-  ctx.fillStyle = "#334155";
-  ctx.font = "28px Inter, sans-serif";
-  ctx.fillText(`Team: ${team}`, 40, 360);
-  ctx.fillText(`Institution: ${college}`, 40, 410);
-
-  // Track & ID box
-  ctx.fillStyle = "#f1f5f9";
-  ctx.fillRect(40, 480, 560, 130);
-
-  ctx.fillStyle = "#64748b";
-  ctx.font = "bold 20px Inter, sans-serif";
-  ctx.fillText("SELECTED TRACK", 60, 525);
-  ctx.fillText("PASS ID", 420, 525);
-
-  ctx.fillStyle = "#1e3a8a";
-  ctx.font = "bold 26px Outfit, sans-serif";
-  ctx.fillText(track, 60, 570);
-
-  ctx.fillStyle = "#0f172a";
-  ctx.font = "bold 26px monospace";
-  ctx.fillText(passId, 420, 570);
-
-  // Date & Venue
-  ctx.fillStyle = "#334155";
-  ctx.font = "24px Inter, sans-serif";
-  ctx.fillText("📅 28 & 29 OCT 2026", 40, 680);
-  ctx.fillText("📍 PSNACET Campus, Dindigul, Tamil Nadu", 40, 725);
-  ctx.fillText("⚡ ARENACORE '26 • 24-Hour Hackathon", 40, 770);
-
-  // Footer bar
-  ctx.fillStyle = "#0f172a";
-  ctx.fillRect(0, 840, 640, 120);
-
+  // Header: Dual Clubs GDG & ACM
   ctx.fillStyle = "#ffffff";
-  ctx.font = "20px Inter, sans-serif";
-  ctx.fillText("Official Verified Participant Pass • Department of IT", 40, 905);
+  ctx.font = "bold 21px Inter, sans-serif";
+  ctx.textAlign = "left";
+  ctx.fillText("GDG On Campus  •  ACM PSNACET", 42, 68);
 
-  // Download Trigger
-  const link = document.createElement("a");
-  link.download = `ARENACORE26_Pass_${team.replace(/\s+/g, "_")}.png`;
-  link.href = canvas.toDataURL("image/png");
-  link.click();
+  ctx.fillStyle = "#94a3b8";
+  ctx.font = "12px Inter, sans-serif";
+  ctx.fillText("ARENACORE '26  |  24-HOUR NATIONAL HACKATHON", 42, 90);
 
-  showToast("✅ Hackathon ID Pass downloaded successfully!");
+  // Shortlisted Status Chip
+  ctx.fillStyle = "rgba(52, 168, 83, 0.22)";
+  ctx.beginPath();
+  if (ctx.roundRect) {
+    ctx.roundRect(w - 188, 52, 146, 28, 14);
+  } else {
+    ctx.rect(w - 188, 52, 146, 28);
+  }
+  ctx.fill();
+  ctx.strokeStyle = "#34a853";
+  ctx.lineWidth = 1.2;
+  ctx.stroke();
+  ctx.fillStyle = "#4ade80";
+  ctx.font = "bold 11px Inter, sans-serif";
+  ctx.textAlign = "center";
+  ctx.fillText("SHORTLISTED PASS", w - 115, 70);
+
+  // 4-Color Google Stripe
+  const stripeY = 112;
+  const stripeH = 4;
+  const segW = (w - 84) / 4;
+  const colors = ["#4285F4", "#EA4335", "#FBBC05", "#34A853"];
+  colors.forEach((c, i) => {
+    ctx.fillStyle = c;
+    ctx.fillRect(42 + i * segW, stripeY, segW, stripeH);
+  });
+
+  // Attendee Info Section
+  ctx.textAlign = "left";
+  ctx.fillStyle = "#ffffff";
+  ctx.font = "bold 30px Inter, sans-serif";
+  ctx.fillText(name, 42, 172);
+
+  ctx.fillStyle = "#60a5fa";
+  ctx.font = "bold 15px Inter, sans-serif";
+  ctx.fillText(role.toUpperCase(), 42, 200);
+
+  ctx.fillStyle = "#e2e8f0";
+  ctx.font = "16px Inter, sans-serif";
+  ctx.fillText(`Team: ${team}`, 42, 232);
+
+  ctx.fillStyle = "#94a3b8";
+  ctx.font = "14px Inter, sans-serif";
+  ctx.fillText(college, 42, 258);
+
+  // Track & Pass ID Container
+  ctx.fillStyle = "rgba(255, 255, 255, 0.04)";
+  ctx.beginPath();
+  if (ctx.roundRect) {
+    ctx.roundRect(42, 285, w - 84, 82, 12);
+  } else {
+    ctx.rect(42, 285, w - 84, 82);
+  }
+  ctx.fill();
+  ctx.strokeStyle = "rgba(255, 255, 255, 0.1)";
+  ctx.stroke();
+
+  ctx.fillStyle = "#94a3b8";
+  ctx.font = "11px Inter, sans-serif";
+  ctx.fillText("SELECTED THEME TRACK", 60, 312);
+  ctx.fillStyle = "#38bdf8";
+  ctx.font = "bold 15px Inter, sans-serif";
+  ctx.fillText(track, 60, 338);
+
+  ctx.fillStyle = "#94a3b8";
+  ctx.font = "11px Inter, sans-serif";
+  ctx.textAlign = "right";
+  ctx.fillText("PASS IDENTIFIER", w - 60, 312);
+  ctx.fillStyle = "#facc15";
+  ctx.font = "bold 17px monospace";
+  ctx.fillText(passId, w - 60, 338);
+
+  // ArenaCore Feature Access Clearance Box
+  ctx.textAlign = "left";
+  ctx.fillStyle = "rgba(66, 133, 244, 0.09)";
+  ctx.beginPath();
+  if (ctx.roundRect) {
+    ctx.roundRect(42, 390, w - 84, 168, 14);
+  } else {
+    ctx.rect(42, 390, w - 84, 168);
+  }
+  ctx.fill();
+  ctx.strokeStyle = "rgba(66, 133, 244, 0.35)";
+  ctx.lineWidth = 1;
+  ctx.stroke();
+
+  ctx.fillStyle = "#60a5fa";
+  ctx.font = "bold 13px Inter, sans-serif";
+  ctx.fillText("✓ ARENACORE ACCESS CLEARANCE & CREDENTIALS", 60, 422);
+
+  const clearanceItems = [
+    "• PSNACET Campus & IT Block 24-Hour Entry",
+    "• Dedicated Hacker Wi-Fi (SSID: PSNA_GDG_HACK_5G)",
+    "• Lab Cluster Workstation & Power Strip Access",
+    "• Full Meals, Midnight Refreshments & Energy Station",
+    "• Industry Mentorship & Stage Jury Evaluation"
+  ];
+  ctx.fillStyle = "#cbd5e1";
+  ctx.font = "13px Inter, sans-serif";
+  clearanceItems.forEach((item, idx) => {
+    ctx.fillText(item, 60, 452 + idx * 23);
+  });
+
+  // Venue & Schedule Box
+  ctx.fillStyle = "rgba(255, 255, 255, 0.03)";
+  ctx.beginPath();
+  if (ctx.roundRect) {
+    ctx.roundRect(42, 580, w - 84, 94, 12);
+  } else {
+    ctx.rect(42, 580, w - 84, 94);
+  }
+  ctx.fill();
+  ctx.strokeStyle = "rgba(255, 255, 255, 0.08)";
+  ctx.stroke();
+
+  ctx.fillStyle = "#f8fafc";
+  ctx.font = "bold 14px Inter, sans-serif";
+  ctx.fillText("📅 DATES: 27 & 28 OCTOBER 2026 (24-Hour Hackathon)", 60, 614);
+  ctx.fillStyle = "#94a3b8";
+  ctx.font = "13px Inter, sans-serif";
+  ctx.fillText("📍 VENUE: IT Block • PSNA College of Engineering & Technology, Dindigul", 60, 644);
+
+  // Emergency & Helpdesk
+  ctx.fillStyle = "rgba(251, 188, 5, 0.08)";
+  ctx.beginPath();
+  if (ctx.roundRect) {
+    ctx.roundRect(42, 695, w - 84, 54, 10);
+  } else {
+    ctx.rect(42, 695, w - 84, 54);
+  }
+  ctx.fill();
+  ctx.strokeStyle = "rgba(251, 188, 5, 0.3)";
+  ctx.stroke();
+
+  ctx.fillStyle = "#fde047";
+  ctx.font = "bold 11px Inter, sans-serif";
+  ctx.fillText("ON-SITE ORGANIZER DESK:", 60, 727);
+  ctx.fillStyle = "#ffffff";
+  ctx.font = "12px Inter, sans-serif";
+  ctx.fillText("+91 86820 67304 / +91 93455 30457 / +91 82486 03031", 230, 727);
+
+  // Footer & Barcode Simulation
+  ctx.textAlign = "center";
+  ctx.fillStyle = "#64748b";
+  ctx.font = "11px Inter, sans-serif";
+  ctx.fillText("Present this official pass along with your College ID card at the check-in desk.", w / 2, 792);
+
+  // Barcode lines
+  const bcY = 818;
+  const bcW = 420;
+  const bcStartX = (w - bcW) / 2;
+  ctx.fillStyle = "#cbd5e1";
+  for (let x = 0; x < bcW; x += 5) {
+    const barWidth = (x % 3 === 0) ? 3 : (x % 4 === 0) ? 1.5 : 2;
+    ctx.fillRect(bcStartX + x, bcY, barWidth, 42);
+  }
+
+  ctx.fillStyle = "#94a3b8";
+  ctx.font = "11px monospace";
+  ctx.fillText(`* ${passId} * ARENACORE26 * GDG x ACM *`, w / 2, 888);
+
+  ctx.fillStyle = "#475569";
+  ctx.font = "10px Inter, sans-serif";
+  ctx.fillText("© 2026 Google Developer Groups On Campus & ACM • PSNACET Dindigul", w / 2, 928);
+
+  ctx.restore();
+
+  // Export to PNG
+  try {
+    const dataUrl = canvas.toDataURL("image/png");
+    const link = document.createElement("a");
+    const cleanName = name.replace(/[^a-zA-Z0-9]/g, "_");
+    link.download = `ArenaCore26-Pass-${cleanName}.png`;
+    link.href = dataUrl;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    showToast("✅ Official ArenaCore '26 Pass downloaded successfully!");
+  } catch (err) {
+    console.error("Pass export failed", err);
+    showToast("⚠️ Could not download pass. Please try again.");
+  }
 }
+window.downloadVirtualPass = downloadVirtualPass;
 
 function printVirtualPass() {
   window.print();
 }
+window.printVirtualPass = printVirtualPass;
 
 // =============================================================================
 // 11. REGISTRATION STATUS LOOKUP MODAL
@@ -886,21 +1149,36 @@ function openStatusModalWithData(data) {
 
 function switchRuleCategory(catName) {
   const tabs = document.querySelectorAll(".rule-tab-btn");
-  const panels = document.querySelectorAll(".rule-panel");
+  const cards = document.querySelectorAll(".guideline-card");
 
   tabs.forEach(tab => {
-    if (tab.getAttribute("onclick").includes(catName)) {
+    if (tab.getAttribute("onclick") && tab.getAttribute("onclick").includes(`'${catName}'`)) {
       tab.classList.add("active");
     } else {
       tab.classList.remove("active");
     }
   });
 
-  panels.forEach(panel => {
-    if (panel.id === `panel-${catName}`) {
-      panel.classList.add("active");
+  cards.forEach(card => {
+    const cardCat = card.getAttribute("data-category");
+    if (catName === "all" || cardCat === catName) {
+      card.style.display = "block";
     } else {
-      panel.classList.remove("active");
+      card.style.display = "none";
+    }
+  });
+}
+
+function filterGuidelines() {
+  const query = document.getElementById("guidelinesSearchInput")?.value.toLowerCase().trim() || "";
+  const cards = document.querySelectorAll(".guideline-card");
+
+  cards.forEach(card => {
+    const text = card.textContent.toLowerCase();
+    if (!query || text.includes(query)) {
+      card.style.display = "block";
+    } else {
+      card.style.display = "none";
     }
   });
 }
@@ -1155,35 +1433,39 @@ function closeShareBadgeModal() {
 window.closeShareBadgeModal = closeShareBadgeModal;
 
 function copyBadgeShareLink() {
-  const team = document.getElementById("teamNameInput")?.value || "MySquad";
+  const team = document.getElementById("passTeamName")?.value || document.getElementById("teamNameInput")?.value || "ArenaCoreSquad";
   const url = `${window.location.origin}${window.location.pathname}#register?team=${encodeURIComponent(team)}`;
-  navigator.clipboard.writeText(url).then(() => {
-    showToast("📋 Badge verification link copied to clipboard!");
-    closeShareBadgeModal();
-  }).catch(() => {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(url).then(() => {
+      showToast("📋 Badge verification link copied to clipboard!");
+      closeShareBadgeModal();
+    }).catch(() => {
+      showToast("Link: " + url);
+    });
+  } else {
     showToast("Link: " + url);
-  });
+  }
 }
 window.copyBadgeShareLink = copyBadgeShareLink;
 
 function shareOnLinkedIn() {
-  const team = document.getElementById("teamNameInput")?.value || "GenBrainiacs Squad";
-  const text = `Excited to participate in ARENACORE '26 - 24-Hour Hackathon by GDG x ACM PSNACET! My squad: ${team}. Let's build, innovate & impact! #ArenaCore26 #GDGPSNA #ACM`;
+  const team = document.getElementById("passTeamName")?.value || document.getElementById("teamNameInput")?.value || "ArenaCore Squad";
+  const text = `Excited to participate in ARENACORE '26 - 24-Hour Hackathon by GDG On Campus & ACM PSNACET! My squad: ${team}. Let's build, innovate & impact! #ArenaCore26 #GDGPSNA #ACM`;
   const url = encodeURIComponent(window.location.href);
   window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}&summary=${encodeURIComponent(text)}`, "_blank");
 }
 window.shareOnLinkedIn = shareOnLinkedIn;
 
 function shareOnWhatsApp() {
-  const team = document.getElementById("teamNameInput")?.value || "Our Squad";
-  const text = `🎉 We just registered for ARENACORE '26 24-Hour Hackathon at PSNACET! Team: ${team}. Check it out: ${window.location.href}`;
+  const team = document.getElementById("passTeamName")?.value || document.getElementById("teamNameInput")?.value || "Our Squad";
+  const text = `🎉 We are shortlisted for ARENACORE '26 24-Hour Hackathon by GDG & ACM at PSNACET! Team: ${team}. Check it out: ${window.location.href}`;
   window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, "_blank");
 }
 window.shareOnWhatsApp = shareOnWhatsApp;
 
 function shareOnTwitter() {
-  const team = document.getElementById("teamNameInput")?.value || "GenBrainiacs";
-  const text = `Ready for ARENACORE '26 by GDG x ACM PSNACET! 🚀 Check out our squad pass for ${team}:`;
+  const team = document.getElementById("passTeamName")?.value || document.getElementById("teamNameInput")?.value || "ArenaCoreSquad";
+  const text = `Ready for ARENACORE '26 by GDG x ACM PSNACET! 🚀 Check out our shortlisted squad pass for ${team}:`;
   window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(window.location.href)}`, "_blank");
 }
 window.shareOnTwitter = shareOnTwitter;
@@ -1328,7 +1610,7 @@ function executeTerminalCommand(rawCmd) {
     case "schedule":
       responseDiv.innerHTML = `
         <div style="font-family:monospace; font-size:0.85rem;">
-          📅 <strong>DAY 1 (28 OCT 2026):</strong><br>
+          📅 <strong>DAY 1 (27 OCT 2026):</strong><br>
           08:30 AM - Check-in, Kit Distribution & Wi-Fi Setup<br>
           10:00 AM - Grand Inauguration by HOD Dr. A. Vincent Antony Kumar & Coordinators<br>
           11:00 AM - 🚀 24-HOUR HACKATHON COMMENCES<br>
@@ -1336,20 +1618,20 @@ function executeTerminalCommand(rawCmd) {
           08:00 PM - Dinner & Networking Jam<br>
           11:30 PM - Midnight Evaluation Checkpoint<br>
           <br>
-          📅 <strong>DAY 2 (29 OCT 2026):</strong><br>
+          📅 <strong>DAY 2 (28 OCT 2026):</strong><br>
           07:00 AM - Breakfast & Final Deployment Polish<br>
           11:00 AM - 🛑 CODE FREEZE & Final Submissions<br>
           11:30 AM - Grand Jury Stage Presentations & Live Demos<br>
-          03:30 PM - Valedictory Ceremony & Cash Prize Distribution (₹40,000)<br>
+          03:30 PM - Valedictory Ceremony & Cash Prize Distribution (₹1,20,000)<br>
         </div>
       `;
       break;
 
     case "prizes":
       responseDiv.innerHTML = `
-        <div>👑 <strong style="color:var(--g-yellow)">1st Prize:</strong> ₹25,000 Cash + Grand Champion Trophy + Certificates + GDG & ACM Tech Kits</div>
-        <div>🥈 <strong style="color:#94a3b8">2nd Prize:</strong> ₹15,000 Cash + Runner-Up Trophy + Certificates + Swag Packs</div>
-        <div>⚡ <strong style="color:var(--g-blue)">Perks for All:</strong> Official Participation Certificates + Incubation Opportunities + Meals & High-speed Wi-Fi!</div>
+        <div>🏆 <strong style="color:var(--g-yellow)">Total Prize Pool:</strong> ₹1,20,000 Cash Awards + Prestigious Winner Trophies + GDG & ACM Tech Kits</div>
+        <div>🚀 <strong style="color:var(--g-blue)">Incubation & Perks:</strong> Direct entry into institutional startup incubation & cloud credit pipelines</div>
+        <div>⚡ <strong style="color:var(--g-green)">Perks for All:</strong> Official Participation Certificates + Meals & High-speed Wi-Fi!</div>
       `;
       break;
 
@@ -1691,13 +1973,13 @@ function updateRubricScore() {
   let tip = "Ensure your project satisfies the baseline requirements and includes a functional repository.";
 
   if (total >= 90) {
-    tier = "👑 1st Grand Champion Contender (₹25,000)";
+    tier = "👑 Grand Champion Contender";
     tip = "Grand Winner potential! Focus on perfecting your live demonstration timing (within 3 minutes) and show measurable UN SDG metrics.";
   } else if (total >= 80) {
-    tier = "🥈 1st Runner Up Contender (₹15,000)";
+    tier = "🥈 1st Runner Up Contender";
     tip = "Podium standing! To gain that final 5-10 points, strengthen your technical architecture and showcase edge-case handling or offline resiliency.";
   } else if (total >= 70) {
-    tier = "🥉 2nd Runner Up Contender (₹10,000)";
+    tier = "🥉 2nd Runner Up Contender";
     tip = "Strong semi-finalist! Ensure your prototype has zero mock-data dependencies and that all team members speak during jury Q&A.";
   } else if (total >= 55) {
     tier = "Top 30 Finalist Team";
@@ -1801,3 +2083,111 @@ function resetTimelineSimulation() {
   }
 }
 window.resetTimelineSimulation = resetTimelineSimulation;
+
+// =============================================================================
+// 22. OFFICIAL ARENACORE '26 HACKATHON GUIDELINES (18 RULES)
+// =============================================================================
+
+let currentGuidelineCategory = 'all';
+
+function switchRuleCategory(category) {
+  currentGuidelineCategory = category;
+
+  document.querySelectorAll('.guidelines-cat-btn').forEach(btn => {
+    if (btn.getAttribute('data-category') === category) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+
+  applyGuidelinesFilter();
+}
+window.switchRuleCategory = switchRuleCategory;
+
+function filterGuidelines() {
+  const searchInput = document.getElementById('guidelinesSearchInput');
+  const clearBtn = document.getElementById('clearGuidelinesSearch');
+  const query = (searchInput?.value || '').trim();
+
+  if (clearBtn) {
+    clearBtn.style.display = query.length > 0 ? 'block' : 'none';
+  }
+
+  applyGuidelinesFilter();
+}
+window.filterGuidelines = filterGuidelines;
+
+function clearGuidelinesSearch() {
+  const searchInput = document.getElementById('guidelinesSearchInput');
+  const clearBtn = document.getElementById('clearGuidelinesSearch');
+  if (searchInput) searchInput.value = '';
+  if (clearBtn) clearBtn.style.display = 'none';
+  applyGuidelinesFilter();
+}
+window.clearGuidelinesSearch = clearGuidelinesSearch;
+
+function applyGuidelinesFilter() {
+  const query = (document.getElementById('guidelinesSearchInput')?.value || '').toLowerCase().trim();
+  const cards = document.querySelectorAll('.guideline-card');
+  const noResultsEl = document.getElementById('guidelinesNoResults');
+  let visibleCount = 0;
+
+  cards.forEach(card => {
+    const cardCat = card.getAttribute('data-category') || '';
+    const cardText = card.innerText.toLowerCase();
+
+    const matchesCategory = (currentGuidelineCategory === 'all' || cardCat.includes(currentGuidelineCategory));
+    const matchesSearch = !query || cardText.includes(query);
+
+    if (matchesCategory && matchesSearch) {
+      card.style.display = '';
+      visibleCount++;
+    } else {
+      card.style.display = 'none';
+    }
+  });
+
+  if (noResultsEl) {
+    noResultsEl.style.display = visibleCount === 0 ? 'block' : 'none';
+  }
+}
+window.applyGuidelinesFilter = applyGuidelinesFilter;
+
+// ==========================================================================
+// ARENACORE '26 Live Font Style Switcher
+// ==========================================================================
+(function initFontSwitcher() {
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.font-switch-btn');
+    if (!btn) return;
+    const font = btn.dataset.font;
+    if (!font) return;
+
+    // Update active button state
+    document.querySelectorAll('.font-switch-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    // Update brand typography classes
+    const brand = document.querySelector('.arenacore-brand-pro');
+    if (brand) {
+      brand.classList.remove('font-clash', 'font-syne', 'font-cabinet', 'font-unbounded', 'font-orbitron');
+      brand.classList.add(`font-${font}`);
+    }
+
+    try {
+      localStorage.setItem('arenacore_preferred_font', font);
+    } catch (_) {}
+  });
+
+  // Restore saved preference on load if set
+  document.addEventListener('DOMContentLoaded', () => {
+    try {
+      const saved = localStorage.getItem('arenacore_preferred_font');
+      if (saved) {
+        const targetBtn = document.querySelector(`.font-switch-btn[data-font="${saved}"]`);
+        if (targetBtn) targetBtn.click();
+      }
+    } catch (_) {}
+  });
+})();

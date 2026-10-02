@@ -1,0 +1,1299 @@
+/**
+ * ARENACORE '26 - Official FAQ Bot Stylesheet
+ * Department of Information Technology, PSNACET (GDG On Campus x ACM PSNACET)
+ * 
+ * Standalone CSS for the Shadow DOM widget.
+ */
+
+/* =============================================================================
+   1. DESIGN TOKENS & RETHEMING VARIABLES
+   ============================================================================= */
+:host {
+  /* EDIT HERE TO RETHEME */
+  --ac26-bg: var(--bg-body, #0a0d14);
+  --ac26-surface: var(--bg-surface, #111726);
+  --ac26-surface-2: var(--bg-subtle, #172133);
+  --ac26-surface-3: var(--bg-subtle-2, #1e2b42);
+  --ac26-surface-glass: rgba(17, 23, 38, 0.88);
+
+  --ac26-border: var(--border-light, rgba(255, 255, 255, 0.12));
+  --ac26-border-subtle: var(--border-subtle, rgba(255, 255, 255, 0.07));
+  --ac26-border-glow: rgba(66, 133, 244, 0.4);
+
+  --ac26-text: var(--text-primary, #f8fafc);
+  --ac26-text-secondary: var(--text-secondary, #cbd5e1);
+  --ac26-text-muted: var(--text-muted, #94a3b8);
+  --ac26-text-inverse: #0a0d14;
+
+  /* Google Core & Hacker Accent Colors */
+  --ac26-blue: var(--g-blue, #4285F4);
+  --ac26-blue-hover: var(--g-blue-hover, #1a73e8);
+  --ac26-blue-soft: rgba(66, 133, 244, 0.18);
+
+  --ac26-red: var(--g-red, #EA4335);
+  --ac26-red-soft: rgba(234, 67, 53, 0.18);
+
+  --ac26-yellow: var(--g-yellow, #FBBC05);
+  --ac26-yellow-soft: rgba(251, 188, 5, 0.18);
+
+  --ac26-green: var(--g-green, #34A853);
+  --ac26-green-soft: rgba(52, 168, 83, 0.18);
+
+  --ac26-cyan: #38bdf8;
+  --ac26-cyan-soft: rgba(56, 189, 248, 0.18);
+
+  /* Primary Accent & Gradients */
+  --ac26-primary: var(--primary, var(--ac26-blue));
+  --ac26-primary-hover: var(--primary-hover, var(--ac26-blue-hover));
+  --ac26-gradient-primary: linear-gradient(135deg, #4285F4 0%, #2563EB 50%, #1D4ED8 100%);
+  --ac26-gradient-user: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);
+  --ac26-gradient-header: linear-gradient(135deg, #111726 0%, #172133 100%);
+  --ac26-gradient-bubble: linear-gradient(135deg, #4285F4 0%, #1a73e8 100%);
+
+  /* Typography */
+  --ac26-font-display: var(--font-display, 'Unbounded', 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+  --ac26-font-heading: var(--font-heading, 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+  --ac26-font-body: var(--font-body, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+  --ac26-font-mono: var(--font-mono, 'Space Grotesk', 'Fira Code', monospace);
+
+  /* Radii */
+  --ac26-radius-sm: var(--radius-sm, 8px);
+  --ac26-radius-md: var(--radius-md, 14px);
+  --ac26-radius-lg: var(--radius-lg, 20px);
+  --ac26-radius-xl: var(--radius-xl, 28px);
+  --ac26-radius-full: var(--radius-full, 9999px);
+
+  /* Shadows & Glow */
+  --ac26-shadow-sm: var(--shadow-sm, 0 2px 8px -1px rgba(0, 0, 0, 0.45));
+  --ac26-shadow-md: var(--shadow-md, 0 8px 24px -4px rgba(0, 0, 0, 0.6));
+  --ac26-shadow-lg: var(--shadow-lg, 0 16px 40px -8px rgba(0, 0, 0, 0.7));
+  --ac26-shadow-glow: 0 8px 30px rgba(66, 133, 244, 0.35);
+
+  /* Transitions */
+  --ac26-transition-fast: var(--transition-fast, 0.18s cubic-bezier(0.4, 0, 0.2, 1));
+  --ac26-transition-base: var(--transition-base, 0.28s cubic-bezier(0.4, 0, 0.2, 1));
+  --ac26-transition-spring: var(--transition-spring, 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275));
+
+  /* Layout Customization Variables */
+  --ac26-bubble-right: 24px;
+  --ac26-bubble-bottom: 24px;
+  --ac26-bubble-size: 66px;
+  --ac26-window-width: clamp(420px, 50vw, 680px);
+  --ac26-window-height: min(80vh, 760px);
+
+  box-sizing: border-box;
+  font-family: var(--ac26-font-body);
+  color: var(--ac26-text);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* =============================================================================
+   2. FLOATING LAUNCHER BUBBLE & TOOLTIP
+   ============================================================================= */
+.ac26faq-wrapper {
+  position: fixed;
+  right: var(--ac26-bubble-right);
+  bottom: var(--ac26-bubble-bottom);
+  z-index: 2147483000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  pointer-events: none;
+}
+
+.ac26faq-bubble-btn {
+  pointer-events: auto;
+  width: var(--ac26-bubble-size);
+  height: var(--ac26-bubble-size);
+  border-radius: var(--ac26-radius-full);
+  background: radial-gradient(circle at 35% 35%, #1e293b, #0a0f1d 85%);
+  border: 2px solid rgba(66, 133, 244, 0.5);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(66, 133, 244, 0.45);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  position: relative;
+  transition: transform var(--ac26-transition-spring), box-shadow var(--ac26-transition-base);
+  outline: none;
+  touch-action: manipulation;
+  user-select: none;
+}
+
+.ac26faq-bubble-btn::before {
+  content: "";
+  position: absolute;
+  inset: -3.5px;
+  border-radius: var(--ac26-radius-full);
+  background: conic-gradient(from 0deg, #4285F4, #EA4335, #FBBC05, #34A853, #4285F4);
+  z-index: -1;
+  animation: ac26-spin-halo 4.5s linear infinite;
+  opacity: 0.9;
+  filter: blur(1.5px);
+}
+
+@keyframes ac26-spin-halo {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.ac26faq-bubble-btn:hover {
+  transform: scale(1.08) translateY(-3px);
+  box-shadow: 0 16px 40px rgba(66, 133, 244, 0.6), 0 0 30px rgba(56, 189, 248, 0.5);
+}
+
+.ac26faq-bubble-btn:hover::before {
+  opacity: 1;
+  filter: blur(2.5px);
+}
+
+.ac26faq-bubble-btn:focus-visible {
+  outline: 3px solid var(--ac26-cyan);
+  outline-offset: 4px;
+}
+
+.ac26faq-bubble-btn:active {
+  transform: scale(0.95);
+}
+
+.ac26faq-fab-badge {
+  position: absolute;
+  top: -12px;
+  right: -6px;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: #38bdf8;
+  font-family: var(--ac26-font-mono, monospace);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 1.5px solid #38bdf8;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6), 0 0 12px rgba(56, 189, 248, 0.5);
+  pointer-events: none;
+  white-space: nowrap;
+  animation: ac26-fab-pulse 2.4s ease-in-out infinite;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  z-index: 10;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.ac26faq-fab-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #34A853;
+  box-shadow: 0 0 6px #34A853;
+  display: inline-block;
+}
+
+@keyframes ac26-fab-pulse {
+  0%, 100% { transform: translateY(0); box-shadow: 0 4px 14px rgba(0,0,0,0.6), 0 0 12px rgba(56, 189, 248, 0.5); }
+  50% { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(0,0,0,0.7), 0 0 18px rgba(56, 189, 248, 0.8); }
+}
+
+.ac26faq-wrapper.is-open .ac26faq-fab-badge {
+  opacity: 0;
+  transform: scale(0.7);
+  pointer-events: none;
+}
+
+/* Pulse Ring */
+.ac26faq-pulse-ring {
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+  border-radius: var(--ac26-radius-full);
+  border: 2px solid rgba(56, 189, 248, 0.6);
+  animation: ac26-pulse 2.4s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+  pointer-events: none;
+}
+
+.ac26faq-wrapper.has-opened .ac26faq-pulse-ring {
+  display: none;
+}
+
+@keyframes ac26-pulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.9;
+  }
+  70% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+/* Unread Badge Dot */
+.ac26faq-badge-dot {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 14px;
+  height: 14px;
+  background-color: var(--ac26-red);
+  border: 2.5px solid var(--ac26-surface);
+  border-radius: var(--ac26-radius-full);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.ac26faq-wrapper.has-opened .ac26faq-badge-dot {
+  transform: scale(0);
+  opacity: 0;
+}
+
+/* Icon Morphing */
+.ac26faq-bubble-icon {
+  width: 42px;
+  height: 42px;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+  position: absolute;
+}
+
+.ac26faq-icon-close {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.7);
+}
+
+.ac26faq-wrapper.is-open .ac26faq-icon-chat {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.7);
+}
+
+.ac26faq-wrapper.is-open .ac26faq-icon-close {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+}
+
+/* Tooltip Bubble (After 6 seconds) */
+.ac26faq-tooltip {
+  pointer-events: auto;
+  position: absolute;
+  bottom: calc(var(--ac26-bubble-size) + 14px);
+  right: 0;
+  background: var(--ac26-surface);
+  border: 1px solid var(--ac26-border-glow);
+  padding: 10px 14px 10px 14px;
+  border-radius: var(--ac26-radius-md);
+  box-shadow: var(--ac26-shadow-md), 0 0 20px rgba(66, 133, 244, 0.25);
+  font-family: var(--ac26-font-heading);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--ac26-text);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(10px) scale(0.95);
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  pointer-events: none;
+}
+
+.ac26faq-tooltip.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.ac26faq-tooltip::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  right: 22px;
+  width: 10px;
+  height: 10px;
+  background: var(--ac26-surface);
+  border-right: 1px solid var(--ac26-border-glow);
+  border-bottom: 1px solid var(--ac26-border-glow);
+  transform: rotate(45deg);
+}
+
+.ac26faq-tooltip-close {
+  background: none;
+  border: none;
+  color: var(--ac26-text-muted);
+  cursor: pointer;
+  padding: 2px 4px;
+  font-size: 1rem;
+  line-height: 1;
+  border-radius: var(--ac26-radius-sm);
+  transition: color 0.15s ease;
+}
+
+.ac26faq-tooltip-close:hover {
+  color: var(--ac26-text);
+}
+
+/* =============================================================================
+   3. CHAT WINDOW CONTAINER
+   ============================================================================= */
+.ac26faq-window {
+  pointer-events: auto;
+  position: absolute;
+  bottom: calc(var(--ac26-bubble-size) + 16px);
+  right: 0;
+  width: var(--ac26-window-width);
+  height: var(--ac26-window-height);
+  background: var(--ac26-surface);
+  border: 1px solid var(--ac26-border);
+  border-radius: var(--ac26-radius-lg);
+  box-shadow: var(--ac26-shadow-lg), 0 0 40px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transform-origin: bottom right;
+  opacity: 0;
+  transform: scale(0.85) translateY(20px);
+  visibility: hidden;
+  transition: opacity 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              visibility 0.22s;
+}
+
+.ac26faq-wrapper.is-open .ac26faq-window {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  visibility: visible;
+}
+
+/* =============================================================================
+   4. CHAT HEADER
+   ============================================================================= */
+.ac26faq-header {
+  padding: 14px 18px;
+  background: var(--ac26-gradient-header);
+  border-bottom: 1px solid var(--ac26-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  user-select: none;
+}
+
+.ac26faq-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.ac26faq-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--ac26-radius-full);
+  background: #ffffff;
+  padding: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+}
+
+.ac26faq-avatar svg,
+.ac26faq-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--ac26-radius-full);
+}
+
+.ac26faq-header-meta {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.ac26faq-header-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ac26faq-header-title {
+  font-family: var(--ac26-font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ac26-text);
+  letter-spacing: -0.3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ac26faq-online-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--ac26-green);
+  background: var(--ac26-green-soft);
+  padding: 2px 8px;
+  border-radius: var(--ac26-radius-full);
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.ac26faq-online-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--ac26-green);
+  box-shadow: 0 0 6px var(--ac26-green);
+}
+
+.ac26faq-header-subtitle {
+  font-size: 0.75rem;
+  color: var(--ac26-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ac26faq-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.ac26faq-head-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--ac26-text-muted);
+  width: 32px;
+  height: 32px;
+  border-radius: var(--ac26-radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--ac26-transition-fast);
+}
+
+.ac26faq-head-btn:hover {
+  background: var(--ac26-surface-3);
+  color: var(--ac26-text);
+  border-color: var(--ac26-border);
+}
+
+.ac26faq-head-btn:focus-visible {
+  outline: 2px solid var(--ac26-cyan);
+}
+
+.ac26faq-head-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+/* =============================================================================
+   5. MESSAGE LOG & BUBBLES
+   ============================================================================= */
+.ac26faq-messages {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  scroll-behavior: smooth;
+}
+
+.ac26faq-messages::-webkit-scrollbar {
+  width: 6px;
+}
+.ac26faq-messages::-webkit-scrollbar-track {
+  background: transparent;
+}
+.ac26faq-messages::-webkit-scrollbar-thumb {
+  background: var(--ac26-surface-3);
+  border-radius: var(--ac26-radius-full);
+}
+.ac26faq-messages::-webkit-scrollbar-thumb:hover {
+  background: var(--ac26-border);
+}
+
+/* Message Item */
+.ac26faq-msg {
+  display: flex;
+  gap: 10px;
+  max-width: 88%;
+  animation: ac26-msg-fade 0.24s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes ac26-msg-fade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ac26faq-msg-user {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.ac26faq-msg-bot {
+  align-self: flex-start;
+}
+
+.ac26faq-msg-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--ac26-radius-full);
+  background: #ffffff;
+  padding: 2px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+.ac26faq-msg-avatar svg,
+.ac26faq-msg-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--ac26-radius-full);
+}
+
+.ac26faq-msg-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.ac26faq-msg-bubble {
+  padding: 12px 16px;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  word-break: break-word;
+  position: relative;
+}
+
+.ac26faq-msg-bot .ac26faq-msg-bubble {
+  background: var(--ac26-surface-2);
+  color: var(--ac26-text);
+  border: 1px solid var(--ac26-border);
+  border-radius: var(--ac26-radius-md) var(--ac26-radius-md) var(--ac26-radius-md) 4px;
+  box-shadow: var(--ac26-shadow-sm);
+}
+
+.ac26faq-msg-user .ac26faq-msg-bubble {
+  background: var(--ac26-gradient-user);
+  color: #ffffff;
+  border-radius: var(--ac26-radius-md) var(--ac26-radius-md) 4px var(--ac26-radius-md);
+  box-shadow: 0 4px 14px rgba(29, 78, 216, 0.3);
+}
+
+/* Rich Text Formatting inside Bubble */
+.ac26faq-msg-bubble p {
+  margin-bottom: 6px;
+}
+.ac26faq-msg-bubble p:last-child {
+  margin-bottom: 0;
+}
+
+.ac26faq-msg-bubble strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.ac26faq-msg-bubble ul {
+  margin: 6px 0 6px 18px;
+  padding: 0;
+}
+
+.ac26faq-msg-bubble li {
+  margin-bottom: 4px;
+}
+
+.ac26faq-msg-bubble a {
+  color: var(--ac26-cyan);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.15s ease;
+}
+
+.ac26faq-msg-bubble a:hover {
+  color: #ffffff;
+}
+
+.ac26faq-msg-bubble code {
+  font-family: var(--ac26-font-mono);
+  font-size: 0.82rem;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 2px 6px;
+  border-radius: var(--ac26-radius-sm);
+  color: #38bdf8;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Timestamp & Actions Row */
+.ac26faq-msg-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.72rem;
+  color: var(--ac26-text-muted);
+  padding: 0 4px;
+  opacity: 0.85;
+}
+
+.ac26faq-msg-user .ac26faq-msg-meta {
+  justify-content: flex-end;
+}
+
+.ac26faq-bubble-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 4px;
+}
+
+.ac26faq-feedback-btn,
+.ac26faq-copy-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--ac26-text-muted);
+  font-size: 0.75rem;
+  padding: 2px 4px;
+  border-radius: var(--ac26-radius-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  transition: all var(--ac26-transition-fast);
+}
+
+.ac26faq-feedback-btn:hover,
+.ac26faq-copy-btn:hover {
+  color: var(--ac26-text);
+  background: var(--ac26-surface-3);
+}
+
+.ac26faq-feedback-btn.active {
+  color: var(--ac26-cyan);
+}
+
+/* =============================================================================
+   6. ACTION BUTTONS & CONTACT CARDS INSIDE BOT REPLIES
+   ============================================================================= */
+.ac26faq-action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.ac26faq-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: var(--ac26-radius-full);
+  font-family: var(--ac26-font-heading);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid var(--ac26-border);
+  background: var(--ac26-surface-3);
+  color: var(--ac26-text);
+  transition: all var(--ac26-transition-fast);
+  white-space: nowrap;
+}
+
+.ac26faq-action-btn:hover {
+  background: var(--ac26-blue);
+  color: #ffffff;
+  border-color: var(--ac26-blue);
+  box-shadow: 0 4px 12px rgba(66, 133, 244, 0.35);
+  transform: translateY(-1px);
+}
+
+.ac26faq-action-btn svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+/* Contact Escalation Card */
+.ac26faq-contact-card {
+  margin-top: 10px;
+  background: var(--ac26-surface-3);
+  border: 1px solid var(--ac26-border-glow);
+  border-radius: var(--ac26-radius-md);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ac26faq-contact-card-title {
+  font-family: var(--ac26-font-heading);
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--ac26-cyan);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ac26faq-contact-card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ac26faq-contact-lead-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  padding: 4px 8px;
+  background: var(--ac26-surface-2);
+  border-radius: var(--ac26-radius-sm);
+  border: 1px solid var(--ac26-border-subtle);
+}
+
+.ac26faq-lead-name {
+  font-weight: 600;
+  color: var(--ac26-text);
+}
+
+.ac26faq-lead-role {
+  font-size: 0.72rem;
+  color: var(--ac26-text-muted);
+}
+
+.ac26faq-lead-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ac26faq-lead-btn {
+  font-size: 0.75rem;
+  padding: 3px 8px;
+  background: var(--ac26-surface-3);
+  color: var(--ac26-text-secondary);
+  border: 1px solid var(--ac26-border);
+  border-radius: var(--ac26-radius-sm);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.15s ease;
+}
+
+.ac26faq-lead-btn:hover {
+  background: var(--ac26-blue);
+  color: #ffffff;
+  border-color: var(--ac26-blue);
+}
+
+/* =============================================================================
+   7. WELCOME STATE: CATEGORY CARDS & GREETING
+   ============================================================================= */
+.ac26faq-welcome-box {
+  background: linear-gradient(180deg, rgba(66, 133, 244, 0.08) 0%, transparent 100%);
+  border: 1px solid var(--ac26-border);
+  border-radius: var(--ac26-radius-lg);
+  padding: 16px;
+  margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ac26faq-welcome-header {
+  font-family: var(--ac26-font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ac26-text);
+  line-height: 1.4;
+}
+
+.ac26faq-welcome-text {
+  font-size: 0.88rem;
+  color: var(--ac26-text-secondary);
+  line-height: 1.5;
+}
+
+.ac26faq-category-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.ac26faq-cat-card {
+  background: var(--ac26-surface-2);
+  border: 1px solid var(--ac26-border);
+  border-radius: var(--ac26-radius-md);
+  padding: 10px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all var(--ac26-transition-fast);
+  text-align: left;
+}
+
+.ac26faq-cat-card:hover {
+  background: var(--ac26-surface-3);
+  border-color: var(--ac26-border-glow);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.ac26faq-cat-card:focus-visible {
+  outline: 2px solid var(--ac26-cyan);
+}
+
+.ac26faq-cat-emoji {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.ac26faq-cat-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.ac26faq-cat-name {
+  font-family: var(--ac26-font-heading);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ac26-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ac26faq-cat-desc {
+  font-size: 0.7rem;
+  color: var(--ac26-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* =============================================================================
+   8. QUICK CHIPS CONTAINER
+   ============================================================================= */
+.ac26faq-chips-container {
+  padding: 8px 16px;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  white-space: nowrap;
+  background: var(--ac26-surface);
+  border-top: 1px solid var(--ac26-border-subtle);
+  scrollbar-width: none;
+}
+
+.ac26faq-chips-container::-webkit-scrollbar {
+  display: none;
+}
+
+.ac26faq-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: var(--ac26-surface-2);
+  border: 1px solid var(--ac26-border);
+  border-radius: var(--ac26-radius-full);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--ac26-text-secondary);
+  cursor: pointer;
+  transition: all var(--ac26-transition-fast);
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.ac26faq-chip:hover {
+  background: var(--ac26-surface-3);
+  color: #ffffff;
+  border-color: var(--ac26-border-glow);
+  transform: translateY(-1px);
+}
+
+.ac26faq-chip:focus-visible {
+  outline: 2px solid var(--ac26-cyan);
+}
+
+/* =============================================================================
+   9. AUTOCOMPLETE SUGGESTIONS POPUP
+   ============================================================================= */
+.ac26faq-suggestions {
+  position: absolute;
+  bottom: calc(100% + 4px);
+  left: 14px;
+  right: 14px;
+  background: var(--ac26-surface);
+  border: 1px solid var(--ac26-border-glow);
+  border-radius: var(--ac26-radius-md);
+  box-shadow: var(--ac26-shadow-lg);
+  overflow: hidden;
+  z-index: 10;
+  display: none;
+  flex-direction: column;
+}
+
+.ac26faq-suggestions.show {
+  display: flex;
+}
+
+.ac26faq-suggestion-item {
+  padding: 10px 14px;
+  font-size: 0.84rem;
+  color: var(--ac26-text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--ac26-border-subtle);
+  transition: background var(--ac26-transition-fast);
+}
+
+.ac26faq-suggestion-item:last-child {
+  border-bottom: none;
+}
+
+.ac26faq-suggestion-item:hover,
+.ac26faq-suggestion-item.highlighted {
+  background: var(--ac26-surface-3);
+  color: #ffffff;
+}
+
+.ac26faq-sugg-arrow {
+  color: var(--ac26-cyan);
+  font-size: 0.75rem;
+}
+
+/* =============================================================================
+   10. INPUT BAR & FOOTER
+   ============================================================================= */
+.ac26faq-input-bar {
+  padding: 12px 16px;
+  background: var(--ac26-surface);
+  border-top: 1px solid var(--ac26-border);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+}
+
+.ac26faq-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--ac26-surface-2);
+  border: 1px solid var(--ac26-border);
+  border-radius: var(--ac26-radius-full);
+  padding: 4px 6px 4px 16px;
+  transition: border-color var(--ac26-transition-fast), box-shadow var(--ac26-transition-fast);
+}
+
+.ac26faq-input-row:focus-within {
+  border-color: var(--ac26-blue);
+  box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.25);
+}
+
+.ac26faq-input-field {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--ac26-font-body);
+  font-size: 0.92rem;
+  color: var(--ac26-text);
+  line-height: 1.4;
+  padding: 6px 0;
+}
+
+.ac26faq-input-field::placeholder {
+  color: var(--ac26-text-muted);
+}
+
+.ac26faq-send-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--ac26-radius-full);
+  background: var(--ac26-gradient-primary);
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all var(--ac26-transition-fast);
+  box-shadow: 0 2px 8px rgba(66, 133, 244, 0.35);
+}
+
+.ac26faq-send-btn:hover:not(:disabled) {
+  transform: scale(1.05);
+  box-shadow: 0 4px 14px rgba(66, 133, 244, 0.5);
+}
+
+.ac26faq-send-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.ac26faq-send-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+.ac26faq-footer-note {
+  font-size: 0.72rem;
+  color: var(--ac26-text-muted);
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* =============================================================================
+   11. TYPING INDICATOR
+   ============================================================================= */
+.ac26faq-typing-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 14px;
+}
+
+.ac26faq-typing-dot {
+  width: 7px;
+  height: 7px;
+  background-color: var(--ac26-text-muted);
+  border-radius: 50%;
+  animation: ac26-typing 1.4s infinite ease-in-out both;
+}
+
+.ac26faq-typing-dot:nth-child(1) { animation-delay: -0.32s; }
+.ac26faq-typing-dot:nth-child(2) { animation-delay: -0.16s; }
+.ac26faq-typing-dot:nth-child(3) { animation-delay: 0s; }
+
+@keyframes ac26-typing {
+  0%, 80%, 100% {
+    transform: scale(0.6);
+    opacity: 0.4;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+    background-color: var(--ac26-blue);
+  }
+}
+
+/* =============================================================================
+   12. TOAST NOTIFICATION
+   ============================================================================= */
+.ac26faq-toast {
+  position: absolute;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px);
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid var(--ac26-border-glow);
+  color: #ffffff;
+  padding: 6px 14px;
+  border-radius: var(--ac26-radius-full);
+  font-size: 0.78rem;
+  font-weight: 600;
+  box-shadow: var(--ac26-shadow-md);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.25s ease;
+  z-index: 20;
+}
+
+.ac26faq-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* =============================================================================
+   13. CONFIRMATION MODAL OVERLAY (e.g. Clear Chat)
+   ============================================================================= */
+.ac26faq-confirm-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(10, 13, 20, 0.75);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 30;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.ac26faq-confirm-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.ac26faq-confirm-dialog {
+  background: var(--ac26-surface);
+  border: 1px solid var(--ac26-border);
+  border-radius: var(--ac26-radius-lg);
+  padding: 20px;
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-align: center;
+  box-shadow: var(--ac26-shadow-lg);
+}
+
+.ac26faq-confirm-title {
+  font-family: var(--ac26-font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ac26-text);
+}
+
+.ac26faq-confirm-msg {
+  font-size: 0.85rem;
+  color: var(--ac26-text-secondary);
+}
+
+.ac26faq-confirm-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.ac26faq-confirm-btn {
+  padding: 8px 16px;
+  border-radius: var(--ac26-radius-full);
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.15s ease;
+}
+
+.ac26faq-confirm-cancel {
+  background: var(--ac26-surface-3);
+  color: var(--ac26-text);
+  border-color: var(--ac26-border);
+}
+
+.ac26faq-confirm-danger {
+  background: var(--ac26-red);
+  color: #ffffff;
+}
+
+.ac26faq-confirm-danger:hover {
+  background: #d93025;
+}
+
+/* =============================================================================
+   14. MOBILE & RESPONSIVE BOTTOM SHEET (<= 640px)
+   ============================================================================= */
+@media (max-width: 640px) {
+  :host {
+    --ac26-bubble-right: 16px;
+    --ac26-bubble-bottom: 16px;
+  }
+
+  .ac26faq-wrapper {
+    right: var(--ac26-bubble-right);
+    bottom: var(--ac26-bubble-bottom);
+  }
+
+  .ac26faq-window {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    max-width: 100vw;
+    height: 88vh;
+    height: 88dvh;
+    border-radius: 24px 24px 0 0;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    transform-origin: bottom center;
+    transform: translateY(100%);
+  }
+
+  .ac26faq-wrapper.is-open .ac26faq-window {
+    transform: translateY(0);
+  }
+
+  .ac26faq-wrapper.is-open .ac26faq-bubble-btn {
+    display: none;
+  }
+
+  .ac26faq-header {
+    padding: 16px;
+    border-radius: 24px 24px 0 0;
+  }
+
+  .ac26faq-category-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ac26faq-msg {
+    max-width: 92%;
+  }
+
+  .ac26faq-input-bar {
+    padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+/* =============================================================================
+   15. ACCESSIBILITY & PREFERS-REDUCED-MOTION
+   ============================================================================= */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .ac26faq-pulse-ring {
+    display: none !important;
+  }
+}

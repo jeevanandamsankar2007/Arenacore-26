@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="../faq-bot/faq-data.js"></script>
+<script src="../faq-bot/arenacore-faqbot.js"></script>
+<script src="../faq-bot/arenacore-faqbot.js"></script>
+</head>
+<body>
+  <h1>Double Initialization Test</h1>
+  <div id="status">Testing...</div>
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      setTimeout(() => {
+        const roots = document.querySelectorAll("#ac26faq-root");
+        if (roots.length === 1) {
+          document.getElementById("status").textContent = "PASSED: Exactly 1 root element created (Guarded against double init)";
+        } else {
+          document.getElementById("status").textContent = `FAILED: Found ${roots.length} root elements`;
+        }
+      }, 300);
+    });
+  </script>
+</body>
+</html>

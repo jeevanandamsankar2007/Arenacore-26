@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ARENACORE '26 FAQ Bot Automated Test Suite</title>
+  <script src="../faq-bot/faq-data.js"></script>
+  <script src="../faq-bot/arenacore-faqbot.js"></script>
+</head>
+<body>
+  <h1>ARENACORE '26 FAQ Bot Test Suite</h1>
+  <div id="status">Starting test execution...</div>
+  <table border="1" id="resultsTable" style="border-collapse:collapse;font-family:sans-serif;font-size:12px;width:100%;margin-top:15px;">
+    <thead>
+      <tr style="background:#222;color:#fff;">
+        <th>#</th>
+        <th>User Query</th>
+        <th>Category / Concept</th>
+        <th>Matched Entry ID</th>
+        <th>Confidence</th>
+        <th>Score</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <div id="jsonSummary" style="margin-top:20px;font-family:monospace;white-space:pre-wrap;background:#111;color:#0f0;padding:15px;border-radius:8px;"></div>
+
+  <script>
+    function runTests() {
+      if (!window.ARENACORE_FAQBOT || !window.ARENACORE_FAQBOT.getEngine()) {
+        setTimeout(runTests, 100);
+        return;
+      }
+
+      const engine = window.ARENACORE_FAQBOT.getEngine();
+
+      const TEST_CASES = [
+        { q: "wat is the fee", expected: ["fee-amount", "fee-per-team"], desc: "Fee amount typo" },
+        { q: "when to pay", expected: ["fee-when-pay", "fee-deadline"], desc: "When to pay" },
+        { q: "can i join alone", expected: ["team-solo", "team-size"], desc: "Solo participation" },
+        { q: "solo participation?", expected: ["team-solo", "team-size"], desc: "Solo participation" },
+        { q: "team of 3 allowed?", expected: ["team-size-3-or-5", "team-size"], desc: "Team of 3" },
+        { q: "last date", expected: ["reg-deadline", "reg-days-left"], desc: "Deadline" },
+        { q: "deadline over aana", expected: ["reg-after-deadline", "reg-deadline"], desc: "Tanglish deadline" },
+        { q: "do u provide food", expected: ["venue-food", "fee-inclusion"], desc: "Food provided" },
+        { q: "accomodation", expected: ["venue-accommodation"], desc: "Accommodation typo" },
+        { q: "wifi password", expected: ["venue-wifi-password", "venue-wifi"], desc: "Wi-Fi password" },
+        { q: "can I use ChatGPT/Gemini API", expected: ["theme-genai-apis", "rules-libraries-apis"], desc: "GenAI APIs" },
+        { q: "ready made project allowed?", expected: ["rules-pre-existing-code"], desc: "Pre-existing code" },
+        { q: "different college team", expected: ["team-inter-college"], desc: "Inter-college teams" },
+        { q: "is there any certificate", expected: ["prizes-certificates"], desc: "Certificates" },
+        { q: "who are the judges", expected: ["prizes-jury-members"], desc: "Jury members" },
+        { q: "how will we be judged", expected: ["prizes-judging-criteria"], desc: "Judging criteria" },
+        { q: "prize money", expected: ["prizes-total-pool", "prizes-first"], desc: "Prize money" },
+        { q: "hardware needed?", expected: ["theme-hardware-track", "venue-what-to-bring"], desc: "Hardware equipment" },
+        { q: "dress code", expected: ["venue-dress-code"], desc: "Dress code" },
+        { q: "ID card needed", expected: ["team-id-card", "venue-what-to-bring"], desc: "College ID card" },
+        { q: "venue address", expected: ["venue-location"], desc: "Venue address" },
+        { q: "how to reach", expected: ["venue-how-to-reach"], desc: "How to reach" },
+        { q: "who to contact", expected: ["contact-leads"], desc: "Who to contact" },
+        { q: "is registration free", expected: ["fee-initial-free", "fee-amount"], desc: "Free registration" },
+        { q: "what is SDG", expected: ["theme-what-is-sdg", "theme-list"], desc: "What is SDG" },
+        { q: "can first year students join", expected: ["team-first-year", "team-eligibility"], desc: "First year students" },
+        { q: "can I change team member", expected: ["team-member-change"], desc: "Change team member" },
+        { q: "what happens if I'm not shortlisted", expected: ["fee-not-shortlisted", "reg-status"], desc: "Not shortlisted" },
+        { q: "check my status", expected: ["reg-status"], desc: "Check status" },
+        { q: "what is code freeze", expected: ["rules-code-freeze"], desc: "Code freeze" },
+        { q: "can we use our own laptop", expected: ["venue-what-to-bring", "venue-labs"], desc: "Own laptop" },
+        { q: "evlo fees", expected: ["fee-amount", "fee-tanglish-evlo", "fee-per-team"], desc: "Tanglish fee" },
+        { q: "eppo date", expected: ["venue-dates", "venue-schedule-day1"], desc: "Tanglish date" },
+        { q: "enga nadakum", expected: ["venue-dates", "venue-location"], desc: "Tanglish location" },
+        { q: "team size evlo", expected: ["team-size", "team-tanglish-ethana"], desc: "Tanglish team size" },
+        { q: "who is chitharthaa", expected: ["contact-chitharthaa", "contact-leads"], desc: "Chitharthaa" },
+        { q: "darshan contact number", expected: ["contact-darshan", "contact-leads"], desc: "Darshan phone" },
+        { q: "dhanush phone", expected: ["contact-dhanush", "contact-leads"], desc: "Dhanush phone" },
+        { q: "official email", expected: ["contact-email", "fee-email-source"], desc: "Official email" },
+        { q: "what is 1st prize", expected: ["prizes-first"], desc: "1st prize" },
+        { q: "runner up prize", expected: ["prizes-second"], desc: "2nd prize runner up" },
+        { q: "how many teams shortlisted", expected: ["reg-shortlist-count", "reg-shortlist"], desc: "Shortlist count" },
+        { q: "is food free", expected: ["venue-food", "fee-inclusion"], desc: "Food free" },
+        { q: "where is psna college", expected: ["venue-location", "venue-how-to-reach"], desc: "PSNA location" },
+        { q: "what are the themes", expected: ["theme-list"], desc: "Theme list" },
+        { q: "ai theme details", expected: ["theme-ai"], desc: "AI theme" },
+        { q: "iot robotics track", expected: ["theme-autonomous", "theme-hardware-track"], desc: "Autonomous track" },
+        { q: "cybersecurity and sustainability track", expected: ["theme-sustainable"], desc: "Sustainable track" },
+        { q: "pre assigned problem statements", expected: ["theme-problem-statements"], desc: "No pre-assigned statements" },
+        { q: "can we use python and react", expected: ["theme-tech-stack", "rules-libraries-apis"], desc: "Tech stack" },
+        { q: "is travel allowance provided", expected: ["venue-travel-allowance"], desc: "Travel allowance" },
+        { q: "pitch deck template", expected: ["prizes-pitch-deck", "rules-starter-kits"], desc: "Pitch deck" },
+        { q: "starter boilerplates", expected: ["rules-starter-kits"], desc: "Starter kits" },
+        { q: "github repo public or private", expected: ["rules-github-public"], desc: "GitHub public" },
+        { q: "who owns the intellectual property", expected: ["rules-ip-ownership"], desc: "IP ownership" },
+        { q: "how many days left to register", expected: ["dynamic-reg-open", "reg-days-left", "reg-deadline"], desc: "Dynamic days left" },
+        { q: "when does the hackathon start", expected: ["dynamic-start", "venue-dates", "venue-schedule-day1"], desc: "Dynamic start" },
+        { q: "can i leave campus at night", expected: ["rules-leave-campus"], desc: "Leave campus" },
+        { q: "dress code formal compulsory?", expected: ["venue-dress-code"], desc: "Formal dress code" },
+        { q: "hi", expected: ["smalltalk-greeting"], desc: "Small talk greeting" },
+        { q: "thank you", expected: ["smalltalk-thanks"], desc: "Small talk thanks" },
+        { q: "who are you", expected: ["smalltalk-identity"], desc: "Small talk identity" },
+        { q: "what is the capital of France", expected: ["smalltalk-offtopic", "low-confidence"], desc: "Off-topic guardrail" },
+        { q: "solve my math homework x^2+5=9", expected: ["smalltalk-offtopic", "low-confidence"], desc: "Off-topic guardrail" },
+        { q: "what is the fee and deadline?", expected: ["multi-question", "fee-amount", "reg-deadline"], desc: "Multi-question fee & deadline" },
+        { q: "what is the team size and is solo allowed?", expected: ["multi-question", "team-size", "team-solo"], desc: "Multi-question team size & solo" },
+        { q: "are desktop computers available in labs", expected: ["venue-labs"], desc: "Lab computers" },
+        { q: "is college id mandatory", expected: ["team-id-card", "venue-what-to-bring"], desc: "College ID mandatory" },
+        { q: "evalo payment kattanum", expected: ["fee-amount", "fee-tanglish-evlo"], desc: "Tanglish evalo payment" },
+        { q: "mudiyum date eppa", expected: ["reg-deadline", "venue-when-ends"], desc: "Tanglish mudiyum date" },
+        // Bonafide & Consent Letter Test Cases (25 queries)
+        { q: "bonafide", expected: ["bonafide-letter"], desc: "Exact keyword bonafide" },
+        { q: "bonafied", expected: ["bonafide-letter"], desc: "Typo bonafied" },
+        { q: "bonafid", expected: ["bonafide-letter"], desc: "Typo bonafid" },
+        { q: "bonofide", expected: ["bonafide-letter"], desc: "Typo bonofide" },
+        { q: "bona fide", expected: ["bonafide-letter"], desc: "Spaced bona fide" },
+        { q: "bonified", expected: ["bonafide-letter"], desc: "Typo bonified" },
+        { q: "bonafide certificate", expected: ["bonafide-letter"], desc: "Bonafide certificate" },
+        { q: "bonafide cert", expected: ["bonafide-letter"], desc: "Bonafide cert abbreviation" },
+        { q: "bonafide letter", expected: ["bonafide-letter"], desc: "Bonafide letter" },
+        { q: "bonafide form", expected: ["bonafide-letter"], desc: "Bonafide form" },
+        { q: "bonafide copy", expected: ["bonafide-letter"], desc: "Bonafide copy" },
+        { q: "bonafide download", expected: ["bonafide-letter"], desc: "Bonafide download" },
+        { q: "bonafide pdf", expected: ["bonafide-letter"], desc: "Bonafide pdf" },
+        { q: "bonafide link", expected: ["bonafide-letter"], desc: "Bonafide link" },
+        { q: "student bonafide", expected: ["bonafide-letter"], desc: "Student bonafide" },
+        { q: "college bonafide", expected: ["bonafide-letter"], desc: "College bonafide" },
+        { q: "bonafide venum", expected: ["bonafide-letter"], desc: "Tanglish bonafide venum" },
+        { q: "bonafide enga kedaikum", expected: ["bonafide-letter"], desc: "Tanglish bonafide enga kedaikum" },
+        { q: "consent letter", expected: ["bonafide-letter"], desc: "Consent letter" },
+        { q: "consent form for participation", expected: ["bonafide-letter"], desc: "Consent form participation" },
+        { q: "permission letter for hackathon", expected: ["bonafide-letter", "bonafide-other-letters"], desc: "Permission letter" },
+        { q: "I need an OD / NOC letter from college", expected: ["bonafide-other-letters", "bonafide-letter"], desc: "OD NOC letter" },
+        { q: "bonafide link is not opening access denied", expected: ["bonafide-not-opening", "bonafide-letter"], desc: "Bonafide link not opening" },
+        { q: "who should sign the bonafide", expected: ["bonafide-who-signs", "bonafide-letter"], desc: "Who should sign bonafide" },
+        { q: "where to submit bonafide letter", expected: ["bonafide-where-submit", "bonafide-letter"], desc: "Where to submit bonafide" }
+      ];
+
+      let passCount = 0;
+      const results = [];
+      const tbody = document.querySelector("#resultsTable tbody");
+
+      TEST_CASES.forEach((tc, idx) => {
+        const res = engine.query(tc.q);
+        let matchedId = res.entry ? res.entry.id : (res.isSmallTalk ? "smalltalk" : (res.isMulti ? "multi-question" : "unanswered"));
+        let matchedCategory = res.entry ? res.entry.category : (res.isSmallTalk ? "smalltalk" : (res.isMulti ? "multi" : "none"));
+        let score = res.score ? res.score.toFixed(2) : "N/A";
+        let conf = res.confidence;
+
+        let pass = false;
+        if (tc.expected.includes(matchedId)) {
+          pass = true;
+        } else if (tc.expected.includes("smalltalk-greeting") && res.isSmallTalk) {
+          pass = true;
+        } else if (tc.expected.includes("smalltalk-thanks") && res.isSmallTalk) {
+          pass = true;
+        } else if (tc.expected.includes("smalltalk-identity") && res.isSmallTalk) {
+          pass = true;
+        } else if (tc.expected.includes("smalltalk-offtopic") && (res.isSmallTalk || conf === "low")) {
+          pass = true;
+        } else if (tc.expected.includes("multi-question") && res.isMulti) {
+          pass = true;
+        } else if (res.closest && tc.expected.includes("low-confidence")) {
+          pass = true;
+        }
+
+        if (pass) passCount++;
+
+        results.push({
+          id: idx + 1,
+          query: tc.q,
+          desc: tc.desc,
+          matchedId,
+          matchedCategory,
+          conf,
+          score,
+          pass
+        });
+
+        const tr = document.createElement("tr");
+        tr.style.background = pass ? "rgba(52, 168, 83, 0.15)" : "rgba(234, 67, 53, 0.2)";
+        tr.innerHTML = `
+          <td>${idx + 1}</td>
+          <td><strong>${tc.q}</strong></td>
+          <td>${tc.desc}</td>
+          <td><code>${matchedId}</code></td>
+          <td>${conf}</td>
+          <td>${score}</td>
+          <td style="color:${pass ? '#2e7d32' : '#c62828'};font-weight:bold;">${pass ? 'PASS' : 'FAIL'}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      const rate = ((passCount / TEST_CASES.length) * 100).toFixed(1);
+      document.getElementById("status").innerHTML = `
+        <h2 style="color:${rate >= 95 ? '#2e7d32' : '#c62828'};">FINAL TEST RESULT: ${passCount} / ${TEST_CASES.length} PASSED (${rate}%)</h2>
+      `;
+      document.getElementById("jsonSummary").textContent = `TEST_SUMMARY: ${passCount}/${TEST_CASES.length} PASSED (${rate}%)\n` + JSON.stringify(results, null, 2);
+    }
+
+    if (document.readyState === "complete" || document.readyState === "interactive") {
+      setTimeout(runTests, 200);
+    } else {
+      window.addEventListener("DOMContentLoaded", () => setTimeout(runTests, 200));
+    }
+  </script>
+</body>
+</html>

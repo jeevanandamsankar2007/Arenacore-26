@@ -38,7 +38,7 @@ def seed_database():
                 status="OPEN",
                 registration_url="https://forms.gle/ir6Dbnn6GTzWCX6v7",
                 opening_date="2026-10-01",
-                closing_date="2026-10-21",
+                closing_date="2026-10-12",
             )
             db.add(initial_reg)
 
@@ -52,8 +52,8 @@ def seed_database():
                 description="24-Hour National-Level Deep Tech Hackathon hosted by Google Developer Groups On Campus PSNACET & ACM PSNACET.",
                 venue="Department of Information Technology, PSNACET Campus",
                 location="Kothandaraman Nagar, Dindigul - 624622, Tamil Nadu, India",
-                start_date="2026-10-28",
-                end_date="2026-10-29",
+                start_date="2026-10-27",
+                end_date="2026-10-28",
                 contact_email="gdscpsna@psnacet.edu.in",
                 contact_phone="+91 86820 67304",
                 website_status="ACTIVE",
@@ -66,14 +66,14 @@ def seed_database():
             initial_announcements = [
                 Announcement(
                     title="ARENACORE '26 Registrations Announced!",
-                    content="Round 1 registrations for the 24-Hour Hackathon are officially open. Submit your squad of 4 before 21 OCT 2026.",
+                    content="Round 1 registrations for the 24-Hour Hackathon are officially open. Submit your squad of 4 before 12 OCT 2026.",
                     category="Important",
                     is_published=True,
                     publish_date="2026-10-01",
                 ),
                 Announcement(
-                    title="₹40,000 Total Prize Pool & Direct Incubation",
-                    content="1st Prize: ₹25,000 + GDG Trophy | 2nd Prize: ₹15,000 + ACM Swag Packs | Incubation support for top finalists.",
+                    title="₹1,20,000 Total Prize Pool & Direct Incubation",
+                    content="Overall cash rewards, prestigious winner trophies, and exclusive tech kits | Startup incubation and cloud credits for finalists.",
                     category="Prizes",
                     is_published=True,
                     publish_date="2026-10-02",
@@ -88,7 +88,7 @@ def seed_database():
                 ScheduleItem(
                     title="Check-in, Kit Distribution & Breakfast",
                     description="Reporting at IT Auditorium, team badge collection, Wi-Fi setup, and welcome breakfast.",
-                    date="2026-10-28",
+                    date="2026-10-27",
                     start_time="08:00 AM",
                     end_time="09:30 AM",
                     location="IT Auditorium, Ground Floor",
@@ -98,7 +98,7 @@ def seed_database():
                 ScheduleItem(
                     title="Grand Inauguration & Keynote Address",
                     description="Opening remarks by Principal, HOD Dr. A. Vincent Antony Kumar, and keynote on GenAI innovation.",
-                    date="2026-10-28",
+                    date="2026-10-27",
                     start_time="09:30 AM",
                     end_time="10:30 AM",
                     location="IT Auditorium",
@@ -108,7 +108,7 @@ def seed_database():
                 ScheduleItem(
                     title="🚀 24-Hour Hacking Timer Commences!",
                     description="Problem statement lock-in, repository setup, and first sprint initiation across lab clusters.",
-                    date="2026-10-28",
+                    date="2026-10-27",
                     start_time="11:00 AM",
                     end_time="11:00 AM (Next Day)",
                     location="IT Department Computer Labs (Clusters A, B, C)",
@@ -118,7 +118,7 @@ def seed_database():
                 ScheduleItem(
                     title="Mentorship Round 1: Architecture & Feasibility",
                     description="Mentors visit teams for 1-on-1 code reviews, tech stack validation, and design adjustments.",
-                    date="2026-10-28",
+                    date="2026-10-27",
                     start_time="03:00 PM",
                     end_time="05:30 PM",
                     location="All Hacking Labs",
@@ -128,7 +128,7 @@ def seed_database():
                 ScheduleItem(
                     title="Dinner & Midnight Jam Session",
                     description="Energizing dinner, fun trivia kahoot, red bull refreshments, and developer networking.",
-                    date="2026-10-28",
+                    date="2026-10-27",
                     start_time="08:30 PM",
                     end_time="10:00 PM",
                     location="College Cafeteria & Courtyard",
@@ -138,7 +138,7 @@ def seed_database():
                 ScheduleItem(
                     title="Mentorship Round 2: Midnight Checkpoint & Debugging",
                     description="Progress evaluation and debugging assistance by senior developers.",
-                    date="2026-10-29",
+                    date="2026-10-28",
                     start_time="01:30 AM",
                     end_time="03:30 AM",
                     location="All Hacking Labs",
@@ -148,7 +148,7 @@ def seed_database():
                 ScheduleItem(
                     title="🛑 Code Freeze & Final Project Submission",
                     description="GitHub repositories locked, demonstration video and slide decks uploaded to portal.",
-                    date="2026-10-29",
+                    date="2026-10-28",
                     start_time="11:00 AM",
                     end_time="11:30 AM",
                     location="Submission Portal",
@@ -158,7 +158,7 @@ def seed_database():
                 ScheduleItem(
                     title="Grand Jury Evaluation & Stage Presentations",
                     description="Top teams present 5-minute live demo + 3-minute Q&A to industrial evaluation panel.",
-                    date="2026-10-29",
+                    date="2026-10-28",
                     start_time="11:30 AM",
                     end_time="02:30 PM",
                     location="Main IT Seminar Hall",
@@ -168,7 +168,7 @@ def seed_database():
                 ScheduleItem(
                     title="Valedictory Ceremony & Prize Distribution",
                     description="Announcement of ARENACORE '26 Champions, distribution of cash prizes, trophies, certificates and closing photo session.",
-                    date="2026-10-29",
+                    date="2026-10-28",
                     start_time="03:30 PM",
                     end_time="05:00 PM",
                     location="College Main Auditorium",
@@ -203,7 +203,7 @@ def seed_database():
                     is_visible=True,
                 ),
                 FAQ(
-                    question="When should our team pay the ₹150 per member registration fee?",
+                    question="When should our team pay the ₹500 per member registration fee?",
                     answer="Do NOT pay any fee during initial Round 1 submission! After our evaluation panel reviews all applications, shortlisted Top 30 teams will receive an official confirmation mail with the payment gateway link and verification steps.",
                     display_order=2,
                     is_visible=True,

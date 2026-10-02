@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* Aggressive CSS reset to test Shadow DOM isolation */
+    * { all: unset; display: revert; }
+    body { background: #000; color: #fff; font-family: monospace; }
+  </style>
+  <script src="../faq-bot/faq-data.js"></script>
+  <script src="../faq-bot/arenacore-faqbot.js"></script>
+</head>
+<body>
+  <h1>Host Page with * { all: unset }</h1>
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      setTimeout(() => {
+        if (window.ARENACORE_FAQBOT) {
+          window.ARENACORE_FAQBOT.open();
+        }
+      }, 400);
+    });
+  </script>
+</body>
+</html>

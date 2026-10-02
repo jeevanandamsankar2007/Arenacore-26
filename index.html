@@ -8,7 +8,7 @@
   <meta name="keywords" content="ARENACORE, ARENACORE '26, GDG, ACM, PSNACET, 24-Hour Hackathon, Deep Tech, Dindigul, Tamil Nadu, Tech Event">
   <meta name="author" content="GDG On Campus PSNACET">
   <meta property="og:title" content="ARENACORE '26 | 24-Hour Hackathon | GDG x ACM PSNACET">
-  <meta property="og:description" content="Build • Innovate • Impact at ARENACORE '26 - 24-Hour Hackathon at PSNACET. 28 & 29 OCT 2026. Official Themes & UN SDGs. Deep Tech.">
+  <meta property="og:description" content="Build • Innovate • Impact at ARENACORE '26 - 24-Hour Hackathon at PSNACET. 27 & 28 OCT 2026. Official Themes & UN SDGs. Deep Tech.">
   <meta property="og:type" content="website">
 
   <!-- Favicon -->
@@ -17,27 +17,78 @@
   <!-- Google Fonts: Plus Jakarta Sans, Space Grotesk, Outfit, Inter, Syncopate, Oxanium & Syne -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800;900&family=Oxanium:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800&family=Space+Grotesk:wght@600;700;800&family=Syncopate:wght@700&family=Syne:wght@700;800&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,600;0,700;0,800;1,700;1,800&family=Inter:wght@400;500;600;700&family=Orbitron:wght@700;800;900&family=Outfit:wght@500;600;700;800;900&family=Oxanium:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800&family=Space+Grotesk:wght@600;700;800&family=Syncopate:wght@700&family=Syne:wght@700;800&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet">
+  <!-- Fontshare Premium Display Fonts (Clash Display & Cabinet Grotesk) -->
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@700,600,500&f[]=cabinet-grotesk@800,700&display=swap" rel="stylesheet">
   
   <!-- FontAwesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <!-- Custom Stylesheet (with cache-buster) -->
-  <link rel="stylesheet" href="styles.css?v=2.9">
+  <link rel="stylesheet" href="styles.css?v=5.2">
 </head>
 <body class="light-theme">
 
   <!-- Canvas Background for Interactive Google Particle Mesh -->
   <canvas id="particleCanvas"></canvas>
 
-  <!-- Top Announcement Bar -->
+  <!-- Top Announcement Bar (Cricket / News Broadcast Style Marquee Ticker) -->
   <div class="announcement-banner" id="announcementBanner">
-    <div class="announcement-content">
+    <div class="ticker-header-badge">
       <span class="badge-pill bg-google-red">📢 Flash Update</span>
-      <span class="announcement-text">
-        <strong>ARENACORE '26:</strong> 24-Hour Hackathon registrations are live! 📅 <strong>28 & 29 OCT 2026</strong> | Deadline: <strong>21 OCT 2026</strong> | Team Size: <strong>4 Members</strong> | Prize Pool: <strong>₹40,000</strong>
-      </span>
-      <a href="javascript:void(0)" class="announcement-link" onclick="handleRegisterNowClick(event)">Register Now →</a>
+    </div>
+    <div class="ticker-container" id="tickerContainer">
+      <div class="ticker-track">
+        <div class="ticker-item">
+          <strong>ARENACORE '26:</strong> 24-Hour National Hackathon Registrations Live!
+        </div>
+        <span class="ticker-separator">•</span>
+        <div class="ticker-item">
+          📅 <strong>Dates:</strong> 27 & 28 OCT 2026 at PSNACET Campus
+        </div>
+        <span class="ticker-separator">•</span>
+        <div class="ticker-item">
+          ⏳ <strong>Deadline:</strong> 12 OCT 2026
+        </div>
+        <span class="ticker-separator">•</span>
+        <div class="ticker-item">
+          👥 <strong>Team:</strong> 4 Members (₹500 / Member)
+        </div>
+        <span class="ticker-separator">•</span>
+        <div class="ticker-item">
+          🏆 <strong>Total Prize Pool:</strong> ₹1,20,000 Cash & Perks
+        </div>
+        <span class="ticker-separator">•</span>
+        <div class="ticker-item">
+          🚀 <a href="javascript:void(0)" class="announcement-link" onclick="handleRegisterNowClick(event)">Register Your Team Now →</a>
+        </div>
+        <span class="ticker-separator">•</span>
+        <!-- Continuous Marquee Loop Duplicate -->
+        <div class="ticker-item">
+          <strong>ARENACORE '26:</strong> 24-Hour National Hackathon Registrations Live!
+        </div>
+        <span class="ticker-separator">•</span>
+        <div class="ticker-item">
+          📅 <strong>Dates:</strong> 27 & 28 OCT 2026 at PSNACET Campus
+        </div>
+        <span class="ticker-separator">•</span>
+        <div class="ticker-item">
+          ⏳ <strong>Deadline:</strong> 12 OCT 2026
+        </div>
+        <span class="ticker-separator">•</span>
+        <div class="ticker-item">
+          👥 <strong>Team:</strong> 4 Members (₹500 / Member)
+        </div>
+        <span class="ticker-separator">•</span>
+        <div class="ticker-item">
+          🏆 <strong>Total Prize Pool:</strong> ₹1,20,000 Cash & Perks
+        </div>
+        <span class="ticker-separator">•</span>
+        <div class="ticker-item">
+          🚀 <a href="javascript:void(0)" class="announcement-link" onclick="handleRegisterNowClick(event)">Register Your Team Now →</a>
+        </div>
+        <span class="ticker-separator">•</span>
+      </div>
     </div>
     <button class="banner-close-btn" id="closeBannerBtn" aria-label="Close Announcement">&times;</button>
   </div>
@@ -48,14 +99,14 @@
       
       <!-- Brand & Logos -->
       <a href="#home" class="brand-link" id="brandLogoLink" onclick="switchTab('home')">
-        <div style="display: flex; align-items: center; gap: 8px;">
+        <div class="brand-logos-cluster">
           <img src="assets/gdg-logo.svg" alt="GDG Logo" class="brand-logo-img">
-          <i class="fa-solid fa-xmark" style="font-size: 0.8rem; color: #5f6368;"></i>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Association_for_Computing_Machinery_%28ACM%29_logo.svg" alt="ACM Logo" class="brand-logo-img" style="width: 40px; height: auto;">
+          <i class="fa-solid fa-xmark brand-xmark"></i>
+          <img src="assets/acm-psnacet-logo.png" alt="ACM Student Chapter PSNACET Logo" class="acm-nav-logo">
         </div>
         <div class="brand-text-group">
           <div class="brand-title">
-            <span class="g-blue">G</span><span class="g-red">D</span><span class="g-yellow">G</span> x <span style="color: black; font-weight: bold;">ACM</span>
+            <span class="g-blue">G</span><span class="g-red">D</span><span class="g-yellow">G</span> x <span style="color: #0284c7; font-weight: 800;">ACM</span>
           </div>
           <div class="brand-subtitle">On Campus • PSNACET</div>
         </div>
@@ -73,7 +124,7 @@
           <li class="nav-item">
             <a href="#events" class="nav-tab" data-target="events" onclick="switchTab('events')">
               <i class="fa-solid fa-calendar-check"></i>
-              <span>Event Details</span>
+              <span>Tracks</span>
             </a>
           </li>
           <li class="nav-item">
@@ -91,13 +142,13 @@
           <li class="nav-item">
             <a href="#records" class="nav-tab" data-target="records" onclick="switchTab('records')">
               <i class="fa-solid fa-trophy"></i>
-              <span>Records & Gallery</span>
+              <span>Gallery</span>
             </a>
           </li>
           <li class="nav-item">
             <a href="#about" class="nav-tab" data-target="about" onclick="switchTab('about')">
               <i class="fa-solid fa-university"></i>
-              <span>About PSNA GDG</span>
+              <span>About GDG & ACM</span>
             </a>
           </li>
         </ul>
@@ -130,13 +181,13 @@
     <div class="mobile-drawer" id="mobileDrawer">
       <div class="drawer-header">
         <div class="d-flex align-center gap-2">
-          <div style="display: flex; align-items: center; gap: 4px;">
-            <img src="assets/gdg-logo.svg" alt="GDG Logo" class="brand-logo-img" style="width: 36px; height: 36px;">
-            <i class="fa-solid fa-xmark" style="font-size: 0.7rem; color: #5f6368;"></i>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Association_for_Computing_Machinery_%28ACM%29_logo.svg" alt="ACM Logo" style="width: 36px; height: auto;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <img src="assets/gdg-logo.svg" alt="GDG Logo" class="brand-logo-img" style="width: 36px; height: 36px; border-radius: 50%; background: #ffffff; padding: 2px; border: 1px solid #e2e8f0; object-fit: contain;">
+            <i class="fa-solid fa-xmark" style="font-size: 0.75rem; color: #64748b;"></i>
+            <img src="assets/acm-psnacet-logo.png" alt="ACM Student Chapter PSNACET Logo" class="acm-nav-logo" style="width: 36px; height: 36px; border-radius: 50%; background: #ffffff; padding: 3px; border: 1px solid #e2e8f0; object-fit: contain;">
           </div>
           <div class="brand-text-group">
-            <div class="brand-title font-semibold">GDG x <span style="color: black;">ACM</span> PSNACET</div>
+            <div class="brand-title font-semibold">GDG x <span style="color: #0284c7; font-weight: 800;">ACM</span> PSNACET</div>
             <div class="brand-subtitle">ARENACORE '26 Portal</div>
           </div>
         </div>
@@ -148,7 +199,7 @@
         <li><a href="#register" class="mobile-nav-link" data-target="register" onclick="switchTab('register')"><i class="fa-solid fa-id-card"></i> Registration & Pass Generator</a></li>
         <li><a href="#guidelines" class="mobile-nav-link" data-target="guidelines" onclick="switchTab('guidelines')"><i class="fa-solid fa-book-open-reader"></i> Guidelines & Rubric</a></li>
         <li><a href="#records" class="mobile-nav-link" data-target="records" onclick="switchTab('records')"><i class="fa-solid fa-trophy"></i> Previous Records & Gallery</a></li>
-        <li><a href="#about" class="mobile-nav-link" data-target="about" onclick="switchTab('about')"><i class="fa-solid fa-university"></i> About PSNA & Coordinators</a></li>
+        <li><a href="#about" class="mobile-nav-link" data-target="about" onclick="switchTab('about')"><i class="fa-solid fa-university"></i> About GDG & ACM PSNACET</a></li>
         <li><a href="#contact" class="mobile-nav-link" data-target="contact" onclick="switchTab('contact')"><i class="fa-solid fa-envelope"></i> Contact & Support</a></li>
       </ul>
       <div class="mobile-drawer-footer">
@@ -168,7 +219,7 @@
         <a href="#register" class="q-item" data-target="register" onclick="switchTab('register')"><span class="color-dot green"></span> Virtual ID Pass</a>
         <a href="#guidelines" class="q-item" data-target="guidelines" onclick="switchTab('guidelines')"><span class="color-dot blue"></span> Rulebook</a>
         <a href="#records" class="q-item" data-target="records" onclick="switchTab('records')"><span class="color-dot red"></span> Gallery & Records</a>
-        <a href="#about" class="q-item" data-target="about" onclick="switchTab('about')"><span class="color-dot yellow"></span> PSNA Team</a>
+        <a href="#about" class="q-item" data-target="about" onclick="switchTab('about')"><span class="color-dot yellow"></span> GDG & ACM</a>
       </div>
     </div>
   </div>
@@ -191,37 +242,56 @@
 
         <!-- Google-Styled Title -->
         <div class="hero-title-wrap">
-          <div class="hero-college-meta">
-            <span class="college-accreditation">An Autonomous Institution • AICTE | Anna University | NBA | NAAC A++</span>
-          </div>
           <div class="hero-presents-tag">
-            <span class="gdg-presents-brand">
-              <span class="g-blue">G</span><span class="g-red">o</span><span class="g-yellow">o</span><span class="g-blue">g</span><span class="g-green">l</span><span class="g-red">e</span> 
-              <span class="g-blue">Developer</span> 
-              <span class="g-green">Groups</span>
-            </span>
-            <span class="campus-sub">On Campus PSNACET</span>
-            <span class="presents-x">&bull;</span>
-            <span class="acm-presents-brand"><span class="acm-blue">ACM</span> PSNACET</span>
+            <div class="presents-collab-group">
+              <span class="gdg-presents-brand">
+                <span class="g-blue">G</span><span class="g-red">o</span><span class="g-yellow">o</span><span class="g-blue">g</span><span class="g-green">l</span><span class="g-red">e</span> 
+                <span class="g-blue">Developer</span> 
+                <span class="g-green">Groups</span>
+              </span>
+              <span class="campus-sub">On Campus PSNACET</span>
+            </div>
+            <span class="presents-x">&times;</span>
+            <div class="presents-collab-group">
+              <span class="acm-full-brand">
+                <span class="acm-full-title">Association for Computing Machinery</span>
+                <span class="acm-chapter-tag">Student Chapter PSNACET</span>
+              </span>
+            </div>
             <span class="presents-badge">Presents</span>
           </div>
           <h1 class="main-event-title arenacore-hero-title">
-            <span class="arenacore-brand">
-              <span class="arena-part">ARENA</span><span class="core-part">CORE</span>
-              <span class="arenacore-year">
-                <span class="year-pulse-dot"></span>
-                <span class="year-text">'26</span>
+            <span class="arenacore-brand-pro" aria-label="ARENACORE '26">
+              <span class="arena-pro">ARENA</span><span class="core-pro">CORE</span>
+              <span class="year-pro-badge">
+                <span class="year-pro-dot"></span>
+                <span class="year-pro-text">'26</span>
               </span>
             </span>
           </h1>
-          <div>
+
+          <!-- Elegant Architectural Divider -->
+          <div class="hero-pro-divider" aria-hidden="true">
+            <span class="pro-line"></span>
+            <span class="pro-center-gem"></span>
+            <span class="pro-line"></span>
+          </div>
+
+          <div class="hero-tagline-pro">
+            <span>BUILD</span>
+            <span class="tagline-dot">•</span>
+            <span>INNOVATE</span>
+            <span class="tagline-dot">•</span>
+            <span>IMPACT</span>
+          </div>
+
+          <div class="mt-3">
             <span class="hack-duration-pill">
               <i class="fa-solid fa-bolt"></i>
-              <span class="pill-text">24 - HOUR HACKATHON</span>
+              <span class="pill-text">24 - HOUR NATIONAL HACKATHON</span>
             </span>
           </div>
-          <p class="hero-tagline-bold">BUILD &bull; INNOVATE &bull; IMPACT</p>
-          <p class="hero-subtag-deeptech">THEMES & UN SDGS. BOLD INNOVATIONS. DEEP TECH.</p>
+          <p class="hero-subtag-deeptech mt-2">THEMES &amp; UN SDGS • BOLD INNOVATIONS • DEEP TECH</p>
         </div>
 
         <!-- Event Metadata Pills -->
@@ -229,14 +299,14 @@
           <div class="meta-pill">
             <i class="fa-solid fa-calendar-days text-google-blue"></i>
             <div>
-              <strong>28 & 29 OCT 2026</strong>
+              <strong>27 & 28 OCT 2026</strong>
               <span>24 Hours Non-Stop</span>
             </div>
           </div>
           <div class="meta-pill">
             <i class="fa-solid fa-hourglass-half text-google-red"></i>
             <div>
-              <strong>Deadline: 21 OCT 2026</strong>
+              <strong>Deadline: 12 OCT 2026</strong>
               <span>Registration Closes</span>
             </div>
           </div>
@@ -244,14 +314,14 @@
             <i class="fa-solid fa-users text-google-green"></i>
             <div>
               <strong>Team Size: 4 Members</strong>
-              <span>₹150 / Member</span>
+              <span>₹500 / Member</span>
             </div>
           </div>
           <div class="meta-pill">
             <i class="fa-solid fa-trophy text-google-yellow"></i>
             <div>
-              <strong>₹40,000 Prize Pool</strong>
-              <span>1st: ₹25,000 | 2nd: ₹15,000</span>
+              <strong>₹1,20,000 Prize Pool</strong>
+              <span>Overall Cash Awards & Perks</span>
             </div>
           </div>
         </div>
@@ -289,7 +359,7 @@
           </div>
 
           <div class="countdown-footer">
-            <p>⚡ <strong>Registration Deadline:</strong> <strong>21 OCT 2026</strong> &nbsp;|&nbsp; <strong>Hackathon Dates:</strong> <strong>28 & 29 OCT 2026 (24 Hours)</strong> at PSNACET Campus!</p>
+            <p>⚡ <strong>Registration Deadline:</strong> <strong>12 OCT 2026</strong> &nbsp;|&nbsp; <strong>Hackathon Dates:</strong> <strong>27 & 28 OCT 2026 (24-Hour Non-Stop)</strong> at PSNACET Campus!</p>
           </div>
         </div>
 
@@ -339,8 +409,8 @@
             <div class="stat-icon-wrap icon-green">
               <i class="fa-solid fa-award"></i>
             </div>
-            <div class="stat-number" data-target="40000">₹40K+</div>
-            <div class="stat-desc">Cash Prizes (1st ₹25K | 2nd ₹15K)</div>
+            <div class="stat-number" data-target="120000">₹1.2L+</div>
+            <div class="stat-desc">Total Cash Prize Pool</div>
           </div>
         </div>
 
@@ -551,7 +621,7 @@
         <div class="schedule-container mt-12" id="schedule">
           <div class="section-heading text-center">
             <div class="section-tag bg-google-yellow-subtle">
-              <i class="fa-solid fa-clock"></i> 48-Hour Run of Show
+              <i class="fa-solid fa-clock"></i> 24-Hour Non-Stop Run of Show (27 & 28 OCT)
             </div>
             <h2 class="section-title">Interactive Event Timeline</h2>
           <!-- Interactive 24-Hour Timeline Scrub Simulator -->
@@ -598,11 +668,11 @@
           <div class="schedule-day-tabs">
             <button class="day-tab active" id="day1TabBtn" onclick="switchScheduleDay(1)">
               <div class="day-num">DAY 1</div>
-              <div class="day-date">28 OCT 2026 (Day 1: Inauguration & 24h Sprint)</div>
+              <div class="day-date">27 OCT 2026 (Day 1: Inauguration & 24h Sprint)</div>
             </button>
             <button class="day-tab" id="day2TabBtn" onclick="switchScheduleDay(2)">
               <div class="day-num">DAY 2</div>
-              <div class="day-date">29 OCT 2026 (Day 2: Demos, Jury & Valedictory)</div>
+              <div class="day-date">28 OCT 2026 (Day 2: Demos, Jury & Valedictory)</div>
             </button>
           </div>
 
@@ -735,33 +805,63 @@
               <i class="fa-solid fa-gift"></i> Rewards & Recognition
             </div>
             <h2 class="section-title">Prize Pool & Perks</h2>
+            <p class="section-description">
+              Compete for an extraordinary national prize pool backed by Google Developer Groups and ACM Student Chapter PSNACET.
+            </p>
           </div>
 
-          <div class="prizes-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); max-width: 860px; margin: 0 auto;">
-            <div class="prize-card rank-1-grand">
-              <div class="crown-badge">👑 1ST PRIZE</div>
-              <div class="prize-medal"><i class="fa-solid fa-trophy text-gold"></i></div>
-              <h3>Grand Champion</h3>
-              <div class="prize-amount">₹25,000</div>
-              <ul class="prize-perks">
-                <li><i class="fa-solid fa-check"></i> Prestigious 1st Prize Trophy & Merit Certificates</li>
-                <li><i class="fa-solid fa-check"></i> Exclusive GDG & ACM Premium Tech Kits</li>
-                <li><i class="fa-solid fa-check"></i> Startup Incubation & Cloud Credits</li>
-                <li><i class="fa-solid fa-check"></i> Direct Mentorship with Deep Tech Architects</li>
-              </ul>
+          <div class="overall-prize-hero-card" style="max-width: 960px; margin: 0 auto;">
+            <div class="overall-prize-banner">
+              <div class="overall-prize-badge">
+                <i class="fa-solid fa-trophy text-gold"></i> NATIONAL HACKATHON REWARDS
+              </div>
+              <div class="overall-prize-amount-wrap">
+                <div class="overall-prize-label">Total Prize Pool</div>
+                <div class="overall-prize-val">₹1,20,000</div>
+                <p class="overall-prize-subtext">Comprehensive cash prizes, trophies, incubation backing, and developer kits awarded to outstanding teams</p>
+              </div>
             </div>
 
-            <div class="prize-card rank-2">
-              <div class="crown-badge" style="background: linear-gradient(135deg, #64748b, #94a3b8);">🥈 2ND PRIZE</div>
-              <div class="prize-medal"><i class="fa-solid fa-medal text-silver"></i></div>
-              <h3>Runner Up</h3>
-              <div class="prize-amount">₹15,000</div>
-              <ul class="prize-perks">
-                <li><i class="fa-solid fa-check"></i> 2nd Prize Trophy & Merit Certificates</li>
-                <li><i class="fa-solid fa-check"></i> Official Google & ACM Swag Packs</li>
-                <li><i class="fa-solid fa-check"></i> Incubation & Industry Referrals</li>
-                <li><i class="fa-solid fa-check"></i> Participation Certificate for all Finalists</li>
-              </ul>
+            <div class="overall-perks-grid">
+              <div class="perk-pillar-card">
+                <div class="perk-icon-wrap" style="background: rgba(251, 188, 5, 0.15); color: #d97706;">
+                  <i class="fa-solid fa-trophy"></i>
+                </div>
+                <div>
+                  <h4>Grand Cash Awards & Trophies</h4>
+                  <p>Substantial cash rewards alongside prestigious ARENACORE '26 winner trophies and certificates of merit.</p>
+                </div>
+              </div>
+
+              <div class="perk-pillar-card">
+                <div class="perk-icon-wrap" style="background: rgba(66, 133, 244, 0.15); color: #2563eb;">
+                  <i class="fa-solid fa-rocket"></i>
+                </div>
+                <div>
+                  <h4>Incubation & Startup Support</h4>
+                  <p>Direct incubation pipelines at PSNA institutional centers and venture advisory for high-impact MVPs.</p>
+                </div>
+              </div>
+
+              <div class="perk-pillar-card">
+                <div class="perk-icon-wrap" style="background: rgba(52, 168, 83, 0.15); color: #16a34a;">
+                  <i class="fa-solid fa-box-open"></i>
+                </div>
+                <div>
+                  <h4>Official GDG & ACM Swag Kits</h4>
+                  <p>Exclusive branded backpacks, tech swag bundles, premium stickers, and developer gear for all finalists.</p>
+                </div>
+              </div>
+
+              <div class="perk-pillar-card">
+                <div class="perk-icon-wrap" style="background: rgba(234, 67, 53, 0.15); color: #dc2626;">
+                  <i class="fa-solid fa-certificate"></i>
+                </div>
+                <div>
+                  <h4>Official Certification & Credits</h4>
+                  <p>Verified Certificates of Merit for podium rankers and Participation Certificates for all attendees.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -828,146 +928,263 @@
         
         <div class="section-heading text-center">
           <div class="section-tag bg-google-red-subtle">
-            <i class="fa-solid fa-id-card-clip"></i> Participant Hub
+            <i class="fa-solid fa-id-card-clip"></i> Participant &amp; Pass Portal
           </div>
-          <h2 class="section-title">Registration & Virtual Hackathon Pass</h2>
+          <h2 class="section-title">Registration Hub &amp; Shortlisted Team Passes</h2>
           <p class="section-description">
-            Register your team (₹150 per member payable post-confirmation) and customize your official virtual attendee badge in real-time!
+            Before the deadline, submit your team application via the official Google Form. After the shortlist is announced, shortlisted teams generate their official ArenaCore '26 Entry Pass with dual GDG &amp; ACM credentials!
           </p>
           <div class="google-line-indicator"></div>
         </div>
 
-        <div class="reg-pass-split-layout">
-          
-          <!-- Left Column: Interactive Multi-Step Registration Form -->
-          <div class="registration-form-card glass-panel">
-            <div class="reg-form-header">
-              <h3><i class="fa-solid fa-user-plus text-google-blue"></i> Team Registration Form</h3>
-              <p>Fill in details to secure your spot for Round 1 evaluation.</p>
+        <!-- Mode Toggle Pill: Pre-Deadline vs Post-Deadline -->
+        <div class="pass-mode-toggle-wrap">
+          <div class="pass-mode-toggle-pill" role="tablist" aria-label="Portal Phase Mode">
+            <button type="button" class="mode-btn active" id="modeBtnPre" onclick="setRegistrationMode('pre')" role="tab" aria-selected="true">
+              <i class="fa-solid fa-file-signature"></i> 1. Registration Phase (Before Deadline)
+            </button>
+            <button type="button" class="mode-btn" id="modeBtnPost" onclick="setRegistrationMode('post')" role="tab" aria-selected="false">
+              <i class="fa-solid fa-shield-halved"></i> 2. Shortlisted Team Pass (After Deadline)
+            </button>
+          </div>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- VIEW 1: PRE-DEADLINE REGISTRATION HUB (DEFAULT ACTIVE) -->
+        <!-- ========================================================= -->
+        <div id="regPreDeadlineView" class="reg-pre-view-wrap">
+          <div class="reg-hub-grid">
+            
+            <!-- Left Column: Google Form Hub Card -->
+            <div class="reg-form-hub-card">
+              <div class="hub-card-header">
+                <span class="badge-pill bg-google-blue-subtle">
+                  <i class="fa-brands fa-google"></i> Official Google Form Portal
+                </span>
+                <span class="badge-pill bg-google-green-subtle">
+                  <i class="fa-solid fa-circle-check"></i> Applications Open
+                </span>
+              </div>
+
+              <h3 class="hub-title">ArenaCore '26 Official Registration</h3>
+              <p class="hub-desc">
+                Submit your team details (up to 4 members) and project abstract through the official Google Form before the registration deadline. Shortlisted teams will be directly contacted via email/WhatsApp by the organizing committee.
+              </p>
+
+              <div class="hub-action-box">
+                <a href="https://forms.gle/ir6Dbnn6GTzWCX6v7" target="_blank" rel="noopener noreferrer" class="btn btn-primary hub-cta-btn" id="hubOpenFormBtn" onclick="handleRegisterNowClick(event)">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Official Google Form
+                </a>
+                <button type="button" class="btn btn-outline" onclick="copyRegistrationLink()">
+                  <i class="fa-solid fa-copy"></i> Copy Form Link
+                </button>
+              </div>
+
+              <!-- Key Metrics / Guidelines Matrix -->
+              <div class="hub-meta-matrix">
+                <div class="meta-item">
+                  <div class="meta-icon bg-google-blue-subtle text-google-blue">
+                    <i class="fa-solid fa-users"></i>
+                  </div>
+                  <div>
+                    <strong>Team Composition</strong>
+                    <span>Up to 4 Members per team</span>
+                  </div>
+                </div>
+
+                <div class="meta-item">
+                  <div class="meta-icon bg-google-red-subtle text-google-red">
+                    <i class="fa-solid fa-layer-group"></i>
+                  </div>
+                  <div>
+                    <strong>Theme Selection</strong>
+                    <span>10 Teams Cap per Theme (Strict)</span>
+                  </div>
+                </div>
+
+                <div class="meta-item">
+                  <div class="meta-icon bg-google-green-subtle text-google-green">
+                    <i class="fa-solid fa-indian-rupee-sign"></i>
+                  </div>
+                  <div>
+                    <strong>Registration Fee</strong>
+                    <span>₹500 / member (₹2,000 / team)</span>
+                  </div>
+                </div>
+
+                <div class="meta-item">
+                  <div class="meta-icon bg-google-yellow-subtle text-google-yellow">
+                    <i class="fa-solid fa-clock"></i>
+                  </div>
+                  <div>
+                    <strong>Hackathon Format</strong>
+                    <span>24 Hours Non-Stop (27 &amp; 28 Oct)</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Information Callout -->
+              <div class="hub-info-callout mt-4">
+                <i class="fa-solid fa-circle-info text-google-blue fa-lg mt-1"></i>
+                <div>
+                  <strong>Payment &amp; Pass Information:</strong>
+                  <span>Registration fees are payable <em>only after selection</em>. Shortlisted teams will receive the official payment link directly from organizers. Once confirmed, your official dual-club ArenaCore Access Pass will be available for instant generation.</span>
+                </div>
+              </div>
+
             </div>
 
-            <form id="hackathonRegForm" onsubmit="handleRegistrationSubmit(event)">
+            <!-- Right Column: Registration QR Code Card -->
+            <div class="reg-qr-hub-card text-center">
+              <span class="badge-pill bg-google-yellow-subtle mb-3">
+                <i class="fa-solid fa-mobile-screen-button"></i> Mobile Quick Scan
+              </span>
+              <h4 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 6px; color: var(--text-primary);">
+                Scan to Register on Mobile
+              </h4>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 18px;">
+                Point your phone camera at the QR code below to immediately open the ArenaCore '26 Google Form.
+              </p>
+
+              <div class="reg-qr-frame-wrap">
+                <div class="qr-glow-ring"></div>
+                <div class="reg-qr-image-box">
+                  <img src="assets/registration-qr.jpg" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=https%3A%2F%2Fforms.gle%2Fir6Dbnn6GTzWCX6v7&color=0f172a&bgcolor=ffffff'" alt="Official Registration QR Code" class="reg-qr-img" id="mainRegQrImage">
+                  <div class="qr-center-logo">
+                    <img src="assets/gdg-logo.svg" alt="GDG" style="width: 24px; height: 24px;">
+                  </div>
+                </div>
+              </div>
+
+              <div class="d-flex justify-center gap-2 mt-3 mb-4">
+                <a href="assets/registration-qr.jpg" download="ArenaCore26-Registration-QR.jpg" class="btn btn-sm btn-outline">
+                  <i class="fa-solid fa-download"></i> Save QR Code
+                </a>
+                <a href="https://forms.gle/ir6Dbnn6GTzWCX6v7" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                  <i class="fa-solid fa-external-link"></i> Direct Link
+                </a>
+              </div>
+
+              <div class="qr-pass-notice-box">
+                <i class="fa-solid fa-lock text-google-yellow notice-icon"></i>
+                <div>
+                  <strong>Official Pass Notice:</strong>
+                  <span>Hackathon Entry Passes are restricted to shortlisted teams. After Round 1 selection is announced, switch to tab <strong>2. Shortlisted Team Pass</strong> to generate and download your personalized credentials.</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- VIEW 2: POST-DEADLINE SHORTLISTED PASS GENERATOR -->
+        <!-- ========================================================= -->
+        <div id="regPostDeadlineView" class="reg-pass-split-layout" style="display: none;">
+          
+          <!-- Left Column: Shortlisted Participant Input Form (Direct Generation, No Database Gate) -->
+          <div class="registration-form-card glass-panel">
+            <div class="reg-form-header">
+              <div class="d-flex justify-between align-center mb-2">
+                <span class="badge-pill bg-google-green-subtle">
+                  <i class="fa-solid fa-circle-check"></i> Shortlist Portal Active
+                </span>
+                <span class="badge-pill bg-google-blue-subtle">
+                  <i class="fa-solid fa-ticket"></i> Dual Club Pass
+                </span>
+              </div>
+              <h3 style="font-size: 1.35rem; font-weight: 800; margin-bottom: 6px;">
+                <i class="fa-solid fa-id-card text-google-blue"></i> Shortlisted Team Pass Generator
+              </h3>
+              <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;">
+                Congratulations on being shortlisted! Enter your participant and team details below to generate your official ArenaCore '26 pass.
+              </p>
+            </div>
+
+            <form id="shortlistedPassForm" onsubmit="event.preventDefault(); downloadVirtualPass();">
               
-              <!-- Team Info Group -->
-              <div class="form-section-title">1. Team Details</div>
+              <div class="form-section-title">1. Attendee Identification</div>
               
               <div class="form-row">
                 <div class="form-group">
-                  <label for="teamNameInput">Team Name <span class="req">*</span></label>
-                  <input type="text" id="teamNameInput" required placeholder="e.g. ByteBusters" class="form-control" oninput="updateLiveBadge()">
+                  <label for="passParticipantName">Participant Name <span class="req">*</span></label>
+                  <input type="text" id="passParticipantName" required placeholder="e.g. Alex Johnson" class="form-control" value="Alex Johnson" oninput="updateLiveShortlistedPass()">
                 </div>
                 <div class="form-group">
-                  <label for="collegeNameInput">College / University <span class="req">*</span></label>
-                  <input type="text" id="collegeNameInput" required placeholder="e.g. PSNACET Dindigul" class="form-control" oninput="updateLiveBadge()">
+                  <label for="passParticipantRole">Role in Team <span class="req">*</span></label>
+                  <select id="passParticipantRole" class="form-control" onchange="updateLiveShortlistedPass()">
+                    <option value="Team Leader" selected>Team Leader</option>
+                    <option value="Core Developer">Core Developer</option>
+                    <option value="UI/UX Designer">UI/UX Designer</option>
+                    <option value="AI / ML Engineer">AI / ML Engineer</option>
+                    <option value="Hardware / IoT Specialist">Hardware / IoT Specialist</option>
+                    <option value="Team Member">Team Member</option>
+                  </select>
                 </div>
               </div>
 
               <div class="form-row">
                 <div class="form-group">
-                  <label for="trackSelect">Selected Theme / UN SDG Track <span class="req">*</span></label>
-                  <select id="trackSelect" required class="form-control" onchange="updateLiveBadge()">
-                    <option value="">Select an Innovation Theme...</option>
-                    <option value="AI & Intelligent Systems">AI & Intelligent Systems</option>
-                    <option value="Connected & Autonomous Technologies">Connected & Autonomous Technologies</option>
-                    <option value="Secure & Sustainable Future">Secure & Sustainable Future</option>
+                  <label for="passTeamName">Registered Team Name <span class="req">*</span></label>
+                  <input type="text" id="passTeamName" required placeholder="e.g. ByteBusters" class="form-control" value="ByteBusters" oninput="updateLiveShortlistedPass()">
+                </div>
+                <div class="form-group">
+                  <label for="passCollegeName">College / Institution <span class="req">*</span></label>
+                  <input type="text" id="passCollegeName" required placeholder="e.g. PSNA College of Eng &amp; Tech" class="form-control" value="PSNA College of Eng &amp; Tech" oninput="updateLiveShortlistedPass()">
+                </div>
+              </div>
+
+              <div class="form-section-title mt-4">2. Selected Theme Track &amp; Pass ID</div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="passThemeTrack">Approved Theme Track <span class="req">*</span></label>
+                  <select id="passThemeTrack" class="form-control" onchange="updateLiveShortlistedPass()">
+                    <option value="AI &amp; Intelligent Systems" selected>AI &amp; Intelligent Systems</option>
+                    <option value="Connected &amp; Autonomous Technologies">Connected &amp; Autonomous Technologies</option>
+                    <option value="Secure &amp; Sustainable Future">Secure &amp; Sustainable Future</option>
                   </select>
                 </div>
                 <div class="form-group">
-                  <label for="projectTitleInput">Project Title / Concept <span class="req">*</span></label>
-                  <input type="text" id="projectTitleInput" required placeholder="e.g. EcoGrid AI Monitor" class="form-control">
-                </div>
-              </div>
-
-              <!-- Team Lead Info -->
-              <div class="form-section-title mt-4">2. Team Leader (Contact Person)</div>
-              
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="leaderNameInput">Leader Full Name <span class="req">*</span></label>
-                  <input type="text" id="leaderNameInput" required placeholder="e.g. Alex Johnson" class="form-control" oninput="updateLiveBadge()">
-                </div>
-                <div class="form-group">
-                  <label for="leaderEmailInput">Official Email Address <span class="req">*</span></label>
-                  <input type="email" id="leaderEmailInput" required placeholder="leader@college.edu" class="form-control">
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="leaderPhoneInput">WhatsApp / Phone Number <span class="req">*</span></label>
-                  <input type="tel" id="leaderPhoneInput" required placeholder="+91 98765 43210" class="form-control">
-                </div>
-                <div class="form-group">
-                  <label for="leaderGithubInput">GitHub / Portfolio URL</label>
-                  <input type="url" id="leaderGithubInput" placeholder="https://github.com/username" class="form-control">
-                </div>
-              </div>
-
-              <!-- Additional Team Members Section -->
-              <div class="form-section-title mt-4 d-flex justify-between align-center">
-                <span>3. Team Members (Fixed 4 Members Squad)</span>
-                <span class="member-count-badge" id="memberCounterBadge">1 Leader + 1 Member</span>
-              </div>
-
-              <div id="dynamicMembersContainer">
-                <div class="member-entry-row" id="memberRow2">
-                  <span class="member-num-pill">Member 2</span>
-                  <input type="text" placeholder="Full Name *" required class="form-control m-name" oninput="calculateFee()">
-                  <input type="email" placeholder="Email Address *" required class="form-control m-email">
-                  <input type="text" placeholder="Roll No / ID" class="form-control m-id">
-                  <button type="button" class="btn-remove-member" onclick="removeMemberRow(2)" title="Remove Member">&times;</button>
-                </div>
-              </div>
-
-              <div class="member-actions-row">
-                <button type="button" class="btn btn-sm btn-outline" id="addMemberBtn" onclick="addMemberRow()">
-                  <i class="fa-solid fa-user-plus"></i> + Add Team Member
-                </button>
-              </div>
-
-              <!-- Fee & Payment Notice -->
-              <div class="fee-summary-box">
-                <div class="fee-line">
-                  <span>Registration Fee Rate:</span>
-                  <span class="fw-bold">₹150 / participant</span>
-                </div>
-                <div class="fee-line highlight">
-                  <span>Estimated Total (payable upon selection):</span>
-                  <span class="total-fee-val" id="totalFeeAmount">₹300 INR</span>
-                </div>
-                <p class="fee-note">
-                  <i class="fa-solid fa-circle-info"></i> Note: Payment is required ONLY after receiving the official shortlist confirmation email from <code>gdscpsna@psnacet.edu.in</code>.
-                </p>
-              </div>
-
-              <!-- Submission Action -->
-              <div class="form-actions mt-6">
-                <button type="submit" class="btn btn-primary btn-lg w-full">
-                  <i class="fa-solid fa-paper-plane"></i> Submit Hackathon Application
-                </button>
-                <div class="google-forms-fallback text-center mt-4 p-3 glass-panel" style="border-radius: 12px; background: rgba(248, 250, 252, 0.85); border: 1px dashed rgba(66, 133, 244, 0.4);">
-                  <div style="display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap;">
-                    <img src="assets/registration-qr.jpg" alt="Official Registration QR Code" style="width: 95px; height: 95px; border-radius: 8px; border: 2px solid #ffffff; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-                    <div style="text-align: left; max-width: 250px;">
-                      <strong style="display: block; font-size: 0.95rem; color: var(--text-primary);"><i class="fa-solid fa-qrcode text-google-blue"></i> Scan or Open Form</strong>
-                      <span style="display: block; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 6px;">Scan with your mobile camera or click below to fill the official registration form</span>
-                      <a href="javascript:void(0)" onclick="handleRegisterNowClick(event)" class="link-google" style="font-weight: 700; font-size: 0.85rem;">Open Official Google Form <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                    </div>
+                  <label for="passCustomId">Unique Pass ID</label>
+                  <div style="display: flex; gap: 8px;">
+                    <input type="text" id="passCustomId" class="form-control" value="AC26-PSNA-8429" readonly style="font-family: var(--font-mono); font-weight: 700; color: var(--g-blue); background: var(--bg-surface-elevated, #f1f5f9);">
+                    <button type="button" class="btn btn-outline btn-sm" onclick="generateNewPassId()" title="Regenerate unique ID">
+                      <i class="fa-solid fa-rotate"></i>
+                    </button>
                   </div>
                 </div>
+              </div>
+
+              <!-- ArenaCore Clearance Checklist Preview -->
+              <div class="hub-info-callout success mt-4">
+                <i class="fa-solid fa-circle-check text-google-green fa-lg mt-1"></i>
+                <div style="font-size: 0.82rem;">
+                  <strong>ArenaCore Feature Clearance Included:</strong>
+                  <span>Your pass grants full 24-hour access to PSNACET IT Block, High-Speed Hacker Wi-Fi, 24h Workstation &amp; Lab Cluster, Food &amp; Refreshments, and Mentorship Evaluation.</span>
+                </div>
+              </div>
+
+              <div class="form-actions mt-5">
+                <button type="button" class="btn btn-primary btn-lg w-full" onclick="downloadVirtualPass()">
+                  <i class="fa-solid fa-download"></i> Download Official Pass (PNG)
+                </button>
+                <button type="button" class="btn btn-outline w-full mt-2" onclick="flipPassCard()">
+                  <i class="fa-solid fa-arrows-rotate"></i> Flip Pass to View Wi-Fi &amp; Desk Credentials
+                </button>
               </div>
 
             </form>
           </div>
 
-          <!-- Right Column: Interactive 3D Holographic Flip Badge Generator -->
+          <!-- Right Column: Interactive 3D Holographic Flip Pass (With Dual Club & Clearance) -->
           <div class="virtual-badge-panel" id="passGeneratorPanel">
             <div class="badge-panel-header">
               <div class="d-flex justify-between align-center">
-                <h3><i class="fa-solid fa-id-badge text-google-yellow"></i> 3D Holographic Attendee Pass</h3>
+                <h3><i class="fa-solid fa-id-badge text-google-yellow"></i> 3D Holographic ArenaCore Pass</h3>
                 <span class="badge-pill bg-google-blue-subtle"><i class="fa-solid fa-cube"></i> Interactive 3D</span>
               </div>
-              <p>Type in the form to watch your badge update live. Hover to explore the 3D tilt, or flip to inspect venue & Wi-Fi credentials!</p>
+              <p>Live preview for shortlisted attendees. Features dual GDG &amp; ACM club credentials, unique ID, and venue clearance.</p>
             </div>
 
             <!-- Realistic Lanyard Ribbon & Clasp -->
@@ -988,16 +1205,19 @@
                   <!-- Lanyard Slot -->
                   <div class="pass-lanyard-hole"></div>
 
-                  <!-- Pass Top Header -->
+                  <!-- Pass Top Header: Dual Clubs GDG & ACM -->
                   <div class="pass-header">
-                    <div class="pass-gdg-brand">
-                      <img src="assets/gdg-logo.svg" alt="GDG Logo" class="pass-gdg-logo-img">
-                      <div>
-                        <div class="pass-gdg-title">GDG On Campus</div>
-                        <div class="pass-gdg-sub">PSNACET • ARENACORE '26 (24-Hour Hackathon)</div>
+                    <div class="pass-dual-club-brand">
+                      <div class="pass-dual-logos">
+                        <img src="assets/gdg-logo.svg" alt="GDG Logo" class="pass-gdg-logo-img" title="GDG On Campus PSNACET">
+                        <img src="assets/acm-psnacet-logo.png" alt="ACM Logo" class="pass-acm-logo-img" title="ACM Student Chapter PSNACET">
+                      </div>
+                      <div class="pass-club-title-row">
+                        <div class="pass-club-main">GDG On Campus • ACM PSNACET</div>
+                        <div class="pass-club-sub">ARENACORE '26 (24-Hour Hackathon)</div>
                       </div>
                     </div>
-                    <div class="pass-type-chip">HACKER PASS</div>
+                    <div class="pass-type-chip">SHORTLISTED PASS</div>
                   </div>
 
                   <!-- 4-Color Google Stripe -->
@@ -1017,37 +1237,49 @@
                       <h3 class="pass-name" id="badgePreviewName">Alex Johnson</h3>
                       <div class="pass-role" id="badgePreviewRole">Team Leader</div>
                       <div class="pass-team" id="badgePreviewTeam">Team: <span>ByteBusters</span></div>
-                      <div class="pass-college" id="badgePreviewCollege">PSNA College of Eng & Tech</div>
+                      <div class="pass-college" id="badgePreviewCollege">PSNA College of Eng &amp; Tech</div>
                     </div>
                   </div>
 
-                  <!-- Track & Dates Bar -->
+                  <!-- Track & Pass ID Bar -->
                   <div class="pass-track-bar">
                     <div class="p-track">
                       <span class="p-lbl">TRACK</span>
-                      <strong id="badgePreviewTrack">Quality Education</strong>
+                      <strong id="badgePreviewTrack">AI &amp; Intelligent Systems</strong>
                     </div>
                     <div class="p-id">
                       <span class="p-lbl">PASS ID</span>
-                      <strong id="badgePreviewId">GDG-GB25-0842</strong>
+                      <strong id="badgePreviewId">AC26-PSNA-8429</strong>
                     </div>
                   </div>
 
-                  <!-- Pass Footer with QR Code -->
+                  <!-- ArenaCore Feature Access Clearance Box -->
+                  <div class="pass-feature-clearance-box">
+                    <strong><i class="fa-solid fa-shield-halved"></i> ARENACORE ACCESS CLEARANCE:</strong>
+                    <div class="clearance-pills">
+                      <span class="clearance-pill"><i class="fa-solid fa-check text-google-green"></i> IT Block Venue</span>
+                      <span class="clearance-pill"><i class="fa-solid fa-check text-google-green"></i> 24h Workstation</span>
+                      <span class="clearance-pill"><i class="fa-solid fa-check text-google-green"></i> Hacker Wi-Fi</span>
+                      <span class="clearance-pill"><i class="fa-solid fa-check text-google-green"></i> Food &amp; Snacks</span>
+                      <span class="clearance-pill"><i class="fa-solid fa-check text-google-green"></i> Stage Jury</span>
+                    </div>
+                  </div>
+
+                  <!-- Pass Footer with Dynamic QR Code -->
                   <div class="pass-footer">
                     <div class="pass-event-details">
-                      <div>📅 28 & 29 OCT 2026</div>
+                      <div>📅 27 &amp; 28 OCT 2026 (24H)</div>
                       <div>📍 PSNACET Campus, Dindigul</div>
                     </div>
                     <div class="pass-qr-box">
-                      <svg viewBox="0 0 100 100" class="pass-qr-svg">
+                      <svg viewBox="0 0 100 100" class="pass-qr-svg" id="passCardQrSvg">
                         <rect width="100" height="100" fill="#ffffff"/>
                         <path d="M10 10h30v30h-30z M15 15v20h20v-20z M20 20h10v10h-10z" fill="#1a73e8"/>
                         <path d="M60 10h30v30h-30z M65 15v20h20v-20z M70 20h10v10h-10z" fill="#ea4335"/>
                         <path d="M10 60h30v30h-30z M15 65v20h20v-20z M20 70h10v10h-10z" fill="#34a853"/>
                         <path d="M50 15h5v15h-5z M50 45h15v5h-15z M70 50h10v10h-10z M60 70h25v20h-5v-10h-10v10h-10z M45 65h10v15h-10z M85 45h5v20h-5z" fill="#202124"/>
                       </svg>
-                      <span class="qr-label">SCAN VERIFIED</span>
+                      <span class="qr-label">AC26-VERIFIED</span>
                     </div>
                   </div>
                 </div>
@@ -1058,17 +1290,18 @@
                   
                   <div class="badge-back-header">
                     <div class="d-flex align-center gap-2">
-                      <img src="assets/gdg-logo.svg" alt="GDG Logo" style="width: 24px; height: 24px;">
+                      <img src="assets/gdg-logo.svg" alt="GDG Logo" style="width: 20px; height: 20px;">
+                      <img src="assets/acm-psnacet-logo.png" alt="ACM Logo" style="width: 20px; height: 20px; object-fit: contain;">
                       <strong>PARTICIPANT CREDENTIALS</strong>
                     </div>
-                    <span class="badge-pill bg-google-green-subtle">OFFICIAL</span>
+                    <span class="badge-pill bg-google-green-subtle">SHORTLISTED</span>
                   </div>
 
                   <div class="pass-color-stripe"></div>
 
                   <div class="badge-back-body">
                     <div class="credential-item">
-                      <span class="cred-label"><i class="fa-solid fa-map-pin text-google-red"></i> ALLOCATED VENUE & DESK:</span>
+                      <span class="cred-label"><i class="fa-solid fa-map-pin text-google-red"></i> ALLOCATED VENUE &amp; DESK:</span>
                       <strong class="cred-value" id="badgeDeskAllocation">IT Block • Lab Cluster B, Terminal #14</strong>
                     </div>
 
@@ -1082,23 +1315,23 @@
 
                     <div class="credential-item mt-2">
                       <span class="cred-label"><i class="fa-solid fa-phone text-google-green"></i> ON-SITE EMERGENCY DESK:</span>
-                      <strong class="cred-value">+91 86820 67304 (Chitharthaa) / +91 93455 30457 (Darshan) / +91 82486 03031 (Dhanush)</strong>
+                      <strong class="cred-value">+91 86820 67304 / +91 93455 30457 / +91 82486 03031</strong>
                     </div>
 
                     <div class="credential-item mt-2">
                       <span class="cred-label"><i class="fa-solid fa-shield-check text-google-yellow"></i> PARTICIPANT CODE OF CONDUCT:</span>
-                      <p class="conduct-note">Formal attire mandatory on campus. Identity verification required at check-in counter.</p>
+                      <p class="conduct-note">Formal attire mandatory on campus. Official pass and college ID required at check-in counter.</p>
                     </div>
 
                     <!-- Barcode Stamp -->
                     <div class="barcode-wrap">
                       <div class="barcode-lines"></div>
-                      <span class="barcode-num">GDG-PSNA-2026-VERIFIED-HASH</span>
+                      <span class="barcode-num" id="badgeBarcodeNum">AC26-PSNA-SHORTLISTED-PASS</span>
                     </div>
                   </div>
 
                   <div class="badge-back-footer">
-                    <small>© 2026 GDG x ACM • PSNACET IT<br>Building DeepTech Solutions for a Better Future: Innovation • Sustainability • Security. Together for a better tomorrow.</small>
+                    <small>© 2026 GDG On Campus &amp; ACM • PSNACET IT<br>Building DeepTech Solutions for a Better Future: Innovation • Sustainability • Security.</small>
                   </div>
                 </div>
 
@@ -1136,102 +1369,406 @@
         
         <div class="section-heading text-center">
           <div class="section-tag bg-google-yellow-subtle">
-            <i class="fa-solid fa-scale-balanced"></i> Official Rulebook
+            <i class="fa-solid fa-scale-balanced"></i> Official Rulebook & Protocols
           </div>
-          <h2 class="section-title">Rules, Regulations & Code of Conduct</h2>
+          <h2 class="section-title">ArenaCore ’26 Hackathon Guidelines</h2>
           <p class="section-description">
-            All participants must strictly review and adhere to the guidelines established by the GDG On Campus PSNACET steering committee.
+            Please review the 18 official guidelines below. Adherence to all rules, eligibility criteria, and professional conduct is mandatory for all participating teams.
           </p>
           <div class="google-line-indicator"></div>
         </div>
 
-        <!-- Rules Navigation Tabs -->
-        <div class="rules-category-tabs">
-          <button class="rule-tab-btn active" onclick="switchRuleCategory('eligibility')">
-            <i class="fa-solid fa-user-check"></i> Eligibility & Fees
-          </button>
-          <button class="rule-tab-btn" onclick="switchRuleCategory('team')">
-            <i class="fa-solid fa-people-group"></i> Team Structure
-          </button>
-          <button class="rule-tab-btn" onclick="switchRuleCategory('projects')">
-            <i class="fa-solid fa-laptop-code"></i> Project & IP Rules
-          </button>
-          <button class="rule-tab-btn" onclick="switchRuleCategory('conduct')">
-            <i class="fa-solid fa-handshake"></i> Code of Conduct
-          </button>
-          <button class="rule-tab-btn" onclick="switchRuleCategory('judging')">
-            <i class="fa-solid fa-chart-simple"></i> Judging Rubric
-          </button>
+        <!-- Guidelines Toolbar: Search & Category Filters -->
+        <div class="guidelines-toolbar-wrapper">
+          <div class="guidelines-search-box">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="guidelinesSearchInput" placeholder="Search guidelines (e.g., fee, AI, eligibility, mentor, laptop, breaks, evaluation, jury)..." oninput="filterGuidelines()">
+            <button class="guidelines-search-clear" id="clearGuidelinesSearch" onclick="clearGuidelinesSearch()" aria-label="Clear Search">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+
+          <div class="guidelines-cat-tabs">
+            <button class="guidelines-cat-btn active" data-category="all" onclick="switchRuleCategory('all')">
+              <i class="fa-solid fa-layer-group"></i> All Guidelines <span class="guidelines-count-badge">18</span>
+            </button>
+            <button class="guidelines-cat-btn" data-category="registration" onclick="switchRuleCategory('registration')">
+              <i class="fa-solid fa-user-check"></i> Eligibility & Fees <span class="guidelines-count-badge">3</span>
+            </button>
+            <button class="guidelines-cat-btn" data-category="format" onclick="switchRuleCategory('format')">
+              <i class="fa-solid fa-cubes-stacked"></i> Format & Themes <span class="guidelines-count-badge">2</span>
+            </button>
+            <button class="guidelines-cat-btn" data-category="development" onclick="switchRuleCategory('development')">
+              <i class="fa-solid fa-laptop-code"></i> Dev & Team <span class="guidelines-count-badge">3</span>
+            </button>
+            <button class="guidelines-cat-btn" data-category="venue" onclick="switchRuleCategory('venue')">
+              <i class="fa-solid fa-building-columns"></i> Venue & Conduct <span class="guidelines-count-badge">3</span>
+            </button>
+            <button class="guidelines-cat-btn" data-category="evaluation" onclick="switchRuleCategory('evaluation')">
+              <i class="fa-solid fa-chart-simple"></i> Evaluation & Demo <span class="guidelines-count-badge">3</span>
+            </button>
+            <button class="guidelines-cat-btn" data-category="governance" onclick="switchRuleCategory('governance')">
+              <i class="fa-solid fa-gavel"></i> Rules & Committee <span class="guidelines-count-badge">4</span>
+            </button>
+          </div>
         </div>
 
-        <!-- Rules Tab Content Display -->
-        <div class="rule-tab-content-card glass-panel" id="ruleTabContent">
-          
-          <!-- Default: Eligibility -->
-          <div class="rule-panel active" id="panel-eligibility">
-            <h3><i class="fa-solid fa-user-check text-google-blue"></i> Eligibility & Registration Process</h3>
-            <ul class="rule-bullet-list">
-              <li><strong>Open to All College Students:</strong> Undergraduate and postgraduate engineering and tech students from any recognized university/institution across India are eligible.</li>
-              <li><strong>Official Confirmation Requirement:</strong> Registration has to be submitted by the Team Leader. The fee of <strong>₹150 per member</strong> must only be paid after receiving the official shortlist confirmation email from <code>gdscpsna@psnacet.edu.in</code>.</li>
-              <li><strong>Valid College ID:</strong> All physical attendees must produce their original college identity cards during on-campus physical verification at the registration desk.</li>
-              <li><strong>Inter-College Teams:</strong> Inter-college team formations are permitted, provided all participants have active student statuses.</li>
-            </ul>
-          </div>
+        <!-- 18 Guidelines Cards Grid -->
+        <div class="guidelines-grid" id="guidelinesGrid">
 
-          <div class="rule-panel" id="panel-team">
-            <h3><i class="fa-solid fa-people-group text-google-green"></i> Team Composition & Roles</h3>
-            <ul class="rule-bullet-list">
-              <li><strong>Team Size:</strong> Teams must strictly consist of <strong>4 members</strong> as specified in the official ARENACORE '26 guidelines. Solo participation is not permitted for ARENACORE '26 to encourage collaborative teamwork.</li>
-              <li><strong>Team Leader:</strong> Every team must designate one Team Leader who will act as the single point of contact for submissions, announcements, and communications.</li>
-              <li><strong>Unique Team Identity:</strong> Each team must pick a unique team name that does not infringe on registered trademarks or contain offensive language.</li>
-              <li><strong>No Dual Registrations:</strong> A participant cannot be registered in more than one team simultaneously.</li>
-            </ul>
-          </div>
-
-          <div class="rule-panel" id="panel-projects">
-            <h3><i class="fa-solid fa-laptop-code text-google-red"></i> Project Prototype & Intellectual Property</h3>
-            <ul class="rule-bullet-list">
-              <li><strong>Pre-Existing Code Policy:</strong> Projects can be conceptualized beforehand and brought with partial prototypes / architecture blueprints; however, significant development, feature integration, and final refinement must be completed during the hackathon.</li>
-              <li><strong>Open Source & Libraries:</strong> Teams may utilize open-source libraries, APIs, and frameworks (such as Google Cloud APIs, TensorFlow, Gemini, Firebase, React, Flutter) with proper citations.</li>
-              <li><strong>100% IP Ownership:</strong> Participants retain 100% intellectual property ownership of their projects and code. Organizers are only granted rights to showcase projects for promotional, educational, and reporting purposes.</li>
-              <li><strong>Submission Artifacts:</strong> Teams must submit a working GitHub repository URL, a 3-minute demo video/slides, and provide a live functional demonstration to judges during jury rounds.</li>
-            </ul>
-          </div>
-
-          <div class="rule-panel" id="panel-conduct">
-            <h3><i class="fa-solid fa-handshake text-google-yellow"></i> Code of Conduct & Campus Etiquette</h3>
-            <ul class="rule-bullet-list">
-              <li><strong>Inclusivity & Mutual Respect:</strong> GDG is committed to providing a safe, harassment-free environment for everyone regardless of gender, sexual orientation, disability, appearance, race, or religion.</li>
-              <li><strong>Formal Dress Code:</strong> In accordance with PSNACET campus guidelines, all participants must follow a neat, formal / semi-formal dress code throughout the event.</li>
-              <li><strong>Campus Regulations:</strong> Possession of prohibited substances or misconduct will result in immediate disqualification and reporting to respective college authorities.</li>
-              <li><strong>Facility Care:</strong> Participants are expected to treat college lab computers, network equipment, and furniture with utmost care.</li>
-            </ul>
-          </div>
-
-          <div class="rule-panel" id="panel-judging">
-            <h3><i class="fa-solid fa-chart-simple text-google-blue"></i> Official Evaluation Criteria (100 Points Total)</h3>
-            <div class="rubric-grid">
-              <div class="rubric-card">
-                <div class="r-score">30%</div>
-                <h4>Innovation & Novelty</h4>
-                <p>Uniqueness of the solution, creative application of modern technologies, and distinct value proposition.</p>
+          <!-- Rule 1: Eligibility -->
+          <div class="guideline-card" data-category="registration">
+            <div class="guideline-card-header">
+              <span class="guideline-rule-badge"><i class="fa-solid fa-shield-halved"></i> RULE 01</span>
+              <span class="guideline-card-cat">Eligibility</span>
+            </div>
+            <div class="guideline-title-wrap">
+              <div class="guideline-icon-box icon-blue">
+                <i class="fa-solid fa-user-graduate"></i>
               </div>
-              <div class="rubric-card">
-                <div class="r-score">25%</div>
-                <h4>Technical Execution</h4>
-                <p>Code quality, effective architecture, seamless API integration, reliability, and technical complexity.</p>
+              <h3 class="guideline-title">1. Eligibility</h3>
+            </div>
+            <ul class="guideline-list">
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> ArenaCore ’26 is open to students currently pursuing undergraduate or postgraduate programs in recognized educational institutions.</li>
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> Each team must consist of up to 4 members.</li>
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> All participants must register individually as part of their respective team.</li>
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> A participant can be part of only one team.</li>
+            </ul>
+            <div class="guideline-highlight-box">
+              <i class="fa-solid fa-circle-info text-google-blue"></i>
+              <div><strong>Key Takeaway:</strong> Open to all enrolled UG/PG students. Up to 4 members per team; dual registrations across teams are strictly forbidden.</div>
+            </div>
+          </div>
+
+          <!-- Rule 2: Registration -->
+          <div class="guideline-card" data-category="registration">
+            <div class="guideline-card-header">
+              <span class="guideline-rule-badge"><i class="fa-solid fa-shield-halved"></i> RULE 02</span>
+              <span class="guideline-card-cat">Registration</span>
+            </div>
+            <div class="guideline-title-wrap">
+              <div class="guideline-icon-box icon-blue">
+                <i class="fa-solid fa-id-card-clip"></i>
               </div>
-              <div class="rubric-card">
-                <div class="r-score">25%</div>
-                <h4>Real-World Impact & Viability</h4>
-                <p>Potential to solve real user pain points, scalability, market viability, and alignment with UN SDG tracks.</p>
+              <h3 class="guideline-title">2. Registration</h3>
+            </div>
+            <ul class="guideline-list">
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> Teams must complete the official registration form with accurate participant and institutional details.</li>
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> Registration will be considered complete only after all required information has been submitted.</li>
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> Teams must select one theme during registration.</li>
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> Theme selection cannot be changed after the registration deadline unless permitted by the organizing committee. (Selected teams will receive the payment form after the selection process is completed.)</li>
+            </ul>
+            <div class="guideline-highlight-box amber">
+              <i class="fa-solid fa-triangle-exclamation text-google-yellow"></i>
+              <div><strong>Theme Lock:</strong> Theme selection is locked at the deadline. Payment forms will follow after team selection is finalized.</div>
+            </div>
+          </div>
+
+          <!-- Rule 3: Registration Fee & Team Selection -->
+          <div class="guideline-card" data-category="registration">
+            <div class="guideline-card-header">
+              <span class="guideline-rule-badge"><i class="fa-solid fa-shield-halved"></i> RULE 03</span>
+              <span class="guideline-card-cat">Fee & Selection</span>
+            </div>
+            <div class="guideline-title-wrap">
+              <div class="guideline-icon-box icon-yellow">
+                <i class="fa-solid fa-receipt"></i>
               </div>
-              <div class="rubric-card">
-                <div class="r-score">20%</div>
+              <h3 class="guideline-title">3. Registration Fee</h3>
+            </div>
+            <ul class="guideline-list">
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> The registration fee is <strong>₹500 per participant</strong>.</li>
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> Therefore, the total registration fee is <strong>₹2,000 per team</strong> (for a total of 4 members).</li>
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> Payment instructions will be communicated by the organizing team after registration/selection.</li>
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> Registration fees, once paid, are non-refundable.</li>
+            </ul>
+            <div class="mt-2 mb-2 p-3 glass-panel" style="border-radius: 8px; border: 1px dashed rgba(251, 188, 5, 0.4);">
+              <strong class="d-block mb-1 text-google-yellow" style="font-size: 0.9rem;"><i class="fa-solid fa-filter"></i> Team Selection & Payment Protocol:</strong>
+              <ul class="guideline-list mb-0" style="gap: 6px;">
+                <li><i class="fa-solid fa-chevron-right list-bullet text-google-yellow"></i> <strong>Only 10 teams will be selected under each theme.</strong></li>
+                <li><i class="fa-solid fa-chevron-right list-bullet text-google-yellow"></i> Selected teams will receive the payment form and payment instructions.</li>
+                <li><i class="fa-solid fa-chevron-right list-bullet text-google-yellow"></i> Registration does not guarantee selection. The registration fee will be collected <em>only from selected teams</em>.</li>
+                <li><i class="fa-solid fa-chevron-right list-bullet text-google-yellow"></i> Selected teams must complete payment within the specified deadline to confirm participation.</li>
+              </ul>
+            </div>
+            <div class="guideline-highlight-box warning">
+              <i class="fa-solid fa-bolt text-google-red"></i>
+              <div><strong>Strict Cap:</strong> Only 10 teams per theme! Fee (₹500/member) is collected <em>exclusively</em> from shortlisted teams.</div>
+            </div>
+          </div>
+
+          <!-- Rule 4: Event Format -->
+          <div class="guideline-card" data-category="format">
+            <div class="guideline-card-header">
+              <span class="guideline-rule-badge"><i class="fa-solid fa-shield-halved"></i> RULE 04</span>
+              <span class="guideline-card-cat">Format</span>
+            </div>
+            <div class="guideline-title-wrap">
+              <div class="guideline-icon-box icon-red">
+                <i class="fa-solid fa-stopwatch-20"></i>
+              </div>
+              <h3 class="guideline-title">4. Event Format</h3>
+            </div>
+            <ul class="guideline-list">
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> ArenaCore ’26 is a <strong>24-hour continuous hackathon</strong>.</li>
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> The hackathon will begin and end at the officially announced timings.</li>
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> Teams are expected to develop their solution during the designated hackathon period.</li>
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> Problem statements and detailed requirements will be provided according to the selected theme.</li>
+            </ul>
+            <div class="guideline-highlight-box">
+              <i class="fa-solid fa-clock text-google-blue"></i>
+              <div><strong>Continuous Sprint:</strong> 24 continuous hours across Oct 27 & 28, 2026. Teams work directly on theme-assigned challenges.</div>
+            </div>
+          </div>
+
+          <!-- Rule 5: Problem Statement & Theme -->
+          <div class="guideline-card" data-category="format">
+            <div class="guideline-card-header">
+              <span class="guideline-rule-badge"><i class="fa-solid fa-shield-halved"></i> RULE 05</span>
+              <span class="guideline-card-cat">Themes</span>
+            </div>
+            <div class="guideline-title-wrap">
+              <div class="guideline-icon-box icon-green">
+                <i class="fa-solid fa-bullseye"></i>
+              </div>
+              <h3 class="guideline-title">5. Problem Statement & Theme</h3>
+            </div>
+            <ul class="guideline-list">
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> Each team must work on the problem statement assigned under its selected theme.</li>
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> Teams are encouraged to identify meaningful problems, understand the requirements, and develop practical technology-driven solutions.</li>
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> Solutions should demonstrate originality, creativity, and meaningful implementation.</li>
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> Teams must comply with any additional requirements specified in their problem statement.</li>
+            </ul>
+            <div class="guideline-highlight-box success">
+              <i class="fa-solid fa-lightbulb text-google-green"></i>
+              <div><strong>Focus on Practicality:</strong> Originality, creative problem solving, and meaningful real-world utility are strongly evaluated.</div>
+            </div>
+          </div>
+
+          <!-- Rule 6: Development Rules -->
+          <div class="guideline-card" data-category="development">
+            <div class="guideline-card-header">
+              <span class="guideline-rule-badge"><i class="fa-solid fa-shield-halved"></i> RULE 06</span>
+              <span class="guideline-card-cat">Development</span>
+            </div>
+            <div class="guideline-title-wrap">
+              <div class="guideline-icon-box icon-blue">
+                <i class="fa-solid fa-code"></i>
+              </div>
+              <h3 class="guideline-title">6. Development Rules</h3>
+            </div>
+            <ul class="guideline-list">
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> The core development work must be carried out during the official hackathon period.</li>
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> Teams may use publicly available documentation, libraries, frameworks, APIs, and open-source tools where their licenses permit such use.</li>
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> AI-assisted development tools may be used as supporting tools; however, teams must understand, implement, and demonstrate their own solution.</li>
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> Direct submission of copied projects, existing complete solutions, or plagiarized work is strictly prohibited.</li>
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> Any violation may result in disqualification.</li>
+            </ul>
+            <div class="guideline-highlight-box warning">
+              <i class="fa-solid fa-robot text-google-red"></i>
+              <div><strong>AI Tool Policy:</strong> AI tools may only support your workflow. You must deeply understand and defend every line of code submitted.</div>
+            </div>
+          </div>
+
+          <!-- Rule 7: Team Collaboration -->
+          <div class="guideline-card" data-category="development">
+            <div class="guideline-card-header">
+              <span class="guideline-rule-badge"><i class="fa-solid fa-shield-halved"></i> RULE 07</span>
+              <span class="guideline-card-cat">Collaboration</span>
+            </div>
+            <div class="guideline-title-wrap">
+              <div class="guideline-icon-box icon-green">
+                <i class="fa-solid fa-people-group"></i>
+              </div>
+              <h3 class="guideline-title">7. Team Collaboration</h3>
+            </div>
+            <ul class="guideline-list">
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> All four registered members must actively contribute to the project.</li>
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> Teams should be prepared to explain each member's contribution during evaluation.</li>
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> Team members may divide responsibilities such as development, UI/UX, research, testing, documentation, and presentation.</li>
+            </ul>
+            <div class="guideline-highlight-box">
+              <i class="fa-solid fa-users-viewfinder text-google-blue"></i>
+              <div><strong>Active Contribution:</strong> All 4 members must have defined responsibilities and be ready to articulate them to the jury.</div>
+            </div>
+          </div>
+
+          <!-- Rule 8: Equipment & Connectivity -->
+          <div class="guideline-card" data-category="development">
+            <div class="guideline-card-header">
+              <span class="guideline-rule-badge"><i class="fa-solid fa-shield-halved"></i> RULE 08</span>
+              <span class="guideline-card-cat">Equipment</span>
+            </div>
+            <div class="guideline-title-wrap">
+              <div class="guideline-icon-box icon-yellow">
+                <i class="fa-solid fa-laptop-file"></i>
+              </div>
+              <h3 class="guideline-title">8. Equipment & Connectivity</h3>
+            </div>
+            <ul class="guideline-list">
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> Participants must bring their own laptops, chargers, and required accessories.</li>
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> Teams are responsible for their own devices and personal belongings.</li>
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> Internet connectivity will be available at the venue.</li>
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> Participants may use personal mobile data as an alternative where required.</li>
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> Participants should ensure that all necessary development tools, software, SDKs, and dependencies are installed before the event.</li>
+            </ul>
+            <div class="guideline-highlight-box amber">
+              <i class="fa-solid fa-wifi text-google-yellow"></i>
+              <div><strong>Pre-Install Reminder:</strong> Download compilers, npm packages, Docker images, and datasets prior to campus arrival.</div>
+            </div>
+          </div>
+
+          <!-- Rule 9: Venue Conduct -->
+          <div class="guideline-card" data-category="venue">
+            <div class="guideline-card-header">
+              <span class="guideline-rule-badge"><i class="fa-solid fa-shield-halved"></i> RULE 09</span>
+              <span class="guideline-card-cat">Conduct</span>
+            </div>
+            <div class="guideline-title-wrap">
+              <div class="guideline-icon-box icon-red">
+                <i class="fa-solid fa-shield-halved"></i>
+              </div>
+              <h3 class="guideline-title">9. Venue Conduct</h3>
+            </div>
+            <ul class="guideline-list">
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> Participants must follow the instructions of the organizing committee, faculty coordinators, mentors, and volunteers.</li>
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> Professional and respectful behavior is expected throughout the event.</li>
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> Any form of harassment, cheating, vandalism, disruptive behavior, or intentional interference with another team's work may result in disciplinary action or disqualification.</li>
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> Participants must maintain cleanliness and take proper care of the venue and facilities.</li>
+            </ul>
+            <div class="guideline-highlight-box warning">
+              <i class="fa-solid fa-ban text-google-red"></i>
+              <div><strong>Zero Tolerance:</strong> Respectful, professional conduct is non-negotiable. Disruptions or vandalism will result in instant disqualification.</div>
+            </div>
+          </div>
+
+          <!-- Rule 10: Breaks & Overnight Participation -->
+          <div class="guideline-card" data-category="venue">
+            <div class="guideline-card-header">
+              <span class="guideline-rule-badge"><i class="fa-solid fa-shield-halved"></i> RULE 10</span>
+              <span class="guideline-card-cat">Overnight</span>
+            </div>
+            <div class="guideline-title-wrap">
+              <div class="guideline-icon-box icon-green">
+                <i class="fa-solid fa-mug-hot"></i>
+              </div>
+              <h3 class="guideline-title">10. Breaks & Overnight Participation</h3>
+            </div>
+            <ul class="guideline-list">
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> Teams may take breaks during the 24-hour event.</li>
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> Participants are responsible for managing their team's working schedule effectively.</li>
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> At least one member of every team must remain available at the designated workstation during the active hackathon period, unless otherwise permitted by the organizers.</li>
+            </ul>
+            <div class="guideline-highlight-box">
+              <i class="fa-solid fa-bed text-google-blue"></i>
+              <div><strong>Shift Planning:</strong> Rest areas and refreshments will be provided. Keep at least one team member stationed at your table at all active hours.</div>
+            </div>
+          </div>
+
+          <!-- Rule 11: Mentorship -->
+          <div class="guideline-card" data-category="venue">
+            <div class="guideline-card-header">
+              <span class="guideline-rule-badge"><i class="fa-solid fa-shield-halved"></i> RULE 11</span>
+              <span class="guideline-card-cat">Mentorship</span>
+            </div>
+            <div class="guideline-title-wrap">
+              <div class="guideline-icon-box icon-blue">
+                <i class="fa-solid fa-chalkboard-user"></i>
+              </div>
+              <h3 class="guideline-title">11. Mentorship</h3>
+            </div>
+            <ul class="guideline-list">
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> Mentors may be available during designated periods to provide technical or domain guidance.</li>
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> Mentors may offer suggestions, but teams are responsible for their own technical decisions and implementation.</li>
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> Mentorship does not guarantee any particular evaluation outcome.</li>
+            </ul>
+            <div class="guideline-highlight-box success">
+              <i class="fa-solid fa-compass text-google-green"></i>
+              <div><strong>Expert Guidance:</strong> Consult domain mentors during dedicated rounds to validate technical architecture and design choices.</div>
+            </div>
+          </div>
+
+          <!-- Rule 12: Submission -->
+          <div class="guideline-card" data-category="evaluation">
+            <div class="guideline-card-header">
+              <span class="guideline-rule-badge"><i class="fa-solid fa-shield-halved"></i> RULE 12</span>
+              <span class="guideline-card-cat">Submission</span>
+            </div>
+            <div class="guideline-title-wrap">
+              <div class="guideline-icon-box icon-blue">
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+              </div>
+              <h3 class="guideline-title">12. Submission</h3>
+            </div>
+            <ul class="guideline-list">
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> Before the official submission deadline, each team must submit the required project materials specified by the organizing committee.</li>
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> The submission may include:
+                <div class="mt-2 pl-3" style="font-size: 0.88rem; line-height: 1.6;">
+                  • Working project / prototype<br>
+                  • Source code or repository (e.g. GitHub)<br>
+                  • Project description & architecture notes<br>
+                  • Presentation / demo materials<br>
+                  • Any additional documentation requested by the organizers
+                </div>
+              </li>
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> Late submissions may not be considered for evaluation unless an extension is officially announced.</li>
+            </ul>
+            <div class="guideline-highlight-box warning">
+              <i class="fa-solid fa-hourglass-end text-google-red"></i>
+              <div><strong>Hard Deadline:</strong> Code freeze is exact at 24 hours. Commit early to avoid last-minute network congestion.</div>
+            </div>
+          </div>
+
+          <!-- Rule 13: Evaluation (Span 2) -->
+          <div class="guideline-card span-2" data-category="evaluation">
+            <div class="guideline-card-header">
+              <span class="guideline-rule-badge"><i class="fa-solid fa-shield-halved"></i> RULE 13</span>
+              <span class="guideline-card-cat">Evaluation Rubric & Factors</span>
+            </div>
+            <div class="guideline-title-wrap">
+              <div class="guideline-icon-box icon-yellow">
+                <i class="fa-solid fa-chart-pie"></i>
+              </div>
+              <h3 class="guideline-title">13. Evaluation</h3>
+            </div>
+            <p style="font-size: 0.94rem; color: var(--text-secondary); margin-bottom: 12px;">
+              Projects will be evaluated by the jury based on factors including:
+            </p>
+
+            <!-- 6 Official Evaluation Factors -->
+            <div class="eval-criteria-grid">
+              <div class="eval-criteria-card">
+                <h5><i class="fa-solid fa-wand-magic-sparkles text-google-blue"></i> Innovation & Creativity</h5>
+                <p>Originality of the idea and creativity of the proposed solution.</p>
+              </div>
+              <div class="eval-criteria-card">
+                <h5><i class="fa-solid fa-layer-group text-google-green"></i> Technical Implementation</h5>
+                <p>Quality of development, architecture, technology usage, and implementation.</p>
+              </div>
+              <div class="eval-criteria-card">
+                <h5><i class="fa-solid fa-gears text-google-yellow"></i> Functionality</h5>
+                <p>Working capability of the prototype and how effectively it addresses the problem.</p>
+              </div>
+              <div class="eval-criteria-card">
+                <h5><i class="fa-solid fa-chart-line text-google-red"></i> Feasibility & Impact</h5>
+                <p>Practicality, scalability, potential usefulness, and real-world impact.</p>
+              </div>
+              <div class="eval-criteria-card">
+                <h5><i class="fa-solid fa-palette text-google-blue"></i> User Experience</h5>
+                <p>Quality of interface, usability, accessibility, and overall experience where applicable.</p>
+              </div>
+              <div class="eval-criteria-card">
+                <h5><i class="fa-solid fa-microphone text-google-green"></i> Presentation & Demo</h5>
+                <p>Clarity of explanation, live demonstration, and the team's ability to answer questions from the jury.</p>
+              </div>
             </div>
 
-            <!-- Interactive Rubric Simulator -->
-            <div class="rubric-simulator-wrap glass-panel mt-6">
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 16px;">
+              <em>Note: The evaluation structure and weightage may be communicated separately by the organizing committee.</em>
+            </p>
+
+            <!-- Embedded Interactive Rubric Simulator -->
+            <div class="rubric-simulator-wrap glass-panel mt-2">
               <div class="simulator-header d-flex justify-between align-center">
                 <div>
                   <span class="badge-pill bg-google-blue-subtle"><i class="fa-solid fa-calculator"></i> REAL-TIME CALCULATOR</span>
@@ -1243,7 +1780,7 @@
                     <span class="score-num" id="simScoreVal">85</span>
                     <span class="score-max">/100</span>
                   </div>
-                  <div class="score-tier-label" id="simTierLabel">Podium Contender (Top 5)</div>
+                  <div class="score-tier-label" id="simTierLabel">🥈 1st Runner Up Contender</div>
                 </div>
               </div>
 
@@ -1281,7 +1818,6 @@
                 </div>
               </div>
 
-              <!-- Tailored Jury Feedback Tip Box -->
               <div class="jury-feedback-box mt-4" id="juryFeedbackBox">
                 <i class="fa-solid fa-lightbulb text-google-yellow"></i>
                 <div id="juryFeedbackText">
@@ -1291,6 +1827,162 @@
             </div>
           </div>
 
+          <!-- Rule 14: Final Presentation -->
+          <div class="guideline-card" data-category="evaluation">
+            <div class="guideline-card-header">
+              <span class="guideline-rule-badge"><i class="fa-solid fa-shield-halved"></i> RULE 14</span>
+              <span class="guideline-card-cat">Final Pitch</span>
+            </div>
+            <div class="guideline-title-wrap">
+              <div class="guideline-icon-box icon-green">
+                <i class="fa-solid fa-person-chalkboard"></i>
+              </div>
+              <h3 class="guideline-title">14. Final Presentation</h3>
+            </div>
+            <ul class="guideline-list">
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> Every shortlisted team will be given a designated presentation/evaluation slot.</li>
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> Teams must demonstrate their working solution to the jury.</li>
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> The presentation should clearly explain the problem, proposed solution, technology used, implementation, and impact.</li>
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> All team members should be prepared to participate in the presentation and/or technical discussion.</li>
+            </ul>
+            <div class="guideline-highlight-box success">
+              <i class="fa-solid fa-display text-google-green"></i>
+              <div><strong>Live Demo Mandatory:</strong> Pre-recorded videos can support, but a live functional demonstration is required. All 4 members must speak.</div>
+            </div>
+          </div>
+
+          <!-- Rule 15: Intellectual Property & Originality -->
+          <div class="guideline-card" data-category="governance">
+            <div class="guideline-card-header">
+              <span class="guideline-rule-badge"><i class="fa-solid fa-shield-halved"></i> RULE 15</span>
+              <span class="guideline-card-cat">Intellectual Property</span>
+            </div>
+            <div class="guideline-title-wrap">
+              <div class="guideline-icon-box icon-blue">
+                <i class="fa-solid fa-copyright"></i>
+              </div>
+              <h3 class="guideline-title">15. Intellectual Property & Originality</h3>
+            </div>
+            <ul class="guideline-list">
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> Teams are responsible for ensuring that their submitted work does not infringe the intellectual property rights of others.</li>
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> Third-party libraries, APIs, datasets, and open-source components must be used according to their respective licenses.</li>
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> Any intellectual property arising from a team's project will remain subject to applicable institutional and participant agreements.</li>
+            </ul>
+            <div class="guideline-highlight-box">
+              <i class="fa-solid fa-shield text-google-blue"></i>
+              <div><strong>License Compliance:</strong> Comply with MIT, Apache 2.0, or other relevant licenses. Do not infringe copyrighted material or trademarks.</div>
+            </div>
+          </div>
+
+          <!-- Rule 16: Disqualification -->
+          <div class="guideline-card" data-category="governance">
+            <div class="guideline-card-header">
+              <span class="guideline-rule-badge"><i class="fa-solid fa-shield-halved"></i> RULE 16</span>
+              <span class="guideline-card-cat">Disqualification</span>
+            </div>
+            <div class="guideline-title-wrap">
+              <div class="guideline-icon-box icon-red">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+              </div>
+              <h3 class="guideline-title">16. Disqualification</h3>
+            </div>
+            <p style="font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 8px;">A team may be disqualified for:</p>
+            <ul class="guideline-list">
+              <li><i class="fa-solid fa-xmark list-bullet text-google-red"></i> Plagiarism or substantial copying of another project.</li>
+              <li><i class="fa-solid fa-xmark list-bullet text-google-red"></i> Submission of a pre-built solution as the primary hackathon work.</li>
+              <li><i class="fa-solid fa-xmark list-bullet text-google-red"></i> Providing false registration information.</li>
+              <li><i class="fa-solid fa-xmark list-bullet text-google-red"></i> Cheating or unfair practices.</li>
+              <li><i class="fa-solid fa-xmark list-bullet text-google-red"></i> Serious misconduct or violation of event rules.</li>
+              <li><i class="fa-solid fa-xmark list-bullet text-google-red"></i> Tampering with another team's work or event infrastructure.</li>
+              <li><i class="fa-solid fa-xmark list-bullet text-google-red"></i> Failure to follow instructions from the organizing committee.</li>
+            </ul>
+            <div class="guideline-highlight-box warning">
+              <i class="fa-solid fa-circle-exclamation text-google-red"></i>
+              <div><strong>Strict Integrity:</strong> Disqualification decisions are permanent and result in forfeiture of certificates and event privileges.</div>
+            </div>
+          </div>
+
+          <!-- Rule 17: Prizes & Recognition -->
+          <div class="guideline-card" data-category="governance">
+            <div class="guideline-card-header">
+              <span class="guideline-rule-badge"><i class="fa-solid fa-shield-halved"></i> RULE 17</span>
+              <span class="guideline-card-cat">Prizes</span>
+            </div>
+            <div class="guideline-title-wrap">
+              <div class="guideline-icon-box icon-yellow">
+                <i class="fa-solid fa-award"></i>
+              </div>
+              <h3 class="guideline-title">17. Prizes & Recognition</h3>
+            </div>
+            <ul class="guideline-list">
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> Winning teams will receive cash prizes, certificates, and recognition.</li>
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> Certificates will be provided to eligible participants as specified by the organizing committee.</li>
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> Prize distribution will be subject to verification of team eligibility and compliance with the hackathon rules.</li>
+              <li><i class="fa-solid fa-circle-check list-bullet"></i> The organizing committee reserves the right to make necessary decisions regarding prizes in exceptional circumstances.</li>
+            </ul>
+            <div class="guideline-highlight-box amber">
+              <i class="fa-solid fa-trophy text-google-yellow"></i>
+              <div><strong>₹1,20,000 Prize Pool:</strong> Verified awards and official GDG x ACM certificates are awarded following formal verification.</div>
+            </div>
+          </div>
+
+          <!-- Rule 18: Organizing Committee -->
+          <div class="guideline-card" data-category="governance">
+            <div class="guideline-card-header">
+              <span class="guideline-rule-badge"><i class="fa-solid fa-shield-halved"></i> RULE 18</span>
+              <span class="guideline-card-cat">Authority</span>
+            </div>
+            <div class="guideline-title-wrap">
+              <div class="guideline-icon-box icon-blue">
+                <i class="fa-solid fa-scale-balanced"></i>
+              </div>
+              <h3 class="guideline-title">18. Organizing Committee</h3>
+            </div>
+            <p style="font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 8px;">The organizing committee reserves the right to:</p>
+            <ul class="guideline-list">
+              <li><i class="fa-solid fa-check list-bullet text-google-blue"></i> Modify the event schedule when necessary.</li>
+              <li><i class="fa-solid fa-check list-bullet text-google-blue"></i> Clarify or update rules during the event.</li>
+              <li><i class="fa-solid fa-check list-bullet text-google-blue"></i> Take appropriate action in situations not explicitly covered in these guidelines.</li>
+              <li><i class="fa-solid fa-check list-bullet text-google-blue"></i> Make the final decision regarding rule violations, eligibility, submissions, and event-related disputes.</li>
+            </ul>
+            <div class="guideline-highlight-box">
+              <i class="fa-solid fa-landmark text-google-blue"></i>
+              <div><strong>Final Authority:</strong> Decisions by the organizing committee on scheduling, operational disputes, and rule clarifications are final.</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- No Results Fallback for Search -->
+        <div class="guidelines-no-results" id="guidelinesNoResults">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <h4>No matching guidelines found</h4>
+          <p class="text-secondary">Try searching for different keywords like "fee", "eligibility", "laptop", "AI", or "presentation".</p>
+          <button class="btn btn-secondary mt-3" onclick="clearGuidelinesSearch()">Clear Search Filter</button>
+        </div>
+
+        <!-- Concluding Banner: Important Note & Official Rallying Cry -->
+        <div class="guidelines-conclusion-card">
+          <div class="important-note-box">
+            <i class="fa-solid fa-thumbtack text-google-red" style="font-size: 1.1rem;"></i>
+            <span><strong>📌 Important Note:</strong> By registering for ArenaCore ’26, participants acknowledge that they have read, understood, and agreed to follow the event guidelines and instructions issued by the organizing committee.</span>
+          </div>
+
+          <div class="rallying-cry-title">
+            🚀 Build. Break Boundaries. Create the Core.
+          </div>
+          <div class="rallying-cry-sub">
+            ArenaCore ’26 — 24 Hours. One Challenge. Your Solution.
+          </div>
+
+          <div class="d-flex justify-center gap-3 flex-wrap">
+            <a href="javascript:void(0)" class="btn btn-primary" onclick="handleRegisterNowClick(event)">
+              <i class="fa-solid fa-rocket"></i> Register Your Team (₹500 / Member)
+            </a>
+            <a href="#themes" class="btn btn-secondary" onclick="switchTab('themes')">
+              <i class="fa-solid fa-compass"></i> Explore The 6 Themes
+            </a>
+          </div>
         </div>
 
         <!-- Interactive FAQ Accordion -->
@@ -1321,11 +2013,31 @@
 
             <div class="faq-item">
               <button class="faq-question-btn" onclick="toggleFaq(this)">
-                <span>When should our team pay the ₹150 per member registration fee?</span>
+                <span>When should our team pay the ₹500 per member registration fee?</span>
                 <i class="fa-solid fa-chevron-down faq-chevron"></i>
               </button>
               <div class="faq-answer">
-                <p>Do NOT pay any fee during initial Round 1 submission! After our evaluation panel reviews all applications, shortlisted Top 30 teams will receive an official confirmation mail with the payment gateway link and verification steps.</p>
+                <p>Do NOT pay any fee during initial registration! Registration does not guarantee selection. Only 10 teams will be selected under each theme. Selected teams will receive the payment form and instructions after the selection process is completed. The registration fee (₹500 per participant, total ₹2,000 for a 4-member team) is collected strictly from selected teams.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question-btn" onclick="toggleFaq(this)">
+                <span>How many teams are selected per theme?</span>
+                <i class="fa-solid fa-chevron-down faq-chevron"></i>
+              </button>
+              <div class="faq-answer">
+                <p>Exactly <strong>10 teams</strong> will be selected under each theme based on their application and idea feasibility. Selected teams must complete payment within the specified deadline to confirm their workstation.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question-btn" onclick="toggleFaq(this)">
+                <span>Are AI-assisted development tools (Copilot, Gemini, ChatGPT) allowed?</span>
+                <i class="fa-solid fa-chevron-down faq-chevron"></i>
+              </button>
+              <div class="faq-answer">
+                <p>AI-assisted development tools may be used as supporting aids; however, teams must understand, implement, and demonstrate their own solution. Direct submission of copied projects, existing complete solutions, or plagiarized work is strictly prohibited and results in immediate disqualification.</p>
               </div>
             </div>
 
@@ -1587,20 +2299,82 @@
     </section>
 
     <!-- ========================================================================= -->
-    <!-- TAB / SECTION 6: ABOUT PSNA GDG & COORDINATORS -->
+    <!-- ========================================================================= -->
+    <!-- TAB / SECTION 6: ABOUT GDG ON CAMPUS & ACM STUDENT CHAPTER PSNACET -->
     <!-- ========================================================================= -->
     <section class="section tab-view about-section" id="about">
       <div class="container">
         
         <div class="section-heading text-center">
           <div class="section-tag bg-google-blue-subtle">
-            <i class="fa-solid fa-university"></i> Institution & Leadership
+            <i class="fa-solid fa-users-rays"></i> Organizers & Chapters
           </div>
-          <h2 class="section-title">About Department of IT & GDG PSNA</h2>
+          <h2 class="section-title">About GDG On Campus & ACM PSNACET</h2>
           <p class="section-description">
-            PSNA College of Engineering and Technology (Autonomous), Dindigul - Accredited with NAAC 'A' Grade, pioneering technical excellence since 1984.
+            Jointly organized by Google Developer Groups On Campus PSNACET & Association for Computing Machinery Student Chapter PSNACET, Department of Information Technology, PSNACET (Autonomous), Dindigul.
           </p>
           <div class="google-line-indicator"></div>
+        </div>
+
+        <!-- Dual Chapter Spotlight Showcase: GDG & ACM -->
+        <div class="chapter-spotlight-grid">
+          
+          <!-- Card 1: GDG On Campus -->
+          <div class="chapter-card border-google-blue">
+            <div class="chapter-card-header">
+              <img src="assets/gdg-logo.svg" alt="GDG Logo" class="chapter-logo">
+              <div>
+                <span class="chapter-tag bg-google-blue-subtle">Google Developer Community</span>
+                <h3>Google Developer Groups On Campus</h3>
+                <span class="chapter-sub">PSNA College of Engineering and Technology</span>
+              </div>
+            </div>
+            <p class="chapter-desc">
+              GDG On Campus PSNACET is an active university developer community powered by Google Developers. We empower students to bridge the gap between academic theory and real-world software engineering through Google Cloud, Gemini GenAI, Android, Flutter, and open-source innovation.
+            </p>
+            <ul class="chapter-features-list">
+              <li><i class="fa-solid fa-check text-google-blue"></i> Cloud Study Jams & Google Cloud Platform Skill Badges</li>
+              <li><i class="fa-solid fa-check text-google-blue"></i> Generative AI, Gemini API & TensorFlow Practical Bootcamps</li>
+              <li><i class="fa-solid fa-check text-google-blue"></i> Android, Flutter & Modern Full-Stack Development Tracks</li>
+              <li><i class="fa-solid fa-check text-google-blue"></i> Direct Mentorship from Google Developer Experts (GDEs)</li>
+            </ul>
+            <div class="chapter-lead-footer">
+              <div class="lead-thumb icon-blue"><i class="fa-solid fa-user-astronaut"></i></div>
+              <div>
+                <strong>Chitharthaa A</strong>
+                <span>GDG Campus Organiser • <a href="tel:+918682067304">+91 86820 67304</a></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: ACM Student Chapter -->
+          <div class="chapter-card border-google-green" style="border-color: #0284c7;">
+            <div class="chapter-card-header">
+              <img src="assets/acm-psnacet-logo.png" alt="ACM Logo" class="chapter-logo" style="object-fit: contain;">
+              <div>
+                <span class="chapter-tag" style="background: rgba(2, 132, 199, 0.12); color: #0284c7;">Premier Computing Society</span>
+                <h3>ACM Student Chapter PSNACET</h3>
+                <span class="chapter-sub">Association for Computing Machinery</span>
+              </div>
+            </div>
+            <p class="chapter-desc">
+              The ACM Student Chapter at PSNACET advances computing as a science and a profession. We cultivate algorithmic excellence, competitive programming mastery, research-oriented deep tech innovation, and international collegiate computing hackathons.
+            </p>
+            <ul class="chapter-features-list">
+              <li><i class="fa-solid fa-check" style="color: #0284c7;"></i> Data Structures, Algorithms & Competitive Coding Leagues</li>
+              <li><i class="fa-solid fa-check" style="color: #0284c7;"></i> Deep Tech Research, Paper Publications & Research Circles</li>
+              <li><i class="fa-solid fa-check" style="color: #0284c7;"></i> ARENACORE Flagship National 24-Hour Hackathons</li>
+              <li><i class="fa-solid fa-check" style="color: #0284c7;"></i> Global Computing Society Recognition & Peer Networking</li>
+            </ul>
+            <div class="chapter-lead-footer">
+              <div class="lead-thumb" style="background: rgba(2, 132, 199, 0.15); color: #0284c7;"><i class="fa-solid fa-crown"></i></div>
+              <div>
+                <strong>Darshan S</strong>
+                <span>ACM Chapter Chair • <a href="tel:+919345530457">+91 93455 30457</a></span>
+              </div>
+            </div>
+          </div>
+
         </div>
 
         <!-- About IT Department Cards -->
@@ -1628,9 +2402,9 @@
 
           <div class="dept-stat-card border-google-green">
             <div class="dept-stat-icon icon-green"><i class="fa-solid fa-globe"></i></div>
-            <div class="dept-stat-num">100%</div>
-            <h4>Active Chapter</h4>
-            <p>GDG On Campus PSNACET bridging students directly with Google technologies and global open source.</p>
+            <div class="dept-stat-num">2 Chapters</div>
+            <h4>Active Student Chapters</h4>
+            <p>GDG On Campus PSNACET & ACM Student Chapter PSNACET driving hackathons and open-source.</p>
           </div>
         </div>
 
@@ -1856,15 +2630,19 @@
       <div class="footer-top-grid">
         <div class="footer-brand-col">
           <div class="footer-brand">
-            <img src="assets/gdg-logo.svg" alt="GDG Logo" class="footer-logo-img">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+              <img src="assets/gdg-logo.svg" alt="GDG Logo" class="footer-logo-img" style="width: 34px; height: 34px; border-radius: 50%; background: #ffffff; padding: 2px; border: 1px solid rgba(255,255,255,0.2); object-fit: contain;">
+              <i class="fa-solid fa-xmark" style="color: #64748b; font-size: 0.8rem;"></i>
+              <img src="assets/acm-psnacet-logo.png" alt="ACM Logo" class="footer-logo-img" style="width: 34px; height: 34px; border-radius: 50%; background: #ffffff; padding: 3px; border: 1px solid rgba(255,255,255,0.2); object-fit: contain;">
+            </div>
             <strong>
               <span class="g-blue">G</span><span class="g-red">o</span><span class="g-yellow">o</span><span class="g-blue">g</span><span class="g-green">l</span><span class="g-red">e</span> 
               <span class="g-blue">Developer</span> 
-              <span class="g-green">Groups</span> 
-              On Campus PSNACET
+              <span class="g-green">Groups</span> &bull; 
+              <span style="color: #0284c7;">ACM</span> Student Chapter PSNACET
             </strong>
           </div>
-          <p>Organized by the Department of Information Technology, PSNA College of Engineering and Technology. Empowering student builders through Google technologies.</p>
+          <p>Jointly organized by Google Developer Groups On Campus PSNACET & Association for Computing Machinery Student Chapter PSNACET, Department of Information Technology, PSNACET.</p>
         </div>
 
         <div class="footer-links-col">
@@ -1993,38 +2771,6 @@
     </div>
   </div>
 
-  <!-- 6. Developer CLI Terminal Overlay (Ctrl + ~) -->
-  <div class="terminal-overlay" id="devTerminalOverlay" onclick="closeTerminalOnBackdrop(event)">
-    <div class="terminal-window glass-panel" id="devTerminalWindow">
-      <div class="terminal-header">
-        <div class="terminal-dots">
-          <span class="dot dot-red" onclick="toggleDevTerminal()"></span>
-          <span class="dot dot-yellow"></span>
-          <span class="dot dot-green"></span>
-        </div>
-        <div class="terminal-title">gdg-psna@genbrainiacs:~$ (interactive bash v2.5)</div>
-        <button class="terminal-close-btn" onclick="toggleDevTerminal()" aria-label="Close Terminal">&times;</button>
-      </div>
-      <div class="terminal-body" id="terminalBody">
-        <div class="terminal-output" id="terminalOutput">
-          <!-- Populated via app.js -->
-        </div>
-        <div class="terminal-input-line">
-          <span class="terminal-prompt">hacker@gdg-psna:~$</span>
-          <input type="text" id="terminalInput" class="terminal-cmd-input" autocomplete="off" spellcheck="false">
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Floating Launcher Button for Developer CLI -->
-  <button class="terminal-fab-btn" id="terminalFabBtn" onclick="toggleDevTerminal()" title="Launch Developer Terminal (Ctrl + ~)">
-    <span class="fab-pulse"></span>
-    <i class="fa-solid fa-terminal"></i>
-    <span class="fab-text">CLI Console</span>
-    <kbd class="fab-kbd">Ctrl+`</kbd>
-  </button>
-
   <!-- Toast Notification Container -->
   <div class="toast-container" id="toastContainer"></div>
 
@@ -2032,5 +2778,9 @@
   <script src="api.js?v=1.0"></script>
   <!-- Custom Scripts (with cache-buster) -->
   <script src="app.js?v=2.6"></script>
+
+  <!-- ARENACORE '26 Offline FAQ Chatbot Widget (ARENA-Bot) -->
+  <script src="faq-bot/faq-data.js" defer></script>
+  <script src="faq-bot/arenacore-faqbot.js" defer></script>
 </body>
 </html>

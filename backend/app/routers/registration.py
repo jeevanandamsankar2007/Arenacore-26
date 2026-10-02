@@ -22,7 +22,7 @@ def _get_or_create_registration_config(db: Session) -> RegistrationConfig:
             status="OPEN",
             registration_url=None,
             opening_date="2026-10-01",
-            closing_date="2026-10-21",
+            closing_date="2026-10-12",
         )
         db.add(config)
         db.commit()

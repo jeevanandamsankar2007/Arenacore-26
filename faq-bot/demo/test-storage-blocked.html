@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+// Simulate blocked/private browsing where localStorage/sessionStorage throw SecurityError
+Object.defineProperty(window, 'localStorage', {
+  get: () => { throw new DOMException("The operation is insecure.", "SecurityError"); }
+});
+Object.defineProperty(window, 'sessionStorage', {
+  get: () => { throw new DOMException("The operation is insecure.", "SecurityError"); }
+});
+
+window.errorsLogged = [];
+window.addEventListener("error", (e) => {
+  window.errorsLogged.push(e.message);
+});
+</script>
+<script src="../faq-bot/faq-data.js"></script>
+<script src="../faq-bot/arenacore-faqbot.js"></script>
+</head>
+<body>
+  <h1>Storage Blocked Verification Test</h1>
+  <div id="status">Testing...</div>
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      setTimeout(() => {
+        try {
+          window.ARENACORE_FAQBOT.open();
+          window.ARENACORE_FAQBOT.ask("What is the fee?");
+          setTimeout(() => {
+            const status = window.errorsLogged.length === 0 ? "PASSED: Works seamlessly with blocked storage" : "FAILED: " + window.errorsLogged.join("; ");
+            document.getElementById("status").textContent = status;
+          }, 800);
+        } catch (e) {
+          document.getElementById("status").textContent = "FAILED WITH EXCEPTION: " + e.message;
+        }
+      }, 300);
+    });
+  </script>
+</body>
+</html>

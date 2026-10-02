@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+window.errorsLogged = [];
+window.addEventListener("error", (e) => {
+  window.errorsLogged.push(e.message);
+});
+const origErr = console.error;
+console.error = function(...args) {
+  window.errorsLogged.push(args.join(" "));
+  origErr.apply(console, args);
+};
+</script>
+<script src="../faq-bot/faq-data.js"></script>
+<script src="../faq-bot/arenacore-faqbot.js"></script>
+</head>
+<body>
+  <h1>Console Error Verification Test</h1>
+  <div id="status">Testing...</div>
+  <pre id="logOutput"></pre>
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      setTimeout(() => {
+        // Trigger interactions
+        window.ARENACORE_FAQBOT.open();
+        window.ARENACORE_FAQBOT.ask("What is the fee?");
+        setTimeout(() => {
+          window.ARENACORE_FAQBOT.close();
+          window.ARENACORE_FAQBOT.toggle();
+          window.ARENACORE_FAQBOT.reset();
+          
+          const status = window.errorsLogged.length === 0 ? "PASSED: Zero console errors" : "FAILED: " + window.errorsLogged.join("; ");
+          document.getElementById("status").textContent = status;
+          document.getElementById("logOutput").textContent = JSON.stringify(window.errorsLogged, null, 2);
+        }, 800);
+      }, 300);
+    });
+  </script>
+</body>
+</html>

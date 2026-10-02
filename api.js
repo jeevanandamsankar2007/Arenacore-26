@@ -17,7 +17,7 @@ let currentRegistrationConfig = {
   status: "OPEN",
   registration_url: "https://forms.gle/ir6Dbnn6GTzWCX6v7",
   opening_date: "2026-10-01",
-  closing_date: "2026-10-21"
+  closing_date: "2026-10-12"
 };
 
 /**

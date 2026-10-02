@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+// Simulate an unhandled error elsewhere on the host site
+setTimeout(() => {
+  throw new Error("Simulated unhandled third-party script crash on host page");
+}, 50);
+</script>
+<script src="../faq-bot/faq-data.js"></script>
+<script src="../faq-bot/arenacore-faqbot.js"></script>
+</head>
+<body>
+  <h1>Host Errors Verification Test</h1>
+  <div id="status">Testing...</div>
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      setTimeout(() => {
+        try {
+          window.ARENACORE_FAQBOT.open();
+          window.ARENACORE_FAQBOT.ask("What is the fee?");
+          setTimeout(() => {
+            document.getElementById("status").textContent = "PASSED: Widget operates normally despite host error";
+          }, 800);
+        } catch (e) {
+          document.getElementById("status").textContent = "FAILED: " + e.message;
+        }
+      }, 300);
+    });
+  </script>
+</body>
+</html>
