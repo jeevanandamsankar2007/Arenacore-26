@@ -28,7 +28,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   
   <!-- Custom Stylesheet (with cache-buster) -->
-  <link rel="stylesheet" href="styles.css?v=5.2">
+  <link rel="stylesheet" href="styles.css?v=5.4">
 </head>
 <body class="light-theme">
 
@@ -160,22 +160,22 @@
       <!-- Action Buttons & Mobile Toggle -->
       <div class="header-actions">
 
+        <!-- Mobile Menu Toggle Button (Positioned to the left of Check Status on mobile) -->
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu" title="Open Menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+
         <button class="status-lookup-btn" id="openStatusModalBtn" title="Check your team registration status">
           <i class="fa-solid fa-magnifying-glass"></i>
           <span>Check Status</span>
         </button>
 
-        <a href="#register" class="btn btn-primary btn-google-glow" onclick="switchTab('register')">
+        <a href="#register" class="btn btn-primary btn-google-glow header-get-pass-btn" onclick="switchTab('register')">
           <span>Get Pass</span>
           <i class="fa-solid fa-arrow-right"></i>
         </a>
-
-        <!-- Mobile Menu Toggle Button -->
-        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </button>
       </div>
 
     </div>
@@ -295,6 +295,57 @@
             </span>
           </div>
           <p class="hero-subtag-deeptech mt-2">THEMES &amp; UN SDGS • BOLD INNOVATIONS • DEEP TECH</p>
+
+          <!-- Vibrant Catchy Mini-Pills -->
+          <div class="catchy-chips-wrap">
+            <span class="catchy-chip chip-coral"><i class="fa-solid fa-fire text-coral"></i> Applications Open</span>
+            <span class="catchy-chip chip-purple"><i class="fa-solid fa-brain text-purple"></i> DeepTech &amp; GenAI</span>
+            <span class="catchy-chip chip-cyan"><i class="fa-solid fa-users text-cyan"></i> 4 Members / Squad</span>
+            <span class="catchy-chip chip-emerald"><i class="fa-solid fa-location-dot text-emerald"></i> PSNACET IT Campus</span>
+          </div>
+
+          <!-- Hero Highlights Matrix (Colorful & Catchy for Mobile & Desktop) -->
+          <div class="hero-highlight-matrix">
+            <div class="hero-matrix-card card-purple">
+              <div class="matrix-icon-box bg-purple-subtle">
+                <i class="fa-solid fa-bolt text-purple"></i>
+              </div>
+              <div class="matrix-info">
+                <span class="matrix-title">24H Sprint</span>
+                <span class="matrix-sub">Non-Stop Dev • 27 &amp; 28 Oct</span>
+              </div>
+            </div>
+
+            <div class="hero-matrix-card card-coral">
+              <div class="matrix-icon-box bg-coral-subtle">
+                <i class="fa-solid fa-trophy text-coral"></i>
+              </div>
+              <div class="matrix-info">
+                <span class="matrix-title">₹1.2L+ Prize Pool</span>
+                <span class="matrix-sub">Cash Awards &amp; Tech Perks</span>
+              </div>
+            </div>
+
+            <div class="hero-matrix-card card-cyan">
+              <div class="matrix-icon-box bg-cyan-subtle">
+                <i class="fa-solid fa-bullseye text-cyan"></i>
+              </div>
+              <div class="matrix-info">
+                <span class="matrix-title">10 Teams / Theme</span>
+                <span class="matrix-sub">Curated Selection Cap</span>
+              </div>
+            </div>
+
+            <div class="hero-matrix-card card-emerald">
+              <div class="matrix-icon-box bg-emerald-subtle">
+                <i class="fa-solid fa-utensils text-emerald"></i>
+              </div>
+              <div class="matrix-info">
+                <span class="matrix-title">Free Food &amp; Rest</span>
+                <span class="matrix-sub">Meals, Wi-Fi &amp; Workstations</span>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- Event Metadata Pills -->
@@ -347,23 +398,23 @@
             <div class="edition-badge">ARENACORE '26 Edition</div>
           </div>
 
-          <div class="countdown-grid flex-wrap" id="countdownGrid">
-            <div class="countdown-slot blue-glow col-5 col-md-auto">
+          <div class="countdown-grid" id="countdownGrid">
+            <div class="countdown-slot blue-glow">
               <div class="count-value" id="countDays">14</div>
               <div class="count-label">DAYS</div>
             </div>
-            <div class="countdown-divider d-none d-md-block">:</div>
-            <div class="countdown-slot red-glow col-5 col-md-auto">
+            <div class="countdown-divider">:</div>
+            <div class="countdown-slot red-glow">
               <div class="count-value" id="countHours">08</div>
               <div class="count-label">HOURS</div>
             </div>
-            <div class="countdown-divider d-none d-md-block">:</div>
-            <div class="countdown-slot yellow-glow col-5 col-md-auto">
+            <div class="countdown-divider">:</div>
+            <div class="countdown-slot yellow-glow">
               <div class="count-value" id="countMinutes">42</div>
               <div class="count-label">MINUTES</div>
             </div>
-            <div class="countdown-divider d-none d-md-block">:</div>
-            <div class="countdown-slot green-glow col-5 col-md-auto">
+            <div class="countdown-divider">:</div>
+            <div class="countdown-slot green-glow">
               <div class="count-value" id="countSeconds">30</div>
               <div class="count-label">SECONDS</div>
             </div>
@@ -533,6 +584,15 @@
           <p class="section-description">
             Choose your innovation theme. Teams have complete freedom to propose their own innovative ideas and solutions aligned with the 3 official themes and UN Sustainable Development Goals (no pre-assigned problem statements).
           </p>
+
+          <!-- Catchy Badges Bar -->
+          <div class="section-highlight-badges">
+            <span class="sec-badge"><i class="fa-solid fa-wand-magic-sparkles text-purple"></i> Freedom of Innovation</span>
+            <span class="sec-badge"><i class="fa-solid fa-users text-cyan"></i> 10 Shortlisted Teams / Track</span>
+            <span class="sec-badge"><i class="fa-solid fa-earth-americas text-emerald"></i> UN SDGs Aligned</span>
+            <span class="sec-badge"><i class="fa-solid fa-trophy text-coral"></i> Dedicated Track Prizes</span>
+          </div>
+
           <div class="google-line-indicator"></div>
         </div>
 
@@ -1016,9 +1076,36 @@
               </div>
 
               <h3 class="hub-title">ArenaCore '26 Official Registration</h3>
-              <p class="hub-desc">
-                Submit your team details (up to 4 members) and project abstract through the official Google Form before the registration deadline. Shortlisted teams will be directly contacted via email/WhatsApp by the organizing committee.
-              </p>
+              
+              <!-- 3-Step Visual Roadmap (Catchy & Mobile-First) -->
+              <div class="catchy-steps-grid">
+                <div class="step-card step-violet">
+                  <div class="step-top-row">
+                    <span class="step-number-tag">STEP 01</span>
+                    <div class="step-icon"><i class="fa-solid fa-file-pen"></i></div>
+                  </div>
+                  <h4>Submit Abstract</h4>
+                  <p>Register your 4-member squad &amp; project abstract via Google Form. <strong>100% Free to apply!</strong></p>
+                </div>
+
+                <div class="step-card step-coral">
+                  <div class="step-top-row">
+                    <span class="step-number-tag">STEP 02</span>
+                    <div class="step-icon"><i class="fa-solid fa-trophy"></i></div>
+                  </div>
+                  <h4>Get Shortlisted</h4>
+                  <p>Jury reviews all submissions. Top 10 squads per theme will receive direct confirmation via email &amp; WhatsApp.</p>
+                </div>
+
+                <div class="step-card step-emerald">
+                  <div class="step-top-row">
+                    <span class="step-number-tag">STEP 03</span>
+                    <div class="step-icon"><i class="fa-solid fa-id-card"></i></div>
+                  </div>
+                  <h4>Pass &amp; Workstation</h4>
+                  <p>Pay ₹500/member only after selection, unlock your 3D Dual-Club Pass, and report for the 24-hour sprint!</p>
+                </div>
+              </div>
 
               <div class="hub-action-box">
                 <a href="https://forms.gle/ir6Dbnn6GTzWCX6v7" target="_blank" rel="noopener noreferrer" class="btn btn-primary hub-cta-btn" id="hubOpenFormBtn" onclick="handleRegisterNowClick(event)">
@@ -1477,6 +1564,9 @@
               </div>
               <h3 class="guideline-title">1. Eligibility</h3>
             </div>
+            <div class="guideline-tldr-pill pill-cyan">
+              <i class="fa-solid fa-bolt text-cyan"></i> <span>Quick Take: Open to UG/PG • 4 Members/Squad • Free to Apply</span>
+            </div>
             <ul class="guideline-list">
               <li><i class="fa-solid fa-circle-check list-bullet"></i> ArenaCore ’26 is open to students currently pursuing undergraduate or postgraduate programs in recognized educational institutions.</li>
               <li><i class="fa-solid fa-circle-check list-bullet"></i> Each team must consist of up to 4 members.</li>
@@ -1501,6 +1591,9 @@
               </div>
               <h3 class="guideline-title">2. Registration</h3>
             </div>
+            <div class="guideline-tldr-pill pill-purple">
+              <i class="fa-solid fa-lock text-purple"></i> <span>Quick Take: 1 Theme per squad • Locked at Registration Deadline</span>
+            </div>
             <ul class="guideline-list">
               <li><i class="fa-solid fa-circle-check list-bullet"></i> Teams must complete the official registration form with accurate participant and institutional details.</li>
               <li><i class="fa-solid fa-circle-check list-bullet"></i> Registration will be considered complete only after all required information has been submitted.</li>
@@ -1524,6 +1617,9 @@
                 <i class="fa-solid fa-receipt"></i>
               </div>
               <h3 class="guideline-title">3. Registration Fee</h3>
+            </div>
+            <div class="guideline-tldr-pill pill-coral">
+              <i class="fa-solid fa-indian-rupee-sign text-coral"></i> <span>Quick Take: ₹500/member • Pay ONLY if Shortlisted (Cap of 10 teams/theme)</span>
             </div>
             <ul class="guideline-list">
               <li><i class="fa-solid fa-circle-check list-bullet"></i> The registration fee is <strong>₹500 per participant</strong>.</li>
@@ -1558,6 +1654,9 @@
               </div>
               <h3 class="guideline-title">4. Event Format</h3>
             </div>
+            <div class="guideline-tldr-pill pill-emerald">
+              <i class="fa-solid fa-stopwatch text-emerald"></i> <span>Quick Take: 24 Continuous Hours • Non-Stop Sprint at PSNACET IT Campus</span>
+            </div>
             <ul class="guideline-list">
               <li><i class="fa-solid fa-circle-check list-bullet"></i> ArenaCore ’26 is a <strong>24-hour continuous hackathon</strong>.</li>
               <li><i class="fa-solid fa-circle-check list-bullet"></i> The hackathon will begin and end at the officially announced timings.</li>
@@ -1582,6 +1681,9 @@
               </div>
               <h3 class="guideline-title">5. Problem Statement & Theme</h3>
             </div>
+            <div class="guideline-tldr-pill pill-purple">
+              <i class="fa-solid fa-lightbulb text-purple"></i> <span>Quick Take: Freedom of Innovation • Practical Solutions &amp; UN SDG Alignment</span>
+            </div>
             <ul class="guideline-list">
               <li><i class="fa-solid fa-circle-check list-bullet"></i> Each team must work on the problem statement assigned under its selected theme.</li>
               <li><i class="fa-solid fa-circle-check list-bullet"></i> Teams are encouraged to identify meaningful problems, understand the requirements, and develop practical technology-driven solutions.</li>
@@ -1605,6 +1707,9 @@
                 <i class="fa-solid fa-code"></i>
               </div>
               <h3 class="guideline-title">6. Development Rules</h3>
+            </div>
+            <div class="guideline-tldr-pill pill-coral">
+              <i class="fa-solid fa-code text-coral"></i> <span>Quick Take: Build during the hack • AI allowed as assistant, no pre-built projects</span>
             </div>
             <ul class="guideline-list">
               <li><i class="fa-solid fa-circle-check list-bullet"></i> The core development work must be carried out during the official hackathon period.</li>
@@ -1631,6 +1736,9 @@
               </div>
               <h3 class="guideline-title">7. Team Collaboration</h3>
             </div>
+            <div class="guideline-tldr-pill pill-cyan">
+              <i class="fa-solid fa-people-group text-cyan"></i> <span>Quick Take: Active contribution from all 4 members • Team presentation required</span>
+            </div>
             <ul class="guideline-list">
               <li><i class="fa-solid fa-circle-check list-bullet"></i> All four registered members must actively contribute to the project.</li>
               <li><i class="fa-solid fa-circle-check list-bullet"></i> Teams should be prepared to explain each member's contribution during evaluation.</li>
@@ -1653,6 +1761,9 @@
                 <i class="fa-solid fa-laptop-file"></i>
               </div>
               <h3 class="guideline-title">8. Equipment & Connectivity</h3>
+            </div>
+            <div class="guideline-tldr-pill pill-emerald">
+              <i class="fa-solid fa-laptop-file text-emerald"></i> <span>Quick Take: Bring your laptops &amp; hardware • 1 Gbps Wi-Fi &amp; labs provided</span>
             </div>
             <ul class="guideline-list">
               <li><i class="fa-solid fa-circle-check list-bullet"></i> Participants must bring their own laptops, chargers, and required accessories.</li>
@@ -1679,6 +1790,9 @@
               </div>
               <h3 class="guideline-title">9. Venue Conduct</h3>
             </div>
+            <div class="guideline-tldr-pill pill-coral">
+              <i class="fa-solid fa-shield-halved text-coral"></i> <span>Quick Take: Professional conduct • Zero tolerance for disruptions or vandalism</span>
+            </div>
             <ul class="guideline-list">
               <li><i class="fa-solid fa-circle-check list-bullet"></i> Participants must follow the instructions of the organizing committee, faculty coordinators, mentors, and volunteers.</li>
               <li><i class="fa-solid fa-circle-check list-bullet"></i> Professional and respectful behavior is expected throughout the event.</li>
@@ -1703,6 +1817,9 @@
               </div>
               <h3 class="guideline-title">10. Breaks & Overnight Participation</h3>
             </div>
+            <div class="guideline-tldr-pill pill-amber">
+              <i class="fa-solid fa-mug-hot text-amber"></i> <span>Quick Take: Plan shifts &amp; breaks • At least 1 member stationed at table</span>
+            </div>
             <ul class="guideline-list">
               <li><i class="fa-solid fa-circle-check list-bullet"></i> Teams may take breaks during the 24-hour event.</li>
               <li><i class="fa-solid fa-circle-check list-bullet"></i> Participants are responsible for managing their team's working schedule effectively.</li>
@@ -1726,6 +1843,9 @@
               </div>
               <h3 class="guideline-title">11. Mentorship</h3>
             </div>
+            <div class="guideline-tldr-pill pill-emerald">
+              <i class="fa-solid fa-compass text-emerald"></i> <span>Quick Take: 24/7 GDE &amp; Alumni Mentors available on deck</span>
+            </div>
             <ul class="guideline-list">
               <li><i class="fa-solid fa-circle-check list-bullet"></i> Mentors may be available during designated periods to provide technical or domain guidance.</li>
               <li><i class="fa-solid fa-circle-check list-bullet"></i> Mentors may offer suggestions, but teams are responsible for their own technical decisions and implementation.</li>
@@ -1748,6 +1868,9 @@
                 <i class="fa-solid fa-cloud-arrow-up"></i>
               </div>
               <h3 class="guideline-title">12. Submission</h3>
+            </div>
+            <div class="guideline-tldr-pill pill-purple">
+              <i class="fa-solid fa-cloud-arrow-up text-purple"></i> <span>Quick Take: Working MVP + GitHub repo + Slide deck before 24h timer</span>
             </div>
             <ul class="guideline-list">
               <li><i class="fa-solid fa-circle-check list-bullet"></i> Before the official submission deadline, each team must submit the required project materials specified by the organizing committee.</li>
@@ -1779,6 +1902,9 @@
                 <i class="fa-solid fa-chart-pie"></i>
               </div>
               <h3 class="guideline-title">13. Evaluation</h3>
+            </div>
+            <div class="guideline-tldr-pill pill-amber">
+              <i class="fa-solid fa-chart-pie text-amber"></i> <span>Quick Take: 100 Pts: Tech 30%, Innovation 25%, Impact 25%, Pitch 20%</span>
             </div>
             <p style="font-size: 0.94rem; color: var(--text-secondary); margin-bottom: 12px;">
               Projects will be evaluated by the jury based on factors including:
@@ -1888,6 +2014,9 @@
               </div>
               <h3 class="guideline-title">14. Final Presentation</h3>
             </div>
+            <div class="guideline-tldr-pill pill-emerald">
+              <i class="fa-solid fa-person-chalkboard text-emerald"></i> <span>Quick Take: Live functional demo required • All 4 squad members speak</span>
+            </div>
             <ul class="guideline-list">
               <li><i class="fa-solid fa-circle-check list-bullet"></i> Every shortlisted team will be given a designated presentation/evaluation slot.</li>
               <li><i class="fa-solid fa-circle-check list-bullet"></i> Teams must demonstrate their working solution to the jury.</li>
@@ -1912,6 +2041,9 @@
               </div>
               <h3 class="guideline-title">15. Intellectual Property & Originality</h3>
             </div>
+            <div class="guideline-tldr-pill pill-cyan">
+              <i class="fa-solid fa-copyright text-cyan"></i> <span>Quick Take: You retain 100% IP of your code • License third-party libraries</span>
+            </div>
             <ul class="guideline-list">
               <li><i class="fa-solid fa-circle-check list-bullet"></i> Teams are responsible for ensuring that their submitted work does not infringe the intellectual property rights of others.</li>
               <li><i class="fa-solid fa-circle-check list-bullet"></i> Third-party libraries, APIs, datasets, and open-source components must be used according to their respective licenses.</li>
@@ -1934,6 +2066,9 @@
                 <i class="fa-solid fa-triangle-exclamation"></i>
               </div>
               <h3 class="guideline-title">16. Disqualification</h3>
+            </div>
+            <div class="guideline-tldr-pill pill-coral">
+              <i class="fa-solid fa-triangle-exclamation text-coral"></i> <span>Quick Take: Strict disqualification for plagiarism or pre-built submissions</span>
             </div>
             <p style="font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 8px;">A team may be disqualified for:</p>
             <ul class="guideline-list">
@@ -1963,6 +2098,9 @@
               </div>
               <h3 class="guideline-title">17. Prizes & Recognition</h3>
             </div>
+            <div class="guideline-tldr-pill pill-amber">
+              <i class="fa-solid fa-trophy text-amber"></i> <span>Quick Take: ₹1,20,000 cash pool + verified GDG &amp; ACM certificates</span>
+            </div>
             <ul class="guideline-list">
               <li><i class="fa-solid fa-circle-check list-bullet"></i> Winning teams will receive cash prizes, certificates, and recognition.</li>
               <li><i class="fa-solid fa-circle-check list-bullet"></i> Certificates will be provided to eligible participants as specified by the organizing committee.</li>
@@ -1986,6 +2124,9 @@
                 <i class="fa-solid fa-scale-balanced"></i>
               </div>
               <h3 class="guideline-title">18. Organizing Committee</h3>
+            </div>
+            <div class="guideline-tldr-pill pill-purple">
+              <i class="fa-solid fa-landmark text-purple"></i> <span>Quick Take: Organizing committee decisions are final &amp; binding</span>
             </div>
             <p style="font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 8px;">The organizing committee reserves the right to:</p>
             <ul class="guideline-list">
@@ -2378,15 +2519,15 @@
                 <span class="chapter-sub">PSNA College of Engineering and Technology</span>
               </div>
             </div>
-            <p class="chapter-desc">
-              GDG On Campus PSNACET is an active university developer community powered by Google Developers. We empower students to bridge the gap between academic theory and real-world software engineering through Google Cloud, Gemini GenAI, Android, Flutter, and open-source innovation.
+            <p class="chapter-desc font-semibold" style="color: var(--text-primary); margin-bottom: 8px;">
+              ⚡ Official Google-powered developer ecosystem bridging classroom theory with deep tech industry engineering:
             </p>
-            <ul class="chapter-features-list">
-              <li><i class="fa-solid fa-check text-google-blue"></i> Cloud Study Jams & Google Cloud Platform Skill Badges</li>
-              <li><i class="fa-solid fa-check text-google-blue"></i> Generative AI, Gemini API & TensorFlow Practical Bootcamps</li>
-              <li><i class="fa-solid fa-check text-google-blue"></i> Android, Flutter & Modern Full-Stack Development Tracks</li>
-              <li><i class="fa-solid fa-check text-google-blue"></i> Direct Mentorship from Google Developer Experts (GDEs)</li>
-            </ul>
+            <div class="chapter-feature-grid">
+              <div class="feature-micro-chip"><i class="fa-solid fa-cloud text-purple"></i> Google Cloud &amp; GCP Skill Badges</div>
+              <div class="feature-micro-chip"><i class="fa-solid fa-brain text-cyan"></i> Gemini API &amp; GenAI Sprints</div>
+              <div class="feature-micro-chip"><i class="fa-solid fa-mobile-screen text-emerald"></i> Flutter &amp; Android Labs</div>
+              <div class="feature-micro-chip"><i class="fa-solid fa-user-astronaut text-coral"></i> GDE &amp; Alumni Mentorship</div>
+            </div>
             <div class="chapter-lead-footer">
               <div class="lead-thumb icon-blue"><i class="fa-solid fa-user-astronaut"></i></div>
               <div>
@@ -2406,15 +2547,15 @@
                 <span class="chapter-sub">Association for Computing Machinery</span>
               </div>
             </div>
-            <p class="chapter-desc">
-              The ACM Student Chapter at PSNACET advances computing as a science and a profession. We cultivate algorithmic excellence, competitive programming mastery, research-oriented deep tech innovation, and international collegiate computing hackathons.
+            <p class="chapter-desc font-semibold" style="color: var(--text-primary); margin-bottom: 8px;">
+              🚀 Premier collegiate society cultivating algorithmic excellence, research breakthroughs, and competitive coding:
             </p>
-            <ul class="chapter-features-list">
-              <li><i class="fa-solid fa-check" style="color: #0284c7;"></i> Data Structures, Algorithms & Competitive Coding Leagues</li>
-              <li><i class="fa-solid fa-check" style="color: #0284c7;"></i> Deep Tech Research, Paper Publications & Research Circles</li>
-              <li><i class="fa-solid fa-check" style="color: #0284c7;"></i> ARENACORE Flagship National 24-Hour Hackathons</li>
-              <li><i class="fa-solid fa-check" style="color: #0284c7;"></i> Global Computing Society Recognition & Peer Networking</li>
-            </ul>
+            <div class="chapter-feature-grid">
+              <div class="feature-micro-chip"><i class="fa-solid fa-code text-cyan"></i> Algorithmic Mastery &amp; ICPC</div>
+              <div class="feature-micro-chip"><i class="fa-solid fa-flask text-purple"></i> Deep Tech Research Papers</div>
+              <div class="feature-micro-chip"><i class="fa-solid fa-trophy text-amber"></i> ARENACORE Hackathon Series</div>
+              <div class="feature-micro-chip"><i class="fa-solid fa-globe text-emerald"></i> Global ACM Chapter Network</div>
+            </div>
             <div class="chapter-lead-footer">
               <div class="lead-thumb" style="background: rgba(2, 132, 199, 0.15); color: #0284c7;"><i class="fa-solid fa-crown"></i></div>
               <div>
@@ -2820,6 +2961,30 @@
     </div>
   </div>
 
+  <!-- Mobile Quick-Action Floating Bottom Dock -->
+  <nav class="mobile-bottom-dock" aria-label="Mobile Quick Navigation">
+    <a href="#home" class="dock-item active" onclick="switchTab('home')">
+      <i class="fa-solid fa-house-laptop"></i>
+      <span>Home</span>
+    </a>
+    <a href="#events" class="dock-item" onclick="switchTab('events')">
+      <i class="fa-solid fa-layer-group"></i>
+      <span>Tracks</span>
+    </a>
+    <a href="javascript:void(0)" class="dock-item dock-cta" onclick="handleRegisterNowClick(event)">
+      <i class="fa-solid fa-bolt"></i>
+      <span>REGISTER</span>
+    </a>
+    <a href="#guidelines" class="dock-item" onclick="switchTab('guidelines')">
+      <i class="fa-solid fa-book-open"></i>
+      <span>Rules</span>
+    </a>
+    <a href="javascript:void(0)" class="dock-item dock-bot-btn" id="mobileDockBotBtn" onclick="window.ac26ToggleChat ? window.ac26ToggleChat() : null" title="Open ARENA-Bot Chat Assistant">
+      <i class="fa-solid fa-robot" style="color: #38bdf8;"></i>
+      <span>Ask Bot</span>
+    </a>
+  </nav>
+
   <!-- Toast Notification Container -->
   <div class="toast-container" id="toastContainer"></div>
 
@@ -2829,8 +2994,8 @@
   <script src="app.js?v=2.6"></script>
 
   <!-- ARENACORE '26 Offline FAQ Chatbot Widget (ARENA-Bot) -->
-  <script src="faq-bot/faq-data.js" defer></script>
-  <script src="faq-bot/arenacore-faqbot.js" defer></script>
+  <script src="faq-bot/faq-data.js?v=4.6" defer></script>
+  <script src="faq-bot/arenacore-faqbot.js?v=4.6" defer></script>
 
   <!-- Bootstrap 5 JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmxc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

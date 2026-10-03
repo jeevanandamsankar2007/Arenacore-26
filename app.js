@@ -402,6 +402,16 @@ function switchTab(targetId, pushState = true, subScrollTarget = null) {
     }
   });
 
+  // Update Mobile Bottom Dock items
+  document.querySelectorAll(".mobile-bottom-dock .dock-item:not(.dock-cta)").forEach(d => {
+    const dTarget = (d.getAttribute("data-target") || d.getAttribute("href") || "").replace("#", "").toLowerCase();
+    if (dTarget === cleanId) {
+      d.classList.add("active");
+    } else {
+      d.classList.remove("active");
+    }
+  });
+
   // Scroll to top or specific sub-element
   if (subScrollTarget) {
     setTimeout(() => {

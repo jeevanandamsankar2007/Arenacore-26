@@ -78,11 +78,50 @@
     <circle cx="32" cy="52" r="1.5" fill="#ffffff"/>
   </svg>`;
 
+  // Dedicated avatar robot SVG that is immune to bubble icon state toggles
+  const AVATAR_ROBOT_SVG = `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;opacity:1 !important;">
+    <defs>
+      <linearGradient id="ac26VisorHead" x1="16" y1="24" x2="48" y2="40" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#0b1329"/>
+        <stop offset="1" stop-color="#1e293b"/>
+      </linearGradient>
+      <linearGradient id="ac26BotHeadMain" x1="14" y1="12" x2="50" y2="52" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#ffffff"/>
+        <stop offset="0.7" stop-color="#f8fafc"/>
+        <stop offset="1" stop-color="#e2e8f0"/>
+      </linearGradient>
+      <linearGradient id="ac26EyeGlowMain" x1="0" y1="0" x2="1" y2="1">
+        <stop stop-color="#38bdf8"/>
+        <stop offset="1" stop-color="#06b6d4"/>
+      </linearGradient>
+      <filter id="ac26GlowHead" x="-30%" y="-30%" width="160%" height="160%">
+        <feGaussianBlur stdDeviation="2" result="blur"/>
+        <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+      </filter>
+    </defs>
+    <rect x="7" y="27" width="5" height="11" rx="2.5" fill="#4285F4"/>
+    <circle cx="9.5" cy="24" r="3.2" fill="#EA4335" filter="url(#ac26GlowHead)"/>
+    <rect x="52" y="27" width="5" height="11" rx="2.5" fill="#34A853"/>
+    <circle cx="54.5" cy="24" r="3.2" fill="#FBBC05" filter="url(#ac26GlowHead)"/>
+    <path d="M32 6v7" stroke="#4285F4" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="32" cy="5" r="3.5" fill="#38bdf8" filter="url(#ac26GlowHead)"/>
+    <path d="M15 22C15 17 18.5 13 23.5 13H40.5C45.5 13 49 17 49 22V38C49 43.5 44.5 48 39 48H25C19.5 48 15 43.5 15 38V22Z" fill="url(#ac26BotHeadMain)" stroke="#cbd5e1" stroke-width="1.2"/>
+    <rect x="19" y="21" width="26" height="17" rx="8" fill="url(#ac26VisorHead)" stroke="rgba(56, 189, 248, 0.5)" stroke-width="1.2"/>
+    <ellipse cx="26" cy="29.5" rx="3.8" ry="4.5" fill="url(#ac26EyeGlowMain)" filter="url(#ac26GlowHead)"/>
+    <circle cx="27" cy="28" r="1.5" fill="#ffffff"/>
+    <ellipse cx="38" cy="29.5" rx="3.8" ry="4.5" fill="url(#ac26EyeGlowMain)" filter="url(#ac26GlowHead)"/>
+    <circle cx="39" cy="28" r="1.5" fill="#ffffff"/>
+    <path d="M28.5 34.5C30 36.2 34 36.2 35.5 34.5" stroke="#38bdf8" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M28 52L32 48L36 52L32 56L28 52Z" fill="#4285F4"/>
+    <circle cx="32" cy="52" r="1.5" fill="#ffffff"/>
+  </svg>`;
+
   const ICONS = {
     chat: ARENA_ROBOT_ICON_SVG,
     close: `<svg viewBox="0 0 24 24" class="ac26faq-bubble-icon ac26faq-icon-close"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>`,
-    minimize: `<svg viewBox="0 0 24 24"><path d="M19 13H5v-2h14v2z"/></svg>`,
-    trash: `<svg viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>`,
+    headerClose: `<svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:currentColor;"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>`,
+    minimize: `<svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:currentColor;"><path d="M19 13H5v-2h14v2z"/></svg>`,
+    trash: `<svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:currentColor;"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>`,
     send: `<svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>`,
     copy: `<svg viewBox="0 0 24 24" width="12" height="12"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>`,
     thumbUp: `<svg viewBox="0 0 24 24" width="12" height="12"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>`,
@@ -96,34 +135,34 @@
   // Embedded CSS inside Shadow DOM to guarantee zero runtime layout breakages
   const WIDGET_CSS = `
 :host {
-  /* EDIT HERE TO RETHEME */
-  --ac26-bg: var(--bg-body, #0a0d14);
-  --ac26-surface: var(--bg-surface, #111726);
-  --ac26-surface-2: var(--bg-subtle, #172133);
-  --ac26-surface-3: var(--bg-subtle-2, #1e2b42);
-  --ac26-border: var(--border-light, rgba(255, 255, 255, 0.12));
-  --ac26-border-subtle: var(--border-subtle, rgba(255, 255, 255, 0.07));
-  --ac26-border-glow: rgba(66, 133, 244, 0.4);
+  /* Dedicated High-Contrast Cyber Dark Theme for ARENA-Bot */
+  --ac26-bg: #090d16;
+  --ac26-surface: #0f1626;
+  --ac26-surface-2: #162035;
+  --ac26-surface-3: #1e2c47;
+  --ac26-border: rgba(255, 255, 255, 0.14);
+  --ac26-border-subtle: rgba(255, 255, 255, 0.08);
+  --ac26-border-glow: rgba(56, 189, 248, 0.55);
 
-  --ac26-text: var(--text-primary, #f8fafc);
-  --ac26-text-secondary: var(--text-secondary, #cbd5e1);
-  --ac26-text-muted: var(--text-muted, #94a3b8);
-  --ac26-text-inverse: #0a0d14;
+  --ac26-text: #ffffff;
+  --ac26-text-secondary: #e2e8f0;
+  --ac26-text-muted: #94a3b8;
+  --ac26-text-inverse: #090d16;
 
-  --ac26-blue: var(--g-blue, #4285F4);
-  --ac26-blue-hover: var(--g-blue-hover, #1a73e8);
-  --ac26-blue-soft: rgba(66, 133, 244, 0.18);
-  --ac26-red: var(--g-red, #EA4335);
-  --ac26-yellow: var(--g-yellow, #FBBC05);
-  --ac26-green: var(--g-green, #34A853);
-  --ac26-green-soft: rgba(52, 168, 83, 0.18);
+  --ac26-blue: #4285F4;
+  --ac26-blue-hover: #1a73e8;
+  --ac26-blue-soft: rgba(66, 133, 244, 0.22);
+  --ac26-red: #EA4335;
+  --ac26-yellow: #FBBC05;
+  --ac26-green: #34A853;
+  --ac26-green-soft: rgba(52, 168, 83, 0.22);
   --ac26-cyan: #38bdf8;
 
-  --ac26-primary: var(--primary, var(--ac26-blue));
-  --ac26-primary-hover: var(--primary-hover, var(--ac26-blue-hover));
+  --ac26-primary: #4285F4;
+  --ac26-primary-hover: #1a73e8;
   --ac26-gradient-primary: linear-gradient(135deg, #4285F4 0%, #2563EB 50%, #1D4ED8 100%);
   --ac26-gradient-user: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);
-  --ac26-gradient-header: linear-gradient(135deg, #111726 0%, #172133 100%);
+  --ac26-gradient-header: linear-gradient(135deg, #090e1a 0%, #111a2e 100%);
   --ac26-gradient-bubble: linear-gradient(135deg, #4285F4 0%, #1a73e8 100%);
 
   --ac26-font-display: var(--font-display, 'Unbounded', 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
@@ -183,7 +222,7 @@
   background: radial-gradient(circle at 35% 35%, #1e293b, #0a0f1d 85%);
   border: 2px solid rgba(66, 133, 244, 0.5);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(66, 133, 244, 0.45);
-  cursor: pointer;
+  cursor: grab;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -191,8 +230,15 @@
   position: relative;
   transition: transform var(--ac26-transition-spring), box-shadow var(--ac26-transition-base);
   outline: none;
-  touch-action: manipulation;
+  touch-action: none;
   user-select: none;
+}
+
+.ac26faq-bubble-btn.is-dragging {
+  cursor: grabbing !important;
+  transition: none !important;
+  transform: scale(1.08) !important;
+  box-shadow: 0 18px 45px rgba(66, 133, 244, 0.75), 0 0 35px rgba(56, 189, 248, 0.7) !important;
 }
 
 .ac26faq-bubble-btn::before {
@@ -326,12 +372,12 @@
   transform: rotate(-90deg) scale(0.7);
 }
 
-.ac26faq-wrapper.is-open .ac26faq-icon-chat {
+.ac26faq-wrapper.is-open .ac26faq-bubble-btn .ac26faq-icon-chat {
   opacity: 0;
   transform: rotate(90deg) scale(0.7);
 }
 
-.ac26faq-wrapper.is-open .ac26faq-icon-close {
+.ac26faq-wrapper.is-open .ac26faq-bubble-btn .ac26faq-icon-close {
   opacity: 1;
   transform: rotate(0) scale(1);
 }
@@ -426,7 +472,7 @@
 }
 
 .ac26faq-header {
-  padding: 14px 18px;
+  padding: 16px 18px 14px;
   background: var(--ac26-gradient-header);
   border-bottom: 1px solid var(--ac26-border);
   display: flex;
@@ -434,6 +480,31 @@
   justify-content: space-between;
   gap: 12px;
   user-select: none;
+  cursor: grab;
+  touch-action: none;
+  position: relative;
+}
+
+.ac26faq-header.is-dragging {
+  cursor: grabbing !important;
+}
+
+.ac26faq-drag-handle-pill {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 4px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.28);
+  pointer-events: none;
+  transition: background 0.2s ease, width 0.2s ease;
+}
+
+.ac26faq-header:hover .ac26faq-drag-handle-pill {
+  background: rgba(56, 189, 248, 0.7);
+  width: 48px;
 }
 
 .ac26faq-header-left {
@@ -447,12 +518,13 @@
   width: 38px;
   height: 38px;
   border-radius: var(--ac26-radius-full);
-  background: #ffffff;
+  background: #111a2e;
   padding: 3px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 14px rgba(66, 133, 244, 0.4);
+  border: 1.5px solid rgba(66, 133, 244, 0.55);
   flex-shrink: 0;
 }
 
@@ -461,6 +533,8 @@
   width: 100%;
   height: 100%;
   border-radius: var(--ac26-radius-full);
+  opacity: 1 !important;
+  transform: none !important;
 }
 
 .ac26faq-header-meta {
@@ -477,13 +551,14 @@
 
 .ac26faq-header-title {
   font-family: var(--ac26-font-heading);
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-weight: 700;
-  color: var(--ac26-text);
-  letter-spacing: -0.3px;
+  color: #ffffff !important;
+  letter-spacing: -0.2px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
 }
 
 .ac26faq-online-badge {
@@ -491,9 +566,10 @@
   align-items: center;
   gap: 5px;
   font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--ac26-green);
-  background: var(--ac26-green-soft);
+  font-weight: 700;
+  color: #4ade80 !important;
+  background: rgba(34, 197, 94, 0.2);
+  border: 1px solid rgba(74, 222, 128, 0.4);
   padding: 2px 8px;
   border-radius: var(--ac26-radius-full);
   letter-spacing: 0.3px;
@@ -501,16 +577,17 @@
 }
 
 .ac26faq-online-dot {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
-  background-color: var(--ac26-green);
-  box-shadow: 0 0 6px var(--ac26-green);
+  background-color: #22c55e;
+  box-shadow: 0 0 8px #22c55e;
 }
 
 .ac26faq-header-subtitle {
-  font-size: 0.75rem;
-  color: var(--ac26-text-muted);
+  font-size: 0.78rem;
+  color: #cbd5e1 !important;
+  font-weight: 500;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -524,9 +601,9 @@
 }
 
 .ac26faq-head-btn {
-  background: transparent;
-  border: 1px solid transparent;
-  color: var(--ac26-text-muted);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #e2e8f0 !important;
   width: 32px;
   height: 32px;
   border-radius: var(--ac26-radius-sm);
@@ -538,9 +615,10 @@
 }
 
 .ac26faq-head-btn:hover {
-  background: var(--ac26-surface-3);
-  color: var(--ac26-text);
-  border-color: var(--ac26-border);
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff !important;
+  border-color: rgba(66, 133, 244, 0.6);
+  transform: translateY(-1px);
 }
 
 .ac26faq-head-btn:focus-visible {
@@ -597,13 +675,15 @@
   width: 28px;
   height: 28px;
   border-radius: var(--ac26-radius-full);
-  background: #ffffff;
+  background: #111a2e;
   padding: 2px;
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 4px;
+  border: 1px solid rgba(66, 133, 244, 0.5);
+  box-shadow: 0 0 8px rgba(66, 133, 244, 0.3);
 }
 
 .ac26faq-msg-avatar svg,
@@ -611,6 +691,8 @@
   width: 100%;
   height: 100%;
   border-radius: var(--ac26-radius-full);
+  opacity: 1 !important;
+  transform: none !important;
 }
 
 .ac26faq-msg-body {
@@ -867,7 +949,7 @@
   background: var(--ac26-surface-2);
   border: 1px solid var(--ac26-border);
   border-radius: var(--ac26-radius-md);
-  padding: 10px 12px;
+  padding: 11px 13px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -878,9 +960,9 @@
 
 .ac26faq-cat-card:hover {
   background: var(--ac26-surface-3);
-  border-color: var(--ac26-border-glow);
+  border-color: rgba(56, 189, 248, 0.6);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5), 0 0 14px rgba(56, 189, 248, 0.25);
 }
 
 .ac26faq-cat-emoji {
@@ -896,30 +978,31 @@
 
 .ac26faq-cat-name {
   font-family: var(--ac26-font-heading);
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   font-weight: 700;
-  color: var(--ac26-text);
+  color: #ffffff !important;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .ac26faq-cat-desc {
-  font-size: 0.7rem;
-  color: var(--ac26-text-muted);
+  font-size: 0.72rem;
+  color: #cbd5e1 !important;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-weight: 400;
 }
 
 .ac26faq-chips-container {
-  padding: 8px 16px;
+  padding: 10px 16px;
   display: flex;
   gap: 8px;
   overflow-x: auto;
   white-space: nowrap;
   background: var(--ac26-surface);
-  border-top: 1px solid var(--ac26-border-subtle);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   scrollbar-width: none;
 }
 .ac26faq-chips-container::-webkit-scrollbar {
@@ -930,13 +1013,13 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 6px 12px;
+  padding: 7px 14px;
   background: var(--ac26-surface-2);
-  border: 1px solid var(--ac26-border);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: var(--ac26-radius-full);
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   font-weight: 500;
-  color: var(--ac26-text-secondary);
+  color: #e2e8f0 !important;
   cursor: pointer;
   transition: all var(--ac26-transition-fast);
   flex-shrink: 0;
@@ -944,10 +1027,11 @@
 }
 
 .ac26faq-chip:hover {
-  background: var(--ac26-surface-3);
-  color: #ffffff;
-  border-color: var(--ac26-border-glow);
+  background: #1d4ed8;
+  color: #ffffff !important;
+  border-color: #60a5fa;
   transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(29, 78, 216, 0.45);
 }
 
 .ac26faq-chip:focus-visible {
@@ -1015,14 +1099,16 @@
   align-items: center;
   gap: 8px;
   background: var(--ac26-surface-2);
-  border: 1px solid var(--ac26-border);
+  border: 1.5px solid rgba(66, 133, 244, 0.4);
   border-radius: var(--ac26-radius-full);
   padding: 4px 6px 4px 16px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .ac26faq-input-row:focus-within {
-  border-color: var(--ac26-blue);
-  box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.25);
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25), inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  background: var(--ac26-surface-3);
 }
 
 .ac26faq-input-field {
@@ -1032,13 +1118,13 @@
   outline: none;
   font-family: var(--ac26-font-body);
   font-size: 0.92rem;
-  color: var(--ac26-text);
+  color: #ffffff !important;
   line-height: 1.4;
   padding: 6px 0;
 }
 
 .ac26faq-input-field::placeholder {
-  color: var(--ac26-text-muted);
+  color: #94a3b8 !important;
 }
 
 .ac26faq-send-btn {
@@ -1075,9 +1161,9 @@
 
 .ac26faq-footer-note {
   font-size: 0.72rem;
-  color: var(--ac26-text-muted);
+  color: #94a3b8 !important;
   text-align: center;
-  line-height: 1.3;
+  line-height: 1.35;
 }
 
 .ac26faq-typing-indicator {
@@ -1200,14 +1286,43 @@
   color: #ffffff;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   :host {
     --ac26-bubble-right: 16px;
-    --ac26-bubble-bottom: 16px;
+    --ac26-bubble-bottom: 85px;
+    --ac26-bubble-size: 60px;
   }
   .ac26faq-wrapper {
-    right: var(--ac26-bubble-right);
-    bottom: var(--ac26-bubble-bottom);
+    position: fixed !important;
+    right: 16px !important;
+    bottom: 85px !important;
+    z-index: 2147483000 !important;
+    display: flex !important;
+  }
+  .ac26faq-wrapper.is-dragging {
+    right: auto !important;
+    bottom: auto !important;
+  }
+  .ac26faq-bubble-btn {
+    width: 60px !important;
+    height: 60px !important;
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+  .ac26faq-bubble-icon {
+    width: 38px !important;
+    height: 38px !important;
+  }
+  .ac26faq-fab-badge {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    font-size: 0.62rem !important;
+    padding: 2px 7px !important;
+    top: -10px !important;
+    right: -4px !important;
   }
   .ac26faq-window {
     position: fixed;
@@ -1230,11 +1345,31 @@
     transform: translateY(0);
   }
   .ac26faq-wrapper.is-open .ac26faq-bubble-btn {
-    display: none;
+    display: none !important;
   }
   .ac26faq-header {
     padding: 16px;
     border-radius: 24px 24px 0 0;
+    background: linear-gradient(135deg, #090e1a 0%, #111a2e 100%) !important;
+  }
+  .ac26faq-header-title {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    font-size: 1.12rem !important;
+    font-weight: 700 !important;
+  }
+  .ac26faq-header-subtitle {
+    color: #cbd5e1 !important;
+    -webkit-text-fill-color: #cbd5e1 !important;
+    font-size: 0.78rem !important;
+    font-weight: 500 !important;
+  }
+  .ac26faq-head-btn {
+    color: #ffffff !important;
+  }
+  .ac26faq-head-btn svg {
+    fill: #ffffff !important;
+    color: #ffffff !important;
   }
   .ac26faq-category-grid {
     grid-template-columns: 1fr;
@@ -2054,9 +2189,13 @@
       this.isOpen = false;
       this.hasOpenedBefore = Boolean(StorageManager.safeGet(STORAGE_KEYS.HAS_OPENED));
       this.highlightedSuggestionIdx = -1;
+      this.justDragged = false;
+      this.windowCustomMoved = false;
 
       this.initDom();
       this.initEvents();
+      this.initDraggableBubble();
+      this.initDraggableWindow();
       this.loadPersistedChat();
       this.initTooltipTimer();
     }
@@ -2125,30 +2264,31 @@
         <div class="ac26faq-toast" id="ac26Toast">Copied ✓</div>
 
         <!-- Header -->
-        <header class="ac26faq-header">
+        <header class="ac26faq-header" style="background: linear-gradient(135deg, #090e1a 0%, #111a2e 100%) !important;">
+          <div class="ac26faq-drag-handle-pill" title="Drag to reposition chat"></div>
           <div class="ac26faq-header-left">
-            <div class="ac26faq-avatar">
-              ${ARENA_ROBOT_ICON_SVG}
+            <div class="ac26faq-avatar" style="background: #111a2e !important; border: 1.5px solid rgba(66, 133, 244, 0.6) !important;">
+              ${AVATAR_ROBOT_SVG}
             </div>
             <div class="ac26faq-header-meta">
               <div class="ac26faq-header-title-row">
-                <span class="ac26faq-header-title">ARENA-Bot</span>
-                <span class="ac26faq-online-badge">
+                <span class="ac26faq-header-title" style="color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; font-weight: 700 !important; font-size: 1.12rem !important; text-shadow: 0 1px 3px rgba(0,0,0,0.8);">ARENA-Bot</span>
+                <span class="ac26faq-online-badge" style="color: #4ade80 !important; -webkit-text-fill-color: #4ade80 !important; background: rgba(34, 197, 94, 0.2) !important; border: 1px solid rgba(74, 222, 128, 0.4) !important;">
                   <span class="ac26faq-online-dot"></span> Online
                 </span>
               </div>
-              <span class="ac26faq-header-subtitle">ARENACORE '26 Assistant • GDG x ACM PSNA</span>
+              <span class="ac26faq-header-subtitle" style="color: #cbd5e1 !important; -webkit-text-fill-color: #cbd5e1 !important; font-size: 0.78rem !important; font-weight: 500 !important;">ARENACORE '26 Assistant • GDG x ACM PSNA</span>
             </div>
           </div>
           <div class="ac26faq-header-actions">
-            <button class="ac26faq-head-btn" id="ac26ClearBtn" title="Clear chat history" aria-label="Clear conversation">
+            <button class="ac26faq-head-btn" id="ac26ClearBtn" title="Clear chat history" aria-label="Clear conversation" style="color: #ffffff !important;">
               ${ICONS.trash}
             </button>
-            <button class="ac26faq-head-btn" id="ac26MinimizeBtn" title="Minimize chat" aria-label="Minimize FAQ assistant">
+            <button class="ac26faq-head-btn" id="ac26MinimizeBtn" title="Minimize chat" aria-label="Minimize FAQ assistant" style="color: #ffffff !important;">
               ${ICONS.minimize}
             </button>
-            <button class="ac26faq-head-btn" id="ac26CloseBtn" title="Close" aria-label="Close FAQ assistant">
-              ${ICONS.close}
+            <button class="ac26faq-head-btn" id="ac26CloseBtn" title="Close" aria-label="Close FAQ assistant" style="color: #ffffff !important;">
+              ${ICONS.headerClose}
             </button>
           </div>
         </header>
@@ -2200,8 +2340,14 @@
     }
 
     initEvents() {
-      // Toggle chat via Bubble Button
-      this.bubbleBtn.addEventListener("click", () => this.toggle());
+      // Toggle chat via Bubble Button (guard against drag release)
+      this.bubbleBtn.addEventListener("click", () => {
+        if (this.justDragged) {
+          this.justDragged = false;
+          return;
+        }
+        this.toggle();
+      });
 
       // Header buttons
       this.shadow.getElementById("ac26CloseBtn").addEventListener("click", () => this.close());
@@ -2307,12 +2453,274 @@
       this.confirmModal.classList.remove("show");
     }
 
+    initDraggableBubble() {
+      let isDragging = false;
+      let startX = 0, startY = 0;
+      let initialLeft = 0, initialTop = 0;
+
+      const onPointerDown = (e) => {
+        if (e.type === "mousedown" && e.button !== 0) return;
+
+        const clientX = e.type.startsWith("touch") ? e.touches[0].clientX : e.clientX;
+        const clientY = e.type.startsWith("touch") ? e.touches[0].clientY : e.clientY;
+
+        startX = clientX;
+        startY = clientY;
+        isDragging = false;
+
+        const rect = this.wrapperEl.getBoundingClientRect();
+        initialLeft = rect.left;
+        initialTop = rect.top;
+
+        if (e.type === "mousedown") {
+          window.addEventListener("mousemove", onPointerMove);
+          window.addEventListener("mouseup", onPointerUp);
+        } else {
+          window.addEventListener("touchmove", onPointerMove, { passive: false });
+          window.addEventListener("touchend", onPointerUp);
+          window.addEventListener("touchcancel", onPointerUp);
+        }
+      };
+
+      const onPointerMove = (e) => {
+        const clientX = e.type.startsWith("touch") ? e.touches[0].clientX : e.clientX;
+        const clientY = e.type.startsWith("touch") ? e.touches[0].clientY : e.clientY;
+
+        const dx = clientX - startX;
+        const dy = clientY - startY;
+
+        if (!isDragging && Math.hypot(dx, dy) > 5) {
+          isDragging = true;
+          this.bubbleBtn.classList.add("is-dragging");
+        }
+
+        if (isDragging) {
+          if (e.cancelable) e.preventDefault();
+
+          let newLeft = initialLeft + dx;
+          let newTop = initialTop + dy;
+
+          const bubbleSize = this.bubbleBtn.offsetWidth || 66;
+          const minX = 8;
+          const maxX = window.innerWidth - bubbleSize - 8;
+          const minY = 8;
+          const isMobile = window.innerWidth <= 768;
+          const maxY = window.innerHeight - bubbleSize - (isMobile ? 76 : 12);
+
+          newLeft = Math.max(minX, Math.min(newLeft, maxX));
+          newTop = Math.max(minY, Math.min(newTop, maxY));
+
+          this.wrapperEl.style.position = "fixed";
+          this.wrapperEl.style.left = `${newLeft}px`;
+          this.wrapperEl.style.top = `${newTop}px`;
+          this.wrapperEl.style.right = "auto";
+          this.wrapperEl.style.bottom = "auto";
+        }
+      };
+
+      const onPointerUp = (e) => {
+        window.removeEventListener("mousemove", onPointerMove);
+        window.removeEventListener("mouseup", onPointerUp);
+        window.removeEventListener("touchmove", onPointerMove);
+        window.removeEventListener("touchend", onPointerUp);
+        window.removeEventListener("touchcancel", onPointerUp);
+
+        if (isDragging) {
+          this.bubbleBtn.classList.remove("is-dragging");
+          this.justDragged = true;
+          setTimeout(() => {
+            this.justDragged = false;
+          }, 120);
+
+          const rect = this.wrapperEl.getBoundingClientRect();
+          StorageManager.safeSet("AC26_BUBBLE_POS", {
+            left: rect.left,
+            top: rect.top
+          });
+        }
+      };
+
+      this.bubbleBtn.addEventListener("mousedown", onPointerDown);
+      this.bubbleBtn.addEventListener("touchstart", onPointerDown, { passive: true });
+
+      // Restore saved position if valid
+      const savedPos = StorageManager.safeGet("AC26_BUBBLE_POS");
+      if (savedPos && typeof savedPos.left === "number" && typeof savedPos.top === "number") {
+        const isMobile = window.innerWidth <= 768;
+        const bubbleSize = isMobile ? 60 : 66;
+        const maxX = window.innerWidth - bubbleSize - 8;
+        const maxY = window.innerHeight - bubbleSize - (isMobile ? 85 : 12);
+        if (savedPos.left >= 8 && savedPos.left <= maxX && savedPos.top >= 8 && savedPos.top <= maxY) {
+          this.wrapperEl.style.position = "fixed";
+          this.wrapperEl.style.left = `${savedPos.left}px`;
+          this.wrapperEl.style.top = `${savedPos.top}px`;
+          this.wrapperEl.style.right = "auto";
+          this.wrapperEl.style.bottom = "auto";
+        }
+      }
+
+      // Automatically reset if viewport resizing or orientation changes push coordinates off-screen
+      const checkAndClampPosition = () => {
+        const isMobile = window.innerWidth <= 768;
+        const bubbleSize = isMobile ? 60 : 66;
+        const maxX = window.innerWidth - bubbleSize - 8;
+        const maxY = window.innerHeight - bubbleSize - (isMobile ? 85 : 12);
+        const curLeft = parseFloat(this.wrapperEl.style.left);
+        const curTop = parseFloat(this.wrapperEl.style.top);
+
+        if (!isNaN(curLeft)) {
+          if (curLeft > maxX || curLeft < 4 || curTop > maxY || curTop < 4) {
+            this.wrapperEl.style.position = "";
+            this.wrapperEl.style.left = "";
+            this.wrapperEl.style.top = "";
+            this.wrapperEl.style.right = "";
+            this.wrapperEl.style.bottom = "";
+            StorageManager.safeSet("AC26_BUBBLE_POS", null);
+          }
+        }
+      };
+
+      window.addEventListener("resize", checkAndClampPosition);
+      checkAndClampPosition();
+    }
+
+    initDraggableWindow() {
+      const header = this.shadow.querySelector(".ac26faq-header");
+      if (!header) return;
+
+      let isDragging = false;
+      let startX = 0, startY = 0;
+      let initialLeft = 0, initialTop = 0;
+
+      const onHeaderPointerDown = (e) => {
+        if (e.target.closest(".ac26faq-head-btn")) return;
+        if (e.type === "mousedown" && e.button !== 0) return;
+
+        const clientX = e.type.startsWith("touch") ? e.touches[0].clientX : e.clientX;
+        const clientY = e.type.startsWith("touch") ? e.touches[0].clientY : e.clientY;
+
+        startX = clientX;
+        startY = clientY;
+        isDragging = false;
+
+        const rect = this.windowEl.getBoundingClientRect();
+        initialLeft = rect.left;
+        initialTop = rect.top;
+
+        if (e.type === "mousedown") {
+          window.addEventListener("mousemove", onHeaderPointerMove);
+          window.addEventListener("mouseup", onHeaderPointerUp);
+        } else {
+          window.addEventListener("touchmove", onHeaderPointerMove, { passive: false });
+          window.addEventListener("touchend", onHeaderPointerUp);
+          window.addEventListener("touchcancel", onHeaderPointerUp);
+        }
+      };
+
+      const onHeaderPointerMove = (e) => {
+        const clientX = e.type.startsWith("touch") ? e.touches[0].clientX : e.clientX;
+        const clientY = e.type.startsWith("touch") ? e.touches[0].clientY : e.clientY;
+
+        const dx = clientX - startX;
+        const dy = clientY - startY;
+
+        if (!isDragging && Math.hypot(dx, dy) > 5) {
+          isDragging = true;
+          header.classList.add("is-dragging");
+          this.windowEl.style.transition = "none";
+        }
+
+        if (isDragging) {
+          if (e.cancelable) e.preventDefault();
+
+          const isMobile = window.innerWidth <= 640;
+          if (isMobile) {
+            // On mobile: dragging downwards allows swipe-to-dismiss gesture
+            if (dy > 0) {
+              this.windowEl.style.transform = `translateY(${dy}px)`;
+            }
+          } else {
+            // On Laptop/Desktop: Full 2D Drag
+            this.windowCustomMoved = true;
+            const winWidth = this.windowEl.offsetWidth;
+            const winHeight = this.windowEl.offsetHeight;
+
+            let newLeft = initialLeft + dx;
+            let newTop = initialTop + dy;
+
+            newLeft = Math.max(8, Math.min(newLeft, window.innerWidth - winWidth - 8));
+            newTop = Math.max(8, Math.min(newTop, window.innerHeight - winHeight - 8));
+
+            this.windowEl.style.position = "fixed";
+            this.windowEl.style.left = `${newLeft}px`;
+            this.windowEl.style.top = `${newTop}px`;
+            this.windowEl.style.right = "auto";
+            this.windowEl.style.bottom = "auto";
+          }
+        }
+      };
+
+      const onHeaderPointerUp = (e) => {
+        window.removeEventListener("mousemove", onHeaderPointerMove);
+        window.removeEventListener("mouseup", onHeaderPointerUp);
+        window.removeEventListener("touchmove", onHeaderPointerMove);
+        window.removeEventListener("touchend", onHeaderPointerUp);
+        window.removeEventListener("touchcancel", onHeaderPointerUp);
+
+        if (isDragging) {
+          header.classList.remove("is-dragging");
+          this.windowEl.style.transition = "";
+
+          const isMobile = window.innerWidth <= 640;
+          if (isMobile) {
+            const clientY = e.type.startsWith("touch") && e.changedTouches ? e.changedTouches[0].clientY : e.clientY;
+            const dy = (clientY || startY) - startY;
+            if (dy > 70) {
+              this.close();
+              this.windowEl.style.transform = "";
+            } else {
+              this.windowEl.style.transform = "translateY(0)";
+            }
+          }
+        }
+      };
+
+      header.addEventListener("mousedown", onHeaderPointerDown);
+      header.addEventListener("touchstart", onHeaderPointerDown, { passive: true });
+    }
+
     open() {
       if (this.isOpen) return;
       this.isOpen = true;
       this.wrapperEl.classList.add("is-open");
       this.bubbleBtn.setAttribute("aria-expanded", "true");
       this.dismissTooltip();
+
+      // Check if desktop window position needs smart clamping relative to bubble
+      if (window.innerWidth > 640 && !this.windowCustomMoved) {
+        const wrapperRect = this.wrapperEl.getBoundingClientRect();
+        const winWidth = Math.min(680, Math.max(420, window.innerWidth * 0.45));
+        const winHeight = Math.min(760, window.innerHeight * 0.8);
+
+        let winLeft = wrapperRect.right - winWidth;
+        let winTop = wrapperRect.top - winHeight - 16;
+
+        // If overflowing top or bottom, adjust safely
+        if (winTop < 10) {
+          winTop = Math.max(10, wrapperRect.bottom + 16);
+          if (winTop + winHeight > window.innerHeight) {
+            winTop = Math.max(10, window.innerHeight - winHeight - 16);
+          }
+        }
+        if (winLeft < 10) winLeft = 10;
+        if (winLeft + winWidth > window.innerWidth - 10) winLeft = window.innerWidth - winWidth - 10;
+
+        this.windowEl.style.position = "fixed";
+        this.windowEl.style.left = `${winLeft}px`;
+        this.windowEl.style.top = `${winTop}px`;
+        this.windowEl.style.right = "auto";
+        this.windowEl.style.bottom = "auto";
+      }
 
       if (!this.hasOpenedBefore) {
         this.hasOpenedBefore = true;
@@ -2883,6 +3291,10 @@
         exportUnanswered: () => StorageManager.exportUnansweredJSON(),
         getEngine: () => widgetInstance && widgetInstance.engine
       };
+
+      // Shorthand helpers for direct HTML onclick handlers
+      window.ac26ToggleChat = () => widgetInstance && widgetInstance.toggle();
+      window.ac26OpenChat = () => widgetInstance && widgetInstance.open();
     });
   }
 
