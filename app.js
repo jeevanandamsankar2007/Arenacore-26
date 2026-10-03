@@ -211,6 +211,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initDevTerminal();
   initRubricSimulator();
   initTimelineScrubber();
+  initSdgSystem();
 });
 
 // =============================================================================
@@ -634,6 +635,550 @@ window.closeProblemModal = closeProblemModal;
 
 function navigateProblem() {}
 window.navigateProblem = navigateProblem;
+
+// =============================================================================
+// UN SUSTAINABLE DEVELOPMENT GOALS (SDG) ENGINE & FULL DETAILS MODAL
+// =============================================================================
+
+const SDG_DATA = {
+  1: {
+    number: 1,
+    id: "sdg-1",
+    name: "No Poverty",
+    statement: "End poverty in all its forms everywhere.",
+    color: "#E5243B",
+    colorLight: "#fce8ea",
+    icon: "assets/sdgs/sdg-1.svg",
+    primaryTheme: "Cross-Track / Connected & Autonomous",
+    formTheme: "Connected & Autonomous Technologies",
+    rubricFocus: "Financial Inclusion & Community Resilience",
+    ideas: [
+      "Decentralized peer-to-peer microcredit & community emergency fund protocols",
+      "AI-driven transparent disaster relief distribution and aid leak tracking",
+      "Offline-first SMS/USSD marketplaces for informal rural micro-entrepreneurs"
+    ],
+    targets: [
+      "Target 1.4: Ensure equal rights to economic resources, basic services, and appropriate new technology",
+      "Target 1.5: Build resilience of vulnerable populations to climate, social, and economic shocks"
+    ],
+    unUrl: "https://sdgs.un.org/goals/goal1"
+  },
+  2: {
+    number: 2,
+    id: "sdg-2",
+    name: "Zero Hunger",
+    statement: "End hunger, achieve food security, improved nutrition, and promote sustainable agriculture.",
+    color: "#DDA63A",
+    colorLight: "#fcf6ea",
+    icon: "assets/sdgs/sdg-2.svg",
+    primaryTheme: "Connected & Autonomous Technologies",
+    formTheme: "Connected & Autonomous Technologies",
+    rubricFocus: "Smart AgriTech & Food Supply Chain Preservation",
+    ideas: [
+      "IoT soil nutrient sensors with edge ML automated irrigation scheduling",
+      "Computer vision drone pipeline for early plant disease & locust detection",
+      "Hyperlocal supermarket food surplus dynamic discount & NGO redistribution app"
+    ],
+    targets: [
+      "Target 2.3: Double agricultural productivity and incomes of small-scale food producers",
+      "Target 2.4: Ensure sustainable food production systems and resilient agricultural practices"
+    ],
+    unUrl: "https://sdgs.un.org/goals/goal2"
+  },
+  3: {
+    number: 3,
+    id: "sdg-3",
+    name: "Good Health and Well-Being",
+    statement: "Ensure healthy lives and promote well-being for all at all ages.",
+    color: "#4C9F38",
+    colorLight: "#edf7ed",
+    icon: "assets/sdgs/sdg-3.svg",
+    primaryTheme: "Theme 01: AI & Intelligent Systems",
+    secondaryTheme: "Theme 03: Secure & Sustainable Future",
+    formTheme: "AI & Intelligent Systems",
+    rubricFocus: "AI Healthcare Diagnostics & Secure HealthTech",
+    ideas: [
+      "Edge-AI wearable for predictive cardiac arrhythmia & fall alerts for elderly patients",
+      "Computer vision screening assistant for dermatological & retinal disease triage",
+      "Zero-knowledge privacy-preserving Electronic Health Record (EHR) exchange network",
+      "Multilingual AI triage chatbot for rural clinics without resident specialists"
+    ],
+    targets: [
+      "Target 3.8: Achieve universal health coverage, access to quality essential healthcare services and safe medicines",
+      "Target 3.d: Strengthen early warning, risk reduction, and management of national and global health risks"
+    ],
+    unUrl: "https://sdgs.un.org/goals/goal3"
+  },
+  4: {
+    number: 4,
+    id: "sdg-4",
+    name: "Quality Education",
+    statement: "Ensure inclusive and equitable quality education and promote lifelong learning opportunities for all.",
+    color: "#C5192D",
+    colorLight: "#fbe8ea",
+    icon: "assets/sdgs/sdg-4.svg",
+    primaryTheme: "Theme 01: AI & Intelligent Systems",
+    formTheme: "AI & Intelligent Systems",
+    rubricFocus: "Personalized AI Tutoring & Accessible EdTech",
+    ideas: [
+      "Generative AI tutor tailoring STEM concepts into regional dialects and visual analogies",
+      "Low-bandwidth browser-based virtual interactive science lab simulators",
+      "Assistive real-time speech-to-tactile and sign language interpreters for classrooms"
+    ],
+    targets: [
+      "Target 4.4: Substantially increase the number of youth and adults with technical and vocational skills",
+      "Target 4.a: Build and upgrade education facilities that are child, disability, and gender sensitive"
+    ],
+    unUrl: "https://sdgs.un.org/goals/goal4"
+  },
+  5: {
+    number: 5,
+    id: "sdg-5",
+    name: "Gender Equality",
+    statement: "Achieve gender equality and empower all women and girls.",
+    color: "#FF3A21",
+    colorLight: "#ffebec",
+    icon: "assets/sdgs/sdg-5.svg",
+    primaryTheme: "Theme 03: Secure & Sustainable Future",
+    formTheme: "Secure & Sustainable Future",
+    rubricFocus: "Algorithmic Fairness, Privacy & Personal Safety",
+    ideas: [
+      "AI bias detection linter for recruitment engines and automated credit scoring models",
+      "Discreet hardware wearable emergency beacon with mesh-network SOS alerting",
+      "Anonymous mentorship and career sponsorship matchmaking platform for women in STEM"
+    ],
+    targets: [
+      "Target 5.b: Enhance the use of enabling technology, in particular ICT, to promote women empowerment",
+      "Target 5.5: Ensure full and effective participation and equal opportunities for leadership"
+    ],
+    unUrl: "https://sdgs.un.org/goals/goal5"
+  },
+  6: {
+    number: 6,
+    id: "sdg-6",
+    name: "Clean Water and Sanitation",
+    statement: "Ensure availability and sustainable management of water and sanitation for all.",
+    color: "#26BDE2",
+    colorLight: "#e9f8fc",
+    icon: "assets/sdgs/sdg-6.svg",
+    primaryTheme: "Theme 02: Connected & Autonomous Tech",
+    formTheme: "Connected & Autonomous Technologies",
+    rubricFocus: "IoT Water Purity & Municipal Leak Localization",
+    ideas: [
+      "Low-cost IoT spectrophotometric drinking water contamination warning node",
+      "Acoustic sensor pipeline leak localization powered by tinyML on municipal grids",
+      "Automated residential rainwater harvesting controller with weather forecast integration"
+    ],
+    targets: [
+      "Target 6.1: Achieve universal and equitable access to safe and affordable drinking water for all",
+      "Target 6.4: Substantially increase water-use efficiency across all sectors and ensure sustainable withdrawals"
+    ],
+    unUrl: "https://sdgs.un.org/goals/goal6"
+  },
+  7: {
+    number: 7,
+    id: "sdg-7",
+    name: "Affordable and Clean Energy",
+    statement: "Ensure access to affordable, reliable, sustainable and modern energy for all.",
+    color: "#FCC30B",
+    colorLight: "#fff9e6",
+    icon: "assets/sdgs/sdg-7.svg",
+    primaryTheme: "Theme 02: Connected & Autonomous Tech",
+    secondaryTheme: "Theme 03: Secure & Sustainable Future",
+    formTheme: "Connected & Autonomous Technologies",
+    rubricFocus: "Smart Grids, Microgeneration & Battery Intelligence",
+    ideas: [
+      "Smart microgrid load balancer with ML solar irradiance forecasting & battery optimization",
+      "Autonomous solar farm cleaning robot with thermal fault and dust detection cameras",
+      "P2P decentralized renewable energy trading token system between rooftop solar homes"
+    ],
+    targets: [
+      "Target 7.2: Increase substantially the share of renewable energy in the global energy mix",
+      "Target 7.3: Double the global rate of improvement in energy efficiency"
+    ],
+    unUrl: "https://sdgs.un.org/goals/goal7"
+  },
+  8: {
+    number: 8,
+    id: "sdg-8",
+    name: "Decent Work and Economic Growth",
+    statement: "Promote sustained, inclusive and sustainable economic growth, full and productive employment and decent work for all.",
+    color: "#A21942",
+    colorLight: "#f6e8ed",
+    icon: "assets/sdgs/sdg-8.svg",
+    primaryTheme: "Theme 01: AI & Intelligent Systems",
+    formTheme: "AI & Intelligent Systems",
+    rubricFocus: "Ethical Automation, Worker Safety & Gig-Economy Security",
+    ideas: [
+      "Computer vision workplace posture and ergonomics monitoring to prevent repetitive injury",
+      "Automated smart escrow platform ensuring prompt milestone payments for gig freelancers",
+      "Autonomous AI workflow assistant enabling small independent retailers to compete with e-commerce giants"
+    ],
+    targets: [
+      "Target 8.2: Achieve higher levels of economic productivity through diversification and technological innovation",
+      "Target 8.8: Protect labor rights and promote safe and secure working environments for all workers"
+    ],
+    unUrl: "https://sdgs.un.org/goals/goal8"
+  },
+  9: {
+    number: 9,
+    id: "sdg-9",
+    name: "Industry, Innovation and Infrastructure",
+    statement: "Build resilient infrastructure, promote inclusive and sustainable industrialization and foster innovation.",
+    color: "#FD6925",
+    colorLight: "#fff0e9",
+    icon: "assets/sdgs/sdg-9.svg",
+    primaryTheme: "Theme 01: AI & Intelligent Systems",
+    secondaryTheme: "Theme 02: Connected & Autonomous Tech",
+    formTheme: "Connected & Autonomous Technologies",
+    rubricFocus: "Edge AI Predictive Maintenance, Robotics & Smart Infra",
+    ideas: [
+      "Edge vibration and thermal AI diagnostics for zero-downtime industrial manufacturing",
+      "Computer vision road pothole & bridge structural crack mapping using dashcam feeds",
+      "Autonomous warehouse inventory robots with SLAM lidar navigation and RFID tracking"
+    ],
+    targets: [
+      "Target 9.4: Upgrade infrastructure and retrofit industries to make them sustainable with clean technologies",
+      "Target 9.5: Enhance scientific research and upgrade the technological capabilities of industrial sectors"
+    ],
+    unUrl: "https://sdgs.un.org/goals/goal9"
+  },
+  10: {
+    number: 10,
+    id: "sdg-10",
+    name: "Reduced Inequalities",
+    statement: "Reduce inequality within and among countries.",
+    color: "#DD1367",
+    colorLight: "#fce7f0",
+    icon: "assets/sdgs/sdg-10.svg",
+    primaryTheme: "Cross-Track / AI & Intelligent Systems",
+    formTheme: "AI & Intelligent Systems",
+    rubricFocus: "Accessibility Tech & Financial/Civic Inclusion",
+    ideas: [
+      "Real-time bidirectional sign language video interpreter powered by MediaPipe and LLMs",
+      "Voice-guided government subsidy discovery tool designed for non-literate citizens",
+      "Ultra low-cost 3D-printable bionic prosthetic limb controller using EMG sensor signals"
+    ],
+    targets: [
+      "Target 10.2: Empower and promote the social, economic, and political inclusion of all",
+      "Target 10.c: Reduce transaction costs of migrant remittances to less than 3 percent"
+    ],
+    unUrl: "https://sdgs.un.org/goals/goal10"
+  },
+  11: {
+    number: 11,
+    id: "sdg-11",
+    name: "Sustainable Cities and Communities",
+    statement: "Make cities and human settlements inclusive, safe, resilient and sustainable.",
+    color: "#FD9D24",
+    colorLight: "#fff5e9",
+    icon: "assets/sdgs/sdg-11.svg",
+    primaryTheme: "Theme 02: Connected & Autonomous Tech",
+    formTheme: "Connected & Autonomous Technologies",
+    rubricFocus: "Smart Urban Mobility, Waste Automation & Disaster Early Warning",
+    ideas: [
+      "Adaptive traffic light signaling using edge computer vision cameras to eliminate peak-hour gridlock",
+      "Automated robotic smart waste bin classifying recyclables and compost at the point of disposal",
+      "Hyperlocal urban flood warning network using ultrasonic stormwater drainage level sensors"
+    ],
+    targets: [
+      "Target 11.2: Provide access to safe, affordable, accessible, and sustainable transport systems for all",
+      "Target 11.6: Reduce the adverse per capita environmental impact of cities, including air quality and waste"
+    ],
+    unUrl: "https://sdgs.un.org/goals/goal11"
+  },
+  12: {
+    number: 12,
+    id: "sdg-12",
+    name: "Responsible Consumption and Production",
+    statement: "Ensure sustainable consumption and production patterns.",
+    color: "#BF8B2E",
+    colorLight: "#f9f3e9",
+    icon: "assets/sdgs/sdg-12.svg",
+    primaryTheme: "Theme 03: Secure & Sustainable Future",
+    formTheme: "Secure & Sustainable Future",
+    rubricFocus: "Circular Economy, Carbon Auditing & E-Waste Tracking",
+    ideas: [
+      "Blockchain-backed product passport tracing full carbon footprint and material recyclability",
+      "Dynamic grocery inventory AI preventing perishable food spoilage with progressive discounts",
+      "E-waste component harvesting catalog linking discarded electronics to student makers"
+    ],
+    targets: [
+      "Target 12.2: Achieve the sustainable management and efficient use of natural resources",
+      "Target 12.5: Substantially reduce waste generation through prevention, reduction, recycling, and reuse"
+    ],
+    unUrl: "https://sdgs.un.org/goals/goal12"
+  },
+  13: {
+    number: 13,
+    id: "sdg-13",
+    name: "Climate Action",
+    statement: "Take urgent action to combat climate change and its impacts.",
+    color: "#3F7E44",
+    colorLight: "#edf5ee",
+    icon: "assets/sdgs/sdg-13.svg",
+    primaryTheme: "Theme 03: Secure & Sustainable Future",
+    formTheme: "Secure & Sustainable Future",
+    rubricFocus: "ClimateTech, Wildfire Prediction & Carbon Analytics",
+    ideas: [
+      "Satellite & thermal drone vision system for early wildfire hotspot detection and wind trajectory modeling",
+      "Hyperlocal air quality sensor node mesh mapping urban greenhouse gas micro-plumes",
+      "Carbon accounting dashboard for university campuses with automated energy conservation triggers"
+    ],
+    targets: [
+      "Target 13.1: Strengthen resilience and adaptive capacity to climate-related hazards and natural disasters",
+      "Target 13.3: Improve education, awareness-raising, and human and institutional capacity on climate change mitigation"
+    ],
+    unUrl: "https://sdgs.un.org/goals/goal13"
+  },
+  14: {
+    number: 14,
+    id: "sdg-14",
+    name: "Life Below Water",
+    statement: "Conserve and sustainably use the oceans, seas and marine resources for sustainable development.",
+    color: "#0A97D9",
+    colorLight: "#e6f5fb",
+    icon: "assets/sdgs/sdg-14.svg",
+    primaryTheme: "Theme 02: Connected & Autonomous Tech",
+    formTheme: "Connected & Autonomous Technologies",
+    rubricFocus: "Marine Robotics, Microplastic Cleanup & Coral Monitoring",
+    ideas: [
+      "Autonomous surface vessel (ASV) skimming floating marine plastics and river riverbank trash",
+      "Underwater camera computer vision system tracking coral bleaching severity and marine biodiversity",
+      "Acoustic hydrophone network with edge ML detecting illegal dynamite fishing and unauthorized vessels"
+    ],
+    targets: [
+      "Target 14.1: Prevent and significantly reduce marine pollution of all kinds, particularly from land-based activities",
+      "Target 14.2: Sustainably manage and protect marine and coastal ecosystems to avoid significant adverse impacts"
+    ],
+    unUrl: "https://sdgs.un.org/goals/goal14"
+  },
+  15: {
+    number: 15,
+    id: "sdg-15",
+    name: "Life on Land",
+    statement: "Protect, restore and promote sustainable use of terrestrial ecosystems, sustainably manage forests, combat desertification, and halt biodiversity loss.",
+    color: "#56C02B",
+    colorLight: "#eff9ea",
+    icon: "assets/sdgs/sdg-15.svg",
+    primaryTheme: "Theme 02: Connected & Autonomous Tech",
+    formTheme: "Connected & Autonomous Technologies",
+    rubricFocus: "Anti-Poaching Bioacoustics & Autonomous Reforestation",
+    ideas: [
+      "Solar-powered bioacoustic sensors listening for chainsaws and gunshots in protected wildlife reserves",
+      "Autonomous multi-rotor drone for precision reforestation seed ball deployment in barren terrain",
+      "Computer vision mobile tool identifying and reporting invasive weed species in agricultural valleys"
+    ],
+    targets: [
+      "Target 15.2: Promote the implementation of sustainable management of all types of forests, halt deforestation",
+      "Target 15.7: Take urgent action to end poaching and trafficking of protected species of flora and fauna"
+    ],
+    unUrl: "https://sdgs.un.org/goals/goal15"
+  },
+  16: {
+    number: 16,
+    id: "sdg-16",
+    name: "Peace, Justice and Strong Institutions",
+    statement: "Promote peaceful and inclusive societies for sustainable development, provide access to justice for all and build effective, accountable and inclusive institutions at all levels.",
+    color: "#00689D",
+    colorLight: "#e5f0f5",
+    icon: "assets/sdgs/sdg-16.svg",
+    primaryTheme: "Theme 03: Secure & Sustainable Future",
+    formTheme: "Secure & Sustainable Future",
+    rubricFocus: "Cybersecurity, Verifiable Evidence & Transparent Governance",
+    ideas: [
+      "Tamper-proof digital chain-of-custody logging for law enforcement evidence using cryptographic proofs",
+      "Zero-knowledge whistleblower and reporting portal protecting identity while verifying authentic documents",
+      "AI auditor analyzing public municipal spending tenders to detect bid-rigging and anomalies"
+    ],
+    targets: [
+      "Target 16.5: Substantially reduce corruption and bribery in all their forms",
+      "Target 16.10: Ensure public access to information and protect fundamental freedoms, in accordance with national legislation"
+    ],
+    unUrl: "https://sdgs.un.org/goals/goal16"
+  },
+  17: {
+    number: 17,
+    id: "sdg-17",
+    name: "Partnerships for the Goals",
+    statement: "Strengthen the means of implementation and revitalize the Global Partnership for Sustainable Development.",
+    color: "#19486A",
+    colorLight: "#e8edf0",
+    icon: "assets/sdgs/sdg-17.svg",
+    primaryTheme: "Cross-Track / Open Innovation",
+    formTheme: "AI & Intelligent Systems",
+    rubricFocus: "Open Science, Federated Datasets & Global Collaboration",
+    ideas: [
+      "Federated privacy-preserving machine learning network enabling universities to share SDG research models",
+      "Decentralized impact verification protocol connecting grassroots NGO fieldwork with global CSR funders",
+      "Collaborative open-source disaster relief coordination dashboard linking volunteer engineers"
+    ],
+    targets: [
+      "Target 17.6: Enhance North-South, South-South, and triangular regional and international cooperation on science, technology, and innovation",
+      "Target 17.8: Fully operationalize the technology bank and science, technology, and innovation capacity-building mechanism"
+    ],
+    unUrl: "https://sdgs.un.org/goals/goal17"
+  }
+};
+
+let currentActiveSdgNumber = 3;
+
+function initSdgSystem() {
+  const quickNav = document.getElementById("sdgQuickNav");
+  if (quickNav) {
+    quickNav.innerHTML = "";
+    for (let i = 1; i <= 17; i++) {
+      const data = SDG_DATA[i];
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = `sdg-quick-pill ${i === currentActiveSdgNumber ? "active" : ""}`;
+      btn.id = `sdgPillBtn-${i}`;
+      btn.style.setProperty("--quick-sdg-color", data.color);
+      btn.setAttribute("title", `SDG ${i}: ${data.name}`);
+      btn.innerHTML = `<span>#${i}</span>`;
+      btn.addEventListener("click", () => openSdgModal(i));
+      quickNav.appendChild(btn);
+    }
+  }
+
+  // Keyboard navigation
+  document.addEventListener("keydown", (e) => {
+    const modal = document.getElementById("sdgDetailModal");
+    if (!modal || !modal.classList.contains("show")) return;
+    if (e.key === "Escape") {
+      closeSdgModal();
+    } else if (e.key === "ArrowLeft") {
+      navigateSdg(-1);
+    } else if (e.key === "ArrowRight") {
+      navigateSdg(1);
+    }
+  });
+}
+window.initSdgSystem = initSdgSystem;
+
+function openSdgModal(sdgNumber) {
+  const num = parseInt(sdgNumber, 10);
+  if (!SDG_DATA[num]) return;
+  currentActiveSdgNumber = num;
+  const data = SDG_DATA[num];
+
+  const modal = document.getElementById("sdgDetailModal");
+  if (!modal) return;
+
+  // Header & Accents
+  const header = document.getElementById("sdgModalHeader");
+  if (header) {
+    header.style.setProperty("--sdg-header-bg", data.color);
+    header.style.backgroundColor = data.color;
+  }
+
+  // Hero section
+  const logoImg = document.getElementById("sdgModalLogo");
+  if (logoImg) {
+    logoImg.src = data.icon;
+    logoImg.alt = `UN SDG ${data.number} - ${data.name}`;
+  }
+
+  const numberBadge = document.getElementById("sdgModalNumberBadge");
+  if (numberBadge) {
+    numberBadge.textContent = `SDG ${data.number.toString().padStart(2, "0")}`;
+    numberBadge.style.setProperty("--sdg-accent-color", data.color);
+    numberBadge.style.setProperty("--sdg-accent-light", data.colorLight);
+  }
+
+  const themePill = document.getElementById("sdgModalThemePill");
+  if (themePill) {
+    const extraTheme = data.secondaryTheme ? ` & ${data.secondaryTheme}` : "";
+    themePill.innerHTML = `<i class="fa-solid fa-compass"></i> ${data.primaryTheme}${extraTheme}`;
+  }
+
+  const titleEl = document.getElementById("sdgModalTitle");
+  if (titleEl) {
+    titleEl.textContent = data.name;
+  }
+
+  const stmtEl = document.getElementById("sdgModalStatement");
+  if (stmtEl) {
+    stmtEl.textContent = data.statement;
+  }
+
+  // Innovation Prompts / Ideas
+  const ideasList = document.getElementById("sdgModalIdeasList");
+  if (ideasList) {
+    ideasList.innerHTML = data.ideas.map(idea => `
+      <div class="sdg-idea-item">
+        <i class="fa-solid fa-circle-check"></i>
+        <span>${idea}</span>
+      </div>
+    `).join("");
+  }
+
+  // UN Targets
+  const targetsList = document.getElementById("sdgModalTargetsList");
+  if (targetsList) {
+    targetsList.innerHTML = data.targets.map(target => `
+      <li class="sdg-target-item">
+        <i class="fa-solid fa-bullseye" style="color: ${data.color}"></i>
+        <span>${target}</span>
+      </li>
+    `).join("");
+  }
+
+  // Links & CTA
+  const unLink = document.getElementById("sdgOfficialLink");
+  if (unLink) {
+    unLink.href = data.unUrl;
+  }
+
+  // Quick nav pills active state
+  for (let i = 1; i <= 17; i++) {
+    const pill = document.getElementById(`sdgPillBtn-${i}`);
+    if (pill) {
+      if (i === num) {
+        pill.classList.add("active");
+        pill.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+      } else {
+        pill.classList.remove("active");
+      }
+    }
+  }
+
+  // Show modal
+  modal.style.display = "flex";
+  void modal.offsetWidth; // Force reflow
+  modal.classList.add("show");
+  document.body.style.overflow = "hidden";
+}
+window.openSdgModal = openSdgModal;
+
+function closeSdgModal() {
+  const modal = document.getElementById("sdgDetailModal");
+  if (!modal) return;
+  modal.classList.remove("show");
+  setTimeout(() => {
+    if (!modal.classList.contains("show")) {
+      modal.style.display = "none";
+    }
+    document.body.style.overflow = "";
+  }, 250);
+}
+window.closeSdgModal = closeSdgModal;
+
+function navigateSdg(direction) {
+  let next = currentActiveSdgNumber + direction;
+  if (next < 1) next = 17;
+  if (next > 17) next = 1;
+  openSdgModal(next);
+}
+window.navigateSdg = navigateSdg;
+
+function selectThemeFromSdgModal() {
+  const data = SDG_DATA[currentActiveSdgNumber];
+  if (!data) return;
+  closeSdgModal();
+  selectThemeInForm(data.formTheme);
+}
+window.selectThemeFromSdgModal = selectThemeFromSdgModal;
 
 // Close modal when clicking outside dialog
 window.addEventListener("click", e => {
