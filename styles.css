@@ -588,37 +588,27 @@ img {
 .nav-desktop {
   display: block;
   margin: 0 auto;
-  flex: 1;
-  max-width: 980px;
+  flex-shrink: 0;
 }
 
 .nav-pills-list {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   list-style: none;
-  gap: 8px;
+  gap: 3px;
   background: #f1f5f9;
-  padding: 6px 10px;
+  padding: 4px 6px;
   border-radius: var(--radius-full);
   border: 1px solid #e2e8f0;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
-  width: 100%;
-}
-
-.nav-pills-list .nav-item {
-  flex: 1;
-  display: flex;
 }
 
 .nav-tab {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 100%;
-  gap: 8px;
-  padding: 9px 18px;
-  font-size: 0.92rem;
+  gap: 6px;
+  padding: 7px 13px;
+  font-size: 0.86rem;
   font-weight: 600;
   color: var(--text-secondary);
   border-radius: var(--radius-full);
@@ -627,8 +617,8 @@ img {
 }
 
 .nav-tab i {
-  font-size: 0.95rem;
-  opacity: 0.85;
+  font-size: 0.85rem;
+  opacity: 0.8;
 }
 
 .nav-tab:hover {
@@ -648,10 +638,19 @@ img {
   align-items: center;
   gap: 12px;
   flex-shrink: 0;
+  margin-left: 14px;
 }
 
+.header-register-btn,
 .header-get-pass-btn {
   margin-right: clamp(16px, 2.5vw, 32px);
+  padding: 8px 18px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .status-lookup-btn {
