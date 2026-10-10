@@ -138,7 +138,7 @@ Add your new entry inside the `ENTRIES` array:
 3. **Actions**: Add relevant interactive buttons:
    - `{ label: "Open Form", type: "scrollOrUrl", target: "#register", url: "https://..." }` (smooth-scrolls to `#register` on host page, or opens URL if element is missing).
    - `{ label: "Call Lead", type: "tel", target: "tel:+918682067304" }`
-   - `{ label: "Email", type: "email", target: "mailto:gdscpsna@psnacet.edu.in" }`
+   - `{ label: "Email", type: "email", target: "mailto:gdgpsna@psnacet.edu.in" }`
 
 ### 📄 Bonafide / Consent Letter Link Configuration
 

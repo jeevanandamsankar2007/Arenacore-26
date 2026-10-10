@@ -33,3 +33,6 @@ Untitled-1.txt
 
 # Node modules
 node_modules/
+
+# Scratch & development experiments
+scratch/

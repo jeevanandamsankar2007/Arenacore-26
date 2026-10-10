@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 90" width="100%" height="100%">
+  <defs>
+    <!-- Shield linear gradients -->
+    <linearGradient id="psnaMaroon" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#80142b"/>
+      <stop offset="100%" stop-color="#670f22"/>
+    </linearGradient>
+    <linearGradient id="psnaGold" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Left: PSNA College Crest Shield -->
+  <g transform="translate(10, 5)">
+    <!-- Shield Outline & Border -->
+    <path d="M 10 4 L 46 4 L 46 36 C 46 52 28 62 28 62 C 28 62 10 52 10 36 Z" 
+          fill="#ffffff" stroke="#670f22" stroke-width="2.5" stroke-linejoin="round"/>
+    
+    <!-- Shield Upper Section (Maroon with tech/factory gear motif) -->
+    <path d="M 12 6 L 44 6 L 44 30 L 12 30 Z" fill="url(#psnaMaroon)"/>
+    <!-- Gear & Tower Silhouette -->
+    <path d="M 18 28 L 18 16 L 22 16 L 22 28 Z M 25 28 L 25 12 L 31 12 L 31 28 Z M 34 28 L 34 18 L 38 18 L 38 28 Z" fill="#ffffff" opacity="0.9"/>
+    <circle cx="28" cy="19" r="4" fill="none" stroke="#f59e0b" stroke-width="1.8"/>
+
+    <!-- Shield Lower Section (Gold with open book) -->
+    <path d="M 12 30 L 44 30 L 44 35 C 44 48 28 59 28 59 C 28 59 12 48 12 35 Z" fill="url(#psnaGold)"/>
+    <!-- Open Book Vector -->
+    <path d="M 28 46 C 25 43 20 42 16 43 L 16 51 C 20 50 25 51 28 54 C 31 51 36 50 40 51 L 40 43 C 36 42 31 43 28 46 Z" fill="#ffffff" stroke="#670f22" stroke-width="0.8"/>
+    <line x1="28" y1="46" x2="28" y2="54" stroke="#670f22" stroke-width="1"/>
+
+    <!-- Ribbon Banner: TRUST IN GOD -->
+    <path d="M 4 60 Q 28 67 52 60 L 50 69 Q 28 75 6 69 Z" fill="#ffffff" stroke="#670f22" stroke-width="1.2"/>
+    <text x="28" y="67" font-family="'Inter', sans-serif" font-size="5.5" font-weight="900" fill="#670f22" text-anchor="middle" letter-spacing="0.5">TRUST IN GOD</text>
+
+    <!-- Subtext: Estd : 1984 -->
+    <text x="28" y="79" font-family="'Inter', sans-serif" font-size="6.5" font-weight="700" fill="#1e293b" text-anchor="middle">Estd : 1984</text>
+  </g>
+
+  <!-- Right: PSNA Typography & Campus Subtitle -->
+  <g transform="translate(74, 12)">
+    <!-- PSNA Main Title in Forest Green -->
+    <text x="0" y="32" font-family="'Outfit', 'Plus Jakarta Sans', sans-serif" font-size="34" font-weight="900" fill="#005a36" letter-spacing="1.5">PSNA</text>
+    
+    <!-- Subtitle: College of Engineering & Technology -->
+    <text x="0" y="49" font-family="'Inter', sans-serif" font-size="10.5" font-weight="700" fill="#1e293b" letter-spacing="0.2">College of Engineering &amp; Technology,</text>
+    
+    <!-- Subtitle: Dindigul - 624 622 -->
+    <text x="0" y="63" font-family="'Inter', sans-serif" font-size="9.5" font-weight="600" fill="#334155" letter-spacing="0.5">Dindigul - 624 622</text>
+  </g>
+</svg>

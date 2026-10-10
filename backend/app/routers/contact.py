@@ -12,8 +12,8 @@ def _get_or_create_contact(db: Session) -> ContactInfo:
     contact = db.query(ContactInfo).first()
     if not contact:
         contact = ContactInfo(
-            email="gdscpsna@psnacet.edu.in",
-            phone="+91 86820 67304 / +91 93455 30457 / +91 82486 03031",
+            email="gdgpsna@psnacet.edu.in",
+            phone="+91 86820 67304 / +91 93455 30457",
             address="PSNA College of Engineering and Technology, Kothandaraman Nagar, Dindigul - 624622, Tamil Nadu, India",
             instagram_url="https://instagram.com/gdg_psna",
             linkedin_url="https://linkedin.com/company/gdsc-psna",

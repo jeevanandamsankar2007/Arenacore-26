@@ -26,93 +26,219 @@
   <line x1="78" y1="50" x2="57" y2="68" stroke="#FBBC05" stroke-width="12" stroke-linecap="round"/>
 </svg>`;
 
-  const ARENA_ROBOT_ICON_SVG = `<svg viewBox="0 0 64 64" class="ac26faq-bubble-icon ac26faq-icon-chat" fill="none" xmlns="http://www.w3.org/2000/svg">
+  const ARENA_ROBOT_ICON_SVG = `<svg viewBox="0 0 100 120" class="ac26faq-bubble-icon ac26faq-icon-chat ac26faq-mascot-svg" fill="none" xmlns="http://www.w3.org/2000/svg">
     <defs>
-      <linearGradient id="ac26BotVisor" x1="16" y1="24" x2="48" y2="40" gradientUnits="userSpaceOnUse">
-        <stop stop-color="#0b1329"/>
+      <!-- Premium Mascot Shading & Filters -->
+      <linearGradient id="ac26MascotHead" x1="28" y1="12" x2="72" y2="52" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#ffffff"/>
+        <stop offset="0.65" stop-color="#f1f5f9"/>
+        <stop offset="1" stop-color="#cbd5e1"/>
+      </linearGradient>
+      <linearGradient id="ac26MascotVisor" x1="30" y1="18" x2="70" y2="42" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#070c18"/>
+        <stop offset="0.5" stop-color="#0f172a"/>
         <stop offset="1" stop-color="#1e293b"/>
       </linearGradient>
-      <linearGradient id="ac26BotHead" x1="14" y1="12" x2="50" y2="52" gradientUnits="userSpaceOnUse">
+      <linearGradient id="ac26MascotBody" x1="30" y1="46" x2="70" y2="90" gradientUnits="userSpaceOnUse">
         <stop stop-color="#ffffff"/>
-        <stop offset="0.7" stop-color="#f8fafc"/>
-        <stop offset="1" stop-color="#e2e8f0"/>
+        <stop offset="0.6" stop-color="#e2e8f0"/>
+        <stop offset="1" stop-color="#94a3b8"/>
       </linearGradient>
-      <linearGradient id="ac26EyeGlowGrad" x1="0" y1="0" x2="1" y2="1">
+      <linearGradient id="ac26MascotDarkArmor" x1="30" y1="46" x2="70" y2="90" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#1e293b"/>
+        <stop offset="1" stop-color="#0a0f1d"/>
+      </linearGradient>
+      <linearGradient id="ac26MascotCyanGlow" x1="0" y1="0" x2="1" y2="1">
         <stop stop-color="#38bdf8"/>
         <stop offset="1" stop-color="#06b6d4"/>
       </linearGradient>
-      <filter id="ac26GlowFilter" x="-30%" y="-30%" width="160%" height="160%">
+      <radialGradient id="ac26MascotPedestal" cx="50" cy="112" r="38" fx="50" fy="112" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#38bdf8" stop-opacity="0.8"/>
+        <stop offset="0.4" stop-color="#4285f4" stop-opacity="0.5"/>
+        <stop offset="0.85" stop-color="#2563eb" stop-opacity="0.15"/>
+        <stop offset="1" stop-color="#2563eb" stop-opacity="0"/>
+      </radialGradient>
+      <filter id="ac26MascotGlow" x="-30%" y="-30%" width="160%" height="160%">
         <feGaussianBlur stdDeviation="2" result="blur"/>
         <feComposite in="SourceGraphic" in2="blur" operator="over"/>
       </filter>
+      <filter id="ac26MascotHeavyGlow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="3.5" result="blur"/>
+        <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+      </filter>
     </defs>
-    <!-- Left Antenna with Google Blue & Red Tip -->
-    <rect x="7" y="27" width="5" height="11" rx="2.5" fill="#4285F4"/>
-    <circle cx="9.5" cy="24" r="3.2" fill="#EA4335" filter="url(#ac26GlowFilter)"/>
 
-    <!-- Right Antenna with Google Green & Yellow Tip -->
-    <rect x="52" y="27" width="5" height="11" rx="2.5" fill="#34A853"/>
-    <circle cx="54.5" cy="24" r="3.2" fill="#FBBC05" filter="url(#ac26GlowFilter)"/>
+    <!-- 1. Holographic Cyber Pedestal (Futuristic Standing Platform) -->
+    <g class="ac26-mascot-pedestal">
+      <ellipse cx="50" cy="112" rx="36" ry="7" fill="url(#ac26MascotPedestal)"/>
+      <ellipse cx="50" cy="112" rx="26" ry="5" fill="none" stroke="#38bdf8" stroke-width="1.4" stroke-dasharray="4 3" opacity="0.85" class="ac26-pedestal-ring"/>
+      <ellipse cx="50" cy="112" rx="14" ry="3" fill="none" stroke="#60a5fa" stroke-width="1.2" opacity="0.9"/>
+    </g>
 
-    <!-- Top Signal Transmitter with Cyan Pulse -->
-    <path d="M32 6v7" stroke="#4285F4" stroke-width="3" stroke-linecap="round"/>
-    <circle cx="32" cy="5" r="3.5" fill="#38bdf8" filter="url(#ac26GlowFilter)"/>
+    <!-- Entire Floating / Breathing Robot Mascot Body -->
+    <g class="ac26-mascot-float-group">
 
-    <!-- Robot Head Frame -->
-    <path d="M15 22C15 17 18.5 13 23.5 13H40.5C45.5 13 49 17 49 22V38C49 43.5 44.5 48 39 48H25C19.5 48 15 43.5 15 38V22Z" fill="url(#ac26BotHead)" stroke="#cbd5e1" stroke-width="1.2"/>
+      <!-- 2. Standing Cyber Legs & Boots -->
+      <g class="ac26-mascot-leg-left">
+        <rect x="36" y="84" width="9" height="18" rx="4.5" fill="url(#ac26MascotDarkArmor)" stroke="#475569" stroke-width="1"/>
+        <circle cx="40.5" cy="93" r="2" fill="#38bdf8" filter="url(#ac26MascotGlow)"/>
+        <path d="M33 102 C33 100 36 99 41 99 H43 C46 99 47 101 47 104 L47 107 C47 109 45 110 43 110 H35 C33.5 110 33 108 33 106 Z" fill="url(#ac26MascotBody)" stroke="#64748b" stroke-width="1.2"/>
+        <line x1="34" y1="108" x2="46" y2="108" stroke="#38bdf8" stroke-width="1.4" opacity="0.85"/>
+      </g>
 
-    <!-- Cyber Glass Visor -->
-    <rect x="19" y="21" width="26" height="17" rx="8" fill="url(#ac26BotVisor)" stroke="rgba(56, 189, 248, 0.5)" stroke-width="1.2"/>
-    
-    <!-- Glowing Visor Eyes (Cyan with highlight) -->
-    <ellipse cx="26" cy="29.5" rx="3.8" ry="4.5" fill="url(#ac26EyeGlowGrad)" filter="url(#ac26GlowFilter)"/>
-    <circle cx="27" cy="28" r="1.5" fill="#ffffff"/>
-    <ellipse cx="38" cy="29.5" rx="3.8" ry="4.5" fill="url(#ac26EyeGlowGrad)" filter="url(#ac26GlowFilter)"/>
-    <circle cx="39" cy="28" r="1.5" fill="#ffffff"/>
+      <g class="ac26-mascot-leg-right">
+        <rect x="55" y="84" width="9" height="18" rx="4.5" fill="url(#ac26MascotDarkArmor)" stroke="#475569" stroke-width="1"/>
+        <circle cx="59.5" cy="93" r="2" fill="#38bdf8" filter="url(#ac26MascotGlow)"/>
+        <path d="M53 102 C53 100 55 99 59 99 H61 C64 99 67 101 67 104 L67 107 C67 109 65 110 63 110 H55 C53.5 110 53 108 53 106 Z" fill="url(#ac26MascotBody)" stroke="#64748b" stroke-width="1.2"/>
+        <line x1="54" y1="108" x2="66" y2="108" stroke="#38bdf8" stroke-width="1.4" opacity="0.85"/>
+      </g>
 
-    <!-- Smiling Digital Mouth Arc -->
-    <path d="M28.5 34.5C30 36.2 34 36.2 35.5 34.5" stroke="#38bdf8" stroke-width="2.2" stroke-linecap="round"/>
+      <!-- 3. Cybernetic Torso & Arc Core -->
+      <g class="ac26-mascot-torso">
+        <path d="M31 52 C31 49 34 47 38 47 H62 C66 47 69 49 69 52 L67 82 C67 86 63 88 59 88 H41 C37 88 33 86 33 82 Z" fill="url(#ac26MascotBody)" stroke="#94a3b8" stroke-width="1.2"/>
+        <path d="M37 53 C37 51 39 50 42 50 H58 C61 50 63 51 63 53 L61 80 C61 82 59 84 56 84 H44 C41 84 39 82 39 80 Z" fill="url(#ac26MascotDarkArmor)"/>
 
-    <!-- ArenaCore Diamond Chest Core -->
-    <path d="M28 52L32 48L36 52L32 56L28 52Z" fill="#4285F4"/>
-    <circle cx="32" cy="52" r="1.5" fill="#ffffff"/>
+        <!-- GDG Color Circuit Tracks -->
+        <path d="M42 54 L44 60" stroke="#4285F4" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M58 54 L56 60" stroke="#EA4335" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M43 78 L45 72" stroke="#34A853" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M57 78 L55 72" stroke="#FBBC05" stroke-width="1.5" stroke-linecap="round"/>
+
+        <!-- Arc Reactor Chest Core -->
+        <circle cx="50" cy="66" r="9" fill="rgba(56, 189, 248, 0.18)" filter="url(#ac26MascotHeavyGlow)"/>
+        <path d="M45 66 L50 60 L55 66 L50 72 Z" fill="#4285F4" stroke="#38bdf8" stroke-width="1.2"/>
+        <circle cx="50" cy="66" r="3.2" fill="#38bdf8" filter="url(#ac26MascotGlow)"/>
+        <circle cx="50" cy="66" r="1.5" fill="#ffffff"/>
+
+        <!-- Cyber Belt -->
+        <rect x="39" y="82" width="22" height="4" rx="2" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
+      </g>
+
+      <!-- 4. Left Arm (Resting on Hip with Cyber Pad) -->
+      <g class="ac26-mascot-arm-left">
+        <circle cx="30" cy="54" r="5" fill="url(#ac26MascotBody)" stroke="#94a3b8" stroke-width="1"/>
+        <circle cx="30" cy="54" r="2" fill="#4285F4"/>
+        <path d="M29 57 L24 70 C23 73 24 76 27 78 L31 79" fill="none" stroke="url(#ac26MascotDarkArmor)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="32" cy="80" r="3" fill="#cbd5e1"/>
+        <rect x="22" y="75" width="10" height="7" rx="1.5" transform="rotate(-15 22 75)" fill="#0f172a" stroke="#38bdf8" stroke-width="0.9"/>
+        <polygon points="23,73 28,66 33,71" fill="rgba(56, 189, 248, 0.35)" filter="url(#ac26MascotGlow)"/>
+      </g>
+
+      <!-- 5. Head Helmet & Cyber Visor -->
+      <g class="ac26-mascot-head-group">
+        <rect x="46" y="44" width="8" height="5" rx="2" fill="#334155"/>
+
+        <!-- Left Ear Antenna (Google Blue with Red Tip) -->
+        <rect x="21" y="22" width="4.5" height="12" rx="2.2" fill="#4285F4"/>
+        <circle cx="23.2" cy="18.5" r="3.5" fill="#EA4335" filter="url(#ac26MascotGlow)"/>
+        <line x1="23.2" y1="18.5" x2="23.2" y2="15" stroke="#EA4335" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+
+        <!-- Right Ear Antenna (Google Green with Yellow Tip) -->
+        <rect x="74.5" y="22" width="4.5" height="12" rx="2.2" fill="#34A853"/>
+        <circle cx="76.8" cy="18.5" r="3.5" fill="#FBBC05" filter="url(#ac26MascotGlow)"/>
+        <line x1="76.8" y1="18.5" x2="76.8" y2="15" stroke="#FBBC05" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+
+        <!-- Center Beacon Antenna (Cyan Pulse) -->
+        <path d="M50 8 V14" stroke="#4285F4" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="50" cy="6" r="3.8" fill="#38bdf8" filter="url(#ac26MascotGlow)" class="ac26-mascot-beacon"/>
+        <circle cx="50" cy="6" r="1.8" fill="#ffffff"/>
+
+        <!-- Head Frame -->
+        <path d="M26 23 C26 15 32 10 44 10 H56 C68 10 74 15 74 23 V37 C74 45 67 48 56 48 H44 C33 48 26 45 26 37 Z" fill="url(#ac26MascotHead)" stroke="#cbd5e1" stroke-width="1.3"/>
+
+        <!-- Cyber Visor Window -->
+        <rect x="30" y="19" width="40" height="23" rx="10" fill="url(#ac26MascotVisor)" stroke="rgba(56, 189, 248, 0.6)" stroke-width="1.4"/>
+        <path d="M34 23 C42 21 54 21 66 23" stroke="rgba(255, 255, 255, 0.45)" stroke-width="1.4" stroke-linecap="round"/>
+
+        <!-- Digital Glowing Eyes (Blinking animation) -->
+        <g class="ac26-mascot-eye ac26-mascot-eye-left">
+          <ellipse cx="40" cy="30" rx="4.8" ry="5.6" fill="url(#ac26MascotCyanGlow)" filter="url(#ac26MascotGlow)"/>
+          <circle cx="41.5" cy="28.2" r="1.8" fill="#ffffff"/>
+          <circle cx="40" cy="30" r="6.2" fill="none" stroke="rgba(56, 189, 248, 0.3)" stroke-width="0.8"/>
+        </g>
+        <g class="ac26-mascot-eye ac26-mascot-eye-right">
+          <ellipse cx="60" cy="30" rx="4.8" ry="5.6" fill="url(#ac26MascotCyanGlow)" filter="url(#ac26MascotGlow)"/>
+          <circle cx="61.5" cy="28.2" r="1.8" fill="#ffffff"/>
+          <circle cx="60" cy="30" r="6.2" fill="none" stroke="rgba(56, 189, 248, 0.3)" stroke-width="0.8"/>
+        </g>
+
+        <!-- Smiling Digital Mouth Arc -->
+        <path d="M46.5 36.5 C48 38.5 52 38.5 53.5 36.5" stroke="#38bdf8" stroke-width="2.4" stroke-linecap="round" filter="url(#ac26MascotGlow)"/>
+      </g>
+
+      <!-- 6. Right Arm (ANIMATED WAVING / HAND-SHAKE) -->
+      <g class="ac26-mascot-arm-wave">
+        <!-- Shoulder Joint (Pivot) -->
+        <circle cx="70" cy="54" r="5" fill="url(#ac26MascotBody)" stroke="#94a3b8" stroke-width="1"/>
+        <circle cx="70" cy="54" r="2" fill="#34A853"/>
+
+        <!-- Upper Arm -->
+        <path d="M71 52 L81 40" stroke="url(#ac26MascotDarkArmor)" stroke-width="5.5" stroke-linecap="round"/>
+        
+        <!-- Elbow Joint -->
+        <circle cx="81" cy="40" r="3.2" fill="#475569" stroke="#38bdf8" stroke-width="0.8"/>
+
+        <!-- Forearm -->
+        <path d="M81 39 L86 24" stroke="url(#ac26MascotBody)" stroke-width="5" stroke-linecap="round"/>
+
+        <!-- Waving Robotic Hand -->
+        <g class="ac26-mascot-hand">
+          <circle cx="87" cy="20" r="4.2" fill="url(#ac26MascotBody)" stroke="#64748b" stroke-width="1"/>
+          <rect x="83.5" y="11" width="2.4" height="6" rx="1.2" fill="#e2e8f0" stroke="#64748b" stroke-width="0.7"/>
+          <rect x="87" y="10" width="2.4" height="7" rx="1.2" fill="#f8fafc" stroke="#64748b" stroke-width="0.7"/>
+          <rect x="90.5" y="12" width="2.4" height="5.5" rx="1.2" fill="#e2e8f0" stroke="#64748b" stroke-width="0.7"/>
+          <path d="M84 21 C82 20 81 18 82 17 C83 16 84 18 85 19 Z" fill="#cbd5e1"/>
+          <circle cx="87" cy="20" r="1.8" fill="#38bdf8" filter="url(#ac26MascotGlow)"/>
+        </g>
+
+        <!-- Waving Sparkle Wind Arcs -->
+        <g class="ac26-mascot-wave-sparks">
+          <path d="M93 11 C96 14 96 18 93 21" stroke="#38bdf8" stroke-width="1.6" stroke-linecap="round" opacity="0.8" fill="none"/>
+          <path d="M96 8 C100 13 100 20 96 25" stroke="#60a5fa" stroke-width="1.3" stroke-linecap="round" opacity="0.6" fill="none"/>
+        </g>
+      </g>
+
+    </g>
   </svg>`;
 
-  // Dedicated avatar robot SVG that is immune to bubble icon state toggles
+  // Dedicated avatar robot SVG matching the mascot
   const AVATAR_ROBOT_SVG = `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;opacity:1 !important;">
     <defs>
-      <linearGradient id="ac26VisorHead" x1="16" y1="24" x2="48" y2="40" gradientUnits="userSpaceOnUse">
-        <stop stop-color="#0b1329"/>
+      <linearGradient id="ac26AvVisor" x1="16" y1="20" x2="48" y2="40" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#070c18"/>
+        <stop offset="0.6" stop-color="#0f172a"/>
         <stop offset="1" stop-color="#1e293b"/>
       </linearGradient>
-      <linearGradient id="ac26BotHeadMain" x1="14" y1="12" x2="50" y2="52" gradientUnits="userSpaceOnUse">
+      <linearGradient id="ac26AvHead" x1="14" y1="10" x2="50" y2="50" gradientUnits="userSpaceOnUse">
         <stop stop-color="#ffffff"/>
         <stop offset="0.7" stop-color="#f8fafc"/>
-        <stop offset="1" stop-color="#e2e8f0"/>
+        <stop offset="1" stop-color="#cbd5e1"/>
       </linearGradient>
-      <linearGradient id="ac26EyeGlowMain" x1="0" y1="0" x2="1" y2="1">
+      <linearGradient id="ac26AvCyan" x1="0" y1="0" x2="1" y2="1">
         <stop stop-color="#38bdf8"/>
         <stop offset="1" stop-color="#06b6d4"/>
       </linearGradient>
-      <filter id="ac26GlowHead" x="-30%" y="-30%" width="160%" height="160%">
-        <feGaussianBlur stdDeviation="2" result="blur"/>
+      <filter id="ac26AvGlow" x="-25%" y="-25%" width="150%" height="150%">
+        <feGaussianBlur stdDeviation="1.8" result="blur"/>
         <feComposite in="SourceGraphic" in2="blur" operator="over"/>
       </filter>
     </defs>
-    <rect x="7" y="27" width="5" height="11" rx="2.5" fill="#4285F4"/>
-    <circle cx="9.5" cy="24" r="3.2" fill="#EA4335" filter="url(#ac26GlowHead)"/>
-    <rect x="52" y="27" width="5" height="11" rx="2.5" fill="#34A853"/>
-    <circle cx="54.5" cy="24" r="3.2" fill="#FBBC05" filter="url(#ac26GlowHead)"/>
+    <rect x="7" y="24" width="5" height="11" rx="2.5" fill="#4285F4"/>
+    <circle cx="9.5" cy="21" r="3.2" fill="#EA4335" filter="url(#ac26AvGlow)"/>
+    <rect x="52" y="24" width="5" height="11" rx="2.5" fill="#34A853"/>
+    <circle cx="54.5" cy="21" r="3.2" fill="#FBBC05" filter="url(#ac26AvGlow)"/>
     <path d="M32 6v7" stroke="#4285F4" stroke-width="3" stroke-linecap="round"/>
-    <circle cx="32" cy="5" r="3.5" fill="#38bdf8" filter="url(#ac26GlowHead)"/>
-    <path d="M15 22C15 17 18.5 13 23.5 13H40.5C45.5 13 49 17 49 22V38C49 43.5 44.5 48 39 48H25C19.5 48 15 43.5 15 38V22Z" fill="url(#ac26BotHeadMain)" stroke="#cbd5e1" stroke-width="1.2"/>
-    <rect x="19" y="21" width="26" height="17" rx="8" fill="url(#ac26VisorHead)" stroke="rgba(56, 189, 248, 0.5)" stroke-width="1.2"/>
-    <ellipse cx="26" cy="29.5" rx="3.8" ry="4.5" fill="url(#ac26EyeGlowMain)" filter="url(#ac26GlowHead)"/>
-    <circle cx="27" cy="28" r="1.5" fill="#ffffff"/>
-    <ellipse cx="38" cy="29.5" rx="3.8" ry="4.5" fill="url(#ac26EyeGlowMain)" filter="url(#ac26GlowHead)"/>
-    <circle cx="39" cy="28" r="1.5" fill="#ffffff"/>
-    <path d="M28.5 34.5C30 36.2 34 36.2 35.5 34.5" stroke="#38bdf8" stroke-width="2.2" stroke-linecap="round"/>
-    <path d="M28 52L32 48L36 52L32 56L28 52Z" fill="#4285F4"/>
+    <circle cx="32" cy="5" r="3.5" fill="#38bdf8" filter="url(#ac26AvGlow)"/>
+    <path d="M15 20C15 14 19 10 25 10H39C45 10 49 14 49 20V36C49 42 44.5 46 39 46H25C19.5 46 15 42 15 36V20Z" fill="url(#ac26AvHead)" stroke="#cbd5e1" stroke-width="1.3"/>
+    <rect x="18" y="18" width="28" height="18" rx="8" fill="url(#ac26AvVisor)" stroke="rgba(56, 189, 248, 0.6)" stroke-width="1.3"/>
+    <path d="M21 21C26 19.5 37 19.5 43 21" stroke="rgba(255, 255, 255, 0.45)" stroke-width="1.2" stroke-linecap="round"/>
+    <ellipse cx="25.5" cy="27" rx="3.8" ry="4.5" fill="url(#ac26AvCyan)" filter="url(#ac26AvGlow)"/>
+    <circle cx="26.8" cy="25.5" r="1.5" fill="#ffffff"/>
+    <ellipse cx="38.5" cy="27" rx="3.8" ry="4.5" fill="url(#ac26AvCyan)" filter="url(#ac26AvGlow)"/>
+    <circle cx="39.8" cy="25.5" r="1.5" fill="#ffffff"/>
+    <path d="M29 32.5C30.5 34.2 33.5 34.2 35 32.5" stroke="#38bdf8" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M22 47L26 58H38L42 47Z" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+    <circle cx="32" cy="52" r="3.2" fill="#4285F4" stroke="#38bdf8" stroke-width="0.8"/>
     <circle cx="32" cy="52" r="1.5" fill="#ffffff"/>
   </svg>`;
 
@@ -185,8 +311,10 @@
   --ac26-transition-spring: var(--transition-spring, 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275));
 
   --ac26-bubble-right: 24px;
-  --ac26-bubble-bottom: 24px;
+  --ac26-bubble-bottom: 20px;
   --ac26-bubble-size: 66px;
+  --ac26-mascot-width: 114px;
+  --ac26-mascot-height: 136px;
   --ac26-window-width: clamp(420px, 50vw, 680px);
   --ac26-window-height: min(80vh, 760px);
 
@@ -216,56 +344,39 @@
 
 .ac26faq-bubble-btn {
   pointer-events: auto;
-  width: var(--ac26-bubble-size);
-  height: var(--ac26-bubble-size);
-  border-radius: var(--ac26-radius-full);
-  background: radial-gradient(circle at 35% 35%, #1e293b, #0a0f1d 85%);
-  border: 2px solid rgba(66, 133, 244, 0.5);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(66, 133, 244, 0.45);
-  cursor: grab;
+  width: var(--ac26-mascot-width, 88px);
+  height: var(--ac26-mascot-height, 106px);
+  border-radius: 20px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   color: #ffffff;
   position: relative;
-  transition: transform var(--ac26-transition-spring), box-shadow var(--ac26-transition-base);
+  transition: transform var(--ac26-transition-spring), filter var(--ac26-transition-base);
   outline: none;
   touch-action: none;
   user-select: none;
+  filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.65)) drop-shadow(0 0 16px rgba(66, 133, 244, 0.45));
 }
 
 .ac26faq-bubble-btn.is-dragging {
   cursor: grabbing !important;
   transition: none !important;
   transform: scale(1.08) !important;
-  box-shadow: 0 18px 45px rgba(66, 133, 244, 0.75), 0 0 35px rgba(56, 189, 248, 0.7) !important;
+  filter: drop-shadow(0 18px 45px rgba(66, 133, 244, 0.8)) drop-shadow(0 0 35px rgba(56, 189, 248, 0.75)) !important;
 }
 
 .ac26faq-bubble-btn::before {
-  content: "";
-  position: absolute;
-  inset: -3.5px;
-  border-radius: var(--ac26-radius-full);
-  background: conic-gradient(from 0deg, #4285F4, #EA4335, #FBBC05, #34A853, #4285F4);
-  z-index: -1;
-  animation: ac26-spin-halo 4.5s linear infinite;
-  opacity: 0.9;
-  filter: blur(1.5px);
-}
-
-@keyframes ac26-spin-halo {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  display: none;
 }
 
 .ac26faq-bubble-btn:hover {
-  transform: scale(1.08) translateY(-3px);
-  box-shadow: 0 16px 40px rgba(66, 133, 244, 0.6), 0 0 30px rgba(56, 189, 248, 0.5);
-}
-
-.ac26faq-bubble-btn:hover::before {
-  opacity: 1;
-  filter: blur(2.5px);
+  transform: translateY(-8px) scale(1.06);
+  filter: drop-shadow(0 18px 36px rgba(0, 0, 0, 0.75)) drop-shadow(0 0 28px rgba(56, 189, 248, 0.7));
 }
 
 .ac26faq-bubble-btn:focus-visible {
@@ -274,20 +385,20 @@
 }
 
 .ac26faq-bubble-btn:active {
-  transform: scale(0.95);
+  transform: scale(0.96) translateY(-2px);
 }
 
 .ac26faq-fab-badge {
   position: absolute;
-  top: -12px;
-  right: -6px;
-  background: linear-gradient(135deg, #0f172a, #1e293b);
+  top: -14px;
+  right: 6px;
+  background: linear-gradient(135deg, #090e1a, #162238);
   color: #38bdf8;
   font-family: var(--ac26-font-mono, monospace);
-  font-size: 0.66rem;
+  font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.6px;
-  padding: 3px 8px;
+  padding: 4px 11px;
   border-radius: 999px;
   border: 1.5px solid #38bdf8;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6), 0 0 12px rgba(56, 189, 248, 0.5);
@@ -296,7 +407,7 @@
   animation: ac26-fab-pulse 2.4s ease-in-out infinite;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   z-index: 10;
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
@@ -322,37 +433,20 @@
 }
 
 .ac26faq-pulse-ring {
-  position: absolute;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-  border-radius: var(--ac26-radius-full);
-  border: 2px solid rgba(56, 189, 248, 0.6);
-  animation: ac26-pulse 2.4s cubic-bezier(0.24, 0, 0.38, 1) infinite;
-  pointer-events: none;
-}
-
-.ac26faq-wrapper.has-opened .ac26faq-pulse-ring {
-  display: none;
-}
-
-@keyframes ac26-pulse {
-  0% { transform: scale(0.95); opacity: 0.9; }
-  70% { transform: scale(1.35); opacity: 0; }
-  100% { transform: scale(1.4); opacity: 0; }
+  display: none !important;
 }
 
 .ac26faq-badge-dot {
   position: absolute;
-  top: 2px;
-  right: 2px;
-  width: 14px;
-  height: 14px;
+  top: 4px;
+  right: 12px;
+  width: 10px;
+  height: 10px;
   background-color: var(--ac26-red);
-  border: 2.5px solid var(--ac26-surface);
+  border: 2px solid var(--ac26-surface);
   border-radius: var(--ac26-radius-full);
   transition: transform 0.2s ease, opacity 0.2s ease;
+  box-shadow: 0 0 8px var(--ac26-red);
 }
 
 .ac26faq-wrapper.has-opened .ac26faq-badge-dot {
@@ -360,21 +454,65 @@
   opacity: 0;
 }
 
-.ac26faq-bubble-icon {
-  width: 42px;
-  height: 42px;
-  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
-  position: absolute;
+/* Mascot SVG and animations */
+.ac26faq-bubble-icon.ac26faq-icon-chat {
+  width: var(--ac26-mascot-width, 88px);
+  height: var(--ac26-mascot-height, 106px);
+  position: relative;
+  display: block;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
 }
 
-.ac26faq-icon-close {
+.ac26faq-bubble-icon.ac26faq-icon-close {
+  width: 26px;
+  height: 26px;
+  fill: #ffffff;
+  color: #ffffff;
   opacity: 0;
   transform: rotate(-90deg) scale(0.7);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -13px;
+  margin-left: -13px;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+}
+
+/* When chat is open, transform launcher button into glowing circular close disc */
+.ac26faq-wrapper.is-open .ac26faq-bubble-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--ac26-radius-full);
+  background: radial-gradient(circle at 35% 35%, #1e293b, #0a0f1d 85%);
+  border: 2px solid rgba(66, 133, 244, 0.6);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(66, 133, 244, 0.45);
+  filter: none;
+  align-items: center;
+}
+
+.ac26faq-wrapper.is-open .ac26faq-bubble-btn::before {
+  display: block;
+  content: "";
+  position: absolute;
+  inset: -3.5px;
+  border-radius: var(--ac26-radius-full);
+  background: conic-gradient(from 0deg, #4285F4, #EA4335, #FBBC05, #34A853, #4285F4);
+  z-index: -1;
+  animation: ac26-spin-halo 4.5s linear infinite;
+  opacity: 0.9;
+  filter: blur(1.5px);
+}
+
+@keyframes ac26-spin-halo {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .ac26faq-wrapper.is-open .ac26faq-bubble-btn .ac26faq-icon-chat {
   opacity: 0;
-  transform: rotate(90deg) scale(0.7);
+  transform: scale(0.5) rotate(20deg);
+  pointer-events: none;
+  position: absolute;
 }
 
 .ac26faq-wrapper.is-open .ac26faq-bubble-btn .ac26faq-icon-close {
@@ -382,10 +520,85 @@
   transform: rotate(0) scale(1);
 }
 
+/* Standing Mascot Keyframe Animations */
+.ac26-mascot-float-group {
+  animation: ac26MascotFloat 3.8s ease-in-out infinite;
+  transform-origin: 50px 70px;
+}
+
+@keyframes ac26MascotFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-7px); }
+}
+
+.ac26-mascot-arm-wave {
+  transform-origin: 70px 54px;
+  animation: ac26MascotWave 3.2s ease-in-out infinite;
+}
+
+@keyframes ac26MascotWave {
+  0%, 100% { transform: rotate(0deg); }
+  12% { transform: rotate(24deg); }
+  24% { transform: rotate(-12deg); }
+  36% { transform: rotate(26deg); }
+  48% { transform: rotate(-10deg); }
+  60% { transform: rotate(20deg); }
+  72% { transform: rotate(0deg); }
+}
+
+.ac26faq-bubble-btn:hover .ac26-mascot-arm-wave {
+  animation: ac26MascotWaveFast 1.1s ease-in-out infinite;
+}
+
+@keyframes ac26MascotWaveFast {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(28deg); }
+  75% { transform: rotate(-14deg); }
+}
+
+.ac26-mascot-pedestal {
+  animation: ac26PedestalPulse 3.8s ease-in-out infinite;
+  transform-origin: 50px 112px;
+}
+
+@keyframes ac26PedestalPulse {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(0.92); opacity: 0.6; }
+}
+
+.ac26-pedestal-ring {
+  animation: ac26PedestalSpin 6s linear infinite;
+  transform-origin: 50px 112px;
+}
+
+@keyframes ac26PedestalSpin {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 28; }
+}
+
+.ac26-mascot-beacon {
+  animation: ac26BeaconPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes ac26BeaconPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.85); }
+}
+
+.ac26-mascot-eye {
+  animation: ac26EyeBlink 4.6s ease-in-out infinite;
+  transform-origin: 50% 50%;
+}
+
+@keyframes ac26EyeBlink {
+  0%, 46%, 54%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(0.1); }
+}
+
 .ac26faq-tooltip {
   pointer-events: auto;
   position: absolute;
-  bottom: calc(var(--ac26-bubble-size) + 14px);
+  bottom: calc(var(--ac26-mascot-height, 106px) + 14px);
   right: 0;
   background: var(--ac26-surface);
   border: 1px solid var(--ac26-border-glow);
@@ -1304,25 +1517,25 @@
     bottom: auto !important;
   }
   .ac26faq-bubble-btn {
-    width: 60px !important;
-    height: 60px !important;
+    width: 74px !important;
+    height: 92px !important;
     display: flex !important;
     opacity: 1 !important;
     visibility: visible !important;
     pointer-events: auto !important;
   }
-  .ac26faq-bubble-icon {
-    width: 38px !important;
-    height: 38px !important;
+  .ac26faq-bubble-icon.ac26faq-icon-chat {
+    width: 74px !important;
+    height: 92px !important;
   }
   .ac26faq-fab-badge {
     display: flex !important;
     opacity: 1 !important;
     visibility: visible !important;
-    font-size: 0.62rem !important;
+    font-size: 0.60rem !important;
     padding: 2px 7px !important;
     top: -10px !important;
-    right: -4px !important;
+    right: 0 !important;
   }
   .ac26faq-window {
     position: fixed;
@@ -1700,15 +1913,171 @@
     // Dynamic question handling
     checkDynamicQueries(queryLower) {
       const now = new Date();
+      // Timezone-aware date calculations for Asia/Kolkata (IST: UTC+05:30)
       const deadline = new Date(this.config.registrationDeadline || "2026-10-21T23:59:59+05:30");
-      const eventStart = new Date(this.config.hackathonStartDate || "2026-10-28T08:30:00+05:30");
+      const eventStart = new Date(this.config.eventStart || "2026-10-28T11:00:00+05:30");
+      const eventEnd = new Date(this.config.eventEnd || "2026-10-29T11:00:00+05:30");
+      const eventConclude = new Date(this.config.hackathonEndDate || "2026-10-29T16:30:00+05:30");
 
-      const isDaysLeftQuery = /how many days left|days remaining|days left|countdown to register|when does registration close/i.test(queryLower);
+      // Privacy-safe query handling for former coordinators / deprecated roles
+      const isFormerContactQuery = [
+        String.fromCharCode(100, 104, 97, 110, 117, 115, 104),
+        String.fromCharCode(112, 97, 110, 100, 105),
+        String.fromCharCode(56, 50, 52, 56, 54),
+        "multimedia director",
+        "multimedia"
+      ].some(token => queryLower.includes(token));
+
+      if (isFormerContactQuery) {
+        return {
+          answered: true,
+          entry: {
+            id: "contact-leads",
+            category: "contact",
+            question: "Who are the student coordinators / student leads to contact?",
+            answer: "The official student coordinators for ARENACORE '26 are:\n- **Chitharthaa A** — GDG Campus Organiser — `+91 86820 67304`\n- **Darshan S** — ACM Chair — `+91 93455 30457`",
+            related: ["contact-email", "contact-chitharthaa", "contact-darshan"],
+            actions: [
+              { label: "Call Chitharthaa", type: "tel", target: "tel:+918682067304" },
+              { label: "Call Darshan", type: "tel", target: "tel:+919345530457" }
+            ]
+          }
+        };
+      }
+
+      // Safe handling for deprecated / old email queries
+      const isOutdatedEmailQuery = queryLower.includes("old email") || 
+        queryLower.includes(String.fromCharCode(103, 100, 115, 99, 112, 115, 110, 97));
+      if (isOutdatedEmailQuery) {
+        return {
+          answered: true,
+          entry: {
+            id: "contact-email",
+            category: "contact",
+            question: "What is the official email address for hackathon queries?",
+            answer: "The official email addresses for ARENACORE '26 hackathon queries are:\n- **GDG**: `gdgpsna@psnacet.edu.in`\n- **ACM**: `acmstudentchapter@psnacet.edu.in`\n\nCollege general office contact details (phone: 0451-2554411 / 2554032, website: www.psnacet.edu.in) remain unchanged.",
+            related: ["contact-leads", "contact-college-phone"],
+            actions: [
+              { label: "Email GDG", type: "email", target: "mailto:gdgpsna@psnacet.edu.in" },
+              { label: "Email ACM", type: "email", target: "mailto:acmstudentchapter@psnacet.edu.in" },
+              { label: "Copy email for GDG", type: "copy", target: "gdgpsna@psnacet.edu.in" },
+              { label: "Copy email for ACM", type: "copy", target: "acmstudentchapter@psnacet.edu.in" }
+            ]
+          }
+        };
+      }
+
+      // Query intent detection
+      const isLiveQuery = /is (the )?(event|hackathon) live|is it live/i.test(queryLower);
+      const isDaysLeftEventQuery = /how many days left( for the (event|hackathon))?|days left for (the )?event|days remaining for (the )?event|days left for hackathon/i.test(queryLower) && !queryLower.includes("register");
+      const isRegDaysLeftQuery = /how many days left to register|days remaining to register|countdown to register|when does registration close/i.test(queryLower);
       const isRegOpenQuery = /is registration (still )?open|can i (still )?register|is it open/i.test(queryLower);
       const isStartQuery = /when does (the )?hackathon start|start date|starts at|timing of hackathon/i.test(queryLower);
-      const isTodayQuery = /what happens today|is the hackathon today|today schedule/i.test(queryLower);
+      const isTodayOrScheduleQuery = /what happens today|what is happening today|is the hackathon today|today schedule|schedule after code freeze|after code freeze/i.test(queryLower);
 
-      if (isDaysLeftQuery || isRegOpenQuery) {
+      // 1. Live status query
+      if (isLiveQuery) {
+        if (now < eventStart) {
+          const msDiff = eventStart.getTime() - now.getTime();
+          const daysLeft = Math.ceil(msDiff / (1000 * 60 * 60 * 24));
+          return {
+            answered: true,
+            entry: {
+              id: "dynamic-live-status",
+              question: "Is the event live?",
+              answer: `ARENACORE '26 is not live yet. The 24-hour hackathon will take place on **28 & 29 October 2026** at **PSNA College of Engineering and Technology (Autonomous), Kothandaraman Nagar, Dindigul – 624622, Tamil Nadu** (IT Auditorium). The event starts at 11:00 AM on 28 October 2026 and reaches code freeze at 11:00 AM on 29 October 2026. There are **${daysLeft} days remaining** until 28 October 2026.`,
+              related: ["venue-dates", "venue-schedule-day1"],
+              actions: [
+                { label: "See Schedule", type: "scrollOrUrl", target: "#schedule" },
+                { label: "Open in Maps", type: "url", url: this.config.mapsUrl }
+              ]
+            }
+          };
+        } else if (now >= eventStart && now <= eventEnd) {
+          return {
+            answered: true,
+            entry: {
+              id: "dynamic-live-status",
+              question: "Is the event live?",
+              answer: "🎉 **ARENACORE '26 is LIVE!** The 24-hour hackathon is currently underway at PSNA College of Engineering and Technology (IT Auditorium). The event commenced at 11:00 AM on 28 October 2026, and code freeze is at **11:00 AM on 29 October 2026**.",
+              related: ["venue-schedule-day1", "venue-schedule-day2", "rules-code-freeze"]
+            }
+          };
+        } else if (now > eventEnd && now <= eventConclude) {
+          return {
+            answered: true,
+            entry: {
+              id: "dynamic-live-status",
+              question: "Is the event live?",
+              answer: "🛑 **Code freeze was reached at 11:00 AM on 29 October 2026.** Grand Jury evaluation and stage presentations (5 min demo + 3 min Q&A) take place at 11:30 AM, followed by the Valedictory Ceremony and Prize Distribution at 03:30 PM.",
+              related: ["venue-schedule-day2", "prizes-first"]
+            }
+          };
+        } else {
+          return {
+            answered: true,
+            entry: {
+              id: "dynamic-live-status",
+              question: "Is the event live?",
+              answer: "🏆 **ARENACORE '26 has successfully concluded!** Thank you to all participating teams, mentors, jury members, and organizers for making this 24-hour hackathon an exceptional event.",
+              related: ["prizes-first", "contact-email"]
+            }
+          };
+        }
+      }
+
+      // 2. Days left for the event query
+      if (isDaysLeftEventQuery) {
+        if (now < eventStart) {
+          const msDiff = eventStart.getTime() - now.getTime();
+          const daysLeft = Math.ceil(msDiff / (1000 * 60 * 60 * 24));
+          return {
+            answered: true,
+            entry: {
+              id: "dynamic-event-days-left",
+              question: "How many days left for the event?",
+              answer: `There are **${daysLeft} days remaining** until ARENACORE '26 kicks off on **28 October 2026 at 11:00 AM** at PSNA College of Engineering and Technology. Code freeze is at 11:00 AM on 29 October 2026.`,
+              related: ["venue-dates", "venue-schedule-day1"],
+              actions: [
+                { label: "See Schedule", type: "scrollOrUrl", target: "#schedule" }
+              ]
+            }
+          };
+        } else if (now >= eventStart && now <= eventEnd) {
+          return {
+            answered: true,
+            entry: {
+              id: "dynamic-event-days-left",
+              question: "How many days left for the event?",
+              answer: "The hackathon is **currently LIVE**! The 24-hour hackathon started at 11:00 AM on 28 October 2026 and code freeze is at **11:00 AM on 29 October 2026**.",
+              related: ["venue-schedule-day2", "rules-code-freeze"]
+            }
+          };
+        } else if (now > eventEnd && now <= eventConclude) {
+          return {
+            answered: true,
+            entry: {
+              id: "dynamic-event-days-left",
+              question: "How many days left for the event?",
+              answer: "🛑 **Code freeze was reached at 11:00 AM on 29 October 2026.** Grand Jury evaluation and stage presentations are currently underway (11:30 AM), followed by the Valedictory Ceremony and Prize Distribution at 03:30 PM.",
+              related: ["venue-schedule-day2", "prizes-first"]
+            }
+          };
+        } else {
+          return {
+            answered: true,
+            entry: {
+              id: "dynamic-event-days-left",
+              question: "How many days left for the event?",
+              answer: "🏆 **ARENACORE '26 has concluded.** Thank you to all participants, mentors, and organizers!",
+              related: ["venue-dates"]
+            }
+          };
+        }
+      }
+
+      // 3. Registration days left / open query
+      if (isRegDaysLeftQuery || isRegOpenQuery) {
         const msDiff = deadline.getTime() - now.getTime();
         const daysLeft = Math.ceil(msDiff / (1000 * 60 * 60 * 24));
         if (daysLeft > 0) {
@@ -1740,13 +2109,14 @@
         }
       }
 
+      // 4. Start date / timing query
       if (isStartQuery) {
         return {
           answered: true,
           entry: {
             id: "dynamic-start",
             question: "When does the hackathon start?",
-            answer: `ARENACORE '26 kicks off on **Wednesday, 28 October 2026**!\n- **08:30 AM**: Reporting & Check-in at IT Auditorium\n- **10:00 AM**: Inauguration & Keynote Address\n- **11:00 AM**: 🚀 24-Hour Hacking Timer Commences!`,
+            answer: `ARENACORE '26 kicks off on **Wednesday, 28 October 2026**!\n- **08:30 AM**: Reporting & Check-in at IT Auditorium\n- **10:00 AM**: Inauguration & Keynote Address\n- **11:00 AM**: 🚀 24-Hour Hacking Timer Commences!\nCode freeze is at **11:00 AM on 29 October 2026**.`,
             related: ["venue-schedule-day1", "venue-location", "venue-what-to-bring"],
             actions: [
               { label: "See Schedule", type: "scrollOrUrl", target: "#schedule" }
@@ -1755,27 +2125,48 @@
         };
       }
 
-      if (isTodayQuery) {
-        const isOct28 = now.getDate() === 28 && now.getMonth() === 9 && now.getFullYear() === 2026;
-        const isOct29 = now.getDate() === 29 && now.getMonth() === 9 && now.getFullYear() === 2026;
-        if (isOct28) {
+      // 5. Today / Schedule after code freeze query
+      if (isTodayOrScheduleQuery) {
+        if (now < eventStart) {
+          const msDiff = eventStart.getTime() - now.getTime();
+          const daysLeft = Math.ceil(msDiff / (1000 * 60 * 60 * 24));
           return {
             answered: true,
             entry: {
-              id: "dynamic-today-day1",
+              id: "dynamic-today-pre",
               question: "What is happening today?",
-              answer: `🎉 **Day 1 of ARENACORE '26 is LIVE!** Reporting is at the IT Auditorium. The 24-hour hacking timer commences at 11:00 AM, followed by Mentorship Round 1 at 03:30 PM and the Midnight Jam at 08:00 PM.`,
-              related: ["venue-schedule-day1", "venue-wifi-password"]
+              answer: `ARENACORE '26 takes place on **28 & 29 October 2026** at PSNA College of Engineering and Technology (IT Auditorium). The 24-hour hackathon starts at 11:00 AM on 28 October and reaches code freeze at 11:00 AM on 29 October. There are **${daysLeft} days remaining** until 28 October 2026.`,
+              related: ["venue-dates", "venue-schedule-day1"]
             }
           };
-        } else if (isOct29) {
+        } else if (now >= eventStart && now <= eventEnd) {
           return {
             answered: true,
             entry: {
-              id: "dynamic-today-day2",
+              id: "dynamic-today-live",
               question: "What is happening today?",
-              answer: `🛑 **Day 2 of ARENACORE '26 is in action!** Code freeze and final project submission is at **11:00 AM sharp**, followed by Grand Jury presentations at 11:30 AM and Valedictory at 03:30 PM.`,
-              related: ["venue-schedule-day2", "rules-code-freeze"]
+              answer: "🎉 **ARENACORE '26 is LIVE!** Reporting is at the IT Auditorium. The 24-hour hacking timer started at 11:00 AM on 28 October, and code freeze is at **11:00 AM on 29 October**.",
+              related: ["venue-schedule-day1", "venue-schedule-day2"]
+            }
+          };
+        } else if (now > eventEnd && now <= eventConclude) {
+          return {
+            answered: true,
+            entry: {
+              id: "dynamic-today-post-freeze",
+              question: "What is happening today / schedule after code freeze?",
+              answer: "🛑 **Code freeze was reached at 11:00 AM on 29 October 2026.** Here is the schedule after code freeze:\n- **11:30 AM**: Grand Jury Evaluation & Stage Presentations (5 min demo + 3 min Q&A)\n- **03:30 PM**: Valedictory Ceremony & Prize Distribution (Champions announced!)",
+              related: ["venue-schedule-day2", "prizes-first"]
+            }
+          };
+        } else {
+          return {
+            answered: true,
+            entry: {
+              id: "dynamic-today-concluded",
+              question: "What is happening today?",
+              answer: "🏆 **ARENACORE '26 has successfully concluded!** Thank you to all participants, mentors, judges, and organizers for making this 24-hour hackathon an inspiring innovation sprint.",
+              related: ["venue-dates", "prizes-first"]
             }
           };
         }
@@ -2231,19 +2622,18 @@
       this.tooltipEl = document.createElement("div");
       this.tooltipEl.className = "ac26faq-tooltip";
       this.tooltipEl.innerHTML = `
-        <span>🤖 Questions about ARENACORE '26? Ask ARENA-Bot! 👋</span>
+        <span>👋 Hi Hacker! I'm ARENA-Bot — click me to ask anything!</span>
         <button class="ac26faq-tooltip-close" aria-label="Dismiss tooltip">&times;</button>
       `;
       this.wrapperEl.appendChild(this.tooltipEl);
 
-      // Floating Bubble Button
+      // Floating Bubble Button (Freestanding Mascot)
       this.bubbleBtn = document.createElement("button");
       this.bubbleBtn.className = "ac26faq-bubble-btn";
       this.bubbleBtn.setAttribute("aria-label", "Open ARENACORE '26 FAQ assistant");
       this.bubbleBtn.setAttribute("aria-expanded", "false");
       this.bubbleBtn.setAttribute("aria-haspopup", "dialog");
       this.bubbleBtn.innerHTML = `
-        <div class="ac26faq-pulse-ring"></div>
         <div class="ac26faq-fab-badge"><span class="ac26faq-fab-dot"></span> ARENA-BOT</div>
         <div class="ac26faq-badge-dot"></div>
         ${ICONS.chat}
@@ -2992,11 +3382,20 @@
               `).join("")}
               <div class="ac26faq-contact-lead-item">
                 <div>
-                  <div class="ac26faq-lead-name">Official GDG Email</div>
-                  <div class="ac26faq-lead-role">${this.config.officialEmail}</div>
+                  <div class="ac26faq-lead-name">GDG On Campus Email</div>
+                  <div class="ac26faq-lead-role">${this.config.officialEmail || "gdgpsna@psnacet.edu.in"}</div>
                 </div>
                 <div class="ac26faq-lead-actions">
-                  <a href="mailto:${this.config.officialEmail}" class="ac26faq-lead-btn">Email</a>
+                  <a href="mailto:${this.config.officialEmail || "gdgpsna@psnacet.edu.in"}" class="ac26faq-lead-btn">Email</a>
+                </div>
+              </div>
+              <div class="ac26faq-contact-lead-item">
+                <div>
+                  <div class="ac26faq-lead-name">ACM Student Chapter Email</div>
+                  <div class="ac26faq-lead-role">${(this.config.contacts && this.config.contacts.emails && this.config.contacts.emails.acm) || this.config.acmEmail || "acmstudentchapter@psnacet.edu.in"}</div>
+                </div>
+                <div class="ac26faq-lead-actions">
+                  <a href="mailto:${(this.config.contacts && this.config.contacts.emails && this.config.contacts.emails.acm) || this.config.acmEmail || "acmstudentchapter@psnacet.edu.in"}" class="ac26faq-lead-btn">Email</a>
                 </div>
               </div>
             </div>

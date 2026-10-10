@@ -76,8 +76,10 @@
 
   /* Layout Customization Variables */
   --ac26-bubble-right: 24px;
-  --ac26-bubble-bottom: 24px;
+  --ac26-bubble-bottom: 20px;
   --ac26-bubble-size: 66px;
+  --ac26-mascot-width: 114px;
+  --ac26-mascot-height: 136px;
   --ac26-window-width: clamp(420px, 50vw, 680px);
   --ac26-window-height: min(80vh, 760px);
 
@@ -110,56 +112,39 @@
 
 .ac26faq-bubble-btn {
   pointer-events: auto;
-  width: var(--ac26-bubble-size);
-  height: var(--ac26-bubble-size);
-  border-radius: var(--ac26-radius-full);
-  background: radial-gradient(circle at 35% 35%, #1e293b, #0a0f1d 85%);
-  border: 2px solid rgba(66, 133, 244, 0.5);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(66, 133, 244, 0.45);
-  cursor: grab;
+  width: var(--ac26-mascot-width, 88px);
+  height: var(--ac26-mascot-height, 106px);
+  border-radius: 20px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   color: #ffffff;
   position: relative;
-  transition: transform var(--ac26-transition-spring), box-shadow var(--ac26-transition-base);
+  transition: transform var(--ac26-transition-spring), filter var(--ac26-transition-base);
   outline: none;
   touch-action: none;
   user-select: none;
+  filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.65)) drop-shadow(0 0 16px rgba(66, 133, 244, 0.45));
 }
 
 .ac26faq-bubble-btn.is-dragging {
   cursor: grabbing !important;
   transition: none !important;
   transform: scale(1.08) !important;
-  box-shadow: 0 18px 45px rgba(66, 133, 244, 0.75), 0 0 35px rgba(56, 189, 248, 0.7) !important;
+  filter: drop-shadow(0 18px 45px rgba(66, 133, 244, 0.8)) drop-shadow(0 0 35px rgba(56, 189, 248, 0.75)) !important;
 }
 
 .ac26faq-bubble-btn::before {
-  content: "";
-  position: absolute;
-  inset: -3.5px;
-  border-radius: var(--ac26-radius-full);
-  background: conic-gradient(from 0deg, #4285F4, #EA4335, #FBBC05, #34A853, #4285F4);
-  z-index: -1;
-  animation: ac26-spin-halo 4.5s linear infinite;
-  opacity: 0.9;
-  filter: blur(1.5px);
-}
-
-@keyframes ac26-spin-halo {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  display: none;
 }
 
 .ac26faq-bubble-btn:hover {
-  transform: scale(1.08) translateY(-3px);
-  box-shadow: 0 16px 40px rgba(66, 133, 244, 0.6), 0 0 30px rgba(56, 189, 248, 0.5);
-}
-
-.ac26faq-bubble-btn:hover::before {
-  opacity: 1;
-  filter: blur(2.5px);
+  transform: translateY(-8px) scale(1.06);
+  filter: drop-shadow(0 18px 36px rgba(0, 0, 0, 0.75)) drop-shadow(0 0 28px rgba(56, 189, 248, 0.7));
 }
 
 .ac26faq-bubble-btn:focus-visible {
@@ -168,20 +153,20 @@
 }
 
 .ac26faq-bubble-btn:active {
-  transform: scale(0.95);
+  transform: scale(0.96) translateY(-2px);
 }
 
 .ac26faq-fab-badge {
   position: absolute;
-  top: -12px;
-  right: -6px;
-  background: linear-gradient(135deg, #0f172a, #1e293b);
+  top: -14px;
+  right: 6px;
+  background: linear-gradient(135deg, #090e1a, #162238);
   color: #38bdf8;
   font-family: var(--ac26-font-mono, monospace);
-  font-size: 0.66rem;
+  font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.6px;
-  padding: 3px 8px;
+  padding: 4px 11px;
   border-radius: 999px;
   border: 1.5px solid #38bdf8;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6), 0 0 12px rgba(56, 189, 248, 0.5);
@@ -190,7 +175,7 @@
   animation: ac26-fab-pulse 2.4s ease-in-out infinite;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   z-index: 10;
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
@@ -215,49 +200,23 @@
   pointer-events: none;
 }
 
-/* Pulse Ring */
+/* Pulse Ring disabled for freestanding mascot */
 .ac26faq-pulse-ring {
-  position: absolute;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-  border-radius: var(--ac26-radius-full);
-  border: 2px solid rgba(56, 189, 248, 0.6);
-  animation: ac26-pulse 2.4s cubic-bezier(0.24, 0, 0.38, 1) infinite;
-  pointer-events: none;
-}
-
-.ac26faq-wrapper.has-opened .ac26faq-pulse-ring {
-  display: none;
-}
-
-@keyframes ac26-pulse {
-  0% {
-    transform: scale(0.95);
-    opacity: 0.9;
-  }
-  70% {
-    transform: scale(1.35);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1.4);
-    opacity: 0;
-  }
+  display: none !important;
 }
 
 /* Unread Badge Dot */
 .ac26faq-badge-dot {
   position: absolute;
-  top: 2px;
-  right: 2px;
-  width: 14px;
-  height: 14px;
+  top: 4px;
+  right: 12px;
+  width: 10px;
+  height: 10px;
   background-color: var(--ac26-red);
-  border: 2.5px solid var(--ac26-surface);
+  border: 2px solid var(--ac26-surface);
   border-radius: var(--ac26-radius-full);
   transition: transform 0.2s ease, opacity 0.2s ease;
+  box-shadow: 0 0 8px var(--ac26-red);
 }
 
 .ac26faq-wrapper.has-opened .ac26faq-badge-dot {
@@ -265,22 +224,65 @@
   opacity: 0;
 }
 
-/* Icon Morphing */
-.ac26faq-bubble-icon {
-  width: 42px;
-  height: 42px;
-  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
-  position: absolute;
+/* Mascot SVG and animations */
+.ac26faq-bubble-icon.ac26faq-icon-chat {
+  width: var(--ac26-mascot-width, 88px);
+  height: var(--ac26-mascot-height, 106px);
+  position: relative;
+  display: block;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
 }
 
-.ac26faq-icon-close {
+.ac26faq-bubble-icon.ac26faq-icon-close {
+  width: 26px;
+  height: 26px;
+  fill: #ffffff;
+  color: #ffffff;
   opacity: 0;
   transform: rotate(-90deg) scale(0.7);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -13px;
+  margin-left: -13px;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+}
+
+/* When chat is open, transform launcher button into glowing circular close disc */
+.ac26faq-wrapper.is-open .ac26faq-bubble-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--ac26-radius-full);
+  background: radial-gradient(circle at 35% 35%, #1e293b, #0a0f1d 85%);
+  border: 2px solid rgba(66, 133, 244, 0.6);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(66, 133, 244, 0.45);
+  filter: none;
+  align-items: center;
+}
+
+.ac26faq-wrapper.is-open .ac26faq-bubble-btn::before {
+  display: block;
+  content: "";
+  position: absolute;
+  inset: -3.5px;
+  border-radius: var(--ac26-radius-full);
+  background: conic-gradient(from 0deg, #4285F4, #EA4335, #FBBC05, #34A853, #4285F4);
+  z-index: -1;
+  animation: ac26-spin-halo 4.5s linear infinite;
+  opacity: 0.9;
+  filter: blur(1.5px);
+}
+
+@keyframes ac26-spin-halo {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .ac26faq-wrapper.is-open .ac26faq-bubble-btn .ac26faq-icon-chat {
   opacity: 0;
-  transform: rotate(90deg) scale(0.7);
+  transform: scale(0.5) rotate(20deg);
+  pointer-events: none;
+  position: absolute;
 }
 
 .ac26faq-wrapper.is-open .ac26faq-bubble-btn .ac26faq-icon-close {
@@ -288,11 +290,86 @@
   transform: rotate(0) scale(1);
 }
 
-/* Tooltip Bubble (After 6 seconds) */
+/* Standing Mascot Keyframe Animations */
+.ac26-mascot-float-group {
+  animation: ac26MascotFloat 3.8s ease-in-out infinite;
+  transform-origin: 50px 70px;
+}
+
+@keyframes ac26MascotFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-7px); }
+}
+
+.ac26-mascot-arm-wave {
+  transform-origin: 70px 54px;
+  animation: ac26MascotWave 3.2s ease-in-out infinite;
+}
+
+@keyframes ac26MascotWave {
+  0%, 100% { transform: rotate(0deg); }
+  12% { transform: rotate(24deg); }
+  24% { transform: rotate(-12deg); }
+  36% { transform: rotate(26deg); }
+  48% { transform: rotate(-10deg); }
+  60% { transform: rotate(20deg); }
+  72% { transform: rotate(0deg); }
+}
+
+.ac26faq-bubble-btn:hover .ac26-mascot-arm-wave {
+  animation: ac26MascotWaveFast 1.1s ease-in-out infinite;
+}
+
+@keyframes ac26MascotWaveFast {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(28deg); }
+  75% { transform: rotate(-14deg); }
+}
+
+.ac26-mascot-pedestal {
+  animation: ac26PedestalPulse 3.8s ease-in-out infinite;
+  transform-origin: 50px 112px;
+}
+
+@keyframes ac26PedestalPulse {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(0.92); opacity: 0.6; }
+}
+
+.ac26-pedestal-ring {
+  animation: ac26PedestalSpin 6s linear infinite;
+  transform-origin: 50px 112px;
+}
+
+@keyframes ac26PedestalSpin {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 28; }
+}
+
+.ac26-mascot-beacon {
+  animation: ac26BeaconPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes ac26BeaconPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.85); }
+}
+
+.ac26-mascot-eye {
+  animation: ac26EyeBlink 4.6s ease-in-out infinite;
+  transform-origin: 50% 50%;
+}
+
+@keyframes ac26EyeBlink {
+  0%, 46%, 54%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(0.1); }
+}
+
+/* Tooltip Bubble */
 .ac26faq-tooltip {
   pointer-events: auto;
   position: absolute;
-  bottom: calc(var(--ac26-bubble-size) + 14px);
+  bottom: calc(var(--ac26-mascot-height, 106px) + 14px);
   right: 0;
   background: var(--ac26-surface);
   border: 1px solid var(--ac26-border-glow);
@@ -1297,27 +1374,27 @@
   }
 
   .ac26faq-bubble-btn {
-    width: 60px !important;
-    height: 60px !important;
+    width: 74px !important;
+    height: 92px !important;
     display: flex !important;
     opacity: 1 !important;
     visibility: visible !important;
     pointer-events: auto !important;
   }
 
-  .ac26faq-bubble-icon {
-    width: 38px !important;
-    height: 38px !important;
+  .ac26faq-bubble-icon.ac26faq-icon-chat {
+    width: 74px !important;
+    height: 92px !important;
   }
 
   .ac26faq-fab-badge {
     display: flex !important;
     opacity: 1 !important;
     visibility: visible !important;
-    font-size: 0.62rem !important;
+    font-size: 0.60rem !important;
     padding: 2px 7px !important;
     top: -10px !important;
-    right: -4px !important;
+    right: 0 !important;
   }
 
   .ac26faq-window {

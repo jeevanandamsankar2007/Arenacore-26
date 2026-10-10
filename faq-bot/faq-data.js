@@ -20,17 +20,46 @@
     venueReporting: "IT Auditorium, IT Block, PSNACET Campus",
     
     // Official Timelines (IST: UTC+05:30)
-    registrationDeadline: "2026-10-12T23:59:59+05:30",
-    hackathonStartDate: "2026-10-27T08:30:00+05:30",
-    hackingTimerStart: "2026-10-27T11:00:00+05:30",
-    codeFreezeDate: "2026-10-28T11:00:00+05:30",
-    hackathonEndDate: "2026-10-28T16:30:00+05:30",
+    eventStart: "2026-10-28T11:00:00+05:30",
+    eventEnd: "2026-10-29T11:00:00+05:30",
+    displayDates: "28 & 29 October 2026",
+    duration: "24 Hours",
+    registrationDeadline: "2026-10-21T23:59:59+05:30",
+    displayRegistrationDeadline: "21 October 2026",
+    hackathonStartDate: "2026-10-28T08:30:00+05:30",
+    hackingTimerStart: "2026-10-28T11:00:00+05:30",
+    codeFreezeDate: "2026-10-29T11:00:00+05:30",
+    hackathonEndDate: "2026-10-29T16:30:00+05:30",
     
-    // Team & Fee Structure
-    requiredMembers: 4,
+    // Team & Fee Structure (2 to 4 members, ₹500 per member)
+    minTeamSize: 2,
+    maxTeamSize: 4,
     feePerMember: 500,
-    totalTeamFee: 2000,
-    shortlistedTeamsCount: 60,
+    calculateFee: function(teamSize) {
+      return teamSize * this.feePerMember;
+    },
+    teamFees: {
+      2: 1000,
+      3: 1500,
+      4: 2000
+    },
+    shortlistedTeamsCount: 30,
+
+    // Facilities & Amenities (Free of charge)
+    facilities: {
+      accommodation: "Free",
+      food: "Free",
+      refreshments: "Free",
+      statement: "Accommodation, food, and refreshments are provided free of charge for ARENACORE '26 participants. No separate payment is required for these facilities."
+    },
+
+    // Designated Transport
+    transport: {
+      busNumber: 6,
+      busType: "Private bus",
+      boardingLocation: "Dindigul Bus Stand",
+      instruction: "The designated transport is Private Bus No. 6. Participants using this bus must board at Dindigul Bus Stand."
+    },
     
     // Prize Pool
     totalPrizePool: "₹1,20,000",
@@ -39,12 +68,21 @@
     
     // Official URLs & Contacts
     googleFormUrl: "https://forms.gle/ir6Dbnn6GTzWCX6v7",
-    officialEmail: "gdscpsna@psnacet.edu.in",
-    collegeEmail: "contact@psnacet.edu.in",
+    officialEmail: "gdgpsna@psnacet.edu.in",
+    acmEmail: "acmstudentchapter@psnacet.edu.in",
+    contacts: {
+      emails: {
+        gdg: "gdgpsna@psnacet.edu.in",
+        acm: "acmstudentchapter@psnacet.edu.in"
+      },
+      shortlistNotificationNotice: "from the official ARENACORE '26 organizers (gdgpsna@psnacet.edu.in / acmstudentchapter@psnacet.edu.in)",
+      collegePhone: "0451-2554411 / 2554032",
+      collegeWebsite: "https://www.psnacet.edu.in"
+    },
     collegePhone: "0451-2554411 / 2554032",
     collegeWebsite: "https://www.psnacet.edu.in",
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=PSNA+College+of+Engineering+and+Technology+Dindigul",
-    pitchDeckUrl: "https://docs.google.com/presentation/",
+    pitchDeckUrl: "https://docs.google.com/presentation/d/1tFxQwV1VzSZpjmTccVna4HIIlyynsCKG_W8YG2pfM5k/edit?usp=sharing",
     
     // Official Document Links
     links: {
@@ -67,13 +105,6 @@
         phone: "+919345530457",
         displayPhone: "+91 93455 30457",
         whatsapp: "https://wa.me/919345530457"
-      },
-      {
-        name: "Dhanush Pandi S",
-        role: "GDG Multimedia Director",
-        phone: "+918248603031",
-        displayPhone: "+91 82486 03031",
-        whatsapp: "https://wa.me/918248603031"
       }
     ],
 
@@ -129,7 +160,7 @@
       id: "reg-deadline",
       category: "reg",
       question: "What is the registration deadline / last date for ARENACORE '26?",
-      answer: "The registration deadline is **12 October 2026 (end of day, 11:59 PM IST)**. Late submissions will not be accepted, so ensure your Team Leader submits the form early!",
+      answer: "The registration deadline is **21 October 2026 (end of day, 11:59 PM IST)**. Late submissions will not be accepted, so ensure your Team Leader submits the form early!",
       keywords: ["deadline", "last date", "closing date", "end date", "final date", "due date", "registration deadline", "last date to register"],
       synonyms: ["last date", "when is last date", "what is last date", "kadaisi date", "mudiyum date", "when will registration close", "cut off date"],
       related: ["reg-how", "venue-dates", "reg-days-left"],
@@ -141,7 +172,7 @@
       id: "reg-days-left",
       category: "reg",
       question: "How many days are left to register for ARENACORE '26?",
-      answer: "The deadline is **12 October 2026 (11:59 PM IST)**. You can check the live countdown on our home page or submit your team registration now before slots fill up!",
+      answer: "The deadline is **21 October 2026 (11:59 PM IST)**. You can check the live countdown on our home page or submit your team registration now before slots fill up!",
       keywords: ["days left", "time left", "how many days", "countdown", "deadline countdown"],
       synonyms: ["innum evlo naal", "days remaining", "hours left"],
       related: ["reg-deadline", "reg-how"],
@@ -153,7 +184,7 @@
       id: "reg-form-fields",
       category: "reg",
       question: "What details are required in the registration form?",
-      answer: "The registration form requires:\n- **Team Information**: Unique Team Name, College/University, Theme/UN SDG Track, and Project Title/Concept Summary.\n- **Team Leader**: Full Name, Official Email, WhatsApp Phone, and optional GitHub/Portfolio.\n- **Team Members**: Names, Emails, and College details for all 4 squad members.",
+      answer: "The registration form requires:\n- **Team Information**: Unique Team Name, College/University, Theme/UN SDG Track, and Project Title/Concept Summary.\n- **Team Leader**: Full Name, Official Email, WhatsApp Phone, and optional GitHub/Portfolio.\n- **Team Members**: Names, Emails, and College details for all team members (2 to 4 members).",
       keywords: ["form fields", "details required", "information needed", "what to fill", "fields"],
       synonyms: ["requirements for form", "documents", "data to enter", "what questions in form"],
       related: ["team-size", "theme-list"],
@@ -165,9 +196,9 @@
       id: "reg-who-submits",
       category: "reg",
       question: "Should each member register individually or only the Team Leader?",
-      answer: "Only the **Team Leader** submits the registration form on behalf of the entire 4-member squad. The Team Leader serves as the single point of contact for all announcements, shortlist notifications, and payment instructions.",
+      answer: "Only the **Team Leader** submits the registration form on behalf of the entire team (2 to 4 members). The Team Leader serves as the single point of contact for all announcements, shortlist notifications, and payment instructions.",
       keywords: ["who submits", "team leader", "individual registration", "each member", "point of contact"],
-      synonyms: ["should all 4 register", "leader only", "single registration"],
+      synonyms: ["should all members register", "leader only", "single registration"],
       related: ["team-leader-role", "team-size"]
     },
     {
@@ -210,7 +241,7 @@
       id: "reg-shortlist",
       category: "reg",
       question: "How does Round 1 evaluation and shortlisting work?",
-      answer: "Our expert jury reviews all submitted project concepts based on innovation, technical viability, and UN SDG alignment. The **selected teams (10 teams per theme)** will be shortlisted and receive an official confirmation email from `gdscpsna@psnacet.edu.in` with the payment link and physical hackathon invite.",
+      answer: "Our expert jury reviews all submitted project concepts based on innovation, technical viability, and UN SDG alignment. The **selected teams (10 teams per theme)** will be shortlisted and receive an official confirmation email from the official ARENACORE '26 organizers (gdgpsna@psnacet.edu.in / acmstudentchapter@psnacet.edu.in) with the payment link and physical hackathon invite.",
       keywords: ["shortlist", "round 1", "evaluation process", "selection criteria", "screening"],
       synonyms: ["how are teams picked", "shortlisting", "selection"],
       related: ["reg-shortlist-count", "fee-when-pay"]
@@ -228,7 +259,7 @@
       id: "reg-edit",
       category: "reg",
       question: "Can I edit or update our registration details after submitting?",
-      answer: "Minor corrections (such as fixing a typo in an email or phone number) can be requested by emailing `gdscpsna@psnacet.edu.in` with your registered Team Name and Team Leader details before the 21 October deadline.",
+      answer: "Minor corrections (such as fixing a typo in an email or phone number) can be requested by emailing `gdgpsna@psnacet.edu.in` with your registered Team Name and Team Leader details before the 21 October deadline.",
       keywords: ["edit registration", "update details", "change form", "modify submission", "mistake"],
       synonyms: ["correction", "change team details", "edit form"],
       related: ["contact-email", "reg-deadline"]
@@ -237,7 +268,7 @@
       id: "reg-confirmation",
       category: "reg",
       question: "Will I receive an email confirmation after submitting the form?",
-      answer: "Yes, Google Forms automatically records your submission. Once Round 1 evaluations conclude, official shortlist confirmation emails will be sent out exclusively from `gdscpsna@psnacet.edu.in`.",
+      answer: "Yes, Google Forms automatically records your submission. Once Round 1 evaluations conclude, official shortlist confirmation emails will be sent out from the official ARENACORE '26 organizers (gdgpsna@psnacet.edu.in / acmstudentchapter@psnacet.edu.in).",
       keywords: ["email confirmation", "acknowledgement", "submission confirmation", "did you receive"],
       synonyms: ["mail vanthucha", "confirmation mail"],
       related: ["reg-status", "fee-email-source"]
@@ -245,8 +276,8 @@
     {
       id: "reg-after-deadline",
       category: "reg",
-      question: "Can I register after the 12 October 2026 deadline?",
-      answer: "No. The registration portal closes strictly on **12 October 2026 at 11:59 PM IST**. To maintain a fair evaluation timeline for the jury, late entries cannot be accommodated.",
+      question: "Can I register after the 21 October 2026 deadline?",
+      answer: "No. The registration portal closes strictly on **21 October 2026 at 11:59 PM IST**. To maintain a fair evaluation timeline for the jury, late entries cannot be accommodated.",
       keywords: ["after deadline", "late registration", "deadline passed", "extension", "can i still apply"],
       synonyms: ["deadline over", "time mudinjidha", "late entry"],
       related: ["reg-deadline", "contact-leads"]
@@ -397,7 +428,7 @@
       id: "bonafide-not-opening",
       category: "reg",
       question: "The bonafide link is not opening / access denied",
-      answer: "If the link does not open or gives an error, try opening it in Google Chrome or an incognito tab, or ensure you are signed into your Google account. You can also copy the direct link or contact our organizers at `gdscpsna@psnacet.edu.in`.",
+      answer: "If the link does not open or gives an error, try opening it in Google Chrome or an incognito tab, or ensure you are signed into your Google account. You can also copy the direct link or contact our organizers at `gdgpsna@psnacet.edu.in`.",
       keywords: [
         "not opening",
         "link not opening",
@@ -486,8 +517,8 @@
       id: "fee-amount",
       category: "fee",
       question: "What is the registration fee for ARENACORE '26?",
-      answer: "The registration fee is **₹500 per member**, which equals **₹2,000 for the entire 4-member squad**. Remember: **Do NOT pay anything now!** Payment is required ONLY after your team is officially shortlisted.",
-      keywords: ["fee", "registration fee", "amount", "cost", "price", "how much", "charges"],
+      answer: "The registration fee is **₹500 per member**.\n\nThe total registration fee depends on the number of team members:\n- **2 members**: ₹1,000 per team\n- **3 members**: ₹1,500 per team\n- **4 members**: ₹2,000 per team\n\nInitial Round 1 registration is 100% free! Payment must be made only after receiving the official shortlist confirmation email from the official ARENACORE '26 organizers (gdgpsna@psnacet.edu.in / acmstudentchapter@psnacet.edu.in).",
+      keywords: ["fee", "registration fee", "amount", "cost", "price", "how much", "charges", "how much fee for 3 members", "cost for 3", "fee for 3"],
       synonyms: ["fees evlo", "evalo fees", "ethanai ruba", "ticket price", "rate"],
       related: ["fee-when-pay", "fee-initial-free", "fee-per-team"],
       actions: [
@@ -498,7 +529,7 @@
       id: "fee-when-pay",
       category: "fee",
       question: "When should we pay the registration fee?",
-      answer: "⚠️ **Do NOT pay any fee during initial Round 1 submission!** After our evaluation committee reviews all entries, the shortlisted **selected teams (10 teams per theme)** will receive an official confirmation email containing the secure payment link.",
+      answer: "⚠️ **Do NOT pay any fee during initial Round 1 registration!** Payment must be made only after receiving the official shortlist confirmation email from the official ARENACORE '26 organizers (gdgpsna@psnacet.edu.in / acmstudentchapter@psnacet.edu.in), which contains the secure payment instructions.",
       keywords: ["when to pay", "payment timing", "when do we pay", "pay now", "payment date"],
       synonyms: ["eppa pay pannanum", "ippove panam kattanuma", "payment deadline"],
       related: ["fee-amount", "reg-shortlist", "fee-email-source"]
@@ -507,7 +538,7 @@
       id: "fee-initial-free",
       category: "fee",
       question: "Is initial registration free of cost?",
-      answer: "Yes! Submitting your team application and project concept for **Round 1 evaluation is 100% free**. You only pay the ₹500/member fee if your squad qualifies for the Top 30 offline finalists.",
+      answer: "Yes! Submitting your team application and project concept for **Round 1 evaluation is 100% free**. The registration fee of **₹500 per member** (₹1,000 for 2 members, ₹1,500 for 3 members, or ₹2,000 for 4 members) is payable only after receiving the official shortlist confirmation email from the official ARENACORE '26 organizers (gdgpsna@psnacet.edu.in / acmstudentchapter@psnacet.edu.in).",
       keywords: ["free registration", "is registration free", "is it free", "zero cost", "apply for free", "no charge", "registration free"],
       synonyms: ["is registration free", "is registering free", "free ah", "initial payment free", "application fee", "cost to register"],
       related: ["fee-amount", "fee-when-pay"]
@@ -515,17 +546,17 @@
     {
       id: "fee-per-team",
       category: "fee",
-      question: "What is the total fee for a 4-member team?",
-      answer: "The total fee is **₹2,000 per team** (calculated as ₹500 × 4 members = ₹2,000). This covers full 24-hour food, snacks, high-speed Wi-Fi, mentorship, certificates, and swag kits.",
-      keywords: ["team fee", "total fee", "600", "total amount", "cost for 4"],
-      synonyms: ["full team cost", "squad fee"],
+      question: "What is the registration fee for a team?",
+      answer: "The total registration fee depends on the number of team members at **₹500 per member**:\n- **2 members**: ₹1,000 per team\n- **3 members**: ₹1,500 per team\n- **4 members**: ₹2,000 per team\n\nPayment must be made only after receiving the official shortlist confirmation email from the official ARENACORE '26 organizers (gdgpsna@psnacet.edu.in / acmstudentchapter@psnacet.edu.in). Accommodation, food, and refreshments are provided free of charge for participants.",
+      keywords: ["team fee", "total fee", "500", "total amount", "cost for 2", "cost for 3", "cost for 4", "how much fee for 3 members", "fee for 3", "fee for 2", "fee for 4", "team of 3 fee", "team of 2 fee", "team of 4 fee", "fee for 3 members", "team registration cost"],
+      synonyms: ["full team cost", "squad fee", "fee for 3 members", "fee for team of 3", "team of 3 cost"],
       related: ["fee-amount", "fee-inclusion"]
     },
     {
       id: "fee-how-pay",
       category: "fee",
       question: "How do we pay the fee / what payment modes are supported?",
-      answer: "Shortlisted teams will receive a secure payment gateway link via their official confirmation email. Supported modes include **UPI (Google Pay, PhonePe, Paytm), Net Banking, and Debit/Credit cards**.",
+      answer: "Shortlisted teams will receive secure payment instructions via their official confirmation email from the official ARENACORE '26 organizers (gdgpsna@psnacet.edu.in / acmstudentchapter@psnacet.edu.in). Supported modes include **UPI (Google Pay, PhonePe, Paytm), Net Banking, and Debit/Credit cards**.",
       keywords: ["how to pay", "payment methods", "upi", "gpay", "phonepe", "net banking", "card"],
       synonyms: ["payment link", "epdi pay panrathu", "payment mode"],
       related: ["fee-when-pay", "fee-email-source"]
@@ -534,8 +565,8 @@
       id: "fee-email-source",
       category: "fee",
       question: "Which email address will send the official payment link?",
-      answer: "Official shortlist notifications and payment links will arrive **ONLY from `gdscpsna@psnacet.edu.in`**. Always verify the sender address to protect yourself from phishing or unauthorized requests.",
-      keywords: ["official email", "payment email", "gdscpsna@psnacet.edu.in", "scam alert", "sender"],
+      answer: "Official shortlist confirmation notifications and payment instructions will arrive **from the official ARENACORE '26 organizers (gdgpsna@psnacet.edu.in / acmstudentchapter@psnacet.edu.in)**. Always verify the sender address to protect yourself from phishing or unauthorized requests.",
+      keywords: ["official email", "payment email", "gdgpsna@psnacet.edu.in", "acmstudentchapter@psnacet.edu.in", "scam alert", "sender"],
       synonyms: ["which email", "mail address", "genuine mail"],
       related: ["contact-email", "fee-when-pay"]
     },
@@ -543,10 +574,10 @@
       id: "fee-inclusion",
       category: "fee",
       question: "What does the ₹500 registration fee include?",
-      answer: "The ₹500 fee per person provides:\n- 🍽️ **Full Meals**: Breakfast, Lunch, and Dinner.\n- ☕ **Continuous Refreshments**: Midnight snacks, tea, and coffee throughout 24 hours.\n- 🌐 **1 Gbps Optical Wi-Fi** & lab desktop compute access.\n- 📜 **Official GDG & ACM Certificates**.\n- 🎁 **Hacker Swag Kits** & cloud credits.",
-      keywords: ["fee inclusion", "what is included", "food included", "perks", "benefits", "what do we get"],
-      synonyms: ["food kedaikuma", "sapadu iruka", "amenities included"],
-      related: ["venue-food", "venue-wifi"]
+      answer: "Accommodation, food, and refreshments are provided free of charge for ARENACORE '26 participants. No separate payment is required for these facilities.\n\nThe registration fee of **₹500 per member** (₹1,000 for 2, ₹1,500 for 3, or ₹2,000 for 4 members) covers hackathon participation, official participant kits (swags, badges, stickers), high-speed 1 Gbps optical Wi-Fi, lab workstations, mentorship, and official GDG & ACM certificates. The ₹500 fee and these free facilities are separate pieces of information.",
+      keywords: ["fee inclusion", "what is included", "food included", "accommodation included", "kits provided", "perks", "benefits", "what do we get", "is food included in the registration fee", "do participants need to pay separately for food", "do we need to pay separately for food", "what facilities are included"],
+      synonyms: ["food kedaikuma", "sapadu iruka", "stay free", "accommodation free", "amenities included", "do we pay for food separately"],
+      related: ["venue-food", "venue-accommodation", "venue-wifi"]
     },
     {
       id: "fee-refund",
@@ -569,8 +600,8 @@
     {
       id: "fee-individual-pay",
       category: "fee",
-      question: "Can members pay individually or does the Team Leader pay for all 4?",
-      answer: "The Team Leader should complete the consolidated payment of ₹2,000 for all 4 squad members using the official link received in the shortlist email to ensure hassle-free team verification.",
+      question: "Can members pay individually or does the Team Leader pay for all members?",
+      answer: "The Team Leader should complete the consolidated payment (₹1,000 for 2 members, ₹1,500 for 3 members, or ₹2,000 for 4 members) for the team using the official instructions received in the shortlist confirmation email from the official ARENACORE '26 organizers (gdgpsna@psnacet.edu.in / acmstudentchapter@psnacet.edu.in).",
       keywords: ["pay individually", "separate payment", "team leader pay", "consolidated payment"],
       synonyms: ["thani thaniya pay panlama", "single payment"],
       related: ["fee-per-team", "team-leader-role"]
@@ -588,7 +619,7 @@
       id: "fee-tanglish-evlo",
       category: "fee",
       question: "Evalo fees kattanum? / How much is the fee?",
-      answer: "ARENACORE '26 registration fee oru member-ku **₹500** (team-ku ₹2,000 total). Round 1 selection confirmation email (`gdscpsna@psnacet.edu.in`) vantha piragu thaan pay pannanum!",
+      answer: "ARENACORE '26 registration fee oru member-ku **₹500** (team-ku ₹1,000 for 2 members, ₹1,500 for 3 members, or ₹2,000 for 4 members). Initial registration 100% free! Official shortlist confirmation email from the official ARENACORE '26 organizers (gdgpsna@psnacet.edu.in / acmstudentchapter@psnacet.edu.in) vantha piragu thaan pay pannanum!",
       keywords: ["evalo fees", "evlo fees", "ethanai ruba", "tamil fee", "tanglish fee"],
       synonyms: ["fee details in tamil", "panam"],
       related: ["fee-amount", "fee-when-pay"]
@@ -597,7 +628,7 @@
       id: "fee-deadline",
       category: "fee",
       question: "What is the deadline to pay the registration fee after shortlisting?",
-      answer: "Shortlisted teams will receive a specific payment window (typically 48–72 hours from the date of the shortlist email) to confirm their seat. Failure to pay within that window releases the seat to waitlisted teams.",
+      answer: "Shortlisted teams will receive a specific payment window (typically 2 to 3 days from the date of the shortlist email) to confirm their seat. Failure to pay within that window releases the seat to waitlisted teams.",
       keywords: ["payment deadline", "last date to pay", "payment window", "fee due date"],
       synonyms: ["when is last date for payment", "seat confirmation deadline"],
       related: ["fee-when-pay", "reg-shortlist"]
@@ -610,9 +641,9 @@
       id: "team-size",
       category: "teams",
       question: "What is the required team size for ARENACORE '26?",
-      answer: "Teams must **strictly consist of exactly 4 members**. Solo participation or teams of 2, 3, or 5 are not permitted to ensure balanced team dynamics and collaborative innovation.",
-      keywords: ["team size", "how many members", "squad size", "4 members", "member count", "team size evlo"],
-      synonyms: ["team size evlo", "team size ethanai", "ethana peru", "ethanai members", "team-la ethana peru", "group size"],
+      answer: "The required team size for ARENACORE '26 is a **minimum of 2 and a maximum of 4 members** per team.\n\n- **Allowed**: Teams of 2, 3, or 4 members (duo, pair, or small squad).\n- **Not allowed**: Solo participation is not permitted (minimum team size is 2).\n- **Not allowed**: Teams with 5 or more members are not permitted (maximum team size is 4).\n- One member must be designated as **Team Leader** and serve as the single point of contact.\n- Every team must have a unique team name, and dual registration is not permitted.\n- Inter-college and cross-department teams are permitted if all members are active students with original college IDs.\n- Registration fee is ₹500 per member (₹1,000 for 2 members, ₹1,500 for 3 members, and ₹2,000 for 4 members).",
+      keywords: ["team size", "members", "how many members", "minimum members", "maximum members", "number of members", "team strength", "duo", "pair", "2 members", "3 members", "4 members", "five members", "team size evlo", "evlo peru team", "squad size", "member count", "allowed team size"],
+      synonyms: ["team size evlo", "evlo peru team", "team size ethanai", "ethana peru", "ethanai members", "team-la ethana peru", "group size", "how many in a team"],
       related: ["team-solo", "team-size-3-or-5"],
       actions: [
         { label: "Check Team Rules", type: "scrollOrUrl", target: "#guidelines" }
@@ -622,18 +653,18 @@
       id: "team-solo",
       category: "teams",
       question: "Can I participate solo / individually in ARENACORE '26?",
-      answer: "No. **Solo participation is strictly not permitted** for ARENACORE '26. You must form a 4-member squad. We encourage teaming up with classmates, department peers, or friends from other institutions!",
-      keywords: ["solo", "participate solo", "individual", "alone", "single participant"],
-      synonyms: ["thaniya participate panlama", "can i join alone", "one person"],
+      answer: "No. **Solo participation is not permitted** because the minimum team size is 2 members. We invite you to find a teammate and register together as a team of 2 to 4 members!",
+      keywords: ["solo", "alone", "individual", "single person", "can I participate alone", "participate solo", "single participant", "can i join alone", "thaniya participate panlama"],
+      synonyms: ["can i join alone", "can I participate alone", "single person", "alone", "thaniya join panlama", "one person", "can i participate solo"],
       related: ["team-size", "team-inter-college"]
     },
     {
       id: "team-size-3-or-5",
       category: "teams",
-      question: "Can we participate with 2, 3, or 5 members?",
-      answer: "No. The guidelines mandate **strictly 4 members per team**. If you currently have 2 or 3 members, please invite another eligible student to complete your 4-member squad before submitting.",
-      keywords: ["3 members", "5 members", "2 members", "team of 3", "team of 5"],
-      synonyms: ["can we be 3", "can we be 5", "three people allowed"],
+      question: "Can we participate with 2 or 3 members, or can we have 5 members?",
+      answer: "Yes! Teams of **2, 3, or 4 members** are permitted (duo or pair participation, and teams of 3 or 4 are allowed). **Solo participation is not permitted**, and **teams with 5 or more members are not permitted**.",
+      keywords: ["2 members", "3 members", "4 members", "five members", "team of 2", "team of 3", "team of 4", "team of 5", "can we be 5 members", "team of 2 allowed", "team of 3 allowed", "duo", "pair", "5 members permitted"],
+      synonyms: ["can we be 2", "can we be 3", "can we be 5", "three people allowed", "two people allowed", "pair allowed", "duo allowed"],
       related: ["team-size", "team-solo"]
     },
     {
@@ -658,8 +689,8 @@
       id: "team-eligibility",
       category: "teams",
       question: "Who is eligible to participate in ARENACORE '26?",
-      answer: "Undergraduate (UG) and Postgraduate (PG) engineering and technology students from any recognized university, institute, or college across India are eligible to participate.",
-      keywords: ["eligibility", "who can participate", "eligible", "ug pg", "engineering students"],
+      answer: "ARENACORE '26 is strictly open to students currently pursuing engineering undergraduate programs (B.E. / B.Tech) from any recognized university, institute, or college across India.",
+      keywords: ["eligibility", "who can participate", "eligible", "engineering undergraduates", "btech", "be"],
       synonyms: ["who can apply", "eligibility criteria", "qualifications"],
       related: ["team-first-year", "team-id-card"]
     },
@@ -712,7 +743,7 @@
       id: "team-member-change",
       category: "teams",
       question: "Can we swap or replace a team member after submitting?",
-      answer: "If an emergency arises, the Team Leader must write to `gdscpsna@psnacet.edu.in` with full details of the outgoing and incoming member before check-in. Replacements are subject to steering committee approval.",
+      answer: "If an emergency arises, the Team Leader must write to `gdgpsna@psnacet.edu.in` with full details of the outgoing and incoming member before check-in. Replacements are subject to steering committee approval.",
       keywords: ["change member", "swap member", "replace member", "member change", "substitute"],
       synonyms: ["member mathalama", "replace person"],
       related: ["contact-email", "team-size"]
@@ -721,7 +752,7 @@
       id: "team-non-students",
       category: "teams",
       question: "Can working professionals, freelancers, or alumni participate?",
-      answer: "No. ARENACORE '26 is exclusively a collegiate hackathon. All participants must be active, enrolled undergraduate or postgraduate students at the time of the event.",
+      answer: "No. ARENACORE '26 is strictly open to students currently pursuing engineering undergraduate programs (B.E. / B.Tech). Working professionals, freelancers, or alumni are not eligible.",
       keywords: ["working professionals", "alumni", "freelancers", "graduated", "non-students"],
       synonyms: ["college mudichavanga", "job holders", "can passouts join"],
       related: ["team-eligibility", "team-id-card"]
@@ -730,8 +761,8 @@
       id: "team-tanglish-ethana",
       category: "teams",
       question: "Team-la ethanai peru irukanum? / How many in a team?",
-      answer: "ARENACORE '26 rules-padi **strictly 4 members** irukanum. Solo participation allow kidayathu. Inter-college teams kooda create pannalam!",
-      keywords: ["ethana peru irukanum", "tamil team size", "tanglish team"],
+      answer: "ARENACORE '26 rules-padi **2 to 4 members** irukanum. Solo participation allow kidayathu. Inter-college teams kooda create pannalam!",
+      keywords: ["ethana peru irukanum", "tamil team size", "tanglish team", "2 to 4 members"],
       synonyms: ["team size in tamil"],
       related: ["team-size", "team-solo"]
     },
@@ -894,13 +925,13 @@
       id: "venue-dates",
       category: "venue",
       question: "When and where is ARENACORE '26 happening?",
-      answer: "ARENACORE '26 takes place on **27 & 27 October 2026 (24 hours non-stop)** at **PSNA College of Engineering and Technology, Dindigul, Tamil Nadu**. Reporting is at 08:30 AM on Day 1 at the IT Auditorium.",
-      keywords: ["dates", "when is hackathon", "venue", "where is it", "timing", "location", "eppo date"],
-      synonyms: ["eppo date", "eppa date", "date eppo", "eppa hackathon", "enga nadakum", "hackathon date", "when will it happen"],
+      answer: "ARENACORE '26 takes place on **28 & 29 October 2026 (24 hours non-stop)** at **PSNA College of Engineering and Technology (Autonomous), Kothandaraman Nagar, Dindigul – 624622, Tamil Nadu**. Participant reporting location is the **IT Auditorium**. The 24-hour hacking begins at 11:00 AM on 28 October 2026 and reaches code freeze at 11:00 AM on 29 October 2026.",
+      keywords: ["when and where is arenacore'26 happening", "date of hackathon", "when is hackathon", "dates", "timing", "location", "venue", "where is it", "eppo date", "hackathon dates", "hackathon duration"],
+      synonyms: ["eppo date", "eppa date", "date eppo", "eppa hackathon", "enga nadakum", "hackathon date", "when will it happen", "event date"],
       related: ["venue-schedule-day1", "venue-location"],
       actions: [
-        { label: "See Schedule", type: "scrollOrUrl", target: "#schedule" },
-        { label: "Open in Maps", type: "url", url: ARENACORE_CONFIG.mapsUrl }
+        { label: "Open in Maps", type: "url", url: ARENACORE_CONFIG.mapsUrl },
+        { label: "See Schedule", type: "scrollOrUrl", target: "#schedule" }
       ]
     },
     {
@@ -912,14 +943,14 @@
       synonyms: ["campus address", "exact location", "college location"],
       related: ["venue-how-to-reach", "venue-dates"],
       actions: [
-        { label: "Open in Google Maps", type: "url", url: ARENACORE_CONFIG.mapsUrl }
+        { label: "Open in Maps", type: "url", url: ARENACORE_CONFIG.mapsUrl }
       ]
     },
     {
       id: "venue-reporting-time",
       category: "venue",
-      question: "What is the reporting time on Day 1 (27 October 2026)?",
-      answer: "Reporting begins at **08:30 AM on Day 1 (27 October 2026)** at the IT Auditorium for participant check-in, physical badge collection, Wi-Fi setup, and welcome breakfast.",
+      question: "What is the reporting time on Day 1 (28 October 2026)?",
+      answer: "Reporting begins at **08:30 AM on Day 1 (28 October 2026)** at the IT Auditorium for participant check-in, physical badge collection, Wi-Fi setup, and welcome breakfast.",
       keywords: ["reporting time", "check in time", "arrival time", "when to arrive", "day 1 time"],
       synonyms: ["eppa varanum", "morning time", "checkin"],
       related: ["venue-schedule-day1", "team-id-card"]
@@ -927,7 +958,7 @@
     {
       id: "venue-schedule-day1",
       category: "venue",
-      question: "What is the detailed schedule for Day 1 (27 October 2026)?",
+      question: "What is the detailed schedule for Day 1 (28 October 2026)?",
       answer: "📅 **Day 1 Timeline (28 Oct)**:\n- **08:30 AM**: Check-in, Kit Distribution & Breakfast (IT Auditorium)\n- **10:00 AM**: Grand Inauguration & Keynote Address (GenAI Keynote)\n- **11:00 AM**: 🚀 **24-Hour Hacking Timer Commences!**\n- **03:30 PM**: Mentorship Round 1 (Architecture & Feasibility)\n- **08:00 PM**: Dinner & Midnight Jam (Trivia Kahoot & Refreshments)\n- **11:30 PM**: Mentorship Round 2 (Midnight Checkpoint & Debugging)",
       keywords: ["schedule day 1", "timeline day 1", "day 1 schedule", "october 28 schedule", "run of show"],
       synonyms: ["day 1 programme", "first day timeline"],
@@ -939,7 +970,7 @@
     {
       id: "venue-schedule-day2",
       category: "venue",
-      question: "What is the detailed schedule for Day 2 (28 October 2026)?",
+      question: "What is the detailed schedule for Day 2 (29 October 2026)?",
       answer: "📅 **Day 2 Timeline (29 Oct)**:\n- **07:00 AM**: Morning Refreshments & Code Freeze Prep\n- **11:00 AM**: 🛑 **Code Freeze & Final Project Submission** (Repos locked)\n- **11:30 AM**: Grand Jury Evaluation & Stage Presentations (5 min demo + 3 min Q&A)\n- **03:30 PM**: Valedictory Ceremony & Prize Distribution (Champions announced!)",
       keywords: ["schedule day 2", "timeline day 2", "day 2 schedule", "october 29 schedule", "closing"],
       synonyms: ["day 2 programme", "second day timeline", "code freeze time"],
@@ -952,19 +983,31 @@
       id: "venue-food",
       category: "venue",
       question: "Is food and refreshments provided during the hackathon?",
-      answer: "Yes! Full catering is provided inside PSNACET campus for all registered participants:\n- 🍳 **Day 1**: Breakfast, Lunch, Dinner\n- 🍕 **Midnight**: Midnight snacks & jam refreshments\n- ☕ **Continuous**: Tea, coffee, and energy drinks 24/7\n- 🥪 **Day 2**: Breakfast & Lunch",
-      keywords: ["food", "meals", "snacks", "dinner", "lunch", "breakfast", "coffee", "tea"],
-      synonyms: ["sapadu iruka", "food provided", "catered meals", "refreshments"],
-      related: ["fee-inclusion", "venue-dates"]
+      answer: "Accommodation, food, and refreshments are provided free of charge for ARENACORE '26 participants. No separate payment is required for these facilities.",
+      keywords: ["food", "meals", "snacks", "dinner", "lunch", "breakfast", "coffee", "tea", "is food provided", "are refreshments free", "do we need to pay separately for food", "refreshments free", "is food free", "food provided"],
+      synonyms: ["food free ah", "refreshment free ah", "sapadu free ah", "sapadu iruka", "food provided", "catered meals", "refreshments", "free refreshments", "do participants need to pay separately for food"],
+      related: ["fee-inclusion", "venue-dates", "venue-accommodation"]
     },
     {
       id: "venue-accommodation",
       category: "venue",
       question: "Is accommodation or stay provided for outstation teams?",
-      answer: "Dedicated resting zones inside the campus are provided throughout the 24-hour sprint. Specific overnight hostel rooms or early check-in slots have not been published yet. Please contact the student organizing leads for special accommodation inquiries.",
-      keywords: ["accommodation", "stay", "hostel", "sleeping arrangement", "outstation", "night stay"],
-      synonyms: ["thanga edam iruka", "room kedaikuma", "hotel", "dormitory"],
-      related: ["contact-leads", "venue-dates"]
+      answer: "Accommodation, food, and refreshments are provided free of charge for ARENACORE '26 participants. No separate payment is required for these facilities.",
+      keywords: ["accommodation", "stay", "hostel", "sleeping arrangement", "outstation", "night stay", "free stay", "is accommodation free", "is accommodation available for all participants", "free accommodation", "stay and food free"],
+      synonyms: ["accommodation free ah", "stay and food free ah", "thanga edam free ah", "room kedaikuma", "hotel", "dormitory", "free accommodation"],
+      related: ["fee-inclusion", "venue-food", "venue-dates"]
+    },
+    {
+      id: "venue-bus-transport",
+      category: "venue",
+      question: "Where should I board the bus and which bus number is designated?",
+      answer: "The designated transport is Private Bus No. 6. Participants using this bus must board at Dindigul Bus Stand.",
+      keywords: ["where should I board the bus", "where is the pickup point", "which bus should I board", "what is the bus number", "is it a private bus", "is pickup available from Dindigul", "how do I reach the venue by the designated bus", "which bus number", "Dindigul bus stand pickup", "is it a private bus", "bus number", "bus no 6", "private bus", "dindigul bus stand", "designated bus", "board the bus", "pickup point"],
+      synonyms: ["bus enga board pannanum", "Dindigul bus stand la board pannanuma", "bus number enna", "no 6 bus enga", "Dindigul pickup point", "pickup from dindigul", "private bus no 6", "bus stand pickup"],
+      related: ["venue-how-to-reach", "venue-location"],
+      actions: [
+        { label: "Open in Maps", type: "url", url: ARENACORE_CONFIG.mapsUrl }
+      ]
     },
     {
       id: "venue-wifi",
@@ -1015,12 +1058,12 @@
       id: "venue-how-to-reach",
       category: "venue",
       question: "How do I reach PSNACET from Dindigul Railway Station or Bus Stand?",
-      answer: "PSNACET is situated on the **Dindigul–Palani Highway**, approximately 12 km from Dindigul Central Bus Stand and Dindigul Junction Railway Station. Government & private buses towards Palani/Ottanchathiram stop right in front of the college gate. Auto-rickshaws and taxis are readily available.",
-      keywords: ["how to reach", "travel", "transport", "bus stand", "railway station", "directions"],
+      answer: "The designated transport is Private Bus No. 6. Participants using this bus must board at Dindigul Bus Stand.\n\nPSNACET is situated on the **Dindigul–Palani Highway**, approximately 12 km from Dindigul Central Bus Stand and Dindigul Junction Railway Station. For any unconfirmed transport details, please contact the official organizers directly.",
+      keywords: ["how to reach", "travel", "transport", "bus stand", "railway station", "directions", "reach venue"],
       synonyms: ["epdi varanum", "route", "bus route"],
-      related: ["venue-location"],
+      related: ["venue-location", "venue-bus-transport"],
       actions: [
-        { label: "Open in Google Maps", type: "url", url: ARENACORE_CONFIG.mapsUrl }
+        { label: "Open in Maps", type: "url", url: ARENACORE_CONFIG.mapsUrl }
       ]
     },
     {
@@ -1036,7 +1079,7 @@
       id: "venue-when-ends",
       category: "venue",
       question: "When does ARENACORE '26 conclude on Day 2?",
-      answer: "The hackathon officially concludes around **04:30 PM on Day 2 (28 October 2026)**, following the Grand Jury Stage Presentations, Valedictory Ceremony, and Prize Distribution.",
+      answer: "The hackathon officially concludes around **04:30 PM on Day 2 (29 October 2026)**, following the Grand Jury Stage Presentations, Valedictory Ceremony, and Prize Distribution.",
       keywords: ["when does it end", "finish time", "closing time", "departure time"],
       synonyms: ["eppa mudiyum", "end time", "valedictory time"],
       related: ["venue-schedule-day2", "prizes-first"]
@@ -1045,7 +1088,7 @@
       id: "venue-today",
       category: "venue",
       question: "What is happening today at ARENACORE '26?",
-      answer: "You can check our real-time schedule and countdown. The 24-hour hackathon runs on **27 & 27 October 2026**. If today is during event days, reporting is at the IT Auditorium and coding is live in IT labs!",
+      answer: "You can check our real-time schedule and countdown. The 24-hour hackathon runs on **28 & 29 October 2026**. If today is during event days, reporting is at the IT Auditorium and coding is live in IT labs!",
       keywords: ["what happens today", "today schedule", "is it today", "current events"],
       synonyms: ["iniku enna nadakuthu", "happening now"],
       related: ["venue-schedule-day1", "venue-schedule-day2"]
@@ -1058,7 +1101,7 @@
       id: "rules-code-freeze",
       category: "rules",
       question: "When is the code freeze and final project submission?",
-      answer: "The code freeze occurs strictly at **11:00 AM on Day 2 (28 October 2026)**. At that moment, GitHub repositories must be locked, and your 3-minute demo video and presentation slides must be submitted to the portal.",
+      answer: "The code freeze occurs strictly at **11:00 AM on Day 2 (29 October 2026)**. At that moment, GitHub repositories must be locked, and your 3-minute demo video and presentation slides must be submitted to the portal.",
       keywords: ["code freeze", "submission deadline", "final submission", "stop coding", "lock repos"],
       synonyms: ["eppa submit pannanum", "freeze time", "last commit"],
       related: ["venue-schedule-day2", "rules-submission-requirements"]
@@ -1191,7 +1234,7 @@
       id: "prizes-total-pool",
       category: "prizes",
       question: "What is the total prize pool / prize money for ARENACORE '26?",
-      answer: "The total prize pool is **₹1,20,000 cash**, plus trophies, merit certificates, official Google & ACM tech kits, startup incubation opportunities, and Google Cloud credits!",
+      answer: "The total prize pool is **₹1,20,000 cash**, split equally as **₹40,000 for each of the 3 themes**, plus trophies, merit certificates, official Google & ACM tech kits, startup incubation opportunities, and Google Cloud credits!",
       keywords: ["prize pool", "total prize", "120000", "cash prizes", "awards", "prize money", "cash pool"],
       synonyms: ["prize money", "cash prize", "evlo prize", "total cash", "what is prize money", "how much prize money"],
       related: ["prizes-first", "prizes-second", "prizes-certificates"],
@@ -1302,10 +1345,13 @@
       id: "prizes-pitch-deck",
       category: "prizes",
       question: "Where can I find the official 10-slide presentation deck template?",
-      answer: "The official **10-slide Google Slides pitch deck template** is tailored directly to the 100-point rubric (Concept, Architecture, Demo, and SDG Impact). You can open and clone it from the starter kits section on the website.",
-      keywords: ["pitch deck", "slides template", "google slides", "10 slides", "presentation template"],
-      synonyms: ["ppt template", "slide deck"],
-      related: ["prizes-judging-criteria", "rules-starter-kits"]
+      answer: "The official **Google Slides pitch deck template** is tailored directly to the 100-point rubric (Concept, Architecture, Demo, and SDG Impact). You can open and make a copy from Google Drive: https://docs.google.com/presentation/d/1tFxQwV1VzSZpjmTccVna4HIIlyynsCKG_W8YG2pfM5k/edit?usp=sharing",
+      keywords: ["pitch deck", "slides template", "google slides", "10 slides", "presentation template", "ppt template"],
+      synonyms: ["ppt template", "slide deck", "presentation link"],
+      related: ["prizes-judging-criteria", "register-process"],
+      actions: [
+        { label: "Open Official PPT Template", type: "openUrl", target: "https://docs.google.com/presentation/d/1tFxQwV1VzSZpjmTccVna4HIIlyynsCKG_W8YG2pfM5k/edit?usp=sharing" }
+      ]
     },
     {
       id: "prizes-cash-distribution",
@@ -1333,14 +1379,13 @@
       id: "contact-leads",
       category: "contact",
       question: "Who are the student coordinators / student leads to contact?",
-      answer: "Our direct student organizing leads are:\n- 📞 **Chitharthaa A** (GDG Campus Organiser): `+91 86820 67304`\n- 📞 **Darshan S** (ACM Chair): `+91 93455 30457`\n- 📞 **Dhanush Pandi S** (GDG Multimedia Director): `+91 82486 03031`",
-      keywords: ["contact leads", "student coordinators", "phone numbers", "who to call", "organizers"],
-      synonyms: ["yarai contact panrathu", "phone number", "student leads"],
-      related: ["contact-email", "contact-chitharthaa"],
+      answer: "The official student coordinators for ARENACORE '26 are:\n- **Chitharthaa A** — GDG Campus Organiser — `+91 86820 67304`\n- **Darshan S** — ACM Chair — `+91 93455 30457`",
+      keywords: ["who are the student coordinators", "student leads contact", "student coordinators", "student leads", "who to contact", "contact leads", "coordinators", "phone numbers", "organizers"],
+      synonyms: ["yarai contact panrathu", "phone number", "student leads", "leads contact", "coordinators contact"],
+      related: ["contact-email", "contact-chitharthaa", "contact-darshan"],
       actions: [
         { label: "Call Chitharthaa", type: "tel", target: "tel:+918682067304" },
-        { label: "Call Darshan", type: "tel", target: "tel:+919345530457" },
-        { label: "Call Dhanush", type: "tel", target: "tel:+918248603031" }
+        { label: "Call Darshan", type: "tel", target: "tel:+919345530457" }
       ]
     },
     {
@@ -1363,35 +1408,25 @@
       answer: "**Darshan S** is the ACM PSNACET Student Chapter Chair. You can call him at **+91 93455 30457** for event rules, logistics, and registration inquiries.",
       keywords: ["darshan", "acm chair", "acm contact", "darshan phone"],
       synonyms: ["darshan phone number", "acm lead"],
-      related: ["contact-leads", "contact-dhanush"],
+      related: ["contact-leads", "contact-chitharthaa"],
       actions: [
         { label: "Call Darshan", type: "tel", target: "tel:+919345530457" },
         { label: "WhatsApp Darshan", type: "url", url: "https://wa.me/919345530457" }
       ]
     },
     {
-      id: "contact-dhanush",
-      category: "contact",
-      question: "How do I reach Dhanush Pandi S (GDG Multimedia Director)?",
-      answer: "**Dhanush Pandi S** is the GDG Multimedia Director. You can contact him at **+91 82486 03031** for website, hacker pass, and media support.",
-      keywords: ["dhanush", "dhanush pandi", "multimedia director", "dhanush contact"],
-      synonyms: ["dhanush phone number", "media lead"],
-      related: ["contact-leads", "contact-chitharthaa"],
-      actions: [
-        { label: "Call Dhanush", type: "tel", target: "tel:+918248603031" },
-        { label: "WhatsApp Dhanush", type: "url", url: "https://wa.me/918248603031" }
-      ]
-    },
-    {
       id: "contact-email",
       category: "contact",
       question: "What is the official email address for hackathon queries?",
-      answer: "For all official communications, shortlist questions, and payment queries, email **`gdscpsna@psnacet.edu.in`**. You can also reach the general college desk at `contact@psnacet.edu.in`.",
-      keywords: ["email", "official email", "gdscpsna@psnacet.edu.in", "contact email", "support email"],
-      synonyms: ["mail id", "organizer email"],
+      answer: "The official email addresses for ARENACORE '26 hackathon queries are:\n- **GDG**: `gdgpsna@psnacet.edu.in`\n- **ACM**: `acmstudentchapter@psnacet.edu.in`\n\nCollege general office contact details (phone: 0451-2554411 / 2554032, website: www.psnacet.edu.in) remain unchanged.",
+      keywords: ["official email", "official email address", "mail id", "email id", "contact mail", "where to send mail", "hackathon mail", "gdg mail", "acm mail", "mail id for queries", "gdgpsna@psnacet.edu.in", "acmstudentchapter@psnacet.edu.in", "support email"],
+      synonyms: ["mail address venum", "mail id", "organizer email", "contact email", "email address", "where to send mail", "gdg mail", "acm mail"],
       related: ["contact-leads", "contact-college-phone"],
       actions: [
-        { label: "Email Organizers", type: "email", target: "mailto:gdscpsna@psnacet.edu.in" }
+        { label: "Email GDG", type: "email", target: "mailto:gdgpsna@psnacet.edu.in" },
+        { label: "Email ACM", type: "email", target: "mailto:acmstudentchapter@psnacet.edu.in" },
+        { label: "Copy email for GDG", type: "copy", target: "gdgpsna@psnacet.edu.in" },
+        { label: "Copy email for ACM", type: "copy", target: "acmstudentchapter@psnacet.edu.in" }
       ]
     },
     {
@@ -1440,19 +1475,19 @@
       id: "contact-sponsorship",
       category: "contact",
       question: "How can tech companies, sponsors, or mentors get in touch?",
-      answer: "Sponsors, industry partners, and prospective mentors can connect directly with HOD Dr. A. Vincent Antony Kumar or write to `gdscpsna@psnacet.edu.in` with your proposal.",
+      answer: "Sponsors, industry partners, and prospective mentors can connect directly with HOD Dr. A. Vincent Antony Kumar or write to `gdgpsna@psnacet.edu.in` with your proposal.",
       keywords: ["sponsorship", "partner", "sponsor hackathon", "mentor inquiry", "company contact"],
       synonyms: ["become sponsor", "brand tie-up"],
       related: ["contact-email", "contact-faculty"],
       actions: [
-        { label: "Email for Partnership", type: "email", target: "mailto:gdscpsna@psnacet.edu.in" }
+        { label: "Email for Partnership", type: "email", target: "mailto:gdgpsna@psnacet.edu.in" }
       ]
     },
     {
       id: "contact-reply-time",
       category: "contact",
       question: "How quickly do the organizers respond to emails?",
-      answer: "Our team actively monitors `gdscpsna@psnacet.edu.in` during working hours and responds promptly. For urgent matters, feel free to call our student coordinators directly.",
+      answer: "Our team actively monitors `gdgpsna@psnacet.edu.in` during working hours and responds promptly. For urgent matters, feel free to call our student coordinators directly.",
       keywords: ["response time", "how fast reply", "reply time", "support hours"],
       synonyms: ["eppa reply varum", "turnaround time"],
       related: ["contact-email", "contact-leads"]

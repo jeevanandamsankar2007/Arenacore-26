@@ -315,18 +315,19 @@ img {
    TOP ANNOUNCEMENT BAR (CRICKET POSTMATCH / NEWS BROADCAST MARQUEE TICKER)
    ========================================================================== */
 .announcement-banner {
-  background: linear-gradient(90deg, #0f172a, #1e293b);
+  background: linear-gradient(90deg, #090d16, #131d2e);
   color: #ffffff;
-  padding: 8px 16px;
-  font-size: 0.88rem;
+  padding: 4px 14px;
+  font-size: 0.81rem;
+  min-height: 32px;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   position: relative;
   z-index: 102;
-  border-bottom: 2px solid;
-  border-image: linear-gradient(90deg, var(--g-blue), var(--g-red), var(--g-yellow), var(--g-green)) 1;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   overflow: hidden;
+  transition: all var(--transition-base);
 }
 
 .ticker-header-badge {
@@ -334,22 +335,23 @@ img {
   display: flex;
   align-items: center;
   z-index: 2;
-  background: #0f172a;
-  box-shadow: 4px 0 14px rgba(15, 23, 42, 0.95);
-  padding-right: 8px;
+  background: transparent;
+  padding-right: 6px;
 }
 
 .ticker-header-badge .badge-pill {
-  animation: pulse-ticker-red 2s infinite ease-in-out;
-  letter-spacing: 0.6px;
-  font-weight: 800;
+  animation: pulse-ticker-red 2.5s infinite ease-in-out;
+  letter-spacing: 0.4px;
+  font-weight: 700;
   white-space: nowrap;
-  font-size: 0.76rem;
+  font-size: 0.69rem;
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
 }
 
 @keyframes pulse-ticker-red {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(234, 67, 53, 0.7); }
-  50% { box-shadow: 0 0 0 5px rgba(234, 67, 53, 0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(234, 67, 53, 0.6); }
+  50% { box-shadow: 0 0 0 4px rgba(234, 67, 53, 0); }
 }
 
 .ticker-container {
@@ -360,17 +362,17 @@ img {
   white-space: nowrap;
   display: flex;
   align-items: center;
-  mask-image: linear-gradient(to right, transparent, black 16px, black calc(100% - 16px), transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 16px, black calc(100% - 16px), transparent);
+  mask-image: linear-gradient(to right, transparent, black 12px, black calc(100% - 12px), transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 12px, black calc(100% - 12px), transparent);
 }
 
 .ticker-track {
   display: inline-flex;
   align-items: center;
-  gap: 20px;
+  gap: 18px;
   white-space: nowrap;
   will-change: transform;
-  animation: marqueeTicker 30s linear infinite;
+  animation: marqueeTicker 28s linear infinite;
 }
 
 .ticker-container:hover .ticker-track {
@@ -380,21 +382,30 @@ img {
 .ticker-item {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  color: #e2e8f0;
-  font-size: 0.88rem;
-  letter-spacing: 0.2px;
+  gap: 5px;
+  color: #cbd5e1;
+  font-size: 0.81rem;
+  letter-spacing: 0.1px;
 }
 
 .ticker-item strong {
   color: #ffffff;
 }
 
+.ticker-prize-highlight {
+  color: #fbbf24;
+  font-weight: 800;
+  background: rgba(251, 191, 36, 0.12);
+  padding: 1px 6px;
+  border-radius: 4px;
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
 .ticker-separator {
-  color: var(--g-yellow);
-  font-weight: 900;
-  font-size: 1.1rem;
-  opacity: 0.85;
+  color: #eab308;
+  font-weight: 700;
+  font-size: 0.95rem;
+  opacity: 0.5;
   user-select: none;
 }
 
@@ -419,7 +430,7 @@ img {
 .bg-google-red { background-color: var(--g-red); color: #ffffff; }
 
 .announcement-link {
-  color: var(--g-yellow);
+  color: #fde047;
   font-weight: 700;
   text-decoration: underline;
   margin-left: 2px;
@@ -433,10 +444,10 @@ img {
 .banner-close-btn {
   background: transparent;
   border: none;
-  color: #94a3b8;
-  font-size: 1.3rem;
+  color: #64748b;
+  font-size: 1.05rem;
   cursor: pointer;
-  padding: 4px;
+  padding: 2px 4px;
   line-height: 1;
   flex-shrink: 0;
   z-index: 2;
@@ -446,8 +457,6 @@ img {
 .banner-close-btn:hover {
   color: #ffffff;
 }
-
-.banner-close-btn:hover { color: #ffffff; }
 
 /* ==========================================================================
    PRIMARY SITE HEADER & NAVIGATION
@@ -629,6 +638,10 @@ img {
   gap: 12px;
   flex-shrink: 0;
   margin-left: 14px;
+}
+
+.header-get-pass-btn {
+  margin-right: clamp(16px, 2.5vw, 32px);
 }
 
 .status-lookup-btn {
@@ -1714,20 +1727,22 @@ body.dark-theme .mobile-drawer-footer {
   max-width: 1360px;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 36px;
 }
 
 .meta-pill {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 16px;
   background: #ffffff;
-  padding: 16px 26px;
+  padding: 16px 20px;
   border-radius: 18px;
   border: 1.5px solid #e2e8f0;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
   text-align: left;
   flex: 1 1 250px;
-  max-width: 330px;
+  width: 100%;
+  max-width: 100%;
   transition: all var(--transition-base);
 }
 
@@ -1775,7 +1790,7 @@ body.dark-theme .mobile-drawer-footer {
 
 .meta-pill strong {
   display: block;
-  font-size: 1.14rem;
+  font-size: 1.12rem;
   font-weight: 800;
   color: var(--text-primary);
   line-height: 1.25;
@@ -1784,10 +1799,11 @@ body.dark-theme .mobile-drawer-footer {
 
 .meta-pill span {
   display: block;
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   font-weight: 500;
   color: var(--text-muted);
   margin-top: 4px;
+  line-height: 1.35;
 }
 
 /* Hero Countdown Card (Enlarged & Prominent with Google Brand Spectrum) */
@@ -1795,6 +1811,7 @@ body.dark-theme .mobile-drawer-footer {
   width: 100%;
   max-width: 950px;
   padding: 36px 36px 30px;
+  margin-top: 32px;
   margin-bottom: 38px;
   position: relative;
   overflow: hidden;
@@ -3542,199 +3559,472 @@ body.dark-theme .sdg-rubric-tip {
   margin: 12px auto 0;
 }
 
-.pass-header {
-  padding: 14px 18px 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.pass-gdg-brand {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.gdg-logo-dots {
-  display: grid;
-  grid-template-columns: 6px 6px;
-  grid-gap: 3px;
-}
-
-.b-dot { width: 6px; height: 6px; border-radius: 50%; }
-.d-b { background-color: var(--g-blue); }
-.d-r { background-color: var(--g-red); }
-.d-y { background-color: var(--g-yellow); }
-.d-g { background-color: var(--g-green); }
-
-.pass-gdg-title {
-  font-size: 0.78rem;
-  font-weight: 800;
-  color: var(--text-primary);
-  line-height: 1;
-}
-
-.pass-gdg-sub {
-  font-size: 0.65rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  letter-spacing: 0.3px;
-}
-
-.pass-type-chip {
-  background: #1e293b;
-  color: #ffffff;
-  font-size: 0.65rem;
-  font-weight: 800;
-  padding: 3px 8px;
-  border-radius: var(--radius-full);
-  letter-spacing: 0.5px;
-}
-
-.pass-color-stripe {
-  height: 4px;
-  width: 100%;
-  background: linear-gradient(90deg, var(--g-blue) 25%, var(--g-red) 25% 50%, var(--g-yellow) 50% 75%, var(--g-green) 75%);
-}
-
-.pass-body {
-  padding: 18px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.pass-avatar-wrap {
+/* =============================================================================
+   NEW ARENACORE '26 OFFICIAL PASS TEMPLATE (EXACT REPLICA DESIGN)
+   ============================================================================= */
+.pass-realistic-card {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border-radius: 20px;
   position: relative;
-  width: 72px;
-  height: 72px;
-  flex-shrink: 0;
+  overflow: hidden;
+  padding: 0 !important;
+  box-shadow: 0 16px 40px -8px rgba(15, 23, 42, 0.2), 0 0 20px rgba(66, 133, 244, 0.15);
+  border: 1.5px solid rgba(226, 232, 240, 0.95);
+  font-family: var(--font-body, 'Inter', sans-serif);
+  aspect-ratio: 682 / 1024;
+  width: 100%;
 }
 
-.pass-avatar {
+body.dark-theme .pass-realistic-card {
+  background: #ffffff !important;
+  color: #0f172a !important;
+}
+
+.pass-base-bg-img {
   width: 100%;
   height: 100%;
-  border-radius: 16px;
   object-fit: cover;
-  border: 2px solid #e2e8f0;
-  background: #f1f5f9;
+  display: block;
+  user-select: none;
+  pointer-events: none;
 }
 
-.avatar-upload-label {
+/* Dynamic Overlays positioned in exact percentages matching the template */
+.pass-ovl-name {
   position: absolute;
-  bottom: -4px;
-  right: -4px;
-  width: 24px;
-  height: 24px;
-  background: var(--g-blue);
-  color: #ffffff;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.7rem;
-  cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-}
-
-.pass-name {
-  font-size: 1.1rem;
+  left: 37.5%;
+  top: 41.4%;
+  width: 55%;
+  font-size: 0.92rem;
   font-weight: 800;
-  color: var(--text-primary);
-  line-height: 1.2;
-}
-
-.pass-role {
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--g-blue);
+  color: #001f50;
   text-transform: uppercase;
-}
-
-.pass-team {
-  font-size: 0.8rem;
-  color: var(--text-secondary);
-  margin-top: 2px;
-}
-
-.pass-team span {
-  font-weight: 700;
-  color: var(--text-primary);
-}
-
-.pass-college {
-  font-size: 0.72rem;
-  color: var(--text-muted);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 160px;
+  line-height: 1.1;
+  letter-spacing: 0.3px;
 }
 
-.pass-track-bar {
-  background: #f8fafd;
-  border-top: 1px solid #e2e8f0;
-  border-bottom: 1px solid #e2e8f0;
-  padding: 8px 18px;
+.pass-ovl-team {
+  position: absolute;
+  left: 37.5%;
+  top: 45.8%;
+  width: 55%;
+  font-size: 0.84rem;
+  font-weight: 800;
+  color: #001f50;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.1;
+}
+
+.pass-ovl-theme {
+  position: absolute;
+  left: 37.5%;
+  top: 50.4%;
+  width: 55%;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #001f50;
+  line-height: 1.25;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.pass-ovl-college {
+  position: absolute;
+  left: 37.5%;
+  top: 56.4%;
+  width: 55%;
+  font-size: 0.66rem;
+  font-weight: 800;
+  color: #001f50;
+  line-height: 1.25;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.pass-ovl-qr {
+  position: absolute;
+  left: 41.5%;
+  top: 62.9%;
+  width: 16.9%;
+  height: 11.3%;
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #ffffff;
 }
 
-.p-track, .p-id {
+.pass-ovl-qr canvas,
+.pass-ovl-qr img {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+  object-fit: contain;
+}
+
+.pass-ovl-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 75.3%;
+  text-align: center;
+  font-size: 0.54rem;
+  font-weight: 800;
+  color: #32466e;
+  letter-spacing: 0.2px;
+}
+
+/* Top Institutional Header */
+.pass26-header-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2px;
+}
+
+.pass26-psna-logo {
+  height: 44px;
+  max-width: 220px;
+  object-fit: contain;
+}
+
+/* Clubs row */
+.pass26-clubs-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #1e293b;
+  padding: 1px 0 2px;
+}
+
+.pass26-club-col {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pass26-club-col img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+.pass26-club-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.pass26-club-text .p-bold {
+  font-weight: 800;
+  font-size: 0.68rem;
+  color: #0f172a;
+}
+
+.pass26-club-text .p-sub {
+  font-weight: 700;
+  font-size: 0.6rem;
+  color: #334155;
+}
+
+.pass26-clubs-divider {
+  width: 1px;
+  height: 22px;
+  background: #94a3b8;
+}
+
+/* Main title */
+.pass26-title-section {
+  text-align: center;
+  padding: 2px 0 0;
+}
+
+.pass26-main-title {
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: 2.15rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.5px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pass26-main-title .t-arena { color: #0b1a30; }
+.pass26-main-title .t-c { color: #1a73e8; }
+.pass26-main-title .t-o { color: #ea4335; }
+.pass26-main-title .t-r { color: #fbbc04; }
+.pass26-main-title .t-e { color: #34a853; }
+.pass26-main-title .t-26 { color: #0b1a30; }
+
+.pass26-title-swoosh {
+  width: 180px;
+  height: 5px;
+  margin: 3px auto 5px;
+  background: linear-gradient(90deg, #1a73e8 0%, #fbbc04 35%, #ea4335 65%, #34a853 100%);
+  border-radius: 4px;
+}
+
+.pass26-subtitle-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-heading, 'Inter', sans-serif);
+  font-size: 0.85rem;
+  font-weight: 900;
+  letter-spacing: 3.5px;
+  color: #0b1a30;
+}
+
+.pass26-circuit-line {
+  display: flex;
+  align-items: center;
+  width: 32px;
+}
+
+.pass26-circuit-line .line {
+  height: 2px;
+  flex: 1;
+  background: #0284c7;
+}
+
+.pass26-circuit-line .node {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  border: 1.5px solid #0284c7;
+  background: #ffffff;
+}
+
+.pass26-circuit-line.right .line {
+  background: linear-gradient(90deg, #34a853, #ea4335);
+}
+
+.pass26-circuit-line.right .node {
+  border-color: #ea4335;
+}
+
+.pass26-tagline {
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  margin-top: 2px;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.pass26-tagline .tg-build { color: #1a73e8; }
+.pass26-tagline .tg-innovate { color: #0f9d58; }
+.pass26-tagline .tg-impact { color: #ea4335; }
+.pass26-tagline .tg-dot { color: #64748b; }
+
+/* Attendee Details Card */
+.pass26-attendee-card {
+  background: #edf5fc;
+  border: 1px solid #cce3f8;
+  border-radius: 12px;
+  padding: 5px 12px;
   display: flex;
   flex-direction: column;
 }
 
-.p-lbl {
-  font-size: 0.6rem;
-  font-weight: 700;
-  color: var(--text-muted);
-  letter-spacing: 0.5px;
-}
-
-.p-track strong {
-  font-size: 0.78rem;
-  color: var(--g-blue-dark);
-}
-
-.p-id strong {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: var(--text-primary);
-}
-
-.pass-footer {
-  padding: 12px 18px 16px;
+.pass26-att-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 8px;
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(204, 227, 248, 0.7);
+  font-size: 0.72rem;
 }
 
-.pass-event-details {
-  font-size: 0.7rem;
-  color: var(--text-secondary);
-  line-height: 1.4;
+.pass26-att-row:last-child {
+  border-bottom: none;
 }
 
-.pass-qr-box {
+.pass26-att-icon {
+  width: 22px;
+  height: 22px;
+  background: #0c2040;
+  border-radius: 50%;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  flex-shrink: 0;
+}
+
+.pass26-att-label {
+  font-weight: 700;
+  color: #0c2040;
+  width: 48px;
+  flex-shrink: 0;
+}
+
+.pass26-att-colon {
+  font-weight: 700;
+  color: #0c2040;
+  margin-right: 2px;
+}
+
+.pass26-att-val {
+  font-weight: 800;
+  color: #0b1a30;
+  flex: 1;
+  line-height: 1.25;
+}
+
+/* QR Code Section */
+.pass26-qr-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 2px 0;
+}
+
+.pass26-qr-frame {
+  position: relative;
+  padding: 3px;
+  background: #ffffff;
+  border-radius: 10px;
+  display: inline-block;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.pass26-qr-frame::before {
+  content: '';
+  position: absolute;
+  top: -2.5px; left: -2.5px; right: -2.5px; bottom: -2.5px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #4285f4 0%, #ea4335 33%, #fbbc05 66%, #34a853 100%);
+  z-index: -1;
+}
+
+.pass26-qr-box {
+  width: 96px;
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.pass26-qr-box canvas, .pass26-qr-box img {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+.pass26-qr-caption {
+  font-size: 0.64rem;
+  font-weight: 700;
+  color: #334155;
+  margin-top: 4px;
+  text-align: center;
+  letter-spacing: 0.3px;
+}
+
+/* Event Info */
+.pass26-event-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-size: 0.68rem;
+  color: #0f172a;
+  text-align: center;
+}
+
+.pass26-event-info .item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+}
+
+.pass26-event-info .item i {
+  font-size: 0.75rem;
+}
+
+/* Access Details */
+.pass26-access-section {
+  border-top: 1px solid #e2e8f0;
+  padding-top: 6px;
+  margin-top: 2px;
+}
+
+.pass26-access-header {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #0c2040;
+  text-align: center;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.pass26-access-header::before,
+.pass26-access-header::after {
+  content: '';
+  height: 1px;
+  flex: 1;
+  background: #cbd5e1;
+}
+
+.pass26-access-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 2px;
+  text-align: center;
+}
+
+.pass26-acc-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2px;
 }
 
-.pass-qr-svg {
-  width: 44px;
-  height: 44px;
-  border-radius: 4px;
+.pass26-acc-item i {
+  font-size: 1rem;
+  color: #0c2040;
 }
 
-.qr-label {
-  font-size: 0.55rem;
-  font-weight: 800;
-  letter-spacing: 0.3px;
-  color: var(--text-muted);
+.pass26-acc-item .acc-lbl {
+  font-size: 0.58rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.1;
 }
+
+.pass26-acc-item .acc-sub {
+  font-size: 0.48rem;
+  color: #64748b;
+  line-height: 1;
+}
+
 
 .badge-actions-group {
   display: flex;
@@ -4902,7 +5192,7 @@ body.dark-theme .sdg-rubric-tip {
 
 .footer-top-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  grid-template-columns: 2fr 1fr 1fr;
   gap: 36px;
   margin-bottom: 48px;
 }
@@ -5284,6 +5574,7 @@ body.dark-theme .sdg-rubric-tip {
 @media (max-width: 768px) {
   .hero-countdown-card { 
     padding: 18px 10px !important; 
+    margin-top: 28px !important;
     margin-bottom: 24px !important;
     border-radius: 18px !important;
   }
@@ -5609,7 +5900,7 @@ body.dark-theme .site-footer {
 .badge-3d-scene {
   perspective: 1200px;
   width: 100%;
-  max-width: 360px;
+  max-width: 390px;
   margin: 0 auto;
 }
 
@@ -7536,6 +7827,7 @@ body.dark-theme .barcode-lines {
   /* Mobile Straight-Line Countdown Timer */
   .hero-countdown-card {
     padding: 18px 10px 14px !important;
+    margin-top: 28px !important;
     margin-bottom: 24px !important;
     border-radius: 18px !important;
   }
@@ -7727,17 +8019,19 @@ body.dark-theme .barcode-lines {
 
   /* 2. Announcement Banner */
   .announcement-banner {
-    padding: 6px 10px !important;
-    font-size: 0.8rem !important;
-    gap: 8px !important;
+    padding: 3px 8px !important;
+    font-size: 0.74rem !important;
+    min-height: 28px !important;
+    gap: 6px !important;
     max-width: 100% !important;
     overflow: hidden !important;
   }
 
   .ticker-header-badge .badge-pill {
-    font-size: 0.7rem !important;
-    padding: 2px 8px !important;
+    font-size: 0.64rem !important;
+    padding: 1px 6px !important;
   }
+
 
   /* 3. Hero Section Fluidity */
   .hero-section {

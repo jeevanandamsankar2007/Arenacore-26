@@ -52,9 +52,9 @@ def seed_database():
                 description="24-Hour National-Level Deep Tech Hackathon hosted by Google Developer Groups On Campus PSNACET & ACM PSNACET.",
                 venue="Department of Information Technology, PSNACET Campus",
                 location="Kothandaraman Nagar, Dindigul - 624622, Tamil Nadu, India",
-                start_date="2026-10-27",
-                end_date="2026-10-28",
-                contact_email="gdscpsna@psnacet.edu.in",
+                start_date="2026-10-28",
+                end_date="2026-10-29",
+                contact_email="gdgpsna@psnacet.edu.in",
                 contact_phone="+91 86820 67304",
                 website_status="ACTIVE",
             )
@@ -66,7 +66,7 @@ def seed_database():
             initial_announcements = [
                 Announcement(
                     title="ARENACORE '26 Registrations Announced!",
-                    content="Round 1 registrations for the 24-Hour Hackathon are officially open. Submit your squad of 4 before 12 OCT 2026.",
+                    content="Round 1 registrations for the 24-Hour Hackathon are officially open. Submit your team (2 to 4 members) before 21 OCT 2026.",
                     category="Important",
                     is_published=True,
                     publish_date="2026-10-01",
@@ -88,7 +88,7 @@ def seed_database():
                 ScheduleItem(
                     title="Check-in, Kit Distribution & Breakfast",
                     description="Reporting at IT Auditorium, team badge collection, Wi-Fi setup, and welcome breakfast.",
-                    date="2026-10-27",
+                    date="2026-10-28",
                     start_time="08:00 AM",
                     end_time="09:30 AM",
                     location="IT Auditorium, Ground Floor",
@@ -98,7 +98,7 @@ def seed_database():
                 ScheduleItem(
                     title="Grand Inauguration & Keynote Address",
                     description="Opening remarks by Principal, HOD Dr. A. Vincent Antony Kumar, and keynote on GenAI innovation.",
-                    date="2026-10-27",
+                    date="2026-10-28",
                     start_time="09:30 AM",
                     end_time="10:30 AM",
                     location="IT Auditorium",
@@ -108,7 +108,7 @@ def seed_database():
                 ScheduleItem(
                     title="🚀 24-Hour Hacking Timer Commences!",
                     description="Problem statement lock-in, repository setup, and first sprint initiation across lab clusters.",
-                    date="2026-10-27",
+                    date="2026-10-28",
                     start_time="11:00 AM",
                     end_time="11:00 AM (Next Day)",
                     location="IT Department Computer Labs (Clusters A, B, C)",
@@ -118,7 +118,7 @@ def seed_database():
                 ScheduleItem(
                     title="Mentorship Round 1: Architecture & Feasibility",
                     description="Mentors visit teams for 1-on-1 code reviews, tech stack validation, and design adjustments.",
-                    date="2026-10-27",
+                    date="2026-10-28",
                     start_time="03:00 PM",
                     end_time="05:30 PM",
                     location="All Hacking Labs",
@@ -128,7 +128,7 @@ def seed_database():
                 ScheduleItem(
                     title="Dinner & Midnight Jam Session",
                     description="Energizing dinner, fun trivia kahoot, red bull refreshments, and developer networking.",
-                    date="2026-10-27",
+                    date="2026-10-28",
                     start_time="08:30 PM",
                     end_time="10:00 PM",
                     location="College Cafeteria & Courtyard",
@@ -138,7 +138,7 @@ def seed_database():
                 ScheduleItem(
                     title="Mentorship Round 2: Midnight Checkpoint & Debugging",
                     description="Progress evaluation and debugging assistance by senior developers.",
-                    date="2026-10-28",
+                    date="2026-10-29",
                     start_time="01:30 AM",
                     end_time="03:30 AM",
                     location="All Hacking Labs",
@@ -148,7 +148,7 @@ def seed_database():
                 ScheduleItem(
                     title="🛑 Code Freeze & Final Project Submission",
                     description="GitHub repositories locked, demonstration video and slide decks uploaded to portal.",
-                    date="2026-10-28",
+                    date="2026-10-29",
                     start_time="11:00 AM",
                     end_time="11:30 AM",
                     location="Submission Portal",
@@ -158,7 +158,7 @@ def seed_database():
                 ScheduleItem(
                     title="Grand Jury Evaluation & Stage Presentations",
                     description="Top teams present 5-minute live demo + 3-minute Q&A to industrial evaluation panel.",
-                    date="2026-10-28",
+                    date="2026-10-29",
                     start_time="11:30 AM",
                     end_time="02:30 PM",
                     location="Main IT Seminar Hall",
@@ -168,7 +168,7 @@ def seed_database():
                 ScheduleItem(
                     title="Valedictory Ceremony & Prize Distribution",
                     description="Announcement of ARENACORE '26 Champions, distribution of cash prizes, trophies, certificates and closing photo session.",
-                    date="2026-10-28",
+                    date="2026-10-29",
                     start_time="03:30 PM",
                     end_time="05:00 PM",
                     location="College Main Auditorium",
@@ -182,8 +182,8 @@ def seed_database():
         contact = db.query(ContactInfo).first()
         if not contact:
             initial_contact = ContactInfo(
-                email="gdscpsna@psnacet.edu.in",
-                phone="+91 86820 67304 / +91 93455 30457 / +91 82486 03031",
+                email="gdgpsna@psnacet.edu.in",
+                phone="+91 86820 67304 / +91 93455 30457",
                 address="PSNA College of Engineering and Technology, Kothandaraman Nagar, Dindigul - 624622, Tamil Nadu, India",
                 instagram_url="https://instagram.com/gdg_psna",
                 linkedin_url="https://linkedin.com/company/gdsc-psna",

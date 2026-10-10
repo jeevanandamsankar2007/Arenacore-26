@@ -10,10 +10,10 @@
 
 const HACKATHON_CONFIG = {
   eventName: "ARENACORE '26",
-  targetDate: new Date("2026-10-27T08:30:00+05:30").getTime(),
+  targetDate: new Date("2026-10-28T08:30:00+05:30").getTime(),
   deadlineDate: new Date("2026-10-12T23:59:59+05:30").getTime(),
   feePerMember: 500,
-  requiredMembers: 4,
+  minMembers: 2,
   maxMembers: 4,
 };
 
@@ -48,36 +48,34 @@ const OFFICIAL_THEMES = {
 // Safe fallback for legacy code references
 const PROBLEM_STATEMENTS = {};
 
-// Steering Committee Directory Data
+// Steering Committee Directory Data (Department of Information Technology)
 const STEERING_COMMITTEE = [
-  { name: "Dr. R. Venkatesh", title: "Professor, PSNACET IT" },
-  { name: "Dr. R.V. Selvaraj", title: "Professor, PSNACET IT" },
-  { name: "Dr. P. Babu", title: "Professor, PSNACET IT" },
-  { name: "Dr. R. Bhaskaran", title: "Professor, PSNACET IT" },
-  { name: "Dr. M. Anandaraj", title: "Professor, PSNACET IT" },
-  { name: "Dr. N. Pandeeswari", title: "Associate Professor, PSNACET IT" },
-  { name: "Ms. R. Sudha", title: "Assistant Professor, PSNACET IT" },
-  { name: "Mrs. S.T Bharathi", title: "Assistant Professor, PSNACET IT" },
-  { name: "Mrs. C. Gayathri", title: "Assistant Professor, PSNACET IT" },
-  { name: "Dr. R. Adhi Lakshmi", title: "Assistant Professor, PSNACET IT" },
-  { name: "Mrs. P. Priyadharshini", title: "Assistant Professor, PSNACET IT" },
-  { name: "Mrs. M. Karthiha Devi", title: "Assistant Professor, PSNACET IT" },
-  { name: "Mrs. A. Sangeetha", title: "Assistant Professor, PSNACET IT" },
-  { name: "Dr. S. Nithya", title: "Assistant Professor, PSNACET IT" },
-  { name: "Mrs. M. Priya", title: "Assistant Professor, PSNACET IT" },
-  { name: "Dr. K. Jeevitha", title: "Assistant Professor, PSNACET IT" },
-  { name: "Dr. M. Arun Kumar", title: "Assistant Professor, PSNACET IT" },
-  { name: "Mr. Vikkiramapandian", title: "Assistant Professor, PSNACET IT" },
-  { name: "Dr. B. Mathan Kumar", title: "Assistant Professor, PSNACET IT" },
-  { name: "Mr. J. Jeganathan", title: "Assistant Professor, PSNACET IT" },
-  { name: "Mrs. B. Vijaya Nirmala", title: "Assistant Professor, PSNACET IT" },
-  { name: "Dr. W.R. Salem Jeyaseelan", title: "Assistant Professor, PSNACET IT" },
-  { name: "Mr. P. Seethamani", title: "Assistant Professor, PSNACET IT" },
-  { name: "Dr. R. Karuppathal", title: "Professor, PSNACET IT" },
-  { name: "Mrs. Venkata Lakshmi", title: "Assistant Professor, PSNACET IT" },
-  { name: "Mrs. Sahana Preethi", title: "Assistant Professor, PSNACET IT" },
-  { name: "Mr. P. Padmanathan", title: "Lab Technician, PSNACET IT" },
-  { name: "Mr. Prabhu", title: "Lab Incharge, PSNACET IT" }
+  { name: "Dr. P. Babu", degree: "Ph.D.", title: "Professor, PSNACET IT" },
+  { name: "Dr. R. Bhaskaran", degree: "Ph.D.", title: "Professor, PSNACET IT" },
+  { name: "Dr. M. Anandaraj", degree: "Ph.D.", title: "Professor, PSNACET IT" },
+  { name: "Dr. P. Pradeepa", degree: "Ph.D.", title: "Associate Professor, PSNACET IT" },
+  { name: "Dr. W.R. Salem Jeyaseelan", degree: "Ph.D.", title: "Associate Professor, PSNACET IT" },
+  { name: "Ms. R. Sudha", degree: "M.E.", title: "Assistant Professor, PSNACET IT" },
+  { name: "Dr. M. Arunkumar", degree: "Ph.D.", title: "Assistant Professor, PSNACET IT" },
+  { name: "Dr. S. Nithya", degree: "Ph.D.", title: "Assistant Professor, PSNACET IT" },
+  { name: "Dr. A. Sangeetha", degree: "Ph.D.", title: "Assistant Professor, PSNACET IT" },
+  { name: "Dr. J.K. Jeevitha", degree: "Ph.D.", title: "Assistant Professor, PSNACET IT" },
+  { name: "Mr. J. Jeganathan", degree: "M.Tech.", title: "Assistant Professor, PSNACET IT" },
+  { name: "Dr. R. Adhilakshmi", degree: "Ph.D.", title: "Assistant Professor, PSNACET IT" },
+  { name: "Dr. P. Priyadharshini", degree: "Ph.D.", title: "Assistant Professor, PSNACET IT" },
+  { name: "Dr. B. Mathan Kumar", degree: "Ph.D.", title: "Assistant Professor, PSNACET IT" },
+  { name: "Mrs. S. Yamuna Devi", degree: "M.E.", title: "Assistant Professor, PSNACET IT" },
+  { name: "Mr. P. Seethamani", degree: "M.E.", title: "Assistant Professor, PSNACET IT" },
+  { name: "Mrs. C. Gayathri", degree: "M.E.", title: "Assistant Professor, PSNACET IT" },
+  { name: "Mrs. S.P. Lavanya", degree: "M.E.", title: "Assistant Professor, PSNACET IT" },
+  { name: "Mrs. R. Venkatalakshmi", degree: "M.E.", title: "Assistant Professor, PSNACET IT" },
+  { name: "Mrs. M. Sahana Preethi", degree: "M.E.", title: "Assistant Professor, PSNACET IT" },
+  { name: "Mrs. M. Karthihadevi", degree: "M.E.", title: "Assistant Professor, PSNACET IT" },
+  { name: "Mr. D. Vikkiraman", degree: "M.E.", title: "Assistant Professor, PSNACET IT" },
+  { name: "Mrs. M. Priya", degree: "M.E.", title: "Assistant Professor, PSNACET IT" },
+  { name: "Mr. J. Ayyanaprabu", degree: "M.E.", title: "Assistant Professor, PSNACET IT" },
+  { name: "Mrs. M. Nithyakalyani", degree: "M.E.", title: "Assistant Professor, PSNACET IT" },
+  { name: "Mrs. S. Aishwariya Meena", degree: "M.E.", title: "Assistant Professor, PSNACET IT" }
 ];
 
 // Photo Gallery Items Data
@@ -331,14 +329,14 @@ function initCountdownTimer() {
 // 5. SPA TAB VIEW ROUTING & VIEW SWITCHER (BULLETPROOF)
 // =============================================================================
 
-const ALL_SECTION_IDS = ["home", "events", "register", "guidelines", "records", "about", "contact"];
+const ALL_SECTION_IDS = ["home", "events", "register", "guidelines", "about", "contact"];
 
 function switchTab(targetId, pushState = true, subScrollTarget = null) {
   let cleanId = targetId ? String(targetId).replace(/^#/, "").trim().toLowerCase() : "home";
 
   // Handle special sub-routes
-  if (cleanId === "schedule") {
-    subScrollTarget = "schedule";
+  if (cleanId === "schedule" || cleanId === "themes") {
+    subScrollTarget = cleanId === "schedule" ? "schedule" : "events";
     cleanId = "events";
   }
 
@@ -1300,61 +1298,139 @@ function generateNewPassId() {
   for (let i = 0; i < 4; i++) {
     randomCode += chars.charAt(Math.floor(Math.random() * chars.length));
   }
-  const newId = `AC26-PSNA-${randomCode}`;
+  // Generate random 8-character hex pass code matching template e.g. 5343214C
+  const randomHex = Math.floor(Math.random() * 0xFFFFFFF).toString(16).toUpperCase().padStart(8, '4');
   const passIdInput = document.getElementById("passCustomId");
-  if (passIdInput) passIdInput.value = newId;
+  if (passIdInput) passIdInput.value = randomHex;
 
   updateLiveShortlistedPass();
-  showToast(`✨ Generated Pass ID: ${newId}`);
+  showToast(`✨ Generated Unique Pass Code: Code ${randomHex}`);
 }
 window.generateNewPassId = generateNewPassId;
 
+function useCurrentHost() {
+  const hostInput = document.getElementById("passVerificationHost");
+  if (hostInput) {
+    hostInput.value = window.location.host || "10.0.31.242:3000";
+    updateLiveShortlistedPass();
+    showToast(`🌐 Target host set to: ${hostInput.value}`);
+  }
+}
+window.useCurrentHost = useCurrentHost;
+
+// Build full live mobile phone verification URL
+function getPassVerificationUrl() {
+  const name = document.getElementById("passParticipantName")?.value.trim() || "ARUN KUMAR R";
+  const team = document.getElementById("passTeamName")?.value.trim() || "Team Phoenix";
+  const theme = document.getElementById("passThemeTrack")?.value.trim() || "Smart Solutions for a Sustainable Tomorrow";
+  const college = document.getElementById("passCollegeName")?.value.trim() || "PSNA College of Engineering & Technology, Dindigul - 624 622";
+  const code = document.getElementById("passCustomId")?.value.trim() || "5343214C";
+
+  let host = document.getElementById("passVerificationHost")?.value.trim();
+  const isLocalHost = !window.location.hostname || window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+
+  if (!host || (!isLocalHost && host === "10.0.31.242:3000")) {
+    if (isLocalHost) {
+      host = "10.0.31.242:3000";
+    } else {
+      host = window.location.host;
+    }
+  }
+
+  const protocol = window.location.protocol.startsWith("http") ? window.location.protocol : "https:";
+  return `${protocol}//${host}/verify.html?code=${encodeURIComponent(code)}&name=${encodeURIComponent(name)}&team=${encodeURIComponent(team)}&theme=${encodeURIComponent(theme)}&college=${encodeURIComponent(college)}&status=verified`;
+}
+window.getPassVerificationUrl = getPassVerificationUrl;
+
+// Open phone verification view in browser for testing / simulation
+function testPhoneVerificationScreen() {
+  const url = getPassVerificationUrl();
+  window.open(url, "_blank");
+  showToast("📱 Opening Phone Verification Screen: PASS VERIFIED SHORTLISTED TEAM");
+}
+window.testPhoneVerificationScreen = testPhoneVerificationScreen;
+
+let liveQrCodeInstance = null;
+
 function updateLiveShortlistedPass() {
+  const hostInput = document.getElementById("passVerificationHost");
+  if (hostInput && window.location.hostname && window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") {
+    if (hostInput.value === "10.0.31.242:3000") {
+      hostInput.value = window.location.host;
+    }
+  }
+
   const nameInput = document.getElementById("passParticipantName");
-  const roleInput = document.getElementById("passParticipantRole");
   const teamInput = document.getElementById("passTeamName");
   const collegeInput = document.getElementById("passCollegeName");
   const trackInput = document.getElementById("passThemeTrack");
   const passIdInput = document.getElementById("passCustomId");
 
-  const nameVal = nameInput?.value.trim() || "Alex Johnson";
-  const roleVal = roleInput?.value.trim() || "Team Leader";
-  const teamVal = teamInput?.value.trim() || "ByteBusters";
-  const collegeVal = collegeInput?.value.trim() || "PSNA College of Eng & Tech";
-  const trackVal = trackInput?.value.trim() || "AI & Intelligent Systems";
-  const passIdVal = passIdInput?.value.trim() || "AC26-PSNA-8429";
+  const nameVal = nameInput?.value.trim() || "ARUN KUMAR R";
+  const teamVal = teamInput?.value.trim() || "Team Phoenix";
+  const collegeVal = collegeInput?.value.trim() || "PSNA College of Engineering & Technology, Dindigul - 624 622";
+  const trackVal = trackInput?.value.trim() || "Smart Solutions for a Sustainable Tomorrow";
+  const passIdVal = passIdInput?.value.trim() || "5343214C";
 
   const bName = document.getElementById("badgePreviewName");
-  if (bName) bName.textContent = nameVal;
-
-  const bRole = document.getElementById("badgePreviewRole");
-  if (bRole) bRole.textContent = roleVal;
+  if (bName) bName.textContent = nameVal.toUpperCase();
 
   const bTeam = document.getElementById("badgePreviewTeam");
-  if (bTeam) {
-    bTeam.innerHTML = `Team: <span>${escapeSafeText(teamVal)}</span>`;
-  }
+  if (bTeam) bTeam.textContent = teamVal;
+
+  const bTheme = document.getElementById("badgePreviewTheme");
+  if (bTheme) bTheme.textContent = trackVal;
 
   const bCollege = document.getElementById("badgePreviewCollege");
   if (bCollege) bCollege.textContent = collegeVal;
 
-  const bTrack = document.getElementById("badgePreviewTrack");
-  if (bTrack) bTrack.textContent = trackVal;
-
-  const bId = document.getElementById("badgePreviewId");
-  if (bId) bId.textContent = passIdVal;
+  const bCode = document.getElementById("badgePreviewCode");
+  if (bCode) bCode.textContent = `Scan at check-in • Code ${passIdVal}`;
 
   const barcodeNum = document.getElementById("badgeBarcodeNum");
-  if (barcodeNum) barcodeNum.textContent = `${passIdVal}-SHORTLISTED`;
+  if (barcodeNum) barcodeNum.textContent = `AC26-CODE-${passIdVal}-SHORTLISTED`;
 
   const deskAllocation = document.getElementById("badgeDeskAllocation");
   if (deskAllocation) {
     const cluster = passIdVal.slice(-2) || "14";
     deskAllocation.textContent = `IT Block • Lab Cluster B, Terminal #${cluster}`;
   }
+
+  // Update dynamic QR Code for phone scanning
+  const qrContainer = document.getElementById("passQrCodeContainer");
+  if (qrContainer) {
+    const verificationUrl = getPassVerificationUrl();
+    qrContainer.innerHTML = "";
+    
+    if (typeof QRCode !== "undefined") {
+      try {
+        liveQrCodeInstance = new QRCode(qrContainer, {
+          text: verificationUrl,
+          width: 96,
+          height: 96,
+          colorDark: "#0b1a30",
+          colorLight: "#ffffff",
+          correctLevel: QRCode.CorrectLevel.M
+        });
+      } catch (e) {
+        renderFallbackQr(qrContainer, verificationUrl);
+      }
+    } else {
+      renderFallbackQr(qrContainer, verificationUrl);
+    }
+  }
 }
 window.updateLiveShortlistedPass = updateLiveShortlistedPass;
 window.updateLiveBadge = updateLiveShortlistedPass;
+
+function renderFallbackQr(container, url) {
+  const img = document.createElement("img");
+  img.src = `https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=${encodeURIComponent(url)}&color=0b1a30&bgcolor=ffffff`;
+  img.alt = "ArenaCore Verification QR Code";
+  img.style.width = "100%";
+  img.style.height = "100%";
+  container.appendChild(img);
+}
 
 function escapeSafeText(str) {
   return String(str).replace(/[&<>"']/g, m => ({
@@ -1367,28 +1443,12 @@ function escapeSafeText(str) {
 }
 
 function randomizeBadgeSeed() {
-  const seed = Math.random().toString(36).substring(7);
-  const avatar = document.getElementById("passAvatarImg");
-  if (avatar) {
-    avatar.src = `https://api.dicebear.com/7.x/bottts/svg?seed=${seed}`;
-    showToast("🎲 Avatar Shuffled!");
-  }
+  generateNewPassId();
 }
 window.randomizeBadgeSeed = randomizeBadgeSeed;
 
 function handlePassPhotoUpload(event) {
-  const file = event.target?.files?.[0];
-  if (!file) return;
-
-  const reader = new FileReader();
-  reader.onload = e => {
-    const avatar = document.getElementById("passAvatarImg");
-    if (avatar && e.target?.result) {
-      avatar.src = e.target.result;
-      showToast("📸 Custom photo applied to pass!");
-    }
-  };
-  reader.readAsDataURL(file);
+  showToast("ℹ️ This official pass template uses the institution credentials layout.");
 }
 window.handlePassPhotoUpload = handlePassPhotoUpload;
 
@@ -1404,263 +1464,115 @@ function scrollToPassGenerator() {
 }
 window.scrollToPassGenerator = scrollToPassGenerator;
 
-// Download High-Resolution Virtual Pass with Dual Club Branding & Feature Clearance
+// Download High-Resolution Virtual Pass Matching Exact New Template
 function downloadVirtualPass() {
-  const name = document.getElementById("passParticipantName")?.value.trim() || document.getElementById("badgePreviewName")?.textContent.trim() || "Alex Johnson";
-  const role = document.getElementById("passParticipantRole")?.value.trim() || document.getElementById("badgePreviewRole")?.textContent.trim() || "Team Leader";
-  const team = document.getElementById("passTeamName")?.value.trim() || "ByteBusters";
-  const college = document.getElementById("passCollegeName")?.value.trim() || "PSNA College of Eng & Tech";
-  const track = document.getElementById("passThemeTrack")?.value.trim() || "AI & Intelligent Systems";
-  const passId = document.getElementById("passCustomId")?.value.trim() || document.getElementById("badgePreviewId")?.textContent.trim() || "AC26-PSNA-8429";
+  const name = document.getElementById("passParticipantName")?.value.trim() || "JEEVA S";
+  const team = document.getElementById("passTeamName")?.value.trim() || "Zentrix";
+  const theme = document.getElementById("passThemeTrack")?.value.trim() || "Smart Solutions for a Sustainable Tomorrow";
+  const college = document.getElementById("passCollegeName")?.value.trim() || "PSNA College of Engineering & Technology, Dindigul - 624 622";
+  const passId = document.getElementById("passCustomId")?.value.trim() || "4A3E2D9F";
 
-  const canvas = document.createElement("canvas");
-  canvas.width = 680;
-  canvas.height = 1020;
-  const ctx = canvas.getContext("2d");
-  if (!ctx) {
-    showToast("⚠️ Could not generate pass image.");
-    return;
-  }
+  showToast("⏳ Rendering high-resolution official pass...");
 
-  const w = canvas.width;
-  const h = canvas.height;
-  const radius = 28;
+  const img = new Image();
+  img.crossOrigin = "anonymous";
+  img.src = "assets/pass-template-base.png";
 
-  // Clip rounded card boundaries
-  ctx.save();
-  ctx.beginPath();
-  ctx.moveTo(radius, 0);
-  ctx.lineTo(w - radius, 0);
-  ctx.quadraticCurveTo(w, 0, w, radius);
-  ctx.lineTo(w, h - radius);
-  ctx.quadraticCurveTo(w, h, w - radius, h);
-  ctx.lineTo(radius, h);
-  ctx.quadraticCurveTo(0, h, 0, h - radius);
-  ctx.lineTo(0, radius);
-  ctx.quadraticCurveTo(0, 0, radius, 0);
-  ctx.closePath();
-  ctx.clip();
+  img.onload = () => {
+    const canvas = document.createElement("canvas");
+    canvas.width = img.naturalWidth || 682;
+    canvas.height = img.naturalHeight || 1024;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) {
+      showToast("⚠️ Could not generate pass image.");
+      return;
+    }
 
-  // Dark tech gradient background
-  const bgGrad = ctx.createLinearGradient(0, 0, w, h);
-  bgGrad.addColorStop(0, "#0b0f19");
-  bgGrad.addColorStop(0.5, "#111827");
-  bgGrad.addColorStop(1, "#0a0d14");
-  ctx.fillStyle = bgGrad;
-  ctx.fillRect(0, 0, w, h);
+    // 1. Draw authentic master template background with all original logos & icons
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-  // Holographic accent light
-  const lightGrad = ctx.createRadialGradient(w / 2, 0, 10, w / 2, 100, 340);
-  lightGrad.addColorStop(0, "rgba(66, 133, 244, 0.35)");
-  lightGrad.addColorStop(1, "transparent");
-  ctx.fillStyle = lightGrad;
-  ctx.fillRect(0, 0, w, 400);
+    // Official Dark Navy Color for Attendee Details: #001f50
+    ctx.fillStyle = "#001f50";
+    ctx.textAlign = "left";
 
-  // Lanyard hole slot
-  ctx.fillStyle = "#1e293b";
-  ctx.beginPath();
-  if (ctx.roundRect) {
-    ctx.roundRect(w / 2 - 38, 16, 76, 12, 6);
-  } else {
-    ctx.rect(w / 2 - 38, 16, 76, 12);
-  }
-  ctx.fill();
-  ctx.strokeStyle = "#334155";
-  ctx.lineWidth = 1.5;
-  ctx.stroke();
+    // 2. Candidate Name
+    ctx.font = "bold 23px 'Inter', 'Segoe UI', Arial, sans-serif";
+    ctx.fillText(name.toUpperCase(), 256, 446);
 
-  // Header: Dual Clubs GDG & ACM
-  ctx.fillStyle = "#ffffff";
-  ctx.font = "bold 21px Inter, sans-serif";
-  ctx.textAlign = "left";
-  ctx.fillText("GDG On Campus  •  ACM PSNACET", 42, 68);
+    // 3. Team Name
+    ctx.font = "bold 21px 'Inter', 'Segoe UI', Arial, sans-serif";
+    ctx.fillText(team, 256, 492);
 
-  ctx.fillStyle = "#94a3b8";
-  ctx.font = "12px Inter, sans-serif";
-  ctx.fillText("ARENACORE '26  |  24-HOUR NATIONAL HACKATHON", 42, 90);
+    // 4. Approved Theme (Smart wrapping for long text)
+    if (theme.length > 28) {
+      ctx.font = "bold 18px 'Inter', 'Segoe UI', Arial, sans-serif";
+      const words = theme.split(" ");
+      let l1 = "";
+      let l2 = "";
+      for (const w of words) {
+        if ((l1 + " " + w).trim().length <= 26 && !l2) {
+          l1 = (l1 + " " + w).trim();
+        } else {
+          l2 = (l2 + " " + w).trim();
+        }
+      }
+      ctx.fillText(l1, 256, 534);
+      ctx.fillText(l2, 256, 558);
+    } else {
+      ctx.font = "bold 20px 'Inter', 'Segoe UI', Arial, sans-serif";
+      ctx.fillText(theme, 256, 542);
+    }
 
-  // Shortlisted Status Chip
-  ctx.fillStyle = "rgba(52, 168, 83, 0.22)";
-  ctx.beginPath();
-  if (ctx.roundRect) {
-    ctx.roundRect(w - 188, 52, 146, 28, 14);
-  } else {
-    ctx.rect(w - 188, 52, 146, 28);
-  }
-  ctx.fill();
-  ctx.strokeStyle = "#34a853";
-  ctx.lineWidth = 1.2;
-  ctx.stroke();
-  ctx.fillStyle = "#4ade80";
-  ctx.font = "bold 11px Inter, sans-serif";
-  ctx.textAlign = "center";
-  ctx.fillText("SHORTLISTED PASS", w - 115, 70);
+    // 5. College Name (Two-line formatting)
+    ctx.font = "bold 17px 'Inter', 'Segoe UI', Arial, sans-serif";
+    if (college.includes(",")) {
+      const parts = college.split(",");
+      const l1 = parts[0] + ",";
+      const l2 = parts.slice(1).join(",").trim();
+      ctx.fillText(l1, 256, 595);
+      ctx.fillText(l2, 256, 619);
+    } else {
+      ctx.fillText(college, 256, 606);
+    }
 
-  // 4-Color Google Stripe
-  const stripeY = 112;
-  const stripeH = 4;
-  const segW = (w - 84) / 4;
-  const colors = ["#4285F4", "#EA4335", "#FBBC05", "#34A853"];
-  colors.forEach((c, i) => {
-    ctx.fillStyle = c;
-    ctx.fillRect(42 + i * segW, stripeY, segW, stripeH);
-  });
+    // 6. Draw real dynamic QR code inside the 4-color frame
+    // Area: x=283, y=646, w=115, h=115
+    const qrCanvas = document.querySelector("#passQrCodeContainer canvas");
+    const qrImg = document.querySelector("#passQrCodeContainer img");
 
-  // Attendee Info Section
-  ctx.textAlign = "left";
-  ctx.fillStyle = "#ffffff";
-  ctx.font = "bold 30px Inter, sans-serif";
-  ctx.fillText(name, 42, 172);
+    if (qrCanvas) {
+      ctx.drawImage(qrCanvas, 283, 646, 115, 115);
+    } else if (qrImg && qrImg.complete) {
+      ctx.drawImage(qrImg, 283, 646, 115, 115);
+    }
 
-  ctx.fillStyle = "#60a5fa";
-  ctx.font = "bold 15px Inter, sans-serif";
-  ctx.fillText(role.toUpperCase(), 42, 200);
+    // 7. Dynamic Code caption centered below QR code
+    ctx.textAlign = "center";
+    ctx.font = "bold 13px 'Inter', 'Segoe UI', Arial, sans-serif";
+    ctx.fillStyle = "#32466e";
+    const cleanCode = passId.startsWith("Code ") ? passId : `Code ${passId}`;
+    ctx.fillText(`Scan at check-in  •  ${cleanCode}`, 341, 780);
 
-  ctx.fillStyle = "#e2e8f0";
-  ctx.font = "16px Inter, sans-serif";
-  ctx.fillText(`Team: ${team}`, 42, 232);
+    // 8. Download High-Res PNG
+    try {
+      const dataUrl = canvas.toDataURL("image/png");
+      const link = document.createElement("a");
+      const cleanName = name.replace(/[^a-zA-Z0-9]/g, "_");
+      link.download = `ArenaCore26-Pass-${cleanName}.png`;
+      link.href = dataUrl;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      showToast("✅ Official ArenaCore '26 Pass downloaded successfully!");
+    } catch (err) {
+      console.error("Pass export failed", err);
+      showToast("⚠️ Could not download pass. Please try again.");
+    }
+  };
 
-  ctx.fillStyle = "#94a3b8";
-  ctx.font = "14px Inter, sans-serif";
-  ctx.fillText(college, 42, 258);
-
-  // Track & Pass ID Container
-  ctx.fillStyle = "rgba(255, 255, 255, 0.04)";
-  ctx.beginPath();
-  if (ctx.roundRect) {
-    ctx.roundRect(42, 285, w - 84, 82, 12);
-  } else {
-    ctx.rect(42, 285, w - 84, 82);
-  }
-  ctx.fill();
-  ctx.strokeStyle = "rgba(255, 255, 255, 0.1)";
-  ctx.stroke();
-
-  ctx.fillStyle = "#94a3b8";
-  ctx.font = "11px Inter, sans-serif";
-  ctx.fillText("SELECTED THEME TRACK", 60, 312);
-  ctx.fillStyle = "#38bdf8";
-  ctx.font = "bold 15px Inter, sans-serif";
-  ctx.fillText(track, 60, 338);
-
-  ctx.fillStyle = "#94a3b8";
-  ctx.font = "11px Inter, sans-serif";
-  ctx.textAlign = "right";
-  ctx.fillText("PASS IDENTIFIER", w - 60, 312);
-  ctx.fillStyle = "#facc15";
-  ctx.font = "bold 17px monospace";
-  ctx.fillText(passId, w - 60, 338);
-
-  // ArenaCore Feature Access Clearance Box
-  ctx.textAlign = "left";
-  ctx.fillStyle = "rgba(66, 133, 244, 0.09)";
-  ctx.beginPath();
-  if (ctx.roundRect) {
-    ctx.roundRect(42, 390, w - 84, 168, 14);
-  } else {
-    ctx.rect(42, 390, w - 84, 168);
-  }
-  ctx.fill();
-  ctx.strokeStyle = "rgba(66, 133, 244, 0.35)";
-  ctx.lineWidth = 1;
-  ctx.stroke();
-
-  ctx.fillStyle = "#60a5fa";
-  ctx.font = "bold 13px Inter, sans-serif";
-  ctx.fillText("✓ ARENACORE ACCESS CLEARANCE & CREDENTIALS", 60, 422);
-
-  const clearanceItems = [
-    "• PSNACET Campus & IT Block 24-Hour Entry",
-    "• Dedicated Hacker Wi-Fi (SSID: PSNA_GDG_HACK_5G)",
-    "• Lab Cluster Workstation & Power Strip Access",
-    "• Full Meals, Midnight Refreshments & Energy Station",
-    "• Industry Mentorship & Stage Jury Evaluation"
-  ];
-  ctx.fillStyle = "#cbd5e1";
-  ctx.font = "13px Inter, sans-serif";
-  clearanceItems.forEach((item, idx) => {
-    ctx.fillText(item, 60, 452 + idx * 23);
-  });
-
-  // Venue & Schedule Box
-  ctx.fillStyle = "rgba(255, 255, 255, 0.03)";
-  ctx.beginPath();
-  if (ctx.roundRect) {
-    ctx.roundRect(42, 580, w - 84, 94, 12);
-  } else {
-    ctx.rect(42, 580, w - 84, 94);
-  }
-  ctx.fill();
-  ctx.strokeStyle = "rgba(255, 255, 255, 0.08)";
-  ctx.stroke();
-
-  ctx.fillStyle = "#f8fafc";
-  ctx.font = "bold 14px Inter, sans-serif";
-  ctx.fillText("📅 DATES: 27 & 28 OCTOBER 2026 (24-Hour Hackathon)", 60, 614);
-  ctx.fillStyle = "#94a3b8";
-  ctx.font = "13px Inter, sans-serif";
-  ctx.fillText("📍 VENUE: IT Block • PSNA College of Engineering & Technology, Dindigul", 60, 644);
-
-  // Emergency & Helpdesk
-  ctx.fillStyle = "rgba(251, 188, 5, 0.08)";
-  ctx.beginPath();
-  if (ctx.roundRect) {
-    ctx.roundRect(42, 695, w - 84, 54, 10);
-  } else {
-    ctx.rect(42, 695, w - 84, 54);
-  }
-  ctx.fill();
-  ctx.strokeStyle = "rgba(251, 188, 5, 0.3)";
-  ctx.stroke();
-
-  ctx.fillStyle = "#fde047";
-  ctx.font = "bold 11px Inter, sans-serif";
-  ctx.fillText("ON-SITE ORGANIZER DESK:", 60, 727);
-  ctx.fillStyle = "#ffffff";
-  ctx.font = "12px Inter, sans-serif";
-  ctx.fillText("+91 86820 67304 / +91 93455 30457 / +91 82486 03031", 230, 727);
-
-  // Footer & Barcode Simulation
-  ctx.textAlign = "center";
-  ctx.fillStyle = "#64748b";
-  ctx.font = "11px Inter, sans-serif";
-  ctx.fillText("Present this official pass along with your College ID card at the check-in desk.", w / 2, 792);
-
-  // Barcode lines
-  const bcY = 818;
-  const bcW = 420;
-  const bcStartX = (w - bcW) / 2;
-  ctx.fillStyle = "#cbd5e1";
-  for (let x = 0; x < bcW; x += 5) {
-    const barWidth = (x % 3 === 0) ? 3 : (x % 4 === 0) ? 1.5 : 2;
-    ctx.fillRect(bcStartX + x, bcY, barWidth, 42);
-  }
-
-  ctx.fillStyle = "#94a3b8";
-  ctx.font = "11px monospace";
-  ctx.fillText(`* ${passId} * ARENACORE26 * GDG x ACM *`, w / 2, 888);
-
-  ctx.fillStyle = "#475569";
-  ctx.font = "10px Inter, sans-serif";
-  ctx.fillText("© 2026 Google Developer Groups On Campus & ACM • PSNACET Dindigul", w / 2, 928);
-
-  ctx.restore();
-
-  // Export to PNG
-  try {
-    const dataUrl = canvas.toDataURL("image/png");
-    const link = document.createElement("a");
-    const cleanName = name.replace(/[^a-zA-Z0-9]/g, "_");
-    link.download = `ArenaCore26-Pass-${cleanName}.png`;
-    link.href = dataUrl;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    showToast("✅ Official ArenaCore '26 Pass downloaded successfully!");
-  } catch (err) {
-    console.error("Pass export failed", err);
-    showToast("⚠️ Could not download pass. Please try again.");
-  }
+  img.onerror = () => {
+    showToast("⚠️ Could not load master pass template.");
+  };
 }
 window.downloadVirtualPass = downloadVirtualPass;
 
@@ -1924,7 +1836,7 @@ function renderFacultyCommittee(facultyList) {
 
   container.innerHTML = facultyList.map(f => `
     <div class="committee-card">
-      <h5>${f.name}</h5>
+      <h5>${f.name}${f.degree ? ` <small style="font-size: 0.76rem; font-weight: 600; color: #4285f4; margin-left: 4px;">${f.degree}</small>` : ""}</h5>
       <p>${f.title}</p>
     </div>
   `).join("");
@@ -1933,7 +1845,9 @@ function renderFacultyCommittee(facultyList) {
 function filterFacultyDirectory() {
   const query = document.getElementById("facultySearchInput")?.value.toLowerCase() || "";
   const filtered = STEERING_COMMITTEE.filter(f => 
-    f.name.toLowerCase().includes(query) || f.title.toLowerCase().includes(query)
+    f.name.toLowerCase().includes(query) || 
+    f.title.toLowerCase().includes(query) ||
+    (f.degree && f.degree.toLowerCase().includes(query))
   );
   renderFacultyCommittee(filtered);
 }
@@ -2218,7 +2132,7 @@ function executeTerminalCommand(rawCmd) {
     case "schedule":
       responseDiv.innerHTML = `
         <div style="font-family:monospace; font-size:0.85rem;">
-          📅 <strong>DAY 1 (27 OCT 2026):</strong><br>
+          📅 <strong>DAY 1 (28 OCT 2026):</strong><br>
           08:30 AM - Check-in, Kit Distribution & Wi-Fi Setup<br>
           10:00 AM - Grand Inauguration by HOD Dr. A. Vincent Antony Kumar & Coordinators<br>
           11:00 AM - 🚀 24-HOUR HACKATHON COMMENCES<br>
@@ -2226,7 +2140,7 @@ function executeTerminalCommand(rawCmd) {
           08:00 PM - Dinner & Networking Jam<br>
           11:30 PM - Midnight Evaluation Checkpoint<br>
           <br>
-          📅 <strong>DAY 2 (28 OCT 2026):</strong><br>
+          📅 <strong>DAY 2 (29 OCT 2026):</strong><br>
           07:00 AM - Breakfast & Final Deployment Polish<br>
           11:00 AM - 🛑 CODE FREEZE & Final Submissions<br>
           11:30 AM - Grand Jury Stage Presentations & Live Demos<br>
@@ -2237,7 +2151,7 @@ function executeTerminalCommand(rawCmd) {
 
     case "prizes":
       responseDiv.innerHTML = `
-        <div>🏆 <strong style="color:var(--g-yellow)">Total Prize Pool:</strong> ₹1,20,000 Cash Awards + Prestigious Winner Trophies + GDG & ACM Tech Kits</div>
+        <div>🏆 <strong style="color:var(--g-yellow)">Prize Pool:</strong> ₹40,000 for each theme (Winner: ₹25,000 • Runner-Up: ₹15,000 | Total: ₹1,20,000)</div>
         <div>🚀 <strong style="color:var(--g-blue)">Incubation & Perks:</strong> Direct entry into institutional startup incubation & cloud credit pipelines</div>
         <div>⚡ <strong style="color:var(--g-green)">Perks for All:</strong> Official Participation Certificates + Meals & High-speed Wi-Fi!</div>
       `;
@@ -2551,6 +2465,7 @@ window.applyMatchedTrack = applyMatchedTrack;
 // =============================================================================
 
 function initRubricSimulator() {
+  if (!document.getElementById("rangeInnovation")) return;
   updateRubricScore();
 }
 

@@ -307,4 +307,4 @@ def test_contact_endpoints():
     assert response.status_code == 200
     data = response.json()
     assert data["success"] is True
-    assert "gdscpsna@psnacet.edu.in" in data["data"]["email"]
+    assert "gdgpsna@psnacet.edu.in" in data["data"]["email"]

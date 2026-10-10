@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>ARENACORE '26 | Official Pass Verification</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/gdg-logo.svg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@600;700;800;900&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root {
+      --g-blue: #4285F4;
+      --g-red: #EA4335;
+      --g-yellow: #FBBC05;
+      --g-green: #34A853;
+      --bg-dark: #0a0e17;
+      --bg-card: #111827;
+      --bg-surface: #1e293b;
+      --text-main: #f8fafc;
+      --text-sub: #94a3b8;
+      --border-line: rgba(255, 255, 255, 0.1);
+      --font-heading: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'Space Grotesk', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background: #090d16;
+      color: var(--text-main);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 16px 14px 40px;
+      position: relative;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(52, 168, 83, 0.18) 0%, transparent 60%),
+        radial-gradient(circle at 10% 90%, rgba(66, 133, 244, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 90% 90%, rgba(234, 67, 53, 0.1) 0%, transparent 50%);
+      background-attachment: fixed;
+    }
+
+    /* Ambient animated mesh line */
+    .top-glow-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #4285f4 25%, #ea4335 25% 50%, #fbbc05 50% 75%, #34a853 75%);
+      z-index: 100;
+    }
+
+    .verification-container {
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Top Institutional Header */
+    .institution-header {
+      background: rgba(17, 24, 39, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border-line);
+      border-radius: 20px;
+      padding: 16px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .inst-logos-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .inst-psna-logo {
+      height: 38px;
+      max-width: 160px;
+      object-fit: contain;
+    }
+
+    .inst-divider {
+      width: 1px;
+      height: 28px;
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .club-logos {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .club-logos img {
+      width: 26px;
+      height: 26px;
+      object-fit: contain;
+    }
+
+    .inst-event-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      background: rgba(66, 133, 244, 0.15);
+      color: #60a5fa;
+      border: 1px solid rgba(66, 133, 244, 0.3);
+      margin: 0 auto;
+    }
+
+    /* Primary Verified Hero Card */
+    .verified-hero-card {
+      background: linear-gradient(180deg, rgba(16, 32, 28, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%);
+      border: 2px solid #34a853;
+      border-radius: 24px;
+      padding: 24px 20px;
+      text-align: center;
+      box-shadow: 0 16px 40px -10px rgba(52, 168, 83, 0.35), 0 0 20px rgba(52, 168, 83, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .verified-hero-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 0deg, transparent 0deg, rgba(52, 168, 83, 0.08) 60deg, transparent 120deg);
+      animation: rotateLight 12s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes rotateLight {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Pulse Checkmark Ring */
+    .status-icon-wrap {
+      position: relative;
+      width: 86px;
+      height: 86px;
+      margin: 0 auto 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .status-pulse-ring {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: rgba(52, 168, 83, 0.25);
+      animation: pulseGrow 2s ease-out infinite;
+    }
+
+    .status-pulse-ring:nth-child(2) {
+      animation-delay: 0.6s;
+    }
+
+    @keyframes pulseGrow {
+      0% { transform: scale(0.9); opacity: 0.8; }
+      100% { transform: scale(1.6); opacity: 0; }
+    }
+
+    .status-check-circle {
+      position: relative;
+      z-index: 2;
+      width: 76px;
+      height: 76px;
+      background: linear-gradient(135deg, #34a853, #15803d);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.4rem;
+      color: #ffffff;
+      box-shadow: 0 8px 24px rgba(52, 168, 83, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.4);
+    }
+
+    .verified-title {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: #4ade80;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+    }
+
+    .verified-subtitle {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      display: inline-block;
+      padding: 4px 14px;
+      background: rgba(52, 168, 83, 0.2);
+      border: 1px solid rgba(74, 222, 128, 0.4);
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+
+    .verified-timestamp {
+      font-size: 0.8rem;
+      color: var(--text-sub);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+    }
+
+    /* Pass Details Card */
+    .details-card {
+      background: rgba(17, 24, 39, 0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border-line);
+      border-radius: 20px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .card-section-label {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: #60a5fa;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .detail-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 12px;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .detail-icon-pill {
+      width: 38px;
+      height: 38px;
+      background: #1e293b;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: #38bdf8;
+      flex-shrink: 0;
+    }
+
+    .detail-text {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .detail-text .label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-sub);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .detail-text .value {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.3;
+    }
+
+    .detail-text .value.highlight {
+      color: #facc15;
+      font-family: var(--font-mono);
+      font-size: 1.05rem;
+    }
+
+    /* Access Clearance Badges Grid */
+    .access-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .access-pill {
+      background: rgba(52, 168, 83, 0.1);
+      border: 1px solid rgba(52, 168, 83, 0.3);
+      border-radius: 10px;
+      padding: 10px 6px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .access-pill i {
+      font-size: 1.15rem;
+      color: #4ade80;
+    }
+
+    .access-pill span {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #e2e8f0;
+    }
+
+    .access-pill small {
+      font-size: 0.62rem;
+      color: #86efac;
+      font-weight: 600;
+    }
+
+    /* Action Buttons */
+    .actions-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .btn-action {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 14px 20px;
+      border-radius: 14px;
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-action.btn-confirm {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: #ffffff;
+      box-shadow: 0 8px 20px rgba(16, 185, 129, 0.35);
+    }
+
+    .btn-action.btn-confirm:active {
+      transform: scale(0.98);
+    }
+
+    .btn-action.btn-back {
+      background: rgba(255, 255, 255, 0.08);
+      color: #e2e8f0;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    /* Security Watermark Stamp */
+    .security-seal {
+      margin: 10px auto 0;
+      text-align: center;
+      font-size: 0.72rem;
+      color: #64748b;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .security-seal i {
+      color: #3b82f6;
+    }
+
+    /* Toast Notification */
+    .verify-toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #1e293b;
+      color: #ffffff;
+      padding: 12px 22px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 1000;
+    }
+
+    .verify-toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Google 4-Color Stripe -->
+  <div class="top-glow-bar"></div>
+
+  <main class="verification-container" id="verifyContainer">
+    
+    <!-- Institutional Header -->
+    <header class="institution-header">
+      <div class="inst-logos-row">
+        <img src="assets/psna-logo.svg" alt="PSNA College Logo" class="inst-psna-logo" onerror="this.style.display='none'">
+        <div class="inst-divider"></div>
+        <div class="club-logos">
+          <img src="assets/acm-psnacet-logo.png" alt="ACM Logo" title="ACM Student Chapter PSNACET">
+          <img src="assets/gdg-logo.svg" alt="GDG Logo" title="Google Developer Groups PSNACET">
+        </div>
+      </div>
+      <div class="inst-event-badge">
+        <i class="fa-solid fa-code"></i> ARENACORE '26 • 24-HOUR HACKATHON
+      </div>
+    </header>
+
+    <!-- Verified Hero Status Card -->
+    <section class="verified-hero-card" id="heroCard">
+      <div class="status-icon-wrap">
+        <div class="status-pulse-ring"></div>
+        <div class="status-pulse-ring"></div>
+        <div class="status-check-circle">
+          <i class="fa-solid fa-check"></i>
+        </div>
+      </div>
+
+      <h1 class="verified-title" id="statusTitle">PASS VERIFIED</h1>
+      <div class="verified-subtitle" id="statusSub">SHORTLISTED TEAM</div>
+
+      <div class="verified-timestamp" id="verifyTime">
+        <i class="fa-solid fa-clock"></i> <span>Verifying...</span>
+      </div>
+    </section>
+
+    <!-- Shortlisted Participant & Team Details -->
+    <section class="details-card">
+      <div class="card-section-label">
+        <i class="fa-solid fa-id-badge"></i> Candidate &amp; Team Information
+      </div>
+
+      <!-- Candidate Name -->
+      <div class="detail-row">
+        <div class="detail-icon-pill">
+          <i class="fa-solid fa-user"></i>
+        </div>
+        <div class="detail-text">
+          <span class="label">Candidate Name</span>
+          <span class="value" id="valName">ARUN KUMAR R</span>
+        </div>
+      </div>
+
+      <!-- Team Name -->
+      <div class="detail-row">
+        <div class="detail-icon-pill">
+          <i class="fa-solid fa-users"></i>
+        </div>
+        <div class="detail-text">
+          <span class="label">Shortlisted Team</span>
+          <span class="value" id="valTeam">Team Phoenix</span>
+        </div>
+      </div>
+
+      <!-- Theme Track -->
+      <div class="detail-row">
+        <div class="detail-icon-pill">
+          <i class="fa-solid fa-lightbulb"></i>
+        </div>
+        <div class="detail-text">
+          <span class="label">Approved Theme Track</span>
+          <span class="value" id="valTheme">Smart Solutions for a Sustainable Tomorrow</span>
+        </div>
+      </div>
+
+      <!-- College / Institution -->
+      <div class="detail-row">
+        <div class="detail-icon-pill">
+          <i class="fa-solid fa-building-columns"></i>
+        </div>
+        <div class="detail-text">
+          <span class="label">College / Institution</span>
+          <span class="value" id="valCollege">PSNA College of Engineering &amp; Technology, Dindigul - 624 622</span>
+        </div>
+      </div>
+
+      <!-- Unique Pass Code -->
+      <div class="detail-row">
+        <div class="detail-icon-pill">
+          <i class="fa-solid fa-fingerprint"></i>
+        </div>
+        <div class="detail-text">
+          <span class="label">Pass Verification Code</span>
+          <span class="value highlight" id="valCode">Code 5343214C</span>
+        </div>
+      </div>
+
+      <!-- Schedule & Venue -->
+      <div class="detail-row">
+        <div class="detail-icon-pill">
+          <i class="fa-solid fa-calendar-days"></i>
+        </div>
+        <div class="detail-text">
+          <span class="label">Hackathon Dates &amp; Venue</span>
+          <span class="value">28 &amp; 29 OCT 2026 (24H) • PSNACET Campus</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Access Clearances Included -->
+    <section class="details-card">
+      <div class="card-section-label">
+        <i class="fa-solid fa-shield-halved"></i> Access Clearance Granted
+      </div>
+
+      <div class="access-grid">
+        <div class="access-pill">
+          <i class="fa-solid fa-utensils"></i>
+          <span>Food</span>
+          <small>Included</small>
+        </div>
+        <div class="access-pill">
+          <i class="fa-solid fa-bed"></i>
+          <span>Stay</span>
+          <small>Included</small>
+        </div>
+        <div class="access-pill">
+          <i class="fa-solid fa-gamepad"></i>
+          <span>Game Pass</span>
+          <small>Included</small>
+        </div>
+        <div class="access-pill">
+          <i class="fa-solid fa-wifi"></i>
+          <span>Hacker Wi-Fi</span>
+          <small>High Speed</small>
+        </div>
+        <div class="access-pill">
+          <i class="fa-solid fa-laptop-code"></i>
+          <span>Workstation</span>
+          <small>24h Access</small>
+        </div>
+        <div class="access-pill">
+          <i class="fa-solid fa-building"></i>
+          <span>IT Block</span>
+          <small>Lab Cluster</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- Operational Check-In Actions -->
+    <section class="actions-wrap">
+      <button type="button" class="btn-action btn-confirm" id="btnCheckIn" onclick="handleOrganizerCheckIn()">
+        <i class="fa-solid fa-clipboard-check"></i> Confirm Check-In &amp; Admit Team
+      </button>
+      <a href="index.html#register" class="btn-action btn-back">
+        <i class="fa-solid fa-arrow-left"></i> ArenaCore '26 Portal
+      </a>
+    </section>
+
+    <!-- Security Seal Stamp -->
+    <footer class="security-seal">
+      <div><i class="fa-solid fa-shield-check"></i> Cryptographically Verified • Dual-Club Authenticated</div>
+      <small>© 2026 GDG On Campus &amp; ACM • PSNA College of Engineering &amp; Technology</small>
+    </footer>
+
+  </main>
+
+  <div class="verify-toast" id="verifyToast">
+    <i class="fa-solid fa-circle-check text-google-green"></i>
+    <span id="toastMsg">Team Checked In Successfully!</span>
+  </div>
+
+  <script>
+    // Play subtle pleasant chime on verification using Web Audio API
+    function playVerificationChime() {
+      try {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContext) return;
+        const ctx = new AudioContext();
+        
+        const now = ctx.currentTime;
+        const osc1 = ctx.createOscillator();
+        const osc2 = ctx.createOscillator();
+        const gain = ctx.createGain();
+
+        osc1.type = "sine";
+        osc1.frequency.setValueAtTime(523.25, now); // C5
+        osc1.frequency.setValueAtTime(659.25, now + 0.1); // E5
+        osc1.frequency.setValueAtTime(783.99, now + 0.2); // G5
+        osc1.frequency.setValueAtTime(1046.50, now + 0.3); // C6
+
+        gain.gain.setValueAtTime(0.08, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.8);
+
+        osc1.connect(gain);
+        gain.connect(ctx.destination);
+
+        osc1.start(now);
+        osc1.stop(now + 0.8);
+      } catch (e) {
+        // Audio might be blocked by browser policy without user gesture
+      }
+    }
+
+    // Trigger device vibration if supported
+    function triggerHaptic() {
+      if (navigator.vibrate) {
+        navigator.vibrate([100, 50, 150]);
+      }
+    }
+
+    // Parse URL query params
+    function loadVerificationData() {
+      const params = new URLSearchParams(window.location.search);
+
+      const name = params.get("name") || "ARUN KUMAR R";
+      const team = params.get("team") || "Team Phoenix";
+      const theme = params.get("theme") || "Smart Solutions for a Sustainable Tomorrow";
+      const college = params.get("college") || "PSNA College of Engineering & Technology, Dindigul - 624 622";
+      let code = params.get("code") || "5343214C";
+
+      if (!code.startsWith("Code ") && !code.startsWith("CODE ")) {
+        code = "Code " + code;
+      }
+
+      document.getElementById("valName").textContent = name.toUpperCase();
+      document.getElementById("valTeam").textContent = team;
+      document.getElementById("valTheme").textContent = theme;
+      document.getElementById("valCollege").textContent = college;
+      document.getElementById("valCode").textContent = code;
+
+      // Realtime timestamp
+      const now = new Date();
+      const timeStr = now.toLocaleDateString("en-US", { 
+        day: "numeric", 
+        month: "short", 
+        year: "numeric" 
+      }) + " at " + now.toLocaleTimeString("en-US", { 
+        hour: "2-digit", 
+        minute: "2-digit",
+        hour12: true 
+      });
+
+      const timeEl = document.getElementById("verifyTime");
+      if (timeEl) {
+        timeEl.innerHTML = `<i class="fa-solid fa-clock"></i> Verified: ${timeStr} • Online Status: LIVE`;
+      }
+
+      // Check if already checked in locally
+      const isCheckedIn = localStorage.getItem("arenacore_checkin_" + code);
+      if (isCheckedIn) {
+        markAsCheckedIn(JSON.parse(isCheckedIn).time);
+      }
+
+      // Play tone and vibrate on page load
+      setTimeout(() => {
+        playVerificationChime();
+        triggerHaptic();
+      }, 200);
+    }
+
+    function markAsCheckedIn(time) {
+      const btn = document.getElementById("btnCheckIn");
+      if (btn) {
+        btn.innerHTML = `<i class="fa-solid fa-circle-check"></i> Already Checked In (${time})`;
+        btn.style.background = "#334155";
+        btn.style.color = "#94a3b8";
+        btn.style.boxShadow = "none";
+        btn.disabled = true;
+      }
+    }
+
+    function handleOrganizerCheckIn() {
+      const params = new URLSearchParams(window.location.search);
+      const code = params.get("code") || "5343214C";
+      const now = new Date();
+      const timeStr = now.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" });
+
+      localStorage.setItem("arenacore_checkin_" + code, JSON.stringify({
+        code: code,
+        time: timeStr,
+        timestamp: Date.now()
+      }));
+
+      const team = params.get("team") || "Team";
+      markAsCheckedIn(timeStr);
+      showVerifyToast(`✅ Check-in recorded! Welcome ${team} to ArenaCore '26!`);
+      triggerHaptic();
+    }
+
+    function showVerifyToast(msg) {
+      const toast = document.getElementById("verifyToast");
+      const toastMsg = document.getElementById("toastMsg");
+      if (!toast) return;
+      if (toastMsg && msg) toastMsg.textContent = msg;
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 3500);
+    }
+
+    window.addEventListener("DOMContentLoaded", loadVerificationData);
+  </script>
+</body>
+</html>

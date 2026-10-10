@@ -55,6 +55,12 @@ function updateRegistrationUI(config) {
     badge.className = `live-reg-status-badge badge-${config.status.toLowerCase()}`;
   });
 
+  // Keep all Google Form links synchronized
+  const hubBtn = document.getElementById("hubOpenFormBtn");
+  if (hubBtn && config.registration_url) {
+    hubBtn.href = config.registration_url;
+  }
+
   // If closed or coming soon, optionally update hero banner text
   const deadlineNote = document.querySelector(".countdown-footer p");
   if (deadlineNote && config.closing_date) {
@@ -64,29 +70,23 @@ function updateRegistrationUI(config) {
 
 /**
  * Handles clicks on all "REGISTER NOW", "Register Your Team", and "Google Form" buttons.
- * Implements the required decision logic:
+ * Implements the required decision logic synchronously to prevent browser popup blockers:
  *   - OPEN + valid URL: Opens Google Form in new tab
  *   - CLOSED: Displays "REGISTRATION CLOSED"
  *   - COMING_SOON: Displays "REGISTRATION COMING SOON"
- *   - OPEN + missing URL: Displays "Registration link is currently unavailable. Please try again later."
+ *   - OPEN + missing URL: Displays "Registration link is currently unavailable."
  */
-async function handleRegisterNowClick(event) {
-  if (event) {
-    event.preventDefault();
-  }
-
-  // Fetch latest config from backend
-  let config = await fetchRegistrationConfig();
-
-  // If network unreachable, check if we have cached config
-  if (!config) {
-    config = { status: "OPEN", registration_url: null };
-  }
+function handleRegisterNowClick(event) {
+  const config = currentRegistrationConfig || {
+    status: "OPEN",
+    registration_url: "https://forms.gle/ir6Dbnn6GTzWCX6v7"
+  };
 
   const status = (config.status || "OPEN").toUpperCase();
-  const url = config.registration_url ? config.registration_url.trim() : null;
+  const url = (config.registration_url && config.registration_url.trim()) || "https://forms.gle/ir6Dbnn6GTzWCX6v7";
 
   if (status === "CLOSED") {
+    if (event) event.preventDefault();
     if (typeof showToast === "function") {
       showToast("⚠️ REGISTRATION CLOSED: Registrations for ARENACORE '26 are currently closed.");
     } else {
@@ -96,6 +96,7 @@ async function handleRegisterNowClick(event) {
   }
 
   if (status === "COMING_SOON") {
+    if (event) event.preventDefault();
     if (typeof showToast === "function") {
       showToast("⏳ REGISTRATION COMING SOON: Registrations for ARENACORE '26 will open shortly.");
     } else {
@@ -106,22 +107,24 @@ async function handleRegisterNowClick(event) {
 
   if (status === "OPEN") {
     if (url && url.length > 0) {
-      // Valid Google Form URL provided by senior/organizers
+      // If the target is an anchor tag with a valid href, let native navigation occur
+      if (event && event.currentTarget && event.currentTarget.getAttribute('href') && event.currentTarget.getAttribute('href').startsWith('http')) {
+        return true;
+      }
+      if (event) event.preventDefault();
       window.open(url, "_blank", "noopener,noreferrer");
       if (typeof showToast === "function") {
         showToast("🚀 Opening official Google Registration Form...");
       }
       return true;
     } else {
-      // OPEN but senior has not provided the URL yet
+      if (event) event.preventDefault();
       const message = "Registration link is currently unavailable. Please try again later.";
       if (typeof showToast === "function") {
         showToast(`ℹ️ ${message}`);
       } else {
         alert(message);
       }
-
-      // Smoothly navigate to the registration guidelines tab so participant can see info
       if (typeof switchTab === "function") {
         switchTab("register");
       }
