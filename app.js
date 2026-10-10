@@ -334,6 +334,19 @@ const ALL_SECTION_IDS = ["home", "events", "register", "guidelines", "about", "c
 function switchTab(targetId, pushState = true, subScrollTarget = null) {
   let cleanId = targetId ? String(targetId).replace(/^#/, "").trim().toLowerCase() : "home";
 
+  // Handle direct pass generator routes
+  if (cleanId === "pass" || cleanId === "shortlist" || cleanId === "shortlisted" || cleanId === "badge") {
+    cleanId = "register";
+    subScrollTarget = "regPostDeadlineView";
+    setTimeout(() => {
+      if (typeof setRegistrationMode === "function") {
+        setRegistrationMode("post");
+      }
+      const el = document.getElementById("regPostDeadlineView") || document.getElementById("passGeneratorPanel");
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }, 100);
+  }
+
   // Handle special sub-routes
   if (cleanId === "schedule" || cleanId === "themes") {
     subScrollTarget = cleanId === "schedule" ? "schedule" : "events";
@@ -436,6 +449,11 @@ function switchTab(targetId, pushState = true, subScrollTarget = null) {
 // Make globally accessible for inline onclick handlers
 window.switchTab = switchTab;
 
+function openShortlistedPassTab() {
+  switchTab("pass", true);
+}
+window.openShortlistedPassTab = openShortlistedPassTab;
+
 function initTabRouting() {
   // Global click delegator for any link with href="#tabId"
   document.addEventListener("click", e => {
@@ -446,7 +464,7 @@ function initTabRouting() {
     if (!href || href === "#") return;
 
     const targetId = href.substring(1).toLowerCase();
-    const isKnownTab = ALL_SECTION_IDS.includes(targetId) || targetId === "schedule";
+    const isKnownTab = ALL_SECTION_IDS.includes(targetId) || targetId === "schedule" || targetId === "pass" || targetId === "shortlist" || targetId === "badge";
 
     if (isKnownTab) {
       e.preventDefault();

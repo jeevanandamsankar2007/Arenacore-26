@@ -1,6 +1,7 @@
 # Netlify Configuration for ARENACORE '26
 [build]
   publish = "."
+  command = "echo 'Static site ready'"
 
 [[headers]]
   for = "/*"

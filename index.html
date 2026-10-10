@@ -137,6 +137,12 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="#pass" class="nav-tab" data-target="pass" onclick="openShortlistedPassTab()">
+              <i class="fa-solid fa-ticket text-google-yellow"></i>
+              <span>Pass</span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="#guidelines" class="nav-tab" data-target="guidelines" onclick="switchTab('guidelines')">
               <i class="fa-solid fa-book-open-reader"></i>
               <span>Guidelines</span>
@@ -161,9 +167,9 @@
           <span class="bar"></span>
         </button>
 
-        <a href="#register" class="btn btn-primary btn-google-glow header-get-pass-btn" onclick="switchTab('register')">
+        <a href="#pass" class="btn btn-primary btn-google-glow header-get-pass-btn" onclick="openShortlistedPassTab()">
           <span>Get Pass</span>
-          <i class="fa-solid fa-arrow-right"></i>
+          <i class="fa-solid fa-ticket"></i>
         </a>
       </div>
 
@@ -194,7 +200,8 @@
       <ul class="mobile-nav-links">
         <li><a href="#home" class="mobile-nav-link" data-target="home" onclick="switchTab('home')"><i class="fa-solid fa-house-laptop"></i><span>Home / Current Edition</span></a></li>
         <li><a href="#events" class="mobile-nav-link" data-target="events" onclick="switchTab('events')"><i class="fa-solid fa-calendar-check"></i><span>Event Details & Tracks</span></a></li>
-        <li><a href="#register" class="mobile-nav-link" data-target="register" onclick="switchTab('register')"><i class="fa-solid fa-id-card"></i><span>Registration & Pass Generator</span></a></li>
+        <li><a href="#register" class="mobile-nav-link" data-target="register" onclick="switchTab('register')"><i class="fa-solid fa-id-card"></i><span>Registration Hub</span></a></li>
+        <li><a href="#pass" class="mobile-nav-link" data-target="pass" onclick="openShortlistedPassTab()"><i class="fa-solid fa-ticket text-google-yellow"></i><span>Official Shortlisted Pass</span></a></li>
         <li><a href="#guidelines" class="mobile-nav-link" data-target="guidelines" onclick="switchTab('guidelines')"><i class="fa-solid fa-book-open-reader"></i><span>Guidelines & Rubric</span></a></li>
         <li><a href="#about" class="mobile-nav-link" data-target="about" onclick="switchTab('about')"><i class="fa-solid fa-university"></i><span>About GDG & ACM PSNACET</span></a></li>
         <li><a href="#contact" class="mobile-nav-link" data-target="contact" onclick="switchTab('contact')"><i class="fa-solid fa-envelope"></i><span>Contact & Support</span></a></li>
@@ -216,7 +223,7 @@
         <a href="#home" class="q-item active" data-target="home" onclick="switchTab('home')"><span class="color-dot blue"></span> Overview</a>
         <a href="#events" class="q-item" data-target="events" onclick="switchTab('events')"><span class="color-dot red"></span> Themes & SDGs</a>
         <a href="#schedule" class="q-item" data-target="events" onclick="switchTab('events', true, 'schedule')"><span class="color-dot yellow"></span> Schedule</a>
-        <a href="#register" class="q-item" data-target="register" onclick="switchTab('register')"><span class="color-dot green"></span> Virtual ID Pass</a>
+        <a href="#pass" class="q-item" data-target="pass" onclick="openShortlistedPassTab()"><span class="color-dot green"></span> Virtual ID Pass</a>
         <a href="#guidelines" class="q-item" data-target="guidelines" onclick="switchTab('guidelines')"><span class="color-dot blue"></span> Rulebook</a>
         <a href="#about" class="q-item" data-target="about" onclick="switchTab('about')"><span class="color-dot yellow"></span> GDG & ACM</a>
       </div>
@@ -431,9 +438,9 @@
             <i class="fa-solid fa-layer-group"></i>
             <span>Explore Themes & SDGs</span>
           </a>
-          <a href="#register" class="btn btn-ghost btn-lg" onclick="switchTab('register')">
+          <a href="#pass" class="btn btn-ghost btn-lg" onclick="openShortlistedPassTab()">
             <i class="fa-solid fa-id-badge"></i>
-            <span>Generate Free ID Pass</span>
+            <span>Generate Official Pass</span>
           </a>
         </div>
 

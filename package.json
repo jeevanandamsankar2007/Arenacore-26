@@ -4,6 +4,7 @@
   "description": "GDG x ACM PSNACET - ARENACORE '26 24-Hour Hackathon Platform",
   "main": "index.html",
   "scripts": {
+    "build": "echo 'Static site ready'",
     "dev": "npx -y serve -l 3000",
     "start": "npx -y serve -l 3000",
     "serve": "npx -y serve -l 3000"
