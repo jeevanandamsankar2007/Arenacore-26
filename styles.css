@@ -315,8 +315,8 @@ img {
    TOP ANNOUNCEMENT BAR (CRICKET POSTMATCH / NEWS BROADCAST MARQUEE TICKER)
    ========================================================================== */
 .announcement-banner {
-  background: linear-gradient(90deg, #090d16, #131d2e);
-  color: #ffffff;
+  background: linear-gradient(90deg, #f0f4f9, #e8f0fe, #f0fdf4);
+  color: #1e293b;
   padding: 4px 14px;
   font-size: 0.81rem;
   min-height: 32px;
@@ -325,7 +325,7 @@ img {
   gap: 12px;
   position: relative;
   z-index: 102;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.9);
   overflow: hidden;
   transition: all var(--transition-base);
 }
@@ -340,18 +340,15 @@ img {
 }
 
 .ticker-header-badge .badge-pill {
-  animation: pulse-ticker-red 2.5s infinite ease-in-out;
+  background: rgba(66, 133, 244, 0.12);
+  color: #1a73e8;
+  border: 1px solid rgba(66, 133, 244, 0.28);
   letter-spacing: 0.4px;
   font-weight: 700;
   white-space: nowrap;
-  font-size: 0.69rem;
-  padding: 2px 7px;
+  font-size: 0.72rem;
+  padding: 2px 8px;
   border-radius: var(--radius-full);
-}
-
-@keyframes pulse-ticker-red {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(234, 67, 53, 0.6); }
-  50% { box-shadow: 0 0 0 4px rgba(234, 67, 53, 0); }
 }
 
 .ticker-container {
@@ -489,7 +486,7 @@ img {
   align-items: center;
   gap: 14px;
   text-decoration: none;
-  margin-left: -12px; /* Shift slightly to the left */
+  flex: 0 0 250px;
   transition: transform var(--transition-fast);
 }
 
@@ -586,9 +583,11 @@ img {
 
 /* Desktop Nav Tabs */
 .nav-desktop {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1 1 auto;
   margin: 0 auto;
-  flex-shrink: 0;
 }
 
 .nav-pills-list {
@@ -636,32 +635,31 @@ img {
 .header-actions {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+  flex: 0 0 250px;
   gap: 12px;
-  flex-shrink: 0;
-  margin-left: 14px;
 }
 
 .header-register-btn,
 .header-get-pass-btn {
-  margin-right: clamp(36px, 5vw, 70px);
-  padding: 6px 14px;
-  font-size: 0.82rem;
+  margin-right: 0;
+  padding: 7px 16px;
+  font-size: 0.84rem;
   font-weight: 700;
   border-radius: var(--radius-full);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
-  height: 34px;
+  height: 35px;
   line-height: 1;
-  transform: translateY(-2px);
   box-shadow: 0 2px 10px rgba(66, 133, 244, 0.28);
   transition: all var(--transition-fast);
 }
 
 .header-register-btn:hover,
 .header-get-pass-btn:hover {
-  transform: translateY(-4px);
+  transform: translateY(-2px);
   box-shadow: 0 4px 14px rgba(66, 133, 244, 0.4);
 }
 
@@ -1002,13 +1000,7 @@ body.dark-theme .mobile-drawer-footer {
    STICKY QUICK NAVIGATION BAR
    ========================================================================== */
 .quick-nav-bar {
-  position: sticky;
-  top: 67px;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(226, 232, 240, 0.7);
-  z-index: 95;
-  padding: 6px 0;
+  display: none !important;
 }
 
 .quick-nav-container {
@@ -5575,6 +5567,8 @@ body.dark-theme .pass-realistic-card {
    ========================================================================== */
 @media (max-width: 1024px) {
   .nav-desktop { display: none; }
+  .brand-link { flex: 1; }
+  .header-actions { flex: 0 0 auto; min-width: auto; }
   .mobile-menu-toggle { 
     display: flex; 
     order: 1; /* Shows towards left of Check Status */
@@ -5680,6 +5674,18 @@ body.dark-theme .glass-panel {
   background: rgba(17, 23, 38, 0.85);
   border-color: rgba(255, 255, 255, 0.1);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-theme .announcement-banner {
+  background: linear-gradient(90deg, #090d16, #131d2e, #0f1c24);
+  color: #f1f5f9;
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+body.dark-theme .ticker-header-badge .badge-pill {
+  background: rgba(66, 133, 244, 0.2);
+  color: #93c5fd;
+  border-color: rgba(66, 133, 244, 0.4);
 }
 
 body.dark-theme .site-header {
