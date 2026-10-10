@@ -315,8 +315,8 @@ img {
    TOP ANNOUNCEMENT BAR (CRICKET POSTMATCH / NEWS BROADCAST MARQUEE TICKER)
    ========================================================================== */
 .announcement-banner {
-  background: linear-gradient(90deg, #f0f4f9, #e8f0fe, #f0fdf4);
-  color: #1e293b;
+  background: linear-gradient(90deg, #090d16, #131d2e);
+  color: #ffffff;
   padding: 4px 14px;
   font-size: 0.81rem;
   min-height: 32px;
@@ -325,7 +325,7 @@ img {
   gap: 12px;
   position: relative;
   z-index: 102;
-  border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   overflow: hidden;
   transition: all var(--transition-base);
 }
@@ -340,15 +340,18 @@ img {
 }
 
 .ticker-header-badge .badge-pill {
-  background: rgba(66, 133, 244, 0.12);
-  color: #1a73e8;
-  border: 1px solid rgba(66, 133, 244, 0.28);
+  animation: pulse-ticker-red 2.5s infinite ease-in-out;
   letter-spacing: 0.4px;
   font-weight: 700;
   white-space: nowrap;
-  font-size: 0.72rem;
-  padding: 2px 8px;
+  font-size: 0.69rem;
+  padding: 2px 7px;
   border-radius: var(--radius-full);
+}
+
+@keyframes pulse-ticker-red {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(234, 67, 53, 0.6); }
+  50% { box-shadow: 0 0 0 4px rgba(234, 67, 53, 0); }
 }
 
 .ticker-container {
@@ -486,7 +489,7 @@ img {
   align-items: center;
   gap: 14px;
   text-decoration: none;
-  flex: 0 0 250px;
+  margin-left: -12px; /* Shift slightly to the left */
   transition: transform var(--transition-fast);
 }
 
@@ -583,11 +586,9 @@ img {
 
 /* Desktop Nav Tabs */
 .nav-desktop {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1 1 auto;
+  display: block;
   margin: 0 auto;
+  flex-shrink: 0;
 }
 
 .nav-pills-list {
@@ -599,7 +600,6 @@ img {
   padding: 4px 6px;
   border-radius: var(--radius-full);
   border: 1px solid #e2e8f0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
 }
 
 .nav-tab {
@@ -635,32 +635,13 @@ img {
 .header-actions {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  flex: 0 0 250px;
   gap: 12px;
+  flex-shrink: 0;
+  margin-left: 14px;
 }
 
-.header-register-btn,
 .header-get-pass-btn {
-  margin-right: 0;
-  padding: 7px 16px;
-  font-size: 0.84rem;
-  font-weight: 700;
-  border-radius: var(--radius-full);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  height: 35px;
-  line-height: 1;
-  box-shadow: 0 2px 10px rgba(66, 133, 244, 0.28);
-  transition: all var(--transition-fast);
-}
-
-.header-register-btn:hover,
-.header-get-pass-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 14px rgba(66, 133, 244, 0.4);
+  margin-right: clamp(16px, 2.5vw, 32px);
 }
 
 .status-lookup-btn {
@@ -1000,7 +981,13 @@ body.dark-theme .mobile-drawer-footer {
    STICKY QUICK NAVIGATION BAR
    ========================================================================== */
 .quick-nav-bar {
-  display: none !important;
+  position: sticky;
+  top: 67px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.7);
+  z-index: 95;
+  padding: 6px 0;
 }
 
 .quick-nav-container {
@@ -5567,8 +5554,6 @@ body.dark-theme .pass-realistic-card {
    ========================================================================== */
 @media (max-width: 1024px) {
   .nav-desktop { display: none; }
-  .brand-link { flex: 1; }
-  .header-actions { flex: 0 0 auto; min-width: auto; }
   .mobile-menu-toggle { 
     display: flex; 
     order: 1; /* Shows towards left of Check Status */
@@ -5676,18 +5661,6 @@ body.dark-theme .glass-panel {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
-body.dark-theme .announcement-banner {
-  background: linear-gradient(90deg, #090d16, #131d2e, #0f1c24);
-  color: #f1f5f9;
-  border-bottom-color: rgba(255, 255, 255, 0.08);
-}
-
-body.dark-theme .ticker-header-badge .badge-pill {
-  background: rgba(66, 133, 244, 0.2);
-  color: #93c5fd;
-  border-color: rgba(66, 133, 244, 0.4);
-}
-
 body.dark-theme .site-header {
   background: rgba(10, 13, 20, 0.92);
   border-bottom-color: rgba(255, 255, 255, 0.08);
@@ -5696,12 +5669,6 @@ body.dark-theme .site-header {
 body.dark-theme .quick-nav-bar {
   background: rgba(15, 20, 32, 0.92);
   border-bottom-color: rgba(255, 255, 255, 0.08);
-}
-
-body.dark-theme .nav-pills-list {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 body.dark-theme .nav-tab, 
