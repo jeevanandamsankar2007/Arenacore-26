@@ -1340,7 +1340,7 @@ window.useCurrentHost = useCurrentHost;
 function getPassVerificationUrl() {
   const name = document.getElementById("passParticipantName")?.value.trim() || "ARUN KUMAR R";
   const team = document.getElementById("passTeamName")?.value.trim() || "Team Phoenix";
-  const theme = document.getElementById("passThemeTrack")?.value.trim() || "Smart Solutions for a Sustainable Tomorrow";
+  const theme = document.getElementById("passThemeTrack")?.value.trim() || "AI & Intelligent Systems";
   const college = document.getElementById("passCollegeName")?.value.trim() || "PSNA College of Engineering & Technology, Dindigul - 624 622";
   const code = document.getElementById("passCustomId")?.value.trim() || "5343214C";
 
@@ -1387,7 +1387,7 @@ function updateLiveShortlistedPass() {
   const nameVal = nameInput?.value.trim() || "ARUN KUMAR R";
   const teamVal = teamInput?.value.trim() || "Team Phoenix";
   const collegeVal = collegeInput?.value.trim() || "PSNA College of Engineering & Technology, Dindigul - 624 622";
-  const trackVal = trackInput?.value.trim() || "Smart Solutions for a Sustainable Tomorrow";
+  const trackVal = trackInput?.value.trim() || "AI & Intelligent Systems";
   const passIdVal = passIdInput?.value.trim() || "5343214C";
 
   const bName = document.getElementById("badgePreviewName");
@@ -1424,9 +1424,9 @@ function updateLiveShortlistedPass() {
       try {
         liveQrCodeInstance = new QRCode(qrContainer, {
           text: verificationUrl,
-          width: 96,
-          height: 96,
-          colorDark: "#0b1a30",
+          width: 140,
+          height: 140,
+          colorDark: "#001f50",
           colorLight: "#ffffff",
           correctLevel: QRCode.CorrectLevel.M
         });
@@ -1486,7 +1486,7 @@ window.scrollToPassGenerator = scrollToPassGenerator;
 function downloadVirtualPass() {
   const name = document.getElementById("passParticipantName")?.value.trim() || "JEEVA S";
   const team = document.getElementById("passTeamName")?.value.trim() || "Zentrix";
-  const theme = document.getElementById("passThemeTrack")?.value.trim() || "Smart Solutions for a Sustainable Tomorrow";
+  const theme = document.getElementById("passThemeTrack")?.value.trim() || "AI & Intelligent Systems";
   const college = document.getElementById("passCollegeName")?.value.trim() || "PSNA College of Engineering & Technology, Dindigul - 624 622";
   const passId = document.getElementById("passCustomId")?.value.trim() || "4A3E2D9F";
 
@@ -1514,16 +1514,16 @@ function downloadVirtualPass() {
     ctx.textAlign = "left";
 
     // 2. Candidate Name
-    ctx.font = "bold 23px 'Inter', 'Segoe UI', Arial, sans-serif";
-    ctx.fillText(name.toUpperCase(), 256, 446);
+    ctx.font = "bold 19px 'Plus Jakarta Sans', 'Outfit', 'Segoe UI', Arial, sans-serif";
+    ctx.fillText(name.toUpperCase(), 256, 442);
 
     // 3. Team Name
-    ctx.font = "bold 21px 'Inter', 'Segoe UI', Arial, sans-serif";
-    ctx.fillText(team, 256, 492);
+    ctx.font = "600 17px 'Plus Jakarta Sans', 'Outfit', 'Segoe UI', Arial, sans-serif";
+    ctx.fillText(team, 256, 488);
 
     // 4. Approved Theme (Smart wrapping for long text)
     if (theme.length > 28) {
-      ctx.font = "bold 18px 'Inter', 'Segoe UI', Arial, sans-serif";
+      ctx.font = "600 14px 'Plus Jakarta Sans', 'Outfit', 'Segoe UI', Arial, sans-serif";
       const words = theme.split(" ");
       let l1 = "";
       let l2 = "";
@@ -1534,42 +1534,42 @@ function downloadVirtualPass() {
           l2 = (l2 + " " + w).trim();
         }
       }
-      ctx.fillText(l1, 256, 534);
-      ctx.fillText(l2, 256, 558);
+      ctx.fillText(l1, 256, 530);
+      ctx.fillText(l2, 256, 550);
     } else {
-      ctx.font = "bold 20px 'Inter', 'Segoe UI', Arial, sans-serif";
-      ctx.fillText(theme, 256, 542);
+      ctx.font = "600 15px 'Plus Jakarta Sans', 'Outfit', 'Segoe UI', Arial, sans-serif";
+      ctx.fillText(theme, 256, 536);
     }
 
     // 5. College Name (Two-line formatting)
-    ctx.font = "bold 17px 'Inter', 'Segoe UI', Arial, sans-serif";
+    ctx.font = "600 13px 'Plus Jakarta Sans', 'Outfit', 'Segoe UI', Arial, sans-serif";
     if (college.includes(",")) {
       const parts = college.split(",");
       const l1 = parts[0] + ",";
       const l2 = parts.slice(1).join(",").trim();
-      ctx.fillText(l1, 256, 595);
-      ctx.fillText(l2, 256, 619);
+      ctx.fillText(l1, 256, 592);
+      ctx.fillText(l2, 256, 612);
     } else {
-      ctx.fillText(college, 256, 606);
+      ctx.fillText(college, 256, 600);
     }
 
     // 6. Draw real dynamic QR code inside the 4-color frame
-    // Area: x=283, y=646, w=115, h=115
+    // Area: x=280, y=650, w=122, h=122 (increased size for high visibility)
     const qrCanvas = document.querySelector("#passQrCodeContainer canvas");
     const qrImg = document.querySelector("#passQrCodeContainer img");
 
     if (qrCanvas) {
-      ctx.drawImage(qrCanvas, 283, 646, 115, 115);
+      ctx.drawImage(qrCanvas, 280, 650, 122, 122);
     } else if (qrImg && qrImg.complete) {
-      ctx.drawImage(qrImg, 283, 646, 115, 115);
+      ctx.drawImage(qrImg, 280, 650, 122, 122);
     }
 
     // 7. Dynamic Code caption centered below QR code
     ctx.textAlign = "center";
-    ctx.font = "bold 13px 'Inter', 'Segoe UI', Arial, sans-serif";
+    ctx.font = "bold 12px 'Plus Jakarta Sans', 'Outfit', 'Segoe UI', Arial, sans-serif";
     ctx.fillStyle = "#32466e";
     const cleanCode = passId.startsWith("Code ") ? passId : `Code ${passId}`;
-    ctx.fillText(`Scan at check-in  •  ${cleanCode}`, 341, 780);
+    ctx.fillText(`Scan at check-in  •  ${cleanCode}`, 341, 782);
 
     // 8. Download High-Res PNG
     try {

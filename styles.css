@@ -3607,42 +3607,47 @@ body.dark-theme .pass-realistic-card {
 .pass-ovl-name {
   position: absolute;
   left: 37.5%;
-  top: 41.4%;
+  top: 41.6%;
   width: 55%;
-  font-size: 0.92rem;
-  font-weight: 800;
+  font-family: 'Plus Jakarta Sans', 'Outfit', var(--font-heading), sans-serif;
+  font-size: 0.76rem;
+  font-weight: 700;
   color: #001f50;
   text-transform: uppercase;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  line-height: 1.1;
-  letter-spacing: 0.3px;
+  line-height: 1.15;
+  letter-spacing: 0.45px;
 }
 
 .pass-ovl-team {
   position: absolute;
   left: 37.5%;
-  top: 45.8%;
+  top: 46.0%;
   width: 55%;
-  font-size: 0.84rem;
-  font-weight: 800;
+  font-family: 'Plus Jakarta Sans', 'Outfit', var(--font-heading), sans-serif;
+  font-size: 0.70rem;
+  font-weight: 600;
   color: #001f50;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  line-height: 1.1;
+  line-height: 1.15;
+  letter-spacing: 0.25px;
 }
 
 .pass-ovl-theme {
   position: absolute;
   left: 37.5%;
-  top: 50.4%;
+  top: 50.5%;
   width: 55%;
-  font-size: 0.72rem;
-  font-weight: 800;
+  font-family: 'Plus Jakarta Sans', 'Outfit', var(--font-heading), sans-serif;
+  font-size: 0.60rem;
+  font-weight: 600;
   color: #001f50;
   line-height: 1.25;
+  letter-spacing: 0.15px;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -3652,12 +3657,14 @@ body.dark-theme .pass-realistic-card {
 .pass-ovl-college {
   position: absolute;
   left: 37.5%;
-  top: 56.4%;
+  top: 56.0%;
   width: 55%;
-  font-size: 0.66rem;
-  font-weight: 800;
+  font-family: 'Plus Jakarta Sans', 'Outfit', var(--font-heading), sans-serif;
+  font-size: 0.52rem;
+  font-weight: 600;
   color: #001f50;
   line-height: 1.25;
+  letter-spacing: 0.1px;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -3666,15 +3673,19 @@ body.dark-theme .pass-realistic-card {
 
 .pass-ovl-qr {
   position: absolute;
-  left: 41.5%;
-  top: 62.9%;
-  width: 16.9%;
-  height: 11.3%;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 63.3%;
+  width: 18.2%;
+  height: 12.1%;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   background: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 31, 80, 0.08);
+  padding: 2px;
 }
 
 .pass-ovl-qr canvas,
@@ -3689,12 +3700,13 @@ body.dark-theme .pass-realistic-card {
   position: absolute;
   left: 0;
   right: 0;
-  top: 75.3%;
+  top: 76.2%;
   text-align: center;
-  font-size: 0.54rem;
-  font-weight: 800;
+  font-family: 'Plus Jakarta Sans', 'Outfit', monospace;
+  font-size: 0.52rem;
+  font-weight: 700;
   color: #32466e;
-  letter-spacing: 0.2px;
+  letter-spacing: 0.25px;
 }
 
 /* Top Institutional Header */
@@ -4726,8 +4738,115 @@ body.dark-theme .pass-realistic-card {
   padding-left: 10px;
 }
 
-/* ==========================================================================
-   TAB / SECTION 6: ABOUT PSNA GDG & LEADERSHIP DIRECTORY
+/* PSNACET IT Department Spotlight Action Button */
+.dept-quick-action-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 14px 0 20px;
+}
+
+.btn-know-it-dept {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 22px;
+  background: var(--bg-surface, #ffffff);
+  border: 1.5px solid rgba(66, 133, 244, 0.4);
+  border-radius: var(--radius-full, 9999px);
+  color: var(--text-primary, #0f172a);
+  text-decoration: none;
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+  box-shadow: 0 4px 18px rgba(66, 133, 244, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: all var(--transition-base, 0.28s ease);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-know-it-dept:hover {
+  transform: translateY(-2px);
+  border-color: var(--g-blue, #4285F4);
+  box-shadow: 0 8px 26px rgba(66, 133, 244, 0.25), 0 0 0 1px rgba(66, 133, 244, 0.2);
+  color: var(--g-blue-dark, #174ea6);
+}
+
+body.dark-theme .btn-know-it-dept {
+  background: rgba(30, 41, 59, 0.85);
+  border-color: rgba(66, 133, 244, 0.5);
+  color: #f1f5f9;
+}
+
+body.dark-theme .btn-know-it-dept:hover {
+  background: rgba(30, 41, 59, 1);
+  border-color: var(--g-blue, #4285F4);
+  color: #93c5fd;
+  box-shadow: 0 8px 26px rgba(66, 133, 244, 0.35);
+}
+
+.dept-badge-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--g-blue-soft, #e8f0fe);
+  color: var(--g-blue, #4285F4);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+  transition: transform var(--transition-fast, 0.18s ease);
+}
+
+.btn-know-it-dept:hover .dept-badge-icon {
+  transform: scale(1.1) rotate(-6deg);
+}
+
+.dept-badge-label strong {
+  color: var(--g-blue, #4285F4);
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+body.dark-theme .dept-badge-label strong {
+  color: #60a5fa;
+}
+
+.dept-badge-arrow {
+  color: var(--g-blue, #4285F4);
+  font-size: 0.82rem;
+  transition: transform var(--transition-fast, 0.18s ease);
+  flex-shrink: 0;
+}
+
+.btn-know-it-dept:hover .dept-badge-arrow {
+  transform: translate(2px, -2px);
+}
+
+.btn-dept-sublink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: var(--g-yellow-soft, #fef7e0);
+  border: 1px solid rgba(251, 188, 5, 0.4);
+  border-radius: var(--radius-full, 9999px);
+  color: var(--g-yellow-dark, #e37400);
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all var(--transition-fast, 0.18s ease);
+}
+
+.btn-dept-sublink:hover {
+  background: #fef0c7;
+  border-color: var(--g-yellow, #FBBC05);
+  transform: translateY(-1px);
+  color: #b45309;
+}
+
 /* Dual Chapter Spotlight Cards (GDG & ACM) */
 .chapter-spotlight-grid {
   display: grid;

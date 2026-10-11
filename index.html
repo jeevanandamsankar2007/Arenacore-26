@@ -17,7 +17,7 @@
   <!-- Google Fonts: Plus Jakarta Sans, Space Grotesk, Outfit, Inter, Syncopate, Oxanium & Syne -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,600;0,700;0,800;1,700;1,800&family=Inter:wght@400;500;600;700&family=Orbitron:wght@700;800;900&family=Outfit:wght@500;600;700;800;900&family=Oxanium:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800&family=Space+Grotesk:wght@600;700;800&family=Syncopate:wght@700&family=Syne:wght@700;800&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,600;0,700;0,800;1,700;1,800&family=Inter:wght@400;500;600;700&family=Orbitron:wght@700;800;900&family=Outfit:wght@500;600;700;800;900&family=Oxanium:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Space+Grotesk:wght@600;700;800&family=Syncopate:wght@700&family=Syne:wght@700;800&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet">
   <!-- Fontshare Premium Display Fonts (Clash Display & Cabinet Grotesk) -->
   <link href="https://api.fontshare.com/v2/css?f[]=clash-display@700,600,500&f[]=cabinet-grotesk@800,700&display=swap" rel="stylesheet">
   
@@ -28,7 +28,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   
   <!-- Custom Stylesheet (with cache-buster) -->
-  <link rel="stylesheet" href="styles.css?v=6.0">
+  <link rel="stylesheet" href="styles.css?v=6.2">
 </head>
 <body class="light-theme">
 
@@ -1263,8 +1263,7 @@
                 <div class="form-group">
                   <label for="passThemeTrack">Approved Theme Track <span class="req">*</span></label>
                   <select id="passThemeTrack" class="form-control" onchange="updateLiveShortlistedPass()">
-                    <option value="Smart Solutions for a Sustainable Tomorrow" selected>Smart Solutions for a Sustainable Tomorrow</option>
-                    <option value="AI &amp; Intelligent Systems">AI &amp; Intelligent Systems</option>
+                    <option value="AI &amp; Intelligent Systems" selected>AI &amp; Intelligent Systems</option>
                     <option value="Connected &amp; Autonomous Technologies">Connected &amp; Autonomous Technologies</option>
                     <option value="Secure &amp; Sustainable Future">Secure &amp; Sustainable Future</option>
                   </select>
@@ -1352,7 +1351,7 @@
                   <!-- Dynamic Real-Time Text Overlays -->
                   <div class="pass-ovl-name" id="badgePreviewName">ARUN KUMAR R</div>
                   <div class="pass-ovl-team" id="badgePreviewTeam">Team Phoenix</div>
-                  <div class="pass-ovl-theme" id="badgePreviewTheme">Smart Solutions for a Sustainable Tomorrow</div>
+                  <div class="pass-ovl-theme" id="badgePreviewTheme">AI &amp; Intelligent Systems</div>
                   <div class="pass-ovl-college" id="badgePreviewCollege">PSNA College of Engineering &amp; Technology, Dindigul - 624 622</div>
 
                   <!-- Dynamic Verification QR Code Frame Overlay -->
@@ -1832,6 +1831,16 @@
           <p class="section-description">
             Jointly organized by Google Developer Groups On Campus PSNACET & Association for Computing Machinery Student Chapter PSNACET, Department of Information Technology, PSNACET (Autonomous), Dindigul.
           </p>
+          
+          <!-- Option to Know About PSNACET IT Department -->
+          <div class="dept-quick-action-wrap">
+            <a href="https://share.google/LtyoFed0pWoDaDLJt" target="_blank" rel="noopener noreferrer" class="btn-know-it-dept" id="btnKnowAboutITDept" title="Know About Department: B.Tech - Information Technology, PSNACET">
+              <span class="dept-badge-icon"><i class="fa-solid fa-graduation-cap"></i></span>
+              <span class="dept-badge-label">Know About Department: <strong>B.Tech - Information Technology</strong></span>
+              <span class="dept-badge-arrow"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+            </a>
+          </div>
+
           <div class="google-line-indicator"></div>
         </div>
 
@@ -1919,6 +1928,11 @@
             <div class="dept-stat-num">1999</div>
             <h4>Established — Department of Information Technology</h4>
             <p>Department of Information Technology established in 1999 with over two decades of consistent academic distinction and top Tier-1 placement track record.</p>
+            <div class="mt-3">
+              <a href="https://share.google/LtyoFed0pWoDaDLJt" target="_blank" rel="noopener noreferrer" class="btn-dept-sublink" title="Explore B.Tech - Information Technology">
+                <i class="fa-solid fa-circle-info text-google-yellow"></i> B.Tech - Information Technology <i class="fa-solid fa-arrow-up-right-from-square ms-1"></i>
+              </a>
+            </div>
           </div>
 
           <div class="dept-stat-card border-google-green">
@@ -1947,7 +1961,6 @@
               <p class="lead-designation">Professor & Head, Department of IT</p>
               <p class="lead-org">PSNA College of Eng & Tech</p>
               <div class="lead-contact">
-                <a href="mailto:gdgpsna@psnacet.edu.in" class="lead-icon-link" title="Email HOD"><i class="fa-solid fa-envelope"></i></a>
                 <a href="https://www.psnacet.edu.in/" target="_blank" class="lead-icon-link" title="PSNA Profile"><i class="fa-solid fa-globe"></i></a>
               </div>
             </div>
@@ -1958,9 +1971,6 @@
               <h3>Dr. B. Karthika</h3>
               <p class="lead-designation">Assistant Professor (AP/IT)</p>
               <p class="lead-org">Department of IT, PSNACET</p>
-              <div class="lead-contact">
-                <a href="mailto:gdgpsna@psnacet.edu.in" class="lead-icon-link" title="Contact"><i class="fa-solid fa-envelope"></i></a>
-              </div>
             </div>
 
             <div class="lead-card border-yellow">
@@ -1969,9 +1979,6 @@
               <h3>Dr. R. Divya</h3>
               <p class="lead-designation">Associate Professor (ASP/IT)</p>
               <p class="lead-org">Department of IT, PSNACET</p>
-              <div class="lead-contact">
-                <a href="mailto:gdgpsna@psnacet.edu.in" class="lead-icon-link" title="Contact"><i class="fa-solid fa-envelope"></i></a>
-              </div>
             </div>
 
             <div class="lead-card border-red">
@@ -1980,9 +1987,6 @@
               <h3>Dr. B. Vijaya Nirmala</h3>
               <p class="lead-designation">Assistant Professor (AP/IT)</p>
               <p class="lead-org">Department of IT, PSNACET</p>
-              <div class="lead-contact">
-                <a href="mailto:gdgpsna@psnacet.edu.in" class="lead-icon-link" title="Contact"><i class="fa-solid fa-envelope"></i></a>
-              </div>
             </div>
 
             <div class="lead-card border-blue">
@@ -1991,9 +1995,6 @@
               <h3>Dr. S. T. Bharathi</h3>
               <p class="lead-designation">Assistant Professor (AP/IT)</p>
               <p class="lead-org">Department of IT, PSNACET</p>
-              <div class="lead-contact">
-                <a href="mailto:gdgpsna@psnacet.edu.in" class="lead-icon-link" title="Contact"><i class="fa-solid fa-envelope"></i></a>
-              </div>
             </div>
 
           </div>
@@ -2383,7 +2384,7 @@
   <!-- API Integration Client -->
   <script src="api.js?v=1.0"></script>
   <!-- Custom Scripts (with cache-buster) -->
-  <script src="app.js?v=4.0"></script>
+  <script src="app.js?v=4.1"></script>
 
   <!-- ARENACORE '26 Offline FAQ Chatbot Widget (ARENA-Bot) -->
   <script src="faq-bot/faq-data.js?v=6.1" defer></script>
