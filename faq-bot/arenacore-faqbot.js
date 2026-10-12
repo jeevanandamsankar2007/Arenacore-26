@@ -2086,7 +2086,7 @@
             entry: {
               id: "dynamic-reg-open",
               question: "Is registration open and how many days are left?",
-              answer: `Yes! Registration for ARENACORE '26 is currently **OPEN**. There are **${daysLeft} day${daysLeft > 1 ? "s" : ""} left** to register (Deadline: **21 October 2026, 11:59 PM IST**). Be sure to submit before slots fill up!`,
+              answer: `Yes! Registration for ARENACORE '26 is currently **OPEN**. There are **${daysLeft} day${daysLeft > 1 ? "s" : ""} left** to register (Deadline: **20 October 2026, 11:59 PM IST**). Be sure to submit before slots fill up!`,
               related: ["reg-how", "team-size", "fee-amount"],
               actions: [
                 { label: "Register Your Team", type: "scrollOrUrl", target: "#register", url: this.config.googleFormUrl }
@@ -2099,7 +2099,7 @@
             entry: {
               id: "dynamic-reg-closed",
               question: "Is registration still open?",
-              answer: `Registrations for ARENACORE '26 closed on **21 October 2026**. If you have an urgent inquiry or waitlist query, please contact our student organizing leads directly.`,
+              answer: `Registrations for ARENACORE '26 closed on **20 October 2026**. If you have an urgent inquiry or waitlist query, please contact our student organizing leads directly.`,
               related: ["contact-leads", "venue-dates"],
               actions: [
                 { label: "Contact Organizers", type: "scrollOrUrl", target: "#contact" }

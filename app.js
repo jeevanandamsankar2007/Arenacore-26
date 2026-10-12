@@ -11,7 +11,7 @@
 const HACKATHON_CONFIG = {
   eventName: "ARENACORE '26",
   targetDate: new Date("2026-10-28T08:30:00+05:30").getTime(),
-  deadlineDate: new Date("2026-10-12T23:59:59+05:30").getTime(),
+  deadlineDate: new Date("2026-10-20T23:59:59+05:30").getTime(),
   feePerMember: 500,
   minMembers: 2,
   maxMembers: 4,

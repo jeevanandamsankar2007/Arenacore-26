@@ -38,7 +38,7 @@ def seed_database():
                 status="OPEN",
                 registration_url="https://forms.gle/ir6Dbnn6GTzWCX6v7",
                 opening_date="2026-10-01",
-                closing_date="2026-10-12",
+                closing_date="2026-10-20",
             )
             db.add(initial_reg)
 
@@ -66,7 +66,7 @@ def seed_database():
             initial_announcements = [
                 Announcement(
                     title="ARENACORE '26 Registrations Announced!",
-                    content="Round 1 registrations for the 24-Hour Hackathon are officially open. Submit your team (2 to 4 members) before 21 OCT 2026.",
+                    content="Round 1 registrations for the 24-Hour Hackathon are officially open. Submit your team (2 to 4 members) before 20 OCT 2026.",
                     category="Important",
                     is_published=True,
                     publish_date="2026-10-01",

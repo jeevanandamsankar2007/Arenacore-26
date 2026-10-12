@@ -24,8 +24,8 @@
     eventEnd: "2026-10-29T11:00:00+05:30",
     displayDates: "28 & 29 October 2026",
     duration: "24 Hours",
-    registrationDeadline: "2026-10-21T23:59:59+05:30",
-    displayRegistrationDeadline: "21 October 2026",
+    registrationDeadline: "2026-10-20T23:59:59+05:30",
+    displayRegistrationDeadline: "20 October 2026",
     hackathonStartDate: "2026-10-28T08:30:00+05:30",
     hackingTimerStart: "2026-10-28T11:00:00+05:30",
     codeFreezeDate: "2026-10-29T11:00:00+05:30",
@@ -160,7 +160,7 @@
       id: "reg-deadline",
       category: "reg",
       question: "What is the registration deadline / last date for ARENACORE '26?",
-      answer: "The registration deadline is **21 October 2026 (end of day, 11:59 PM IST)**. Late submissions will not be accepted, so ensure your Team Leader submits the form early!",
+      answer: "The registration deadline is **20 October 2026 (end of day, 11:59 PM IST)**. Late submissions will not be accepted, so ensure your Team Leader submits the form early!",
       keywords: ["deadline", "last date", "closing date", "end date", "final date", "due date", "registration deadline", "last date to register"],
       synonyms: ["last date", "when is last date", "what is last date", "kadaisi date", "mudiyum date", "when will registration close", "cut off date"],
       related: ["reg-how", "venue-dates", "reg-days-left"],
@@ -172,7 +172,7 @@
       id: "reg-days-left",
       category: "reg",
       question: "How many days are left to register for ARENACORE '26?",
-      answer: "The deadline is **21 October 2026 (11:59 PM IST)**. You can check the live countdown on our home page or submit your team registration now before slots fill up!",
+      answer: "The deadline is **20 October 2026 (11:59 PM IST)**. You can check the live countdown on our home page or submit your team registration now before slots fill up!",
       keywords: ["days left", "time left", "how many days", "countdown", "deadline countdown"],
       synonyms: ["innum evlo naal", "days remaining", "hours left"],
       related: ["reg-deadline", "reg-how"],
@@ -259,7 +259,7 @@
       id: "reg-edit",
       category: "reg",
       question: "Can I edit or update our registration details after submitting?",
-      answer: "Minor corrections (such as fixing a typo in an email or phone number) can be requested by emailing `gdgpsna@psnacet.edu.in` with your registered Team Name and Team Leader details before the 21 October deadline.",
+      answer: "Minor corrections (such as fixing a typo in an email or phone number) can be requested by emailing `gdgpsna@psnacet.edu.in` with your registered Team Name and Team Leader details before the 20 October deadline.",
       keywords: ["edit registration", "update details", "change form", "modify submission", "mistake"],
       synonyms: ["correction", "change team details", "edit form"],
       related: ["contact-email", "reg-deadline"]
@@ -276,8 +276,8 @@
     {
       id: "reg-after-deadline",
       category: "reg",
-      question: "Can I register after the 21 October 2026 deadline?",
-      answer: "No. The registration portal closes strictly on **21 October 2026 at 11:59 PM IST**. To maintain a fair evaluation timeline for the jury, late entries cannot be accommodated.",
+      question: "Can I register after the 20 October 2026 deadline?",
+      answer: "No. The registration portal closes strictly on **20 October 2026 at 11:59 PM IST**. To maintain a fair evaluation timeline for the jury, late entries cannot be accommodated.",
       keywords: ["after deadline", "late registration", "deadline passed", "extension", "can i still apply"],
       synonyms: ["deadline over", "time mudinjidha", "late entry"],
       related: ["reg-deadline", "contact-leads"]
@@ -1548,6 +1548,7 @@
   };
 
 })();
+
 /**
  * ARENACORE '26 - Standalone FAQ Chatbot Widget (ARENA-Bot)
  * Department of Information Technology, PSNACET x GDG On Campus PSNACET x ACM PSNACET
@@ -3636,7 +3637,7 @@
             entry: {
               id: "dynamic-reg-open",
               question: "Is registration open and how many days are left?",
-              answer: `Yes! Registration for ARENACORE '26 is currently **OPEN**. There are **${daysLeft} day${daysLeft > 1 ? "s" : ""} left** to register (Deadline: **21 October 2026, 11:59 PM IST**). Be sure to submit before slots fill up!`,
+              answer: `Yes! Registration for ARENACORE '26 is currently **OPEN**. There are **${daysLeft} day${daysLeft > 1 ? "s" : ""} left** to register (Deadline: **20 October 2026, 11:59 PM IST**). Be sure to submit before slots fill up!`,
               related: ["reg-how", "team-size", "fee-amount"],
               actions: [
                 { label: "Register Your Team", type: "scrollOrUrl", target: "#register", url: this.config.googleFormUrl }
@@ -3649,7 +3650,7 @@
             entry: {
               id: "dynamic-reg-closed",
               question: "Is registration still open?",
-              answer: `Registrations for ARENACORE '26 closed on **21 October 2026**. If you have an urgent inquiry or waitlist query, please contact our student organizing leads directly.`,
+              answer: `Registrations for ARENACORE '26 closed on **20 October 2026**. If you have an urgent inquiry or waitlist query, please contact our student organizing leads directly.`,
               related: ["contact-leads", "venue-dates"],
               actions: [
                 { label: "Contact Organizers", type: "scrollOrUrl", target: "#contact" }
